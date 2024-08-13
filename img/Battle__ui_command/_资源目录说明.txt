@@ -1,0 +1,12 @@
+	
+	资源目录：
+		 \img\Battle__ui_command
+	
+	来自插件：
+		MOG_BattleCommands	战斗UI - 技能类型面板
+		Drill_X_BattleComControl	战斗UI - 技能类型控制[扩展]
+	
+	相关文档：
+		无
+	
+	说明：	mog插件以后会被推翻。

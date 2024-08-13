@@ -1,0 +1,9 @@
+	
+	资源目录：
+		 \img\Map__weather
+	
+	来自插件：
+		MOG_Weather_EX		地图 - 多层天气效果
+	
+	相关文档：
+		无

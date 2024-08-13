@@ -1,0 +1,12 @@
+	
+	资源目录：
+		 \img\Special__layer
+	
+	来自插件：
+		Drill_HtmlBackground	系统 - 黑边背景
+		Drill_HtmlDynamicSnapshotBackground 游戏窗体 - 天窗层的多层背景
+		Drill_HtmlDynamicSnapshotCircle	游戏窗体 - 天窗层的多层魔法圈
+		Drill_HtmlDynamicSnapshotSprite	游戏窗体 - 天窗层的多层动态快照
+
+	相关文档：
+		1.系统 > 大家族-屏幕快照.docx

@@ -1,0 +1,9 @@
+	
+	资源目录：
+		 \img\Menu__textBigImg
+	
+	来自插件：
+		Drill_DialogTextBigImage	对话框 - 大图片字符
+	
+	相关文档：
+		23.窗口字符 > 关于窗口字符.docx

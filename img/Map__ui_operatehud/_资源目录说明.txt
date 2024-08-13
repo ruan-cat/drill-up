@@ -1,0 +1,9 @@
+	
+	资源目录：
+		\img\Map__ui_operatehud
+	
+	来自插件：
+		Drill_OperateHud 	互动 - 鼠标辅助操作面板
+	
+	相关文档：
+		14.鼠标 > 关于鼠标辅助操作面板.docx

@@ -1,0 +1,11 @@
+	
+	资源目录：
+		 \img\Menu__fasttravel
+	
+	来自插件：
+		MOG_FastTravel	面板 - 世界地图
+	
+	相关文档：
+		无
+	
+	说明：	mog插件以后会被推翻。

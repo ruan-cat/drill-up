@@ -1,0 +1,13 @@
+	
+	资源目录：
+		 \img\Battle__portraiture
+	
+	来自插件：
+		Drill_ActorPortraiture	战斗UI - 角色肖像
+	
+	相关文档：
+		无
+
+	注意：
+		插件 "Drill_ActorPortraitureExtend 战斗UI - 高级角色肖像" 并没有使用到此资源文件夹。
+		其资源配置都在 GIF动画序列核心 中配置。

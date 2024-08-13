@@ -1,0 +1,12 @@
+	
+	资源目录：
+		 \img\Map__characterLayer
+	
+	来自插件：
+		Drill_EventFrameCircle	行走图 - 多层行走图魔法圈
+		Drill_EventFrameParticle	行走图 - 多层行走图粒子
+		Drill_EventFrameSurround	行走图 - 多层行走图环绕球
+
+	相关文档：
+		1.系统 > 大家族-粒子效果.docx
+		17.主菜单 > 多层组合装饰（个体装饰）.docx
