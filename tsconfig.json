@@ -14,17 +14,17 @@
   },
   "include": [
     // "./js/**/*.js",
-    "./js/*.js",
+    // "./js/*.js",
     "./js/main.js",
-    "./js/rpg_*.js",
-    "./js/plugins/*.js",
-    "./js/libs/pixi*.js",
-    "./js/plugins/MOG_*.js",
+    // "./js/rpg_*.js",
+    // "./js/plugins/*.js",
+    // "./js/libs/pixi*.js",
+    // "./js/plugins/MOG_*.js",
     "./js/plugins/YEP_*.js",
+    "./js/plugins/Drill_*.js",
   ],
   "exclude": [
     // FIXIME: 不得不排除该文件
-    "./js/plugins/Drill_*.js",
     "./js/plugins/----*.js",
     "./js/plugins.js",
     // "./js/libs",
