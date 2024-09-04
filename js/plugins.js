@@ -427,5 +427,6 @@ var $plugins =
 {"name":"Drill_MouseDragPicture","status":false,"description":"[v1.4]        鼠标 - 可拖拽的图片","parameters":{}},
 {"name":"Drill_MouseTriggerPicture","status":false,"description":"[v1.3]        鼠标 - 鼠标触发图片","parameters":{}},
 {"description":"(v1.01)[v1.0] 物体 - 鼠标寻路不停止","name":"TDDP_PlayerTouchPassage","parameters":{},"status":false},
-{"description":"------------------------------------------------------------","name":"--------------------","parameters":{},"status":false}
+{"description":"------------------------------------------------------------","name":"--------------------","parameters":{},"status":false},
+{"name":"A-ruancat-test-001","status":true,"description":"","parameters":{}}
 ];
