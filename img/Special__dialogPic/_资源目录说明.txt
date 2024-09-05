@@ -1,9 +1,0 @@
-	
-	资源目录：
-		 \img\Special__dialogPic
-	
-	来自插件：
-		Drill_DialogSingleSprite	对话框 - 简易对话图
-
-	相关文档：
-		无（简易对话图可以在地图界面显示，也可以在战斗界面显示）

@@ -1,9 +1,0 @@
-	
-	资源目录：
-		\img\Map__ui_cameraConsole
-	
-	来自插件：
-		Drill_LayerCameraConsole	地图UI - 活动地图镜头控制台
-	
-	相关文档：
-		6.地图 > 关于地图活动镜头.docx

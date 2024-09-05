@@ -1,9 +1,0 @@
-	
-	资源目录：
-		\img\Menu__limitShop
-	
-	来自插件：
-		Drill_SceneLimitedShop	面板 - 限量商店
-		
-	相关文档：
-		18.面板 > 关于限量商店界面.docx

@@ -1,9 +1,0 @@
-	
-	资源目录：
-		 \img\Menu__layer_backBtn
-	
-	来自插件：
-		Drill_MenuBackButton	主菜单 - 菜单返回按钮
-		
-	相关文档：
-		17.主菜单 > 多层组合装饰（界面装饰）.docx

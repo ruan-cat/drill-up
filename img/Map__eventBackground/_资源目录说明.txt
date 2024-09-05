@@ -1,9 +1,0 @@
-	
-	资源目录：
-		 \img\Map__eventBackground
-	
-	来自插件：
-		Drill_X_EventTextBackground		行走图 - 事件漂浮文字的背景[扩展]
-	
-	相关文档：
-		7.行走图 > 关于事件漂浮文字.docx
