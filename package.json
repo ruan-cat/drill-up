@@ -8,5 +8,12 @@
         "width": 816,
         "height": 624,
         "icon": "icon/icon.png"
+    },
+    "packageManager": "pnpm@9.8.0",
+    "dependencies": {
+        "lodash-es": "^4.17.21"
+    },
+    "devDependencies": {
+        "@types/lodash-es": "^4.17.12"
     }
 }
