@@ -1,7 +1,7 @@
 [
 null,
 {"id":1,"expanded":true,"name":"【战斗】管理层","order":6,"parentId":2,"scrollX":1798.6666666666667,"scrollY":1136},
-{"id":2,"expanded":true,"name":"初始点","order":1,"parentId":0,"scrollX":2109.3333333333335,"scrollY":765.3333333333334},
+{"id":2,"expanded":true,"name":"初始点","order":1,"parentId":0,"scrollX":2101,"scrollY":757},
 {"id":3,"expanded":true,"name":"【地图】管理层","order":10,"parentId":2,"scrollX":2586.6666666666665,"scrollY":656},
 {"id":4,"expanded":true,"name":"【物体】管理层","order":19,"parentId":2,"scrollX":3046.6666666666665,"scrollY":1934.6666666666667},
 {"id":5,"expanded":true,"name":"故事管理层","order":69,"parentId":2,"scrollX":1879.1999999999998,"scrollY":1808.3999999999999},
