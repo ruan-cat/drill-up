@@ -1,40 +1,42 @@
 {
-    "name": "插件集合示例",
-    "private": true,
-    "version": "0.0.0",
-    "type": "module",
-    "main": "index.html",
-    "js-flags": "--expose-gc",
-    "window": {
-        "title": "",
-        "toolbar": false,
-        "width": 816,
-        "height": 624,
-        "icon": "icon/icon.png"
-    },
-    "packageManager": "pnpm@9.8.0",
-    "scripts": {
-        "dev": "vite",
-        "build": "vue-tsc -b && vite build",
-        "preview": "vite preview"
-    },
-    "dependencies": {
-        "lodash-es": "^4.17.21",
-        "vue": "^3.4.37"
-    },
-    "devDependencies": {
-        "@antfu/eslint-config": "^3.2.0",
-        "@types/eslint-config-prettier": "^6.11.3",
-        "@types/lodash-es": "^4.17.12",
-        "@vitejs/plugin-vue": "^5.1.2",
-        "eslint": "^9.9.1",
-        "eslint-config-prettier": "^9.1.0",
-        "eslint-plugin-prettier": "^5.2.1",
-        "prettier": "^3.3.3",
-        "prettier-plugin-lint-md": "^1.0.1",
-        "sass-embedded": "^1.78.0",
-        "typescript": "^5.5.3",
-        "vite": "^5.4.1",
-        "vue-tsc": "^2.0.29"
-    }
+	"name": "插件集合示例",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"main": "index.html",
+	"js-flags": "--expose-gc",
+	"window": {
+		"title": "",
+		"toolbar": false,
+		"width": 816,
+		"height": 624,
+		"icon": "icon/icon.png"
+	},
+	"packageManager": "pnpm@9.8.0",
+	"scripts": {
+		"dev": "vite",
+		"build": "vue-tsc -b && vite build",
+		"preview": "vite preview",
+		"lint:eslint": "eslint . --fix",
+		"format:prettier": "prettier --write ."
+	},
+	"dependencies": {
+		"lodash-es": "^4.17.21",
+		"vue": "^3.4.37"
+	},
+	"devDependencies": {
+		"@antfu/eslint-config": "^3.2.0",
+		"@types/eslint-config-prettier": "^6.11.3",
+		"@types/lodash-es": "^4.17.12",
+		"@vitejs/plugin-vue": "^5.1.2",
+		"eslint": "^9.9.1",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-prettier": "^5.2.1",
+		"prettier": "^3.3.3",
+		"prettier-plugin-lint-md": "^1.0.1",
+		"sass-embedded": "^1.78.0",
+		"typescript": "^5.5.3",
+		"vite": "^5.4.1",
+		"vue-tsc": "^2.0.29"
+	}
 }
