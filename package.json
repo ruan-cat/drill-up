@@ -23,8 +23,15 @@
         "vue": "^3.4.37"
     },
     "devDependencies": {
+        "@antfu/eslint-config": "^3.2.0",
+        "@types/eslint-config-prettier": "^6.11.3",
         "@types/lodash-es": "^4.17.12",
         "@vitejs/plugin-vue": "^5.1.2",
+        "eslint": "^9.9.1",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "prettier": "^3.3.3",
+        "prettier-plugin-lint-md": "^1.0.1",
         "sass-embedded": "^1.78.0",
         "typescript": "^5.5.3",
         "vite": "^5.4.1",
