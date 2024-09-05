@@ -13,6 +13,8 @@ const config = {
 	"space-around-number": true,
 	"no-empty-code-lang": false,
 	"no-empty-code": false,
+
+	// "ig"
 };
 
 export default config;
