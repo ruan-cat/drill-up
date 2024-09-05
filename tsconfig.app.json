@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     // "emitDeclarationOnly": false,
-    "noEmit": true,
+    // "noEmit": true,
     "jsx": "preserve",
     /* Linting */
     "strict": true,

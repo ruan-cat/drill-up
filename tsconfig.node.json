@@ -12,7 +12,7 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     // "emitDeclarationOnly": false,
-    "noEmit": true,
+    // "noEmit": true,
     // "noEmit": false,
     /* Linting */
     "strict": true,
