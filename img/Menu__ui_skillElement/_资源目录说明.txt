@@ -1,0 +1,10 @@
+	
+	资源目录：
+		 \img\Menu__ui_skillElement
+	
+	来自插件：
+		Drill_WindowSkillElement 	控件 - 技能窗口块元素
+		Drill_X_ElementSkillImage	控件 - 技能块元素的背景图片[扩展]
+	
+	相关文档：
+		19.控件 > 关于技能窗口块元素.docx

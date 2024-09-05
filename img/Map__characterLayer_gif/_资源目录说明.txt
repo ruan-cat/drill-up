@@ -1,0 +1,9 @@
+	
+	资源目录：
+		 \img\Map__characterLayer_gif
+	
+	来自插件：
+		Drill_EventFrameGif		行走图 - 多层行走图GIF
+
+	相关文档：
+		17.主菜单 > 多层组合装饰（个体装饰）.docx

@@ -1,0 +1,10 @@
+	
+	资源目录：
+		\img\Map__ui_mouse
+	
+	来自插件：
+		Drill_MouseDestination	鼠标 - 目的地指向标
+		Drill_MouseGridPointer	鼠标 - 网格指向标
+	
+	相关文档：
+		无（你可以在插件中配置很多 鼠标指向标，并且随时切换，具体去 鼠标管理层 向右第三个平台看看）

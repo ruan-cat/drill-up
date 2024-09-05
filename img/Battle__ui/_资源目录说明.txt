@@ -1,0 +1,18 @@
+	
+	资源目录：
+		 \img\Battle__ui
+	
+	来自插件：
+		MOG_ConsecutiveBattles	战斗 - 车轮战
+		MOG_ActorTurnIndicator	单位 - 角色选择光环(sv)
+		MOG_ActionName		技能 - 招式名浮动框
+		MOG_BalloonActionName	技能 - 招式名气泡框
+		MOG_ChainCommands	技能 - 按键连锁攻击
+		MOG_BattleCursor		战斗UI - 单位选择指针
+		MOG_ComboCounter	战斗UI - 伤害统计浮动框
+		Drill_EnemySimpleHud	战斗UI - 简单生命框
+	
+	相关文档：
+		5.战斗UI > 关于战斗简单生命框.docx
+	
+	说明：	mog插件以后会被推翻。

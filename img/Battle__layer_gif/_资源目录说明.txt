@@ -1,0 +1,10 @@
+	
+	资源目录：
+		 \img\Battle__layer_gif
+	
+	来自插件：
+		Drill_BattleGIF	战斗 - 多层战斗GIF
+		Drill_BattleTiledGif	战斗 - 多层战斗平铺GIF
+	
+	相关文档：
+		17.主菜单 > 多层组合装饰（界面装饰）.docx
