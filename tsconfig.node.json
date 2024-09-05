@@ -11,8 +11,9 @@
     "moduleResolution": "bundler",
     "isolatedModules": true,
     "moduleDetection": "force",
-    "emitDeclarationOnly": false,
-    "noEmit": false,
+    // "emitDeclarationOnly": false,
+    "noEmit": true,
+    // "noEmit": false,
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,

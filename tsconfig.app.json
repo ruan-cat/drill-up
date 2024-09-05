@@ -14,8 +14,8 @@
     "moduleResolution": "bundler",
     "isolatedModules": true,
     "moduleDetection": "force",
-    "emitDeclarationOnly": false,
-    "noEmit": false,
+    // "emitDeclarationOnly": false,
+    "noEmit": true,
     "jsx": "preserve",
     /* Linting */
     "strict": true,
