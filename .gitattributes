@@ -31,3 +31,14 @@
 *.docx binary
 *.xlsx binary
 *.pptx binary
+
+# rm音频文件
+*.ogg binary
+
+# 字体文件
+*.ttf binary
+
+# 视频
+*.webm binary
+
+
