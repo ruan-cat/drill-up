@@ -16,6 +16,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "allowJs": true,
+    "noEmit": false,
     "rootDir": "./js",
     "baseUrl": "./js",
     "outDir": "dist"
