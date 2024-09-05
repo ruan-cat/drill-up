@@ -3,7 +3,7 @@
 (async function main() {
   console.log(" 阮喵喵 IIFE 就绪 ");
 
-  // const lodashES = await import("lodash-es");
+  const lodashES = await import("lodash-es");
   const idPrefix = "ruancat-";
 
   function getId() {
