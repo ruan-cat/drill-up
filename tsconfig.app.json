@@ -15,6 +15,7 @@
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
+    "emitDeclarationOnly": true,
     "noEmit": false,
     "jsx": "preserve",
     /* Linting */
