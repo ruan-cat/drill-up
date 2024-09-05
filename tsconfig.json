@@ -1,27 +1,26 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
     "allowJs": true,
     "rootDir": "./js",
     "baseUrl": "./js",
-    // "rootDirs": [
-    //   "./js",
-    //   "./js/libs",
-    //   "./js/plugins",
-    //   "./js/plugins/MOG",
-    //   "./js/plugins/YEP"
-    // ],
     "outDir": "dist"
   },
   "include": [
-    // "./js/**/*.js",
-    // "./js/*.js",
     "./js/main.js",
-    // "./js/rpg_*.js",
+    "./js/rpg_*.js",
     // "./js/plugins/*.js",
-    // "./js/libs/pixi*.js",
-    // "./js/plugins/MOG_*.js",
+    "./js/libs/pixi*.js",
+    "./js/plugins/MOG_*.js",
     "./js/plugins/YEP_*.js",
-    "./js/plugins/Drill_*.js",
+    "./js/plugins/*ruancat*.js",
+    // "./js/plugins/Drill_*.js",
   ],
   "exclude": [
     // FIXIME: 不得不排除该文件
@@ -35,6 +34,7 @@
     "./icon",
     "./save",
     "./index.html",
-    "./fonts"
+    "./fonts",
+    "node_modules"
   ]
 }
