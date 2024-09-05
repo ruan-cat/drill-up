@@ -3,13 +3,13 @@
 (async function main() {
   console.log(" 阮喵喵 IIFE 就绪 ");
 
-  const lodashES = await import("lodash-es");
+  const { uniqueId } = await import("lodash-es");
   const idPrefix = "ruancat-";
 
   function getId() {
-    return lodashES.uniqueId(idPrefix);
+    return uniqueId(idPrefix);
   }
 
   const id = getId();
-  console.log(" show me id = ");
+  console.log(" show me id = ", id);
 })();
