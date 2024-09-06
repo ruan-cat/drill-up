@@ -1,4 +1,12 @@
+.vscode
+data
+fonts
+audio
+icon
+movies
 
+# 全部的txt文件
+*.txt
 
-# TODO: 实现文件忽略
-data/
+# 全部的库文件
+js/libs/**/*.js
