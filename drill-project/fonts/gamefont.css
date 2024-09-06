@@ -3,15 +3,15 @@
 /*  （详细配置方法去看看 "23.窗口字符 > 关于字体管理器.docx" ）  */
 @font-face {
     font-family: GameFont;
-    src: url("杨任东竹石体-Regular.ttf");
+    src: url("./杨任东竹石体-Regular.ttf");
 }
 @font-face {
     font-family: HappyFont;
-    src: url("站酷快乐体.ttf");
+    src: url("./站酷快乐体.ttf");
 }
 @font-face {
     font-family: JFont;
-    src: url("Jellee Bold.ttf");
+    src: url("./Jellee\ Bold.ttf");
 }
 
 /*  --  视频窗体配置  --  */
