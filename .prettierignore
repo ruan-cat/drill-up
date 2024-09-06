@@ -11,3 +11,6 @@ logs
 
 # 全部的库文件
 js/libs/**/*.js
+
+# 被RPGMV写入的插件数据文件 不能被格式化
+js/plugins.js
