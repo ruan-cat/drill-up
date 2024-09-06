@@ -1,5 +1,5 @@
-# Vue 3 + TypeScript + Vite
+# drill-up 模块化改造的钻头项目
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+阮喵喵学了很多前端工程化的东西，准备那这个仓库练练手，完成旧版本传统 rm 项目的现代化改造。
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+慢慢来改造。
