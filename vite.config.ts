@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { createHtmlPlugin } from "vite-plugin-html";
+import { fileURLToPath, URL } from "node:url";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -29,7 +30,8 @@ export default defineConfig({
 					title: "插件集合示例",
 
 					// 出现在模版中的<%- injectScript %>
-					injectScript: `<script type="module" src="../src/main.ts"></script>`,
+					// injectScript: `<script type="module" src="../src/main.ts"></script>`,
+					injectScript: `<script type="module" src="proj-root/src/main.ts"></script>`,
 				},
 
 				tags: [
@@ -44,4 +46,10 @@ export default defineConfig({
 			},
 		}),
 	],
+
+	resolve: {
+		alias: {
+			"proj-root": fileURLToPath(new URL("./", import.meta.url)),
+		},
+	},
 });
