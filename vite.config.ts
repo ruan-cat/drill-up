@@ -29,7 +29,7 @@ export default defineConfig({
 					title: "插件集合示例",
 
 					// 出现在模版中的<%- injectScript %>
-					injectScript: `<script type="module" src="/src/main.ts"></script>`,
+					injectScript: `<script type="module" src="../src/main.ts"></script>`,
 				},
 
 				tags: [
