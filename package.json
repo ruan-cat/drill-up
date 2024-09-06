@@ -18,7 +18,7 @@
 		"build": "vue-tsc -b && vite build",
 		"preview": "vite preview",
 		"lint:eslint": "eslint . --fix",
-		"format:prettier": "prettier --write ."
+		"format:prettier": "prettier --write . >logs/prettier-format-logs.md"
 	},
 	"dependencies": {
 		"lodash-es": "^4.17.21",
