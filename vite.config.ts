@@ -35,9 +35,9 @@ export default defineConfig({
 				tags: [
 					{
 						injectTo: "body-prepend",
-						tag: "div",
+						tag: "section",
 						attrs: {
-							id: "tag",
+							id: "vue-root-app",
 						},
 					},
 				],
