@@ -18,7 +18,7 @@ export default defineConfig({
 		vue(),
 		createHtmlPlugin({
 			minify: false,
-			entry: "src/main.ts",
+			entry: "../src/main.ts",
 			template: "drill-project/index.html",
 
 			/**
@@ -49,7 +49,7 @@ export default defineConfig({
 
 	resolve: {
 		alias: {
-			"proj-root": fileURLToPath(new URL("./", import.meta.url)),
+			"proj-root": fileURLToPath(new URL("../", import.meta.url)),
 		},
 	},
 });
