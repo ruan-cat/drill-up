@@ -15,7 +15,8 @@
 	"packageManager": "pnpm@9.8.0",
 	"scripts": {
 		"dev": "vite",
-		"build": "vue-tsc -b && vite build",
+		"vue-tsc": "vue-tsc -b",
+		"build": "vite build",
 		"preview": "vite preview",
 		"lint:eslint": "eslint . --fix",
 		"format:prettier": "prettier --write . >logs/prettier-format-logs.md"
