@@ -8,12 +8,15 @@
 		<link rel="icon" href="icon/icon.png" type="image/png" />
 		<link rel="apple-touch-icon" href="icon/icon.png" />
 		<link rel="stylesheet" type="text/css" href="fonts/gamefont.css" />
-		<title>插件集合示例</title>
+		<!-- <title>插件集合示例</title> -->
+		<!-- prettier-ignore -->
+		<%- title %>
+		<%- injectScript %>
 	</head>
 	<body style="background-color: black">
 		<section id="vue-root-app"></section>
 
-		<script type="module" src="/src/main.ts"></script>
+		<!-- <script type="module" src="/src/main.ts"></script> -->
 
 		<script src="js/libs/md5.min.js"></script>
 		<script src="js/libs/pixi.js"></script>
