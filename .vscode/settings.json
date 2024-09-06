@@ -1,106 +1,107 @@
 {
-  "typescript.tsserver.nodePath": "E:\\ruanzhongnan\\Documents\\22.4.1\\node.exe",
-  "typescript.tsserver.maxTsServerMemory": 8192,
-  "typescript.tsserver.watchOptions": {
-    "watchFile": "useFsEvents",
-    "watchDirectory": "useFsEvents",
-    "fallbackPolling": "dynamicPriorityPolling"
-  },
-  "files.exclude": {
-    // "**/node_modules": true,
-    // "**/dist": true,
-    // "**/.git": true,
-    "**/build": true,
-    "**/bower_components": true,
-    "**/out": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/.DS_Store": true,
-    "**/*.log": true
-  },
-  // Enable the ESlint flat config support
-  // (remove this if your ESLint extension above v3.0.5)
-  "eslint.experimental.useFlatConfig": true,
-  // 在项目内，我们指定格式化工具默认为 prettier
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  // Disable the default formatter, use eslint instead
-  // 与antfu不同的是，我们使用prettier作为格式化工具。
-  "prettier.enable": true,
-  "editor.formatOnSave": true,
-  // "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  // Auto fix
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
-  },
-  /** 
+	// 关闭掉typescript配置 不考虑复杂的typescript配置了 不考虑兼容识别太多的js文件
+	// "typescript.tsserver.nodePath": "E:\\ruanzhongnan\\Documents\\22.4.1\\node.exe",
+	// "typescript.tsserver.maxTsServerMemory": 8192,
+	"typescript.tsserver.watchOptions": {
+		"watchFile": "useFsEvents",
+		"watchDirectory": "useFsEvents",
+		"fallbackPolling": "dynamicPriorityPolling"
+	},
+	"files.exclude": {
+		// "**/node_modules": true,
+		// "**/dist": true,
+		// "**/.git": true,
+		"**/build": true,
+		"**/bower_components": true,
+		"**/out": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/.DS_Store": true,
+		"**/*.log": true
+	},
+	// Enable the ESlint flat config support
+	// (remove this if your ESLint extension above v3.0.5)
+	"eslint.experimental.useFlatConfig": true,
+	// 在项目内，我们指定格式化工具默认为 prettier
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	// Disable the default formatter, use eslint instead
+	// 与antfu不同的是，我们使用prettier作为格式化工具。
+	"prettier.enable": true,
+	"editor.formatOnSave": true,
+	// "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+	// Auto fix
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+		"source.organizeImports": "never"
+	},
+	/** 
     - https://www.cnblogs.com/sq800/p/17484485.html
   */
-  "eslint.format.enable": true,
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ],
-  // Silent the stylistic rules in you IDE, but still auto fix them
-  "eslint.rules.customizations": [
-    {
-      "rule": "style/*",
-      "severity": "off"
-    },
-    {
-      "rule": "format/*",
-      "severity": "off"
-    },
-    {
-      "rule": "*-indent",
-      "severity": "off"
-    },
-    {
-      "rule": "*-spacing",
-      "severity": "off"
-    },
-    {
-      "rule": "*-spaces",
-      "severity": "off"
-    },
-    {
-      "rule": "*-order",
-      "severity": "off"
-    },
-    {
-      "rule": "*-dangle",
-      "severity": "off"
-    },
-    {
-      "rule": "*-newline",
-      "severity": "off"
-    },
-    {
-      "rule": "*quotes",
-      "severity": "off"
-    },
-    {
-      "rule": "*semi",
-      "severity": "off"
-    }
-  ],
-  // Enable eslint for all supported languages
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "html",
-    "markdown",
-    "json",
-    "jsonc",
-    "yaml",
-    "toml",
-    "xml",
-    "gql",
-    "graphql",
-    "astro"
-  ]
+	"eslint.format.enable": true,
+	"eslint.workingDirectories": [
+		{
+			"mode": "auto"
+		}
+	],
+	// Silent the stylistic rules in you IDE, but still auto fix them
+	"eslint.rules.customizations": [
+		{
+			"rule": "style/*",
+			"severity": "off"
+		},
+		{
+			"rule": "format/*",
+			"severity": "off"
+		},
+		{
+			"rule": "*-indent",
+			"severity": "off"
+		},
+		{
+			"rule": "*-spacing",
+			"severity": "off"
+		},
+		{
+			"rule": "*-spaces",
+			"severity": "off"
+		},
+		{
+			"rule": "*-order",
+			"severity": "off"
+		},
+		{
+			"rule": "*-dangle",
+			"severity": "off"
+		},
+		{
+			"rule": "*-newline",
+			"severity": "off"
+		},
+		{
+			"rule": "*quotes",
+			"severity": "off"
+		},
+		{
+			"rule": "*semi",
+			"severity": "off"
+		}
+	],
+	// Enable eslint for all supported languages
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"vue",
+		"html",
+		"markdown",
+		"json",
+		"jsonc",
+		"yaml",
+		"toml",
+		"xml",
+		"gql",
+		"graphql",
+		"astro"
+	]
 }
