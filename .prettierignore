@@ -4,6 +4,7 @@ fonts
 audio
 icon
 movies
+logs
 
 # 全部的txt文件
 *.txt
