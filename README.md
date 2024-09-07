@@ -7,3 +7,8 @@
 ## 关闭 gitee
 
 本仓库提供 gitee 镜像，但是不再以 gitee 镜像为主了。
+
+## 全部仓库
+
+- https://github.com/RuanZhongNan/drill-up
+- https://gitee.com/HechiCollegeComputerAssociation/drill-up
