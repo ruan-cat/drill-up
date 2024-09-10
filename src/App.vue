@@ -16,6 +16,10 @@ ElNotification({
 	duration: 0,
 	zIndex: 20,
 });
+
+onMounted(() => {
+	console.log(" in $gameScreen ", window!.$gameScreen);
+});
 </script>
 
 <template>
