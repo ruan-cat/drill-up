@@ -1,12 +1,17 @@
 {
-	"name": "@ruan-cat/gitee.jiumengjun.rmmv",
+	"name": "@ruan-cat/mv",
 	"version": "1.0.0",
 	"description": "gitee.jiumengjun.rmmv 来自于别人提供的rmmv翻译源码",
 	"main": "main.js",
+	"private": true,
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"make": "typedoc --options typedoc.json"
 	},
 	"keywords": [],
 	"author": "阮喵喵",
-	"license": "ISC"
+	"license": "ISC",
+	"dependencies": {
+		"typedoc": "^0.26.7"
+	}
 }
