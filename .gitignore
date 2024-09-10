@@ -45,6 +45,8 @@ html
 
 # 不提供包锁文件 自动生成的文件 不应该提交到仓库中
 pnpm-lock.yaml
+auto-imports.d.ts
+components.d.ts
 
 # 忽略turbo生成文件
 .turbo

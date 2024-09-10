@@ -52,12 +52,11 @@ export default defineConfig({
 		}),
 
 		AutoImport({
+			imports: ["vue"],
 			resolvers: [ElementPlusResolver()],
 		}),
 
-		Components({
-			resolvers: [ElementPlusResolver()],
-		}),
+		Components({ dts: true, version: 3, resolvers: [ElementPlusResolver()] }),
 	],
 
 	resolve: {
