@@ -1,0 +1,12 @@
+{
+	"name": "@ruan-cat/gitee.jiumengjun.rmmv",
+	"version": "1.0.0",
+	"description": "gitee.jiumengjun.rmmv 来自于别人提供的rmmv翻译源码",
+	"main": "main.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "阮喵喵",
+	"license": "ISC"
+}
