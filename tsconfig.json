@@ -18,8 +18,8 @@
 		"resolveJsonModule": true,
 		"allowJs": true,
 		"noEmit": true,
-		"rootDir": "./js",
-		"baseUrl": "./js",
+		// "rootDir": "./js",
+		// "baseUrl": "./js",
 		"outDir": "dist",
 		"types": [
 			// https://juejin.cn/post/7262322846252613693
@@ -32,28 +32,28 @@
 		}
 	},
 	"include": [
-		"./js/main.js",
-		"./js/rpg_*.js",
+		"./drill-project/js/main.js",
+		"./drill-project/js/rpg_*.js",
 		// "./js/plugins/*.js",
-		"./js/libs/pixi*.js",
-		"./js/plugins/MOG_*.js",
-		"./js/plugins/YEP_*.js",
-		"./js/plugins/*ruancat*.js",
+		"./drill-project/js/libs/pixi*.js",
+		"./drill-project/js/plugins/MOG_*.js",
+		"./drill-project/js/plugins/YEP_*.js",
+		"./drill-project/js/plugins/*ruancat*.js",
 		// "./js/plugins/Drill_*.js",
 	],
 	"exclude": [
 		// FIXIME: 不得不排除该文件
-		"./js/plugins/----*.js",
-		"./js/plugins.js",
+		"./drill-project/js/plugins/----*.js",
+		"./drill-project/js/plugins.js",
 		// "./js/libs",
-		"./data",
-		"./audio",
-		"./img",
-		"./movies",
-		"./icon",
-		"./save",
-		"./index.html",
-		"./fonts",
+		"./drill-project/data",
+		"./drill-project/audio",
+		"./drill-project/img",
+		"./drill-project/movies",
+		"./drill-project/icon",
+		"./drill-project/save",
+		"./drill-project/index.html",
+		"./drill-project/fonts",
 		"node_modules"
 	]
 }
