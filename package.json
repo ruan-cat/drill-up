@@ -22,6 +22,7 @@
 		"format:prettier": "prettier --write . >logs/prettier-format-logs.md"
 	},
 	"dependencies": {
+		"element-plus": "^2.8.2",
 		"lodash-es": "^4.17.21",
 		"vue": "^3.4.37"
 	},
