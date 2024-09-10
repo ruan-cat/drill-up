@@ -1,0 +1,6 @@
+packages:
+  - "packages/*"
+  - "apps/*"
+  - "demos/*"
+  - "docs/*"
+  - "utils"

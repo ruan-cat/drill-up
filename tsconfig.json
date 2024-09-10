@@ -1,0 +1,16 @@
+{
+	"exclude": [
+		"**/dist",
+		"**/node_modules"
+	],
+	"compilerOptions": {
+		"outDir": "**/dist",
+		// "rootDir": "./",
+		// "baseUrl": "./"
+	},
+	"references": [
+		// {
+		// 	"path": "./tsconfig.path.json"
+		// }
+	]
+}

@@ -9,8 +9,9 @@ logs
 # 全部的txt文件
 *.txt
 
+
 # 全部的库文件
-js/libs/**/*.js
+apps/drill/drill-project/js/libs/**/*.js
 
 # 被RPGMV写入的插件数据文件 不能被格式化
-js/plugins.js
+apps/drill/drill-projectjs/plugins.js
