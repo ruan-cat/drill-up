@@ -20,7 +20,11 @@
 		"noEmit": true,
 		"rootDir": "./js",
 		"baseUrl": "./js",
-		"outDir": "dist"
+		"outDir": "dist",
+		"types": [
+			// https://juejin.cn/post/7262322846252613693
+			"element-plus/global.d.ts"
+		]
 	},
 	"include": [
 		"./js/main.js",
