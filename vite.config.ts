@@ -23,7 +23,8 @@ export default defineConfig({
 		// 重设index.html的入口 和 全局ts文件的注入
 		createHtmlPlugin({
 			minify: false,
-			entry: "../src/main.ts",
+			// entry: "../src/main.ts",
+			// entry: "./src/main.ts",
 			template: "drill-project/index.html",
 
 			/**
@@ -36,7 +37,9 @@ export default defineConfig({
 
 					// 出现在模版中的<%- injectScript %>
 					// injectScript: `<script type="module" src="../src/main.ts"></script>`,
-					injectScript: `<script type="module" src="proj-root/src/main.ts"></script>`,
+					injectScript: `<script async type="module" src="proj-root/src/main.ts"></script>`,
+					// injectScript: `<script async="false" defer="false" type="module" src="./src/main.ts"></script>`,
+					// injectScript: `<script type="module" src="./src/main.ts"></script>`,
 				},
 
 				tags: [

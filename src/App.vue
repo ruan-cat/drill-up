@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { ElConfigProvider } from "element-plus";
+import { ElConfigProvider, ElNotification } from "element-plus";
+
+import HelloWorld from "./components/HelloWorld.vue";
+// import "@/inform/inform";
 
 /**
  * 全局组件index值
@@ -7,8 +10,12 @@ import { ElConfigProvider } from "element-plus";
  */
 const globalZIndex = ref(2);
 
-import HelloWorld from "./components/HelloWorld.vue";
-import "@/inform/inform";
+ElNotification({
+	title: "你好，使用了 element-plus 🎉",
+	message: "这是测试的全局显示内容",
+	duration: 0,
+	zIndex: 20,
+});
 </script>
 
 <template>
