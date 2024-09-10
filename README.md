@@ -12,3 +12,9 @@
 
 - https://github.com/RuanZhongNan/drill-up
 - https://gitee.com/HechiCollegeComputerAssociation/drill-up
+
+## 两套代码的执行顺序
+
+调整测试 vite 注入代码与 rm 代码的执行顺序。
+
+目前没有办法调整。意识两套代码在实际的 html 内是并行执行的。
