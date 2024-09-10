@@ -24,7 +24,12 @@
 		"types": [
 			// https://juejin.cn/post/7262322846252613693
 			"element-plus/global.d.ts"
-		]
+		],
+		"paths": {
+			"@/*": [
+				"./src/*"
+			]
+		}
 	},
 	"include": [
 		"./js/main.js",

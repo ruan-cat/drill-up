@@ -62,6 +62,7 @@ export default defineConfig({
 
 	resolve: {
 		alias: {
+			"@": fileURLToPath(new URL("./src", import.meta.url)),
 			"proj-root": fileURLToPath(new URL("../", import.meta.url)),
 		},
 	},
