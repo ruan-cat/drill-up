@@ -30,7 +30,10 @@
 		],
 	},
 	"include": [
+		// 包含全部的类型声明文件
+		"./src/types/**/*.ts",
 		"./drill-project/js/main.js",
+		// rm源码不再参与类型声明管控
 		"./drill-project/js/rpg_*.js",
 		// "./js/plugins/*.js",
 		"./drill-project/js/plugins/MOG_*.js",
