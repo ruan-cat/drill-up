@@ -3,9 +3,13 @@
 // Definitions by: aaa<https://>, bbb<https://>
 // Definitions: https://
 
-/// <reference path="../pixi/pixi.d.ts"/>
-/// <reference path="../lz-string/lz-string.d.ts"/>
-/// <reference path="../fpsmeter/FPSMeter.d.ts"/>
+// <reference path="../pixi/pixi.d.ts"/>
+// <reference path="../lz-string/lz-string.d.ts"/>
+// <reference path="../fpsmeter/FPSMeter.d.ts"/>
+
+/// <reference path="fpsmeter"/>
+/// <reference path="lz-string"/>
+/// <reference path="pixi.d.ts"/>
 
 declare class Bitmap {
 	/**
