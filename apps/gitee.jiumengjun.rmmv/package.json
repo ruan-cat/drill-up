@@ -13,5 +13,8 @@
 	"license": "ISC",
 	"dependencies": {
 		"typedoc": "^0.26.7"
+	},
+	"devDependencies": {
+		"typedoc-plugin-markdown": "^4.2.7"
 	}
 }
