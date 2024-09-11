@@ -27,9 +27,10 @@
 		}
 	},
 	"include": [
-		"src/**/*.ts",
-		"src/**/*.tsx",
-		"src/**/*.vue",
+		"./src/**/*.ts",
+		"./src/**/*.d.ts",
+		"./src/**/*.tsx",
+		"./src/**/*.vue",
 		// 导入自动生成的类型声明文件
 		"auto-imports.d.ts",
 		"components.d.ts",
