@@ -24,7 +24,8 @@
 			"fpsmeter",
 			"lz-string",
 			// https://github.com/pixijs/pixi-typescript/tree/v4.5.4
-			// "pixi.js"
+			"pixi.js"
+			// "@types/pixi.js"
 		],
 		"paths": {
 			"@/*": [

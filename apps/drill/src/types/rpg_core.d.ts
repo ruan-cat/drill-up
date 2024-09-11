@@ -9,7 +9,7 @@
 
 /// <reference path="fpsmeter"/>
 /// <reference path="lz-string"/>
-/// <reference path="pixi.d.ts"/>
+/// <reference path="pixi.js"/>
 
 // import {  } from "fpsmeter";
 // import {  } from "pixi.js";
