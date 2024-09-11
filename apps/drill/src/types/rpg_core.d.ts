@@ -11,6 +11,9 @@
 /// <reference path="lz-string"/>
 /// <reference path="pixi.d.ts"/>
 
+// import {  } from "fpsmeter";
+// import {  } from "pixi.js";
+
 declare class Bitmap {
 	/**
 	 * Loads a image file and returns a new bitmap object.

@@ -22,7 +22,9 @@
 		"noFallthroughCasesInSwitch": true,
 		"types": [
 			"fpsmeter",
-			"lz-string"
+			"lz-string",
+			// https://github.com/pixijs/pixi-typescript/tree/v4.5.4
+			// "pixi.js"
 		],
 		"paths": {
 			"@/*": [
