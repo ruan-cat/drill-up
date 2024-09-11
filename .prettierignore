@@ -23,5 +23,11 @@ apps/drill/drill-projectjs/plugins.js
 # 全部的mv源码
 rpg_*.js
 
+# 忽略特定前缀的文件
+Drill_*.js
+----*.js
+YEP_*.js
+MOG_*.js
+
 # 插件配置文件不做处理
 plugins.js
