@@ -1,7 +1,7 @@
 {
 	// 指定项目的入口点
 	"entryPoints": [
-		"./"
+		"./main.js"
 	],
 	// 指定输出目录
 	"out": "docs",
