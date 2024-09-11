@@ -21,11 +21,8 @@
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
 		"types": [
-			"fpsmeter",
-			"lz-string",
-			// https://github.com/pixijs/pixi-typescript/tree/v4.5.4
-			"pixi.js"
-			// "@types/pixi.js"
+			// https://juejin.cn/post/7262322846252613693
+			"element-plus/global.d.ts"
 		],
 		"paths": {
 			"@/*": [

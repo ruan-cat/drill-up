@@ -22,25 +22,30 @@
 		// "baseUrl": "./js",
 		"outDir": "dist",
 		"types": [
-			// https://juejin.cn/post/7262322846252613693
-			"element-plus/global.d.ts"
-		]
+			"fpsmeter",
+			"lz-string",
+			// https://github.com/pixijs/pixi-typescript/tree/v4.5.4
+			"pixi.js"
+			// "@types/pixi.js"
+		],
 	},
 	"include": [
 		"./drill-project/js/main.js",
 		"./drill-project/js/rpg_*.js",
 		// "./js/plugins/*.js",
-		"./drill-project/js/libs/pixi*.js",
 		"./drill-project/js/plugins/MOG_*.js",
 		"./drill-project/js/plugins/YEP_*.js",
 		"./drill-project/js/plugins/*ruancat*.js"
+		// 这些文件已经有了专门的类型声明文件了 故不应该被包含
+		// "./drill-project/js/libs/pixi*.js",
 		// "./js/plugins/Drill_*.js",
 	],
 	"exclude": [
 		// FIXIME: 不得不排除该文件
 		"./drill-project/js/plugins/----*.js",
 		"./drill-project/js/plugins.js",
-		// "./js/libs",
+		"./drill-project/js/libs",
+		"./drill-project/js/libs/pixi*.js",
 		"./drill-project/data",
 		"./drill-project/audio",
 		"./drill-project/img",
