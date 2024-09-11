@@ -36,10 +36,8 @@ export default defineConfig({
 					title: "插件集合示例",
 
 					// 出现在模版中的<%- injectScript %>
-					// injectScript: `<script type="module" src="../src/main.ts"></script>`,
-					// injectScript: `<script async type="module" src="proj-root/src/main.ts"></script>`,
-					// injectScript: `<script async="false" defer="false" type="module" src="./src/main.ts"></script>`,
-					injectScript: `<script async type="module" src="./src/main.ts"></script>`,
+					// 可以正常打包
+					injectScript: `<script async type="module" src="../src/main.ts"></script>`,
 				},
 
 				tags: [
