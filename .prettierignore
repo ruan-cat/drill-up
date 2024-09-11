@@ -11,7 +11,17 @@ logs
 
 
 # 全部的库文件
+libs/**/*.js
+# 全部的插件不做处理
+plugins/**/*.js
+
 apps/drill/drill-project/js/libs/**/*.js
 
 # 被RPGMV写入的插件数据文件 不能被格式化
 apps/drill/drill-projectjs/plugins.js
+
+# 全部的mv源码
+rpg_*.js
+
+# 插件配置文件不做处理
+plugins.js
