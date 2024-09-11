@@ -1,4 +1,3 @@
-
 //-----------------------------------------------------------------------------
 /**处理与JSON对象信息的静态类
  * The static class that handles JSON with object information.
@@ -6,7 +5,7 @@
  * @class JsonEx
  */
 function JsonEx() {
-    throw new Error('This is a static class');
+	throw new Error("This is a static class");
 }
 
 /**对象的最大深度
@@ -29,9 +28,9 @@ JsonEx.maxDepth = 100;
  * @return {String} The JSON string
  */
 //转换
-JsonEx.stringify = function(object) {
+JsonEx.stringify = function (object) {
 	//返回 json转换( 编码 (对象))
-    return JSON.stringify(this._encode(object));
+	return JSON.stringify(this._encode(object));
 };
 
 /**解析JSON字符串，并重建了相应的对象
@@ -42,9 +41,9 @@ JsonEx.stringify = function(object) {
  * @param {String} json The JSON string
  * @return {Object} The reconstructed object
  */
-JsonEx.parse = function(json) {
+JsonEx.parse = function (json) {
 	//返回 解码 (json解析(json))
-    return this._decode(JSON.parse(json));
+	return this._decode(JSON.parse(json));
 };
 
 /**制作指定对象的深层副本
@@ -56,9 +55,9 @@ JsonEx.parse = function(json) {
  * @return {Object} The copied object
  */
 //制作深层副本
-JsonEx.makeDeepCopy = function(object) {
+JsonEx.makeDeepCopy = function (object) {
 	//返回 解析 (转换 (对象))
-    return this.parse(this.stringify(object));
+	return this.parse(this.stringify(object));
 };
 
 /**编码
@@ -70,25 +69,25 @@ JsonEx.makeDeepCopy = function(object) {
  * @private
  */
 //编码
-JsonEx._encode = function(value, depth) {
-    depth = depth || 0;
-    if (++depth >= this.maxDepth) {
-        throw new Error('Object too deep');
-    }
-    var type = Object.prototype.toString.call(value);
-    if (type === '[object Object]' || type === '[object Array]') {
-        var constructorName = this._getConstructorName(value);
-        if (constructorName !== 'Object' && constructorName !== 'Array') {
-            value['@'] = constructorName;
-        }
-        for (var key in value) {
-            if (value.hasOwnProperty(key)) {
-                value[key] = this._encode(value[key], depth + 1);
-            }
-        }
-    }
-    depth--;
-    return value;
+JsonEx._encode = function (value, depth) {
+	depth = depth || 0;
+	if (++depth >= this.maxDepth) {
+		throw new Error("Object too deep");
+	}
+	var type = Object.prototype.toString.call(value);
+	if (type === "[object Object]" || type === "[object Array]") {
+		var constructorName = this._getConstructorName(value);
+		if (constructorName !== "Object" && constructorName !== "Array") {
+			value["@"] = constructorName;
+		}
+		for (var key in value) {
+			if (value.hasOwnProperty(key)) {
+				value[key] = this._encode(value[key], depth + 1);
+			}
+		}
+	}
+	depth--;
+	return value;
 };
 
 /**解码
@@ -98,22 +97,22 @@ JsonEx._encode = function(value, depth) {
  * @return {Object}
  * @private
  */
-JsonEx._decode = function(value) {
-    var type = Object.prototype.toString.call(value);
-    if (type === '[object Object]' || type === '[object Array]') {
-        if (value['@']) {
-            var constructor = window[value['@']];
-            if (constructor) {
-                value = this._resetPrototype(value, constructor.prototype);
-            }
-        }
-        for (var key in value) {
-            if (value.hasOwnProperty(key)) {
-                value[key] = this._decode(value[key]);
-            }
-        }
-    }
-    return value;
+JsonEx._decode = function (value) {
+	var type = Object.prototype.toString.call(value);
+	if (type === "[object Object]" || type === "[object Array]") {
+		if (value["@"]) {
+			var constructor = window[value["@"]];
+			if (constructor) {
+				value = this._resetPrototype(value, constructor.prototype);
+			}
+		}
+		for (var key in value) {
+			if (value.hasOwnProperty(key)) {
+				value[key] = this._decode(value[key]);
+			}
+		}
+	}
+	return value;
 };
 
 /**获得建设者名称
@@ -123,13 +122,13 @@ JsonEx._decode = function(value) {
  * @return {String}
  * @private
  */
-JsonEx._getConstructorName = function(value) {
-    var name = value.constructor.name;
-    if (name === undefined) {
-        var func = /^\s*function\s*([A-Za-z0-9_$]*)/;
-        name = func.exec(value.constructor)[1];
-    }
-    return name;
+JsonEx._getConstructorName = function (value) {
+	var name = value.constructor.name;
+	if (name === undefined) {
+		var func = /^\s*function\s*([A-Za-z0-9_$]*)/;
+		name = func.exec(value.constructor)[1];
+	}
+	return name;
 };
 
 /**重设原形
@@ -140,19 +139,19 @@ JsonEx._getConstructorName = function(value) {
  * @return {Object}
  * @private
  */
-JsonEx._resetPrototype = function(value, prototype) {
-    if (Object.setPrototypeOf !== undefined) {
-        Object.setPrototypeOf(value, prototype);
-    } else if ('__proto__' in value) {
-        value.__proto__ = prototype;
-    } else {
-        var newValue = Object.create(prototype);
-        for (var key in value) {
-            if (value.hasOwnProperty(key)) {
-                newValue[key] = value[key];
-            }
-        }
-        value = newValue;
-    }
-    return value;
+JsonEx._resetPrototype = function (value, prototype) {
+	if (Object.setPrototypeOf !== undefined) {
+		Object.setPrototypeOf(value, prototype);
+	} else if ("__proto__" in value) {
+		value.__proto__ = prototype;
+	} else {
+		var newValue = Object.create(prototype);
+		for (var key in value) {
+			if (value.hasOwnProperty(key)) {
+				newValue[key] = value[key];
+			}
+		}
+		value = newValue;
+	}
+	return value;
 };

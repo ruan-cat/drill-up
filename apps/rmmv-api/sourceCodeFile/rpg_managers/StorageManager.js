@@ -1,4 +1,3 @@
-
 //-----------------------------------------------------------------------------
 // StorageManager
 // 存储管理器
@@ -6,370 +5,368 @@
 // 这个静态的类 管理存储 保存游戏数据
 
 function StorageManager() {
-    throw new Error('This is a static class');
+	throw new Error("This is a static class");
 }
 
 //保存
-StorageManager.save = function(savefileId, json) {
+StorageManager.save = function (savefileId, json) {
 	//如果(是本地模式)
-    if (this.isLocalMode()) {
-	    //保存到本地文件( 保存文件id , json)
-        this.saveToLocalFile(savefileId, json);
-    //否则
-    } else {
-	    //保存到网络存储( 保存文件id , json)
-        this.saveToWebStorage(savefileId, json);
-    }
+	if (this.isLocalMode()) {
+		//保存到本地文件( 保存文件id , json)
+		this.saveToLocalFile(savefileId, json);
+		//否则
+	} else {
+		//保存到网络存储( 保存文件id , json)
+		this.saveToWebStorage(savefileId, json);
+	}
 };
 
 //读取
-StorageManager.load = function(savefileId) {
+StorageManager.load = function (savefileId) {
 	//如果(是本地模式)
-    if (this.isLocalMode()) {
-	    // 读取从本地文件( 保存文件id )
-        return this.loadFromLocalFile(savefileId);
-    //否则
-    } else {
-	    // 读取从网络存储( 保存文件id )
-        return this.loadFromWebStorage(savefileId);
-    }
+	if (this.isLocalMode()) {
+		// 读取从本地文件( 保存文件id )
+		return this.loadFromLocalFile(savefileId);
+		//否则
+	} else {
+		// 读取从网络存储( 保存文件id )
+		return this.loadFromWebStorage(savefileId);
+	}
 };
 
-//存在 
-StorageManager.exists = function(savefileId) {
+//存在
+StorageManager.exists = function (savefileId) {
 	//如果(是本地模式)
-    if (this.isLocalMode()) {
-	    //本地文件存在( 保存文件id )
-        return this.localFileExists(savefileId);
-    //否则
-    } else {
-	    //网络存储存在( 保存文件id )
-        return this.webStorageExists(savefileId);
-    }
+	if (this.isLocalMode()) {
+		//本地文件存在( 保存文件id )
+		return this.localFileExists(savefileId);
+		//否则
+	} else {
+		//网络存储存在( 保存文件id )
+		return this.webStorageExists(savefileId);
+	}
 };
 
 //删除
-StorageManager.remove = function(savefileId) {
+StorageManager.remove = function (savefileId) {
 	//如果( 是本地模式() )
-    if (this.isLocalMode()) {
-	    //删除本地文件( 保存文件id )
-        this.removeLocalFile(savefileId);
-    //否则
-    } else {
-	    //删除网络存储( 保存文件id )
-        this.removeWebStorage(savefileId);
-    }
+	if (this.isLocalMode()) {
+		//删除本地文件( 保存文件id )
+		this.removeLocalFile(savefileId);
+		//否则
+	} else {
+		//删除网络存储( 保存文件id )
+		this.removeWebStorage(savefileId);
+	}
 };
 
 //备份
-StorageManager.backup = function(savefileId) {
-    //如果( 存在( 保存文件id ) )
-    if (this.exists(savefileId)) {
-        //如果( 是本地模式() )
-        if (this.isLocalMode()) {
-            //数据 = 读取从本地文件(保存文件id)
-            var data = this.loadFromLocalFile(savefileId);
-            //压缩 = LZString 压缩到基准64(数据)
-            var compressed = LZString.compressToBase64(data);
-            // fs = 要求("fs")
-            var fs = require('fs');
-            //目录路径 = 本地文件目录路径()
-            var dirPath = this.localFileDirectoryPath();
-            //文件路径 = 本地文件路径( 保存文件id ) + ".bak"
-            var filePath = this.localFilePath(savefileId) + ".bak";
-            //如果 ( 不是 fs 存在(目录路径) )
-            if (!fs.existsSync(dirPath)) {
-                //fs 建立目录(目录路径)
-                fs.mkdirSync(dirPath);
-            }
-            //fs 写入文件(文件路径 , 压缩)
-            fs.writeFileSync(filePath, compressed);
-        //否则
-        } else {
-            //数据 = 读取从网络存储( 保存文件id )
-            var data = this.loadFromWebStorage(savefileId);
-            //压缩 = LZString 压缩到基准64(数据)
-            var compressed = LZString.compressToBase64(data);
-            //键 = 网络存储键( 保存文件id ) + "bak"
-            var key = this.webStorageKey(savefileId) + "bak";
-            //本地网络存储 设置项目(键,压缩)
-            localStorage.setItem(key, compressed);
-        }
-    }
+StorageManager.backup = function (savefileId) {
+	//如果( 存在( 保存文件id ) )
+	if (this.exists(savefileId)) {
+		//如果( 是本地模式() )
+		if (this.isLocalMode()) {
+			//数据 = 读取从本地文件(保存文件id)
+			var data = this.loadFromLocalFile(savefileId);
+			//压缩 = LZString 压缩到基准64(数据)
+			var compressed = LZString.compressToBase64(data);
+			// fs = 要求("fs")
+			var fs = require("fs");
+			//目录路径 = 本地文件目录路径()
+			var dirPath = this.localFileDirectoryPath();
+			//文件路径 = 本地文件路径( 保存文件id ) + ".bak"
+			var filePath = this.localFilePath(savefileId) + ".bak";
+			//如果 ( 不是 fs 存在(目录路径) )
+			if (!fs.existsSync(dirPath)) {
+				//fs 建立目录(目录路径)
+				fs.mkdirSync(dirPath);
+			}
+			//fs 写入文件(文件路径 , 压缩)
+			fs.writeFileSync(filePath, compressed);
+			//否则
+		} else {
+			//数据 = 读取从网络存储( 保存文件id )
+			var data = this.loadFromWebStorage(savefileId);
+			//压缩 = LZString 压缩到基准64(数据)
+			var compressed = LZString.compressToBase64(data);
+			//键 = 网络存储键( 保存文件id ) + "bak"
+			var key = this.webStorageKey(savefileId) + "bak";
+			//本地网络存储 设置项目(键,压缩)
+			localStorage.setItem(key, compressed);
+		}
+	}
 };
 
 //备份存在
-StorageManager.backupExists = function(savefileId) {
-    //如果 ( 是本地模式() )
-    if (this.isLocalMode()) {
-        //返回 本地文件备份存在( 保存文件id )
-        return this.localFileBackupExists(savefileId);
-    //否则
-    } else {
-        //返回 网络存储备份存在( 保存文件id )
-        return this.webStorageBackupExists(savefileId);
-    }
+StorageManager.backupExists = function (savefileId) {
+	//如果 ( 是本地模式() )
+	if (this.isLocalMode()) {
+		//返回 本地文件备份存在( 保存文件id )
+		return this.localFileBackupExists(savefileId);
+		//否则
+	} else {
+		//返回 网络存储备份存在( 保存文件id )
+		return this.webStorageBackupExists(savefileId);
+	}
 };
 
 //清除备份
-StorageManager.cleanBackup = function(savefileId) {
-    //如果( 备份存在( 保存文件id) )
+StorageManager.cleanBackup = function (savefileId) {
+	//如果( 备份存在( 保存文件id) )
 	if (this.backupExists(savefileId)) {
-        //如果( 是本地模式() )
+		//如果( 是本地模式() )
 		if (this.isLocalMode()) {
-            //fs = 要求("fs")
-			var fs = require('fs');
-            //目录路径 = 本地文件目录路径()
-            var dirPath = this.localFileDirectoryPath();
-            //文件路径 = 本地文件路径( 保存文件id )
-            var filePath = this.localFilePath(savefileId);
-            //fs 删除(文件路径 + ".bak" )
-            fs.unlinkSync(filePath + ".bak");
-        //否则
+			//fs = 要求("fs")
+			var fs = require("fs");
+			//目录路径 = 本地文件目录路径()
+			var dirPath = this.localFileDirectoryPath();
+			//文件路径 = 本地文件路径( 保存文件id )
+			var filePath = this.localFilePath(savefileId);
+			//fs 删除(文件路径 + ".bak" )
+			fs.unlinkSync(filePath + ".bak");
+			//否则
 		} else {
-            //键 = 网络存储键( 保存文件id )
-		    var key = this.webStorageKey(savefileId);
-            //本地网络存储 移除项目( 键 + "bak" )
+			//键 = 网络存储键( 保存文件id )
+			var key = this.webStorageKey(savefileId);
+			//本地网络存储 移除项目( 键 + "bak" )
 			localStorage.removeItem(key + "bak");
 		}
 	}
 };
 
 //还原备份
-StorageManager.restoreBackup = function(savefileId) {
-    //如果( 备份存在( 保存文件id) )
-    if (this.backupExists(savefileId)) {
-        //如果( 是本地模式() )
-        if (this.isLocalMode()) {
-            //数据 = 读取从本地存储备份文件( 保存文件id )
-            var data = this.loadFromLocalBackupFile(savefileId);
-            //压缩 = LZString 压缩到基准64(数据)
-            var compressed = LZString.compressToBase64(data);
-            //fs = 要求("fs")
-            var fs = require('fs');
-            //目录路径 = 本地文件目录路径()
-            var dirPath = this.localFileDirectoryPath();
-            //文件路径 = 本地文件路径( 保存文件id )
-            var filePath = this.localFilePath(savefileId);
-            //如果 ( 不是 fs 存在(目录路径) )
-            if (!fs.existsSync(dirPath)) {
-                //fs 建立目录(目录路径)
-                fs.mkdirSync(dirPath);
-            }
-            //fs 写入文件(文件路径 , 压缩)
-            fs.writeFileSync(filePath, compressed);
-            //fs 删除(文件路径 + ".bak" )
-            fs.unlinkSync(filePath + ".bak");
-        //否则
-        } else {
-            //数据 = 读取从网络存储备份( 保存文件id)
-            var data = this.loadFromWebStorageBackup(savefileId);
-            //压缩 = LZString 压缩到基准64(数据)
-            var compressed = LZString.compressToBase64(data);
-            //键 = 网络存储键( 保存文件id )
-            var key = this.webStorageKey(savefileId);
-            //本地网络存储 设置项目( 键 , 压缩 )
-            localStorage.setItem(key, compressed);
-            //本地网络存储 移除项目( 键 + "bak" )
-            localStorage.removeItem(key + "bak");
-        }
-    }
+StorageManager.restoreBackup = function (savefileId) {
+	//如果( 备份存在( 保存文件id) )
+	if (this.backupExists(savefileId)) {
+		//如果( 是本地模式() )
+		if (this.isLocalMode()) {
+			//数据 = 读取从本地存储备份文件( 保存文件id )
+			var data = this.loadFromLocalBackupFile(savefileId);
+			//压缩 = LZString 压缩到基准64(数据)
+			var compressed = LZString.compressToBase64(data);
+			//fs = 要求("fs")
+			var fs = require("fs");
+			//目录路径 = 本地文件目录路径()
+			var dirPath = this.localFileDirectoryPath();
+			//文件路径 = 本地文件路径( 保存文件id )
+			var filePath = this.localFilePath(savefileId);
+			//如果 ( 不是 fs 存在(目录路径) )
+			if (!fs.existsSync(dirPath)) {
+				//fs 建立目录(目录路径)
+				fs.mkdirSync(dirPath);
+			}
+			//fs 写入文件(文件路径 , 压缩)
+			fs.writeFileSync(filePath, compressed);
+			//fs 删除(文件路径 + ".bak" )
+			fs.unlinkSync(filePath + ".bak");
+			//否则
+		} else {
+			//数据 = 读取从网络存储备份( 保存文件id)
+			var data = this.loadFromWebStorageBackup(savefileId);
+			//压缩 = LZString 压缩到基准64(数据)
+			var compressed = LZString.compressToBase64(data);
+			//键 = 网络存储键( 保存文件id )
+			var key = this.webStorageKey(savefileId);
+			//本地网络存储 设置项目( 键 , 压缩 )
+			localStorage.setItem(key, compressed);
+			//本地网络存储 移除项目( 键 + "bak" )
+			localStorage.removeItem(key + "bak");
+		}
+	}
 };
 
 //是本地模式
-StorageManager.isLocalMode = function() {
+StorageManager.isLocalMode = function () {
 	//Utils 是Nwjs()
-    return Utils.isNwjs();
+	return Utils.isNwjs();
 };
 
 //保存到本地文件
-StorageManager.saveToLocalFile = function(savefileId, json) {
+StorageManager.saveToLocalFile = function (savefileId, json) {
 	// 数据 = LZString 压缩到基准64(json)
-    var data = LZString.compressToBase64(json);
-    // fs = 要求("fs")
-    var fs = require('fs');
-    // 目录路径 = 本地文件目录路径()
-    var dirPath = this.localFileDirectoryPath();
-    // 文件路径 = 本地文件路径( 保存文件id )
-    var filePath = this.localFilePath(savefileId);
-    //如果(不是 fs 存在(目录路径))
-    if (!fs.existsSync(dirPath)) {
-	    //fs 建立目录(目录路径)
-        fs.mkdirSync(dirPath);
-    }
-    //fs 写入文件(文件路径, 数据 )
-    fs.writeFileSync(filePath, data);
+	var data = LZString.compressToBase64(json);
+	// fs = 要求("fs")
+	var fs = require("fs");
+	// 目录路径 = 本地文件目录路径()
+	var dirPath = this.localFileDirectoryPath();
+	// 文件路径 = 本地文件路径( 保存文件id )
+	var filePath = this.localFilePath(savefileId);
+	//如果(不是 fs 存在(目录路径))
+	if (!fs.existsSync(dirPath)) {
+		//fs 建立目录(目录路径)
+		fs.mkdirSync(dirPath);
+	}
+	//fs 写入文件(文件路径, 数据 )
+	fs.writeFileSync(filePath, data);
 };
 
 //读取从本地文件
-StorageManager.loadFromLocalFile = function(savefileId) {
+StorageManager.loadFromLocalFile = function (savefileId) {
 	//数据 = null
-    var data = null;
-    // fs = 要求("fs")
-    var fs = require('fs');
-    // 文件路径 = 本地文件路径( 保存文件id )
-    var filePath = this.localFilePath(savefileId);
-    //如果( fs 存在(文件路径) )
-    if (fs.existsSync(filePath)) {
-	    //数据 = fs 读取文件(文件路径,{编码:utf8})
-        data = fs.readFileSync(filePath, { encoding: 'utf8' });
-    }
-    //返回 LZString 解压从基础64(数据)
-    return LZString.decompressFromBase64(data);
+	var data = null;
+	// fs = 要求("fs")
+	var fs = require("fs");
+	// 文件路径 = 本地文件路径( 保存文件id )
+	var filePath = this.localFilePath(savefileId);
+	//如果( fs 存在(文件路径) )
+	if (fs.existsSync(filePath)) {
+		//数据 = fs 读取文件(文件路径,{编码:utf8})
+		data = fs.readFileSync(filePath, { encoding: "utf8" });
+	}
+	//返回 LZString 解压从基础64(数据)
+	return LZString.decompressFromBase64(data);
 };
 
 //读取从本地存储备份文件
-StorageManager.loadFromLocalBackupFile = function(savefileId) {
+StorageManager.loadFromLocalBackupFile = function (savefileId) {
 	//数据 = null
-    var data = null;
-    // fs = 要求("fs")
-    var fs = require('fs');
-    //文件路径 = 本地文件路径( 保存文件id ) + ".bak"
-    var filePath = this.localFilePath(savefileId) + ".bak";
-    //如果( fs 存在(文件路径) )
-    if (fs.existsSync(filePath)) {
-	    //数据 = fs 读取文件(文件路径,{编码:utf8})
-        data = fs.readFileSync(filePath, { encoding: 'utf8' });
-    }
-    //返回 LZString 解压从基础64(数据)
-    return LZString.decompressFromBase64(data);
+	var data = null;
+	// fs = 要求("fs")
+	var fs = require("fs");
+	//文件路径 = 本地文件路径( 保存文件id ) + ".bak"
+	var filePath = this.localFilePath(savefileId) + ".bak";
+	//如果( fs 存在(文件路径) )
+	if (fs.existsSync(filePath)) {
+		//数据 = fs 读取文件(文件路径,{编码:utf8})
+		data = fs.readFileSync(filePath, { encoding: "utf8" });
+	}
+	//返回 LZString 解压从基础64(数据)
+	return LZString.decompressFromBase64(data);
 };
 
 //本地文件备份存在
-StorageManager.localFileBackupExists = function(savefileId) {
-    // fs = 要求("fs")
-    var fs = require('fs');
-    //返回 fs 存在( 本地文件路径( 保存文件id ) + ".bak" )
-    return fs.existsSync(this.localFilePath(savefileId) + ".bak");
+StorageManager.localFileBackupExists = function (savefileId) {
+	// fs = 要求("fs")
+	var fs = require("fs");
+	//返回 fs 存在( 本地文件路径( 保存文件id ) + ".bak" )
+	return fs.existsSync(this.localFilePath(savefileId) + ".bak");
 };
 
 //本地文件存在
-StorageManager.localFileExists = function(savefileId) {
-    // fs = 要求("fs")
-    var fs = require('fs');
-    //返回 检测文件存在( 本地文件路径( 保存文件id ) )
-    return fs.existsSync(this.localFilePath(savefileId));
+StorageManager.localFileExists = function (savefileId) {
+	// fs = 要求("fs")
+	var fs = require("fs");
+	//返回 检测文件存在( 本地文件路径( 保存文件id ) )
+	return fs.existsSync(this.localFilePath(savefileId));
 };
 
 //删除本地文件
-StorageManager.removeLocalFile = function(savefileId) {
-    // fs = 要求("fs")
-    var fs = require('fs');
-    // 文件路径 设置为 本地文件路径( 保存文件id )
-    var filePath = this.localFilePath(savefileId);
-    //如果 检测文件存在(文件路径)
-    if (fs.existsSync(filePath)) {
-	    //fs 删除(文件路径)
-        fs.unlinkSync(filePath);
-    }
+StorageManager.removeLocalFile = function (savefileId) {
+	// fs = 要求("fs")
+	var fs = require("fs");
+	// 文件路径 设置为 本地文件路径( 保存文件id )
+	var filePath = this.localFilePath(savefileId);
+	//如果 检测文件存在(文件路径)
+	if (fs.existsSync(filePath)) {
+		//fs 删除(文件路径)
+		fs.unlinkSync(filePath);
+	}
 };
 
 //保存到网络存储
-StorageManager.saveToWebStorage = function(savefileId, json) {
+StorageManager.saveToWebStorage = function (savefileId, json) {
 	//键 = 网络存储键(保存文件id)
-    var key = this.webStorageKey(savefileId);
-    // 数据 = LZString 压缩到基准64(json)
-    var data = LZString.compressToBase64(json);
-    //本地网络存储 设置项目(键,数据)
-    localStorage.setItem(key, data);
+	var key = this.webStorageKey(savefileId);
+	// 数据 = LZString 压缩到基准64(json)
+	var data = LZString.compressToBase64(json);
+	//本地网络存储 设置项目(键,数据)
+	localStorage.setItem(key, data);
 };
 
 //读取从网络存储
-StorageManager.loadFromWebStorage = function(savefileId) {
+StorageManager.loadFromWebStorage = function (savefileId) {
 	//键 = 网络存储键(保存文件id)
-    var key = this.webStorageKey(savefileId);
-    //数据 = 本地网络存储 获取项目(键)
-    var data = localStorage.getItem(key);
-    //返回 LZString 解压从基础64(数据)
-    return LZString.decompressFromBase64(data);
+	var key = this.webStorageKey(savefileId);
+	//数据 = 本地网络存储 获取项目(键)
+	var data = localStorage.getItem(key);
+	//返回 LZString 解压从基础64(数据)
+	return LZString.decompressFromBase64(data);
 };
 
 //读取从网络存储备份
-StorageManager.loadFromWebStorageBackup = function(savefileId) {
-    //键 = 网络存储键(保存文件id) + "bak"
-    var key = this.webStorageKey(savefileId) + "bak";
-    //数据 = 本地网络存储 获取项目(键)
-    var data = localStorage.getItem(key);
-    //返回 LZString 解压从基础64(数据)
-    return LZString.decompressFromBase64(data);
+StorageManager.loadFromWebStorageBackup = function (savefileId) {
+	//键 = 网络存储键(保存文件id) + "bak"
+	var key = this.webStorageKey(savefileId) + "bak";
+	//数据 = 本地网络存储 获取项目(键)
+	var data = localStorage.getItem(key);
+	//返回 LZString 解压从基础64(数据)
+	return LZString.decompressFromBase64(data);
 };
 
 //网络存储备份存在
-StorageManager.webStorageBackupExists = function(savefileId) {
-    //键 = 网络存储键(保存文件id) + "bak"
-    var key = this.webStorageKey(savefileId) + "bak";
-    // 返回 !!本地网络存储 获取项目(键) 
-    return !!localStorage.getItem(key);
+StorageManager.webStorageBackupExists = function (savefileId) {
+	//键 = 网络存储键(保存文件id) + "bak"
+	var key = this.webStorageKey(savefileId) + "bak";
+	// 返回 !!本地网络存储 获取项目(键)
+	return !!localStorage.getItem(key);
 };
 
 //网络存储存在
-StorageManager.webStorageExists = function(savefileId) {
+StorageManager.webStorageExists = function (savefileId) {
 	//键 = 网络存储键(保存文件id)
-    var key = this.webStorageKey(savefileId);
-    //返回 !1本地网络存储 获取项目(键) 
-    return !!localStorage.getItem(key);
+	var key = this.webStorageKey(savefileId);
+	//返回 !1本地网络存储 获取项目(键)
+	return !!localStorage.getItem(key);
 };
 
 //删除网络存储
-StorageManager.removeWebStorage = function(savefileId) {
+StorageManager.removeWebStorage = function (savefileId) {
 	//键 = 网络存储键(保存文件id)
-    var key = this.webStorageKey(savefileId);
-    //本地网络存储 删除项目(键) 
-    localStorage.removeItem(key);
+	var key = this.webStorageKey(savefileId);
+	//本地网络存储 删除项目(键)
+	localStorage.removeItem(key);
 };
 
 //本地文件目录路径
-StorageManager.localFileDirectoryPath = function() {
-    /*var path = window.location.pathname.replace(/(\/www|)\/[^\/]*$/, '/save/');
+StorageManager.localFileDirectoryPath = function () {
+	/*var path = window.location.pathname.replace(/(\/www|)\/[^\/]*$/, '/save/');
     if (path.match(/^\/([A-Z]\:)/)) {
         path = path.slice(1);
     }
     return decodeURIComponent(path);
     */
-    var path = require('path'); 
-    var base = path.dirname(process.mainModule.filename);
-    return path.join(base, 'save/');
+	var path = require("path");
+	var base = path.dirname(process.mainModule.filename);
+	return path.join(base, "save/");
 };
 
 //本地文件路径
-StorageManager.localFilePath = function(savefileId) {
-    //脑残
-    var name;
+StorageManager.localFilePath = function (savefileId) {
+	//脑残
+	var name;
 	//如果 (保存文件id < 0 )
-    if (savefileId < 0) {
-        //名称 = 'config.rpgsave' // 配置
-        name = 'config.rpgsave';
-    //否则 如果 (保存文件id === 0)
-    } else if (savefileId === 0) {
-        //名称 = 'global.rpgsave' //共用
-        name = 'global.rpgsave';
-    //否则
-    } else {
-	    //返回 "file%1.rpgsave" 替换( 保存文件id )
-        name = 'file%1.rpgsave'.format(savefileId);
-    }
-    //本地文件目录路径() + 名称
-    return this.localFileDirectoryPath() + name;
+	if (savefileId < 0) {
+		//名称 = 'config.rpgsave' // 配置
+		name = "config.rpgsave";
+		//否则 如果 (保存文件id === 0)
+	} else if (savefileId === 0) {
+		//名称 = 'global.rpgsave' //共用
+		name = "global.rpgsave";
+		//否则
+	} else {
+		//返回 "file%1.rpgsave" 替换( 保存文件id )
+		name = "file%1.rpgsave".format(savefileId);
+	}
+	//本地文件目录路径() + 名称
+	return this.localFileDirectoryPath() + name;
 };
 
 //网络存储键
-StorageManager.webStorageKey = function(savefileId) {
+StorageManager.webStorageKey = function (savefileId) {
 	//如果 (保存文件id < 0 )
-    if (savefileId < 0) {
-	    //返回 'RPG Config' //rpg 配置
-        return 'RPG Config';
-    //否则 如果 (保存文件id === 0)
-    } else if (savefileId === 0) {
-	    //返回 'RPG Global' //rpg 共用
-        return 'RPG Global';
-    //否则
-    } else {
-	    //返回 'RPG File%1' 替换( 保存文件id )
-        return 'RPG File%1'.format(savefileId);
-    }
+	if (savefileId < 0) {
+		//返回 'RPG Config' //rpg 配置
+		return "RPG Config";
+		//否则 如果 (保存文件id === 0)
+	} else if (savefileId === 0) {
+		//返回 'RPG Global' //rpg 共用
+		return "RPG Global";
+		//否则
+	} else {
+		//返回 'RPG File%1' 替换( 保存文件id )
+		return "RPG File%1".format(savefileId);
+	}
 };
-
-
 
 /*
 =======================================================================================================
@@ -679,4 +676,4 @@ fs.mkdirSync(path, [mode])
 path            将创建的目录路径
 mode          目录权限（读写权限），默认0777
  
- */ 
+ */

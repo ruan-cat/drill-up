@@ -37,12 +37,7 @@
 		"allowJs": true,
 		// "allowImportingTsExtensions": true,
 		// lib
-		"lib": [
-			"DOM",
-			"ESNext"
-		],
-		"types": [
-			"vite/client"
-		],
+		"lib": ["DOM", "ESNext"],
+		"types": ["vite/client"]
 	}
 }

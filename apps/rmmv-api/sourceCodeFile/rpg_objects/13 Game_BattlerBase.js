@@ -75,218 +75,218 @@ Object.defineProperties(Game_BattlerBase.prototype, {
 		get: function () {
 			return this._hp;
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Magic Points mp
 	mp: {
 		get: function () {
 			return this._mp;
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Tactical Points tp
 	tp: {
 		get: function () {
 			return this._tp;
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Maximum Hit Points   最大攻击值
 	mhp: {
 		get: function () {
 			return this.param(0);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Maximum Magic Points  最大魔法值
 	mmp: {
 		get: function () {
 			return this.param(1);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// ATtacK power  攻击力
 	atk: {
 		get: function () {
 			return this.param(2);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// DEFense power  防御力
 	def: {
 		get: function () {
 			return this.param(3);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Magic ATtack power  魔法攻击力
 	mat: {
 		get: function () {
 			return this.param(4);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Magic DeFense power  魔法防御力
 	mdf: {
 		get: function () {
 			return this.param(5);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// AGIlity  敏捷
 	agi: {
 		get: function () {
 			return this.param(6);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// LUcK  运气
 	luk: {
 		get: function () {
 			return this.param(7);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// HIT rate 命中比例
 	hit: {
 		get: function () {
 			return this.xparam(0);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// EVAsion rate 闪避比例
 	eva: {
 		get: function () {
 			return this.xparam(1);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// CRItical rate 会心比例
 	cri: {
 		get: function () {
 			return this.xparam(2);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Critical EVasion rate 会心回避比例
 	cev: {
 		get: function () {
 			return this.xparam(3);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Magic EVasion rate  魔法躲避比例
 	mev: {
 		get: function () {
 			return this.xparam(4);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Magic ReFlection rate 魔法反射比例
 	mrf: {
 		get: function () {
 			return this.xparam(5);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// CouNTer attack rate 反击比例
 	cnt: {
 		get: function () {
 			return this.xparam(6);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Hp ReGeneration rate hp恢复比例
 	hrg: {
 		get: function () {
 			return this.xparam(7);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Mp ReGeneration rate  mp恢复比例
 	mrg: {
 		get: function () {
 			return this.xparam(8);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Tp ReGeneration rate  tp恢复比例
 	trg: {
 		get: function () {
 			return this.xparam(9);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// TarGet Rate  目标比例
 	tgr: {
 		get: function () {
 			return this.sparam(0);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// GuaRD effect rate 防守效果比例
 	grd: {
 		get: function () {
 			return this.sparam(1);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// RECovery effect rate  恢复效果比例
 	rec: {
 		get: function () {
 			return this.sparam(2);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// PHArmacology  药物知识
 	pha: {
 		get: function () {
 			return this.sparam(3);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Mp Cost Rate   mp消耗比例
 	mcr: {
 		get: function () {
 			return this.sparam(4);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Tp Charge Rate tp充能比例
 	tcr: {
 		get: function () {
 			return this.sparam(5);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Physical Damage Rate  物理伤害比例
 	pdr: {
 		get: function () {
 			return this.sparam(6);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Magical Damage Rate  魔法伤害比例
 	mdr: {
 		get: function () {
 			return this.sparam(7);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// Floor Damage Rate    地面伤害比例
 	fdr: {
 		get: function () {
 			return this.sparam(8);
 		},
-		configurable: true
+		configurable: true,
 	},
 	// EXperience Rate  经验值比例
 	exr: {
 		get: function () {
 			return this.sparam(9);
 		},
-		configurable: true
-	}
+		configurable: true,
+	},
 });
 //初始化
 Game_BattlerBase.prototype.initialize = function () {
@@ -301,7 +301,7 @@ Game_BattlerBase.prototype.initMembers = function () {
 	this._mp = 0;
 	//tp = 0
 	this._tp = 0;
-	//隐藏 = false 
+	//隐藏 = false
 	this._hidden = false;
 	//清除参数增加
 	this.clearParamPlus();
@@ -324,7 +324,7 @@ Game_BattlerBase.prototype.clearStates = function () {
 };
 //抹去状态
 Game_BattlerBase.prototype.eraseState = function (stateId) {
-	//索引 = 状态组 索引于 (状态id) 
+	//索引 = 状态组 索引于 (状态id)
 	var index = this._states.indexOf(stateId);
 	//如果( 索引 大于 0  )
 	if (index >= 0) {
@@ -351,7 +351,7 @@ Game_BattlerBase.prototype.deathStateId = function () {
 };
 //重置状态计数
 Game_BattlerBase.prototype.resetStateCounts = function (stateId) {
-	//状态 = 数据状态 [状态id] 
+	//状态 = 数据状态 [状态id]
 	var state = $dataStates[stateId];
 	//偏差 = 1 + 数学 最大值( 状态 最大回合数 - 状态 最小回合数 , 0 )
 	var variance = 1 + Math.max(state.maxTurns - state.minTurns, 0);
@@ -360,7 +360,7 @@ Game_BattlerBase.prototype.resetStateCounts = function (stateId) {
 };
 //是状态期满
 Game_BattlerBase.prototype.isStateExpired = function (stateId) {
-	//返回 状态回合组 [状态id] === 0 
+	//返回 状态回合组 [状态id] === 0
 	return this._stateTurns[stateId] === 0;
 };
 //更新状态回合
@@ -401,7 +401,7 @@ Game_BattlerBase.prototype.buff = function (paramId) {
 };
 //是正面效果影响
 Game_BattlerBase.prototype.isBuffAffected = function (paramId) {
-	//返回 效果组[ 参数id ] > 0 
+	//返回 效果组[ 参数id ] > 0
 	return this._buffs[paramId] > 0;
 };
 //是负面效果影响
@@ -436,7 +436,7 @@ Game_BattlerBase.prototype.increaseBuff = function (paramId) {
 Game_BattlerBase.prototype.decreaseBuff = function (paramId) {
 	//如果( 不是 是最大负面效果影响( 参数id ) )
 	if (!this.isMaxDebuffAffected(paramId)) {
-		//效果组[ 参数id ] -- 
+		//效果组[ 参数id ] --
 		this._buffs[paramId]--;
 	}
 };
@@ -450,7 +450,7 @@ Game_BattlerBase.prototype.overwriteBuffTurns = function (paramId, turns) {
 };
 //是效果期满
 Game_BattlerBase.prototype.isBuffExpired = function (paramId) {
-	//返回 效果回合[参数id] === 0 
+	//返回 效果回合[参数id] === 0
 	return this._buffTurns[paramId] === 0;
 };
 //更新效果回合
@@ -492,14 +492,16 @@ Game_BattlerBase.prototype.states = function () {
 //状态图标
 Game_BattlerBase.prototype.stateIcons = function () {
 	//返回 状态组() 映射 方法(状态)
-	return this.states().map(function (state) {
-		//返回 状态 图标索引
-		return state.iconIndex;
-		//过滤 方法(图标索引)
-	}).filter(function (iconIndex) {
-		//返回 图标索引 > 0
-		return iconIndex > 0;
-	});
+	return this.states()
+		.map(function (state) {
+			//返回 状态 图标索引
+			return state.iconIndex;
+			//过滤 方法(图标索引)
+		})
+		.filter(function (iconIndex) {
+			//返回 图标索引 > 0
+			return iconIndex > 0;
+		});
 };
 //效果图标
 Game_BattlerBase.prototype.buffIcons = function () {
@@ -526,7 +528,7 @@ Game_BattlerBase.prototype.buffIconIndex = function (buffLevel, paramId) {
 	} else if (buffLevel < 0) {
 		//返回 项目负面效果开始 + ( -状态等级 - 1 ) * 8 + 参数id
 		return Game_BattlerBase.ICON_DEBUFF_START + (-buffLevel - 1) * 8 + paramId;
-		//否则 
+		//否则
 	} else {
 		//返回 0
 		return 0;
@@ -570,7 +572,7 @@ Game_BattlerBase.prototype.traitsWithId = function (code, id) {
 };
 //特征总比例
 Game_BattlerBase.prototype.traitsPi = function (code, id) {
-	//返回 特征和id (编码, id) 缩减 方法( r , 特征 ) 
+	//返回 特征和id (编码, id) 缩减 方法( r , 特征 )
 	return this.traitsWithId(code, id).reduce(function (r, trait) {
 		//返回 r * 特征 值
 		return r * trait.value;
@@ -579,7 +581,7 @@ Game_BattlerBase.prototype.traitsPi = function (code, id) {
 };
 //特征总数
 Game_BattlerBase.prototype.traitsSum = function (code, id) {
-	//返回 特征和id (编码, id) 缩减 方法( r , 特征 ) 
+	//返回 特征和id (编码, id) 缩减 方法( r , 特征 )
 	return this.traitsWithId(code, id).reduce(function (r, trait) {
 		//返回 r + 特征 值
 		return r + trait.value;
@@ -588,7 +590,7 @@ Game_BattlerBase.prototype.traitsSum = function (code, id) {
 };
 //特征总数所有
 Game_BattlerBase.prototype.traitsSumAll = function (code) {
-	//特征 (编码) 缩减 方法( r , 特征 ) 
+	//特征 (编码) 缩减 方法( r , 特征 )
 	return this.traits(code).reduce(function (r, trait) {
 		//返回 r + 特征 值
 		return r + trait.value;
@@ -597,7 +599,7 @@ Game_BattlerBase.prototype.traitsSumAll = function (code) {
 };
 //特征集合
 Game_BattlerBase.prototype.traitsSet = function (code) {
-	//特征 (编码) 缩减 方法( r , 特征 ) 
+	//特征 (编码) 缩减 方法( r , 特征 )
 	return this.traits(code).reduce(function (r, trait) {
 		//返回 r 连接 (特征 数据id)
 		return r.concat(trait.dataId);
@@ -618,9 +620,9 @@ Game_BattlerBase.prototype.paramPlus = function (paramId) {
 Game_BattlerBase.prototype.paramMin = function (paramId) {
 	//如果 (参数id === 1)
 	if (paramId === 1) {
-		//返回 0 
+		//返回 0
 		return 0; // MMP
-		//否则 
+		//否则
 	} else {
 		//返回 1
 		return 1;
@@ -636,7 +638,7 @@ Game_BattlerBase.prototype.paramMax = function (paramId) {
 	} else if (paramId === 1) {
 		//返回 9999
 		return 9999; // MMP
-		//否则 
+		//否则
 	} else {
 		//返回 999
 		return 999;
@@ -649,12 +651,12 @@ Game_BattlerBase.prototype.paramRate = function (paramId) {
 };
 //参数效果比例
 Game_BattlerBase.prototype.paramBuffRate = function (paramId) {
-	//返回 效果组 [参数id] * 0.25 + 1.0 
+	//返回 效果组 [参数id] * 0.25 + 1.0
 	return this._buffs[paramId] * 0.25 + 1.0;
 };
 //参数
 Game_BattlerBase.prototype.param = function (paramId) {
-	//值 =  参数基础  (参数id)  + 参数增加 (参数id)   
+	//值 =  参数基础  (参数id)  + 参数增加 (参数id)
 	var value = this.paramBase(paramId) + this.paramPlus(paramId);
 	//值 *= 参数比例 (参数id ) * 参数效果比例 (参数id)
 	value *= this.paramRate(paramId) * this.paramBuffRate(paramId);
@@ -737,37 +739,37 @@ Game_BattlerBase.prototype.isSkillTypeSealed = function (stypeId) {
 };
 //添加技能组
 Game_BattlerBase.prototype.addedSkills = function () {
-	//返回 特征集合 (  特征技能增加//43  )  
+	//返回 特征集合 (  特征技能增加//43  )
 	return this.traitsSet(Game_BattlerBase.TRAIT_SKILL_ADD);
 };
 //是技能封印
 Game_BattlerBase.prototype.isSkillSealed = function (skillId) {
-	//返回 特征集合 (  特征技能封印//44  )  包含 ( 技能id ) 
+	//返回 特征集合 (  特征技能封印//44  )  包含 ( 技能id )
 	return this.traitsSet(Game_BattlerBase.TRAIT_SKILL_SEAL).contains(skillId);
 };
 //是装备武器种类允许
 Game_BattlerBase.prototype.isEquipWtypeOk = function (wtypeId) {
-	//返回 特征集合 (  特征装备武器//51  )  包含 ( 武器种类id ) 
+	//返回 特征集合 (  特征装备武器//51  )  包含 ( 武器种类id )
 	return this.traitsSet(Game_BattlerBase.TRAIT_EQUIP_WTYPE).contains(wtypeId);
 };
 //是装备防具种类允许
 Game_BattlerBase.prototype.isEquipAtypeOk = function (atypeId) {
-	//返回 特征集合 (  特征装备防具//52  )  包含 ( 防具种类id ) 
+	//返回 特征集合 (  特征装备防具//52  )  包含 ( 防具种类id )
 	return this.traitsSet(Game_BattlerBase.TRAIT_EQUIP_ATYPE).contains(atypeId);
 };
 //是装备种类锁定
 Game_BattlerBase.prototype.isEquipTypeLocked = function (etypeId) {
-	//返回 特征集合 (  特征装备固定//53  )  包含 ( 装备种类id ) 
+	//返回 特征集合 (  特征装备固定//53  )  包含 ( 装备种类id )
 	return this.traitsSet(Game_BattlerBase.TRAIT_EQUIP_LOCK).contains(etypeId);
 };
 //是装备种类封印
 Game_BattlerBase.prototype.isEquipTypeSealed = function (etypeId) {
-	//返回 特征集合 (  特征装备封印//54  )  包含 ( 装备种类id ) 
+	//返回 特征集合 (  特征装备封印//54  )  包含 ( 装备种类id )
 	return this.traitsSet(Game_BattlerBase.TRAIT_EQUIP_SEAL).contains(etypeId);
 };
 //孔种类
 Game_BattlerBase.prototype.slotType = function () {
-	//集合 = 特征集合 (  特征孔种类//55  )   
+	//集合 = 特征集合 (  特征孔种类//55  )
 	var set = this.traitsSet(Game_BattlerBase.TRAIT_SLOT_TYPE);
 	//返回 如果 集合 长度 > 0  返回 数学 最大值 应用 (null,集合)  否则 返回 0
 	return set.length > 0 ? Math.max.apply(null, set) : 0;
@@ -795,7 +797,7 @@ Game_BattlerBase.prototype.specialFlag = function (flagId) {
 };
 //死亡种类
 Game_BattlerBase.prototype.collapseType = function () {
-	//集合 = 特征集合 (  特征死亡种类//63  )   
+	//集合 = 特征集合 (  特征死亡种类//63  )
 	var set = this.traitsSet(Game_BattlerBase.TRAIT_COLLAPSE_TYPE);
 	//返回 如果 集合 长度 > 0  返回 数学 最大值 应用 (null,集合)  否则 返回 0
 	return set.length > 0 ? Math.max.apply(null, set) : 0;
@@ -804,7 +806,7 @@ Game_BattlerBase.prototype.collapseType = function () {
 Game_BattlerBase.prototype.partyAbility = function (abilityId) {
 	//返回 特征( 特征队伍能力//64 ) 一些 方法(特征)
 	return this.traits(Game_BattlerBase.TRAIT_PARTY_ABILITY).some(function (trait) {
-		//返回 特征id === 能力id 
+		//返回 特征id === 能力id
 		return trait.dataId === abilityId;
 	});
 };
@@ -897,8 +899,8 @@ Game_BattlerBase.prototype.mpRate = function () {
 };
 //tp比例
 Game_BattlerBase.prototype.tpRate = function () {
-	//返回  tp / 最大Tp 
-	return this.tp / this.maxTp();;
+	//返回  tp / 最大Tp
+	return this.tp / this.maxTp();
 };
 //隐藏
 Game_BattlerBase.prototype.hide = function () {
@@ -917,27 +919,27 @@ Game_BattlerBase.prototype.isHidden = function () {
 };
 //是出现的
 Game_BattlerBase.prototype.isAppeared = function () {
-	//返回 不是 是隐藏的() 
+	//返回 不是 是隐藏的()
 	return !this.isHidden();
 };
 //是死的
 Game_BattlerBase.prototype.isDead = function () {
-	//返回 是出现的() 并且 是死亡状态影响() 
+	//返回 是出现的() 并且 是死亡状态影响()
 	return this.isAppeared() && this.isDeathStateAffected();
 };
 //是活的
 Game_BattlerBase.prototype.isAlive = function () {
-	//返回 是出现的() 并且 不是 是死亡状态影响() 
+	//返回 是出现的() 并且 不是 是死亡状态影响()
 	return this.isAppeared() && !this.isDeathStateAffected();
 };
 //是濒死的
 Game_BattlerBase.prototype.isDying = function () {
-	//返回 是活的() 并且 hp < mhp / 4 
+	//返回 是活的() 并且 hp < mhp / 4
 	return this.isAlive() && this._hp < this.mhp / 4;
 };
 //是受限制的
 Game_BattlerBase.prototype.isRestricted = function () {
-	//返回 是出现的() 并且 限制() > 0 
+	//返回 是出现的() 并且 限制() > 0
 	return this.isAppeared() && this.restriction() > 0;
 };
 //能输入
@@ -947,17 +949,17 @@ Game_BattlerBase.prototype.canInput = function () {
 };
 //能移动
 Game_BattlerBase.prototype.canMove = function () {
-	//返回 是出现的() 并且 限制() < 4    
+	//返回 是出现的() 并且 限制() < 4
 	return this.isAppeared() && this.restriction() < 4;
 };
 //是混乱的
 Game_BattlerBase.prototype.isConfused = function () {
-	//返回 是出现的() 并且 限制() >= 1  并且  限制() <= 3    
+	//返回 是出现的() 并且 限制() >= 1  并且  限制() <= 3
 	return this.isAppeared() && this.restriction() >= 1 && this.restriction() <= 3;
 };
 //混乱等级
 Game_BattlerBase.prototype.confusionLevel = function () {
-	//返回 如果 是混乱的() 返回 限制() 否则 返回 0 
+	//返回 如果 是混乱的() 返回 限制() 否则 返回 0
 	return this.isConfused() ? this.restriction() : 0;
 };
 //是角色
@@ -989,12 +991,17 @@ Game_BattlerBase.prototype.sortStates = function () {
 };
 //限制
 Game_BattlerBase.prototype.restriction = function () {
-	//返回 数学 最大值 (null ,状态组() 映射 方法(状态 ) ) 
-	return Math.max.apply(null, this.states().map(function (state) {
-		//返回 状态 限制
-		return state.restriction;
-		//连接 0
-	}).concat(0));
+	//返回 数学 最大值 (null ,状态组() 映射 方法(状态 ) )
+	return Math.max.apply(
+		null,
+		this.states()
+			.map(function (state) {
+				//返回 状态 限制
+				return state.restriction;
+				//连接 0
+			})
+			.concat(0),
+	);
 };
 //添加新的状态
 Game_BattlerBase.prototype.addNewState = function (stateId) {
@@ -1005,7 +1012,7 @@ Game_BattlerBase.prototype.addNewState = function (stateId) {
 	}
 	//受限制的 =  是受限制的
 	var restricted = this.isRestricted();
-	//状态组 添加 状态id 
+	//状态组 添加 状态id
 	this._states.push(stateId);
 	//排序状态组
 	this.sortStates();
@@ -1030,17 +1037,17 @@ Game_BattlerBase.prototype.mostImportantStateText = function () {
 		}
 	}
 	//返回 ""
-	return '';
+	return "";
 };
 //状态动作索引
 Game_BattlerBase.prototype.stateMotionIndex = function () {
 	//状态组 = 状态组
 	var states = this.states();
-	//如果 状态组 长度 >0 
+	//如果 状态组 长度 >0
 	if (states.length > 0) {
 		//返回 状态组[0] 动作
 		return states[0].motion;
-		//否则 
+		//否则
 	} else {
 		//返回 0
 		return 0;
@@ -1050,11 +1057,11 @@ Game_BattlerBase.prototype.stateMotionIndex = function () {
 Game_BattlerBase.prototype.stateOverlayIndex = function () {
 	//状态组 = 状态组
 	var states = this.states();
-	//如果 状态组 长度 >0 
+	//如果 状态组 长度 >0
 	if (states.length > 0) {
 		//返回 状态组[0] 叠加
 		return states[0].overlay;
-		//否则 
+		//否则
 	} else {
 		//返回 0
 		return 0;
@@ -1091,11 +1098,11 @@ Game_BattlerBase.prototype.paySkillCost = function (skill) {
 Game_BattlerBase.prototype.isOccasionOk = function (item) {
 	//如果 游戏队伍 在战斗
 	if ($gameParty.inBattle()) {
-		//返回 项目 时机 === 0 或者 项目 时机 === 1 
+		//返回 项目 时机 === 0 或者 项目 时机 === 1
 		return item.occasion === 0 || item.occasion === 1;
 		//否则
 	} else {
-		//返回 项目 时机 === 0 或者 项目 时机 === 2 
+		//返回 项目 时机 === 0 或者 项目 时机 === 2
 		return item.occasion === 0 || item.occasion === 2;
 	}
 };
@@ -1107,11 +1114,15 @@ Game_BattlerBase.prototype.meetsUsableItemConditions = function (item) {
 //满足技能条件
 Game_BattlerBase.prototype.meetsSkillConditions = function (skill) {
 	//返回   满足可用物品条件(技能) 并且
-	return (this.meetsUsableItemConditions(skill) &&
+	return (
+		this.meetsUsableItemConditions(skill) &&
 		// 是技能武器确定 并且 能够支付技能消耗(技能 ) 并且
-		this.isSkillWtypeOk(skill) && this.canPaySkillCost(skill) &&
+		this.isSkillWtypeOk(skill) &&
+		this.canPaySkillCost(skill) &&
 		//不是 是技能封印(技能id) 并且 不是 是技能种类封印 (技能 技能种类id)
-		!this.isSkillSealed(skill.id) && !this.isSkillTypeSealed(skill.stypeId));
+		!this.isSkillSealed(skill.id) &&
+		!this.isSkillTypeSealed(skill.stypeId)
+	);
 };
 //满足物品条件
 Game_BattlerBase.prototype.meetsItemConditions = function (item) {

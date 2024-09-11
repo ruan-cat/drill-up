@@ -1,4 +1,3 @@
-
 //-----------------------------------------------------------------------------
 /**显示树图的根本对象
  * The root object of the display tree.
@@ -6,22 +5,22 @@
  * @class Stage
  * @constructor
  */
- 
+
 function Stage() {
-    this.initialize.apply(this, arguments);
+	this.initialize.apply(this, arguments);
 }
 
 Stage.prototype = Object.create(PIXI.Container.prototype);
 Stage.prototype.constructor = Stage;
 //初始化
-Stage.prototype.initialize = function() {
+Stage.prototype.initialize = function () {
 	//pixi 舞台 呼叫(this)
-    PIXI.Container.call(this);
+	PIXI.Container.call(this);
 
-    // The interactive flag causes a memory leak.
-    //交互式标志会导致内存泄漏。
-    //交互 = false
-    this.interactive = false;
+	// The interactive flag causes a memory leak.
+	//交互式标志会导致内存泄漏。
+	//交互 = false
+	this.interactive = false;
 };
 
 /**[只读]场景子项的数组
@@ -63,5 +62,3 @@ Stage.prototype.initialize = function() {
  * @param {Number} index The index to get the child from
  * @return {Object} The child that was removed
  */
-
-

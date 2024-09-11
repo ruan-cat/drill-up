@@ -33,7 +33,7 @@
 		"./drill-project/js/libs/pixi*.js",
 		"./drill-project/js/plugins/MOG_*.js",
 		"./drill-project/js/plugins/YEP_*.js",
-		"./drill-project/js/plugins/*ruancat*.js",
+		"./drill-project/js/plugins/*ruancat*.js"
 		// "./js/plugins/Drill_*.js",
 	],
 	"exclude": [

@@ -1,5 +1,5 @@
 /**
- * @fileoverview 
+ * @fileoverview
  * DataManager,The static class that manages the database and game objects.
  * 数据管理器,这个静态的类 管理 数据库 和 游戏对象
  * @author 阮中楠（翻译）
@@ -11,11 +11,11 @@
  * @author 阮中楠（翻译）
  * @classdesc
  * 数据管理者类，这个类专门进行数据的储存。这个类很加侧重数据的导入。
- * 
+ *
  * 数据的调用方式与全局性？
  */
 function DataManager() {
-	throw new Error('This is a static class');
+	throw new Error("This is a static class");
 }
 
 /**
@@ -117,76 +117,77 @@ var $testEvent = null;
  * @description 全局id
  * @global
  */
-DataManager._globalId = 'RPGMV';
+DataManager._globalId = "RPGMV";
 
 //上次访问ID = 1
 DataManager._lastAccessedId = 1;
-//错误url = null 
+//错误url = null
 DataManager._errorUrl = null;
 //数据库文件列表
-DataManager._databaseFiles = [{
-		name: '$dataActors',
-		src: 'Actors.json'
+DataManager._databaseFiles = [
+	{
+		name: "$dataActors",
+		src: "Actors.json",
 	},
 	{
-		name: '$dataClasses',
-		src: 'Classes.json'
+		name: "$dataClasses",
+		src: "Classes.json",
 	},
 	{
-		name: '$dataSkills',
-		src: 'Skills.json'
+		name: "$dataSkills",
+		src: "Skills.json",
 	},
 	{
-		name: '$dataItems',
-		src: 'Items.json'
+		name: "$dataItems",
+		src: "Items.json",
 	},
 	{
-		name: '$dataWeapons',
-		src: 'Weapons.json'
+		name: "$dataWeapons",
+		src: "Weapons.json",
 	},
 	{
-		name: '$dataArmors',
-		src: 'Armors.json'
+		name: "$dataArmors",
+		src: "Armors.json",
 	},
 	{
-		name: '$dataEnemies',
-		src: 'Enemies.json'
+		name: "$dataEnemies",
+		src: "Enemies.json",
 	},
 	{
-		name: '$dataTroops',
-		src: 'Troops.json'
+		name: "$dataTroops",
+		src: "Troops.json",
 	},
 	{
-		name: '$dataStates',
-		src: 'States.json'
+		name: "$dataStates",
+		src: "States.json",
 	},
 	{
-		name: '$dataAnimations',
-		src: 'Animations.json'
+		name: "$dataAnimations",
+		src: "Animations.json",
 	},
 	{
-		name: '$dataTilesets',
-		src: 'Tilesets.json'
+		name: "$dataTilesets",
+		src: "Tilesets.json",
 	},
 	{
-		name: '$dataCommonEvents',
-		src: 'CommonEvents.json'
+		name: "$dataCommonEvents",
+		src: "CommonEvents.json",
 	},
 	{
-		name: '$dataSystem',
-		src: 'System.json'
+		name: "$dataSystem",
+		src: "System.json",
 	},
 	{
-		name: '$dataMapInfos',
-		src: 'MapInfos.json'
-	}
+		name: "$dataMapInfos",
+		src: "MapInfos.json",
+	},
 ];
 //加载数据库
 DataManager.loadDatabase = function () {
 	//测试 = 是战斗测试() || 是事件测试()
 	var test = this.isBattleTest() || this.isEventTest();
 	//前缀 = 如果 测试 ? 返回 "Test_"  否则 返回 ""
-	var prefix = test ? 'Test_' : '';
+	var prefix = test ? "Test_" : "";
 	//循环,读取所有 数据库文件列表 里的项目
 	for (var i = 0; i < this._databaseFiles.length; i++) {
 		var name = this._databaseFiles[i].name;
@@ -196,7 +197,7 @@ DataManager.loadDatabase = function () {
 	//如果( 是事件测试时() )
 	if (this.isEventTest()) {
 		//读取数据文件( '$testEvent'//测试事件, prefix + 'Event.json' )
-		this.loadDataFile('$testEvent', prefix + 'Event.json');
+		this.loadDataFile("$testEvent", prefix + "Event.json");
 	}
 };
 
@@ -209,11 +210,11 @@ DataManager.loadDataFile = function (name, src) {
 	//网址请求 = 新 XML网址请求()
 	var xhr = new XMLHttpRequest();
 	//url位置 = "data" + src
-	var url = 'data/' + src;
+	var url = "data/" + src;
 	//网址请求 打开( 'GET' , url位置)
-	xhr.open('GET', url);
+	xhr.open("GET", url);
 	//网址请求 文件类型('application/json')
-	xhr.overrideMimeType('application/json');
+	xhr.overrideMimeType("application/json");
 	//网址请求 当读取
 	xhr.onload = function () {
 		//如果 网址请求 状态 < 400
@@ -258,9 +259,9 @@ DataManager.loadMapData = function (mapId) {
 	if (mapId > 0) {
 		// 此函数加载地图的json数据。
 		// 文件名 = 'Map%1.json' 替换 (mapId 填充0(3位)  )
-		var filename = 'Map%1.json'.format(mapId.padZero(3));
+		var filename = "Map%1.json".format(mapId.padZero(3));
 		//读取数据文件(数据地图 ,文件名)
-		this.loadDataFile('$dataMap', filename);
+		this.loadDataFile("$dataMap", filename);
 		//否则
 	} else {
 		//制作空地图()
@@ -331,7 +332,7 @@ DataManager.extractMetadata = function (data) {
 	for (;;) {
 		var match = re.exec(data.note);
 		if (match) {
-			if (match[2] === ':') {
+			if (match[2] === ":") {
 				data.meta[match[1]] = match[3];
 			} else {
 				data.meta[match[1]] = true;
@@ -346,18 +347,18 @@ DataManager.checkError = function () {
 	//如果 数据管理器 错误url (数据管理器 错误url 存在 )
 	if (DataManager._errorUrl) {
 		//抛出 新 错误( "Failed to load"//读取失败 + 数据管理器 错误url   )
-		throw new Error('Failed to load: ' + DataManager._errorUrl);
+		throw new Error("Failed to load: " + DataManager._errorUrl);
 	}
 };
 //是战斗测试
 DataManager.isBattleTest = function () {
 	//返回 公用程序 是选项有效("btest")
-	return Utils.isOptionValid('btest');
+	return Utils.isOptionValid("btest");
 };
 //是事件测试
 DataManager.isEventTest = function () {
 	//返回 公用程序 是选项有效("etest")
-	return Utils.isOptionValid('etest');
+	return Utils.isOptionValid("etest");
 };
 //是技能
 DataManager.isSkill = function (item) {
@@ -423,8 +424,7 @@ DataManager.setupNewGame = function () {
 	//游戏队伍 安装开始成员()
 	$gameParty.setupStartingMembers();
 	//游戏游戏者 预约传送(数据系统 开始地图id ,数据系统 开始x ,数据系统 开始y)
-	$gamePlayer.reserveTransfer($dataSystem.startMapId,
-		$dataSystem.startX, $dataSystem.startY);
+	$gamePlayer.reserveTransfer($dataSystem.startMapId, $dataSystem.startX, $dataSystem.startY);
 	//图形 帧计数 = 0
 	Graphics.frameCount = 0;
 };
@@ -512,8 +512,7 @@ DataManager.isThisGameFile = function (savefileId) {
 			//存档文件 = 全局信息[存档文件id]
 			var savefile = globalInfo[savefileId];
 			//返回 存档文件 全局id  === 全局id 并且 存档文件 标题 === 数据系统 游戏标题
-			return (savefile.globalId === this._globalId &&
-				savefile.title === $dataSystem.gameTitle);
+			return savefile.globalId === this._globalId && savefile.title === $dataSystem.gameTitle;
 		}
 	} else {
 		//返回 false
@@ -546,7 +545,7 @@ DataManager.latestSavefileId = function () {
 	var savefileId = 1;
 	//时间临时 = 0
 	var timestamp = 0;
-	//如果 全局信息 
+	//如果 全局信息
 	if (globalInfo) {
 		//循环 开始时 i = 1 ; 当 i < 全局信息 长度 时 ; 每一次 i++
 		for (var i = 1; i < globalInfo.length; i++) {
@@ -647,7 +646,7 @@ DataManager.loadSavefileInfo = function (savefileId) {
 	//全局信息 = 加载全局信息()
 	var globalInfo = this.loadGlobalInfo();
 	//返回 如果 (全局信息 并且 全局信息[存档文件id]) 返回  全局信息[存档文件id] 否则 null
-	return (globalInfo && globalInfo[savefileId]) ? globalInfo[savefileId] : null;
+	return globalInfo && globalInfo[savefileId] ? globalInfo[savefileId] : null;
 };
 //上次访问保存文件ID
 DataManager.lastAccessedSavefileId = function () {
@@ -661,7 +660,7 @@ DataManager.saveGameWithoutRescue = function (savefileId) {
 	//如果 json 长度 >= 20000
 	if (json.length >= 200000) {
 		//控制台 警告(保存数据太大)
-		console.warn('Save data too big!');
+		console.warn("Save data too big!");
 	}
 	//存储管理器 保存( 存档文件id , json )
 	StorageManager.save(savefileId, json);
@@ -671,7 +670,7 @@ DataManager.saveGameWithoutRescue = function (savefileId) {
 	var globalInfo = this.loadGlobalInfo() || [];
 	//全局信息[存档文件id] = 制作保存文件信息
 	globalInfo[savefileId] = this.makeSavefileInfo();
-	//保存全局信息(全局信息) 
+	//保存全局信息(全局信息)
 	this.saveGlobalInfo(globalInfo);
 	//返回 true
 	return true;
@@ -692,7 +691,7 @@ DataManager.loadGameWithoutRescue = function (savefileId) {
 		this._lastAccessedId = savefileId;
 		//返回 true
 		return true;
-		//否则 
+		//否则
 	} else {
 		//返回 false
 		return false;
@@ -710,7 +709,7 @@ DataManager.selectSavefileForNewGame = function () {
 		var numSavefiles = Math.max(0, globalInfo.length - 1);
 		//如果(保存文件个数 < 最大保存文件)
 		if (numSavefiles < this.maxSavefiles()) {
-			//上次访问ID = 保存文件个数 + 1 
+			//上次访问ID = 保存文件个数 + 1
 			this._lastAccessedId = numSavefiles + 1;
 			//否则
 		} else {
@@ -758,7 +757,7 @@ DataManager.makeSavefileInfo = function () {
 //制作保存内容
 DataManager.makeSaveContents = function () {
 	// A save data does not contain $gameTemp, $gameMessage, and $gameTroop.
-	//一个保存数据 但 不包括 游戏临时 , 游戏消息 和 游戏敌群 
+	//一个保存数据 但 不包括 游戏临时 , 游戏消息 和 游戏敌群
 
 	//内容 ={}
 	var contents = {};
@@ -766,11 +765,11 @@ DataManager.makeSaveContents = function () {
 	contents.system = $gameSystem;
 	//内容 画面 = 游戏画面
 	contents.screen = $gameScreen;
-	//内容 计时 = 游戏计时 
+	//内容 计时 = 游戏计时
 	contents.timer = $gameTimer;
 	//内容 开关组 = 游戏开关组
 	contents.switches = $gameSwitches;
-	//内容 变量组 = 游戏变量组 
+	//内容 变量组 = 游戏变量组
 	contents.variables = $gameVariables;
 	//内容 独立开关组 = 游戏独立开关组
 	contents.selfSwitches = $gameSelfSwitches;

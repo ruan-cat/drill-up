@@ -1,11 +1,11 @@
 //-----------------------------------------------------------------------------
 /**来自鼠标和触摸屏处理输入数据的静态类
  * The static class that handles input data from the mouse and touchscreen.
- * 触摸输入 
+ * 触摸输入
  * @class TouchInput
  */
 function TouchInput() {
-	throw new Error('This is a static class');
+	throw new Error("This is a static class");
 }
 
 /**初始化触摸系统
@@ -78,7 +78,7 @@ TouchInput.clear = function () {
 	this._moved = false;
 	//释放 = false
 	this._released = false;
-	//轮x = 0 
+	//轮x = 0
 	this._wheelX = 0;
 	//轮y = 0
 	this._wheelY = 0;
@@ -125,7 +125,7 @@ TouchInput.update = function () {
 	this._events.wheelY = 0;
 	//如果 ( 是按下() )
 	if (this.isPressed()) {
-		//按下时间 ++ 
+		//按下时间 ++
 		this._pressedTime++;
 	}
 };
@@ -167,10 +167,10 @@ TouchInput.isTriggered = function () {
 //是重复按下
 TouchInput.isRepeated = function () {
 	//返回  ( 是按下()  并且 (  触发 或 (按下时间 >= 键重复等待 并且 按下时间 % 键重复间隔 = 0) )
-	return (this.isPressed() &&
-		(this._triggered ||
-			(this._pressedTime >= this.keyRepeatWait &&
-				this._pressedTime % this.keyRepeatInterval === 0)));
+	return (
+		this.isPressed() &&
+		(this._triggered || (this._pressedTime >= this.keyRepeatWait && this._pressedTime % this.keyRepeatInterval === 0))
+	);
 };
 
 /**检查鼠标左键或触摸屏是否保持按下
@@ -195,7 +195,7 @@ TouchInput.isLongPressed = function () {
  */
 //是取消
 TouchInput.isCancelled = function () {
-	//返回 取消 
+	//返回 取消
 	return this._cancelled;
 };
 
@@ -233,11 +233,11 @@ TouchInput.isReleased = function () {
  * @type Number
  */
 //定义属性 轮x
-Object.defineProperty(TouchInput, 'wheelX', {
+Object.defineProperty(TouchInput, "wheelX", {
 	get: function () {
 		return this._wheelX;
 	},
-	configurable: true
+	configurable: true,
 });
 
 /**[只读]​​垂直滚动量
@@ -248,11 +248,11 @@ Object.defineProperty(TouchInput, 'wheelX', {
  * @type Number
  */
 //定义属性 轮y
-Object.defineProperty(TouchInput, 'wheelY', {
+Object.defineProperty(TouchInput, "wheelY", {
 	get: function () {
 		return this._wheelY;
 	},
-	configurable: true
+	configurable: true,
 });
 
 /**[只读]​​最新触摸事件的画布区域的x坐标。
@@ -263,11 +263,11 @@ Object.defineProperty(TouchInput, 'wheelY', {
  * @type Number
  */
 //定义属性 x
-Object.defineProperty(TouchInput, 'x', {
+Object.defineProperty(TouchInput, "x", {
 	get: function () {
 		return this._x;
 	},
-	configurable: true
+	configurable: true,
 });
 
 /**[只读]​​最新触摸事件的画布区域的y坐标。
@@ -278,11 +278,11 @@ Object.defineProperty(TouchInput, 'x', {
  * @type Number
  */
 //定义属性 y
-Object.defineProperty(TouchInput, 'y', {
+Object.defineProperty(TouchInput, "y", {
 	get: function () {
 		return this._y;
 	},
-	configurable: true
+	configurable: true,
 });
 
 /**[只读]最后一个输入的时间的​​毫秒
@@ -293,11 +293,11 @@ Object.defineProperty(TouchInput, 'y', {
  * @type Number
  */
 //定义属性 日期
-Object.defineProperty(TouchInput, 'date', {
+Object.defineProperty(TouchInput, "date", {
 	get: function () {
 		return this._date;
 	},
-	configurable: true
+	configurable: true,
 });
 
 /**安装事件处理组
@@ -308,23 +308,23 @@ Object.defineProperty(TouchInput, 'date', {
 //安装事件处理组
 TouchInput._setupEventHandlers = function () {
 	//鼠标按下
-	document.addEventListener('mousedown', this._onMouseDown.bind(this));
+	document.addEventListener("mousedown", this._onMouseDown.bind(this));
 	//鼠标移动
-	document.addEventListener('mousemove', this._onMouseMove.bind(this));
+	document.addEventListener("mousemove", this._onMouseMove.bind(this));
 	//鼠标抬起
-	document.addEventListener('mouseup', this._onMouseUp.bind(this));
+	document.addEventListener("mouseup", this._onMouseUp.bind(this));
 	//轮
-	document.addEventListener('wheel', this._onWheel.bind(this));
+	document.addEventListener("wheel", this._onWheel.bind(this));
 	//触摸开始
-	document.addEventListener('touchstart', this._onTouchStart.bind(this));
+	document.addEventListener("touchstart", this._onTouchStart.bind(this));
 	//触摸移动
-	document.addEventListener('touchmove', this._onTouchMove.bind(this));
+	document.addEventListener("touchmove", this._onTouchMove.bind(this));
 	//触摸结束
-	document.addEventListener('touchend', this._onTouchEnd.bind(this));
+	document.addEventListener("touchend", this._onTouchEnd.bind(this));
 	//触摸取消
-	document.addEventListener('touchcancel', this._onTouchCancel.bind(this));
+	document.addEventListener("touchcancel", this._onTouchCancel.bind(this));
 	//指针按下
-	document.addEventListener('pointerdown', this._onPointerDown.bind(this));
+	document.addEventListener("pointerdown", this._onPointerDown.bind(this));
 };
 
 /**当鼠标按下
@@ -560,7 +560,7 @@ TouchInput._onTouchCancel = function (event) {
  */
 //当指示物按下
 TouchInput._onPointerDown = function (event) {
-	if (event.pointerType === 'touch' && !event.isPrimary) {
+	if (event.pointerType === "touch" && !event.isPrimary) {
 		var x = Graphics.pageToCanvasX(event.pageX);
 		var y = Graphics.pageToCanvasY(event.pageY);
 		if (Graphics.isInsideCanvas(x, y)) {

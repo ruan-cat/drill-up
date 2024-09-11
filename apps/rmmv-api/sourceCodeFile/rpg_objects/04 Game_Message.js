@@ -20,26 +20,26 @@ Game_Message.prototype.clear = function () {
 	//选择组 = []
 	this._choices = [];
 	//脸图名称 = ''
-	this._faceName = '';
+	this._faceName = "";
 	//脸图索引 = 0
 	this._faceIndex = 0;
-	//背景 = 0 
+	//背景 = 0
 	this._background = 0;
 	/**
 	 * 位置种类 = 2
-	 * 
+	 *
 	 * 现在根据 Game_Interpreter.prototype.command101 的方法，推测一下的位置种类与数据的差别。
-	 * 
+	 *
 	 * 顶部：0 中间：1 底部：2
 	 */
 	this._positionType = 2;
 	//选择默认种类 = 0
 	this._choiceDefaultType = 0;
-	//选择取消种类 = 0 
+	//选择取消种类 = 0
 	this._choiceCancelType = 0;
 
 	/**
-	 * 选择背景 = 0 
+	 * 选择背景 = 0
 	 * 这个值直接被运用到 Window_Base.prototype.setBackgroundType 的形参。
 	 */
 	this._choiceBackground = 0;
@@ -48,19 +48,19 @@ Game_Message.prototype.clear = function () {
 	this._choicePositionType = 2;
 	//数字输入变量id = 0
 	this._numInputVariableId = 0;
-	//数字输入位数 = 0 
+	//数字输入位数 = 0
 	this._numInputMaxDigits = 0;
 	//物品选择变量id = 0
 	this._itemChoiceVariableId = 0;
 	//物品选择种类id = 0
 	this._itemChoiceItypeId = 0;
-	//滚动模式 = false 
+	//滚动模式 = false
 	this._scrollMode = false;
 	//滚动速度 = 2
 	this._scrollSpeed = 2;
 	//滚动不快速 = false
 	this._scrollNoFast = false;
-	//选择呼叫返回 = null 
+	//选择呼叫返回 = null
 	this._choiceCallback = null;
 };
 //选择组
@@ -200,7 +200,7 @@ Game_Message.prototype.setItemChoice = function (variableId, itemType) {
 };
 //设置滚动
 Game_Message.prototype.setScroll = function (speed, noFast) {
-	//滚动模式 = true 
+	//滚动模式 = true
 	this._scrollMode = true;
 	//滚动速度 = speed//速度
 	this._scrollSpeed = speed;
@@ -224,7 +224,7 @@ Game_Message.prototype.onChoice = function (n) {
 };
 //有文本
 Game_Message.prototype.hasText = function () {
-	//返回 文本组 长度 > 0 
+	//返回 文本组 长度 > 0
 	return this._texts.length > 0;
 };
 //是选择
@@ -245,15 +245,14 @@ Game_Message.prototype.isItemChoice = function () {
 //是忙碌
 Game_Message.prototype.isBusy = function () {
 	//返回 有文本 或者 是选择 或者 是数字输入 或者 是物品选择
-	return (this.hasText() || this.isChoice() ||
-		this.isNumberInput() || this.isItemChoice());
+	return this.hasText() || this.isChoice() || this.isNumberInput() || this.isItemChoice();
 };
 //新页
 Game_Message.prototype.newPage = function () {
-	//如果 文本组 长度 > 0 
+	//如果 文本组 长度 > 0
 	if (this._texts.length > 0) {
 		//文本组[文本组 长度 - 1 ] += "\f"
-		this._texts[this._texts.length - 1] += '\f';
+		this._texts[this._texts.length - 1] += "\f";
 	}
 };
 //所有文本
@@ -261,6 +260,6 @@ Game_Message.prototype.allText = function () {
 	//返回 文本组 缩减( 方法(之前值,当前值)
 	return this._texts.reduce(function (previousValue, currentValue) {
 		//{返回 之前值 + "\n" + 当前值 } )
-		return previousValue + '\n' + currentValue;
+		return previousValue + "\n" + currentValue;
 	});
 };

@@ -1,20 +1,13 @@
 // FIXME: 目前无法为js项目生成内容
 {
 	// 指定项目的入口点
-	"entryPoints": [
-		"./main.js"
-	],
+	"entryPoints": ["./main.js"],
 	// 指定输出目录
 	"out": "docs",
 	// 使用 Markdown 插件
-	"plugin": [
-		"typedoc-plugin-markdown"
-	],
+	"plugin": ["typedoc-plugin-markdown"],
 	// 排除不需要生成文档的目录
-	"exclude": [
-		"node_modules",
-		"libs"
-	],
+	"exclude": ["node_modules", "libs"],
 	"excludeExternals": true,
 	"excludePrivate": true,
 	"excludeProtected": true,

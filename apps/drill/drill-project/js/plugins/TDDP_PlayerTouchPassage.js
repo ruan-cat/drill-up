@@ -25,7 +25,7 @@ Imported.TDDP_PlayerTouchPassage = "1.0.1";
  * ----设定注意事项
  * 1.插件的作用域：地图界面。
  * 2.插件 ON 则直接生效。
- * 
+ *
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Terms & Conditions
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -52,65 +52,67 @@ Imported.TDDP_PlayerTouchPassage = "1.0.1";
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * このプラグインは、商用利用・非商用利用どちらにもフリーで公開されています。
  * 使用方法の全文についてはこちらのサイトを確認してください。
- * http://mvplugins.tordamian.com/terms-of-use 
+ * http://mvplugins.tordamian.com/terms-of-use
  */
-(function() {
-    /**
-    * MODIFIED
-    */
-    Game_Player.prototype.canMove = function() {
-        if ($gameMessage.isBusy()) {
-            return false;
-        }
-        // If Yanfly Region Events is enabled, enable check
-        if (Imported.YEP_RegionEvents) {
-            if ($gameMap.isEventRunning() && $gameMap.moveAfterCommonEvent()) {
-              return true;
-            }
-        }
-        // Added logic to check if running event should be blocking
-        if ($gameMap.isEventRunning() && this.eventIsBlocking()) {
-            return false;
-        }
-        if (this.isMoveRouteForcing() || this.areFollowersGathering()) {
-            return false;
-        }
-        if (this._vehicleGettingOn || this._vehicleGettingOff) {
-            return false;
-        }
-        if (this.isInVehicle() && !this.vehicle().canMove()) {
-            return false;
-        }
-        return true;
-    };
-    /**
-    * NEW check if event should be blocking mouse movement
-    */
-    Game_Player.prototype.eventIsBlocking = function() {
-        interpreter = $gameMap._interpreter;
-        if (!interpreter._list) return false;
-        id = interpreter.eventId();
-        event = $gameMap.event(id);
-        // Return unless event
-        if (!event) return false;
-        // Event must be player touch or event touch to not block
-        if (event._trigger < 1 || event._trigger > 2) {
-            return true;
-        }
-        // Event must be below character or through to not block
-        if (!event.isThrough() && event._priorityType > 0) {
-            return true; // It should block
-        }
-        // Let's  check what event calls are in this active event
-        return interpreter._list.some(function(event_call) {
-            return [
-                201, // Transfer Player
-                205, // Move Route
-                230, // Wait
-                232, // Move Picture
-                261, // Play Movie
-                301, // Battle Processing
-            ].indexOf(event_call.code) >= 0
-        });
-    };
+(function () {
+	/**
+	 * MODIFIED
+	 */
+	Game_Player.prototype.canMove = function () {
+		if ($gameMessage.isBusy()) {
+			return false;
+		}
+		// If Yanfly Region Events is enabled, enable check
+		if (Imported.YEP_RegionEvents) {
+			if ($gameMap.isEventRunning() && $gameMap.moveAfterCommonEvent()) {
+				return true;
+			}
+		}
+		// Added logic to check if running event should be blocking
+		if ($gameMap.isEventRunning() && this.eventIsBlocking()) {
+			return false;
+		}
+		if (this.isMoveRouteForcing() || this.areFollowersGathering()) {
+			return false;
+		}
+		if (this._vehicleGettingOn || this._vehicleGettingOff) {
+			return false;
+		}
+		if (this.isInVehicle() && !this.vehicle().canMove()) {
+			return false;
+		}
+		return true;
+	};
+	/**
+	 * NEW check if event should be blocking mouse movement
+	 */
+	Game_Player.prototype.eventIsBlocking = function () {
+		interpreter = $gameMap._interpreter;
+		if (!interpreter._list) return false;
+		id = interpreter.eventId();
+		event = $gameMap.event(id);
+		// Return unless event
+		if (!event) return false;
+		// Event must be player touch or event touch to not block
+		if (event._trigger < 1 || event._trigger > 2) {
+			return true;
+		}
+		// Event must be below character or through to not block
+		if (!event.isThrough() && event._priorityType > 0) {
+			return true; // It should block
+		}
+		// Let's  check what event calls are in this active event
+		return interpreter._list.some(function (event_call) {
+			return (
+				[
+					201, // Transfer Player
+					205, // Move Route
+					230, // Wait
+					232, // Move Picture
+					261, // Play Movie
+					301, // Battle Processing
+				].indexOf(event_call.code) >= 0
+			);
+		});
+	};
 })();

@@ -23,7 +23,7 @@ GT.OIWin.version = 1.1;
  * ============================================================================
  *  介绍
  * ============================================================================
- * 
+ *
  * 查看物品/装备/技能时，会弹出窗口并对其详细介绍。
  *
  * -----------------------------------------------------------------------------
@@ -38,19 +38,19 @@ GT.OIWin.version = 1.1;
  * 1.插件的作用域：菜单界面、战斗界面
  *   作用于菜单的几个界面，以及战斗的技能/物品窗口界面。
  * 2.介绍默认自动生成，你也可以手动配置自动生成的方式。
- *  
+ *
  * ============================================================================
  *  备注
  * ============================================================================
  * ----物品/装备/技能备注
- * 
+ *
  *     <描述P:xxx>
  *     <描述前:xxx>
  *     这会在自动生成的描述前加上冒号后面的自定义内容
  *     每个备注内容会显示一行，可添加多行
  *     例如<描述P:这是一句非常长的没有意>
  *         <描述P:义的话。>
- * 
+ *
  *     <描述A:xxx>
  *     <描述后:xxx>
  *     这会在自动生成的描述后加上冒号后面的自定义内容
@@ -110,7 +110,7 @@ GT.OIWin.version = 1.1;
  * ============================================================================
  *  兼容性
  * ============================================================================
- * 
+ *
  *  目前已经同以下插件兼容，请将此插件置于以下所有插件的下方
  *     Drill_CoreOfColor
  *     YEP_ItemCore
@@ -119,18 +119,18 @@ GT.OIWin.version = 1.1;
  *     FTKR_SkillTreeSystem
  *     Drill_ItemTextColor
  *     Drill_ItemTextFilter
- * 
+ *
  * ============================================================================
  *  用户规约
  * ============================================================================
- * 
+ *
  *  MIT规约。
  *  如果你使用了本插件，请在致谢中包含'ganfly'或者'gt50'，谢啦！
- * 
+ *
  * ============================================================================
  *  更新日志
  * ============================================================================
- * 
+ *
  * [v1.0] 完成插件。
  *
  * [v1.1] 修复一些诡异的bug。
@@ -395,7 +395,7 @@ GT.OIWin.version = 1.1;
  *
  * @param TextColor
  * @text 颜色-文本
- * @default 
+ * @default
  *
  * @param BasicColor
  * @text 颜色-基本文本
@@ -789,7 +789,7 @@ GT.OIWin.version = 1.1;
  * @param QualityText
  * @text 品质名称
  * @desc 品质名称。
- * @default 
+ * @default
  *
  * @param QualityColor
  * @text 品质颜色
@@ -1364,7 +1364,7 @@ GT.OIWin.version = 1.1;
  * @param Name
  * @text 参数用语
  * @desc 参数的显示名称。
- * @default 
+ * @default
  *
  * @param Show
  * @text 参数是否显示
@@ -1381,73 +1381,72 @@ GT.OIWin.version = 1.1;
 // Parameter Variables
 //=============================================================================
 
-GT.Parameters = PluginManager.parameters('GT_ObjectInfoWindow');
+GT.Parameters = PluginManager.parameters("GT_ObjectInfoWindow");
 GT.Param = GT.Param || {};
 
 //General
-GT.Param.OIWAutoShowWindow = eval(GT.Parameters['AutoShowWindow']);
-GT.Param.OIWMaxRows = JSON.parse(GT.Parameters['MaxRowsList']);
-GT.Param.OIWSwitchBtn = JSON.parse(GT.Parameters['SwitchBtn']);
-GT.Param.OIWDecimalDigit = Number(GT.Parameters['DecimalDigit']);
+GT.Param.OIWAutoShowWindow = eval(GT.Parameters["AutoShowWindow"]);
+GT.Param.OIWMaxRows = JSON.parse(GT.Parameters["MaxRowsList"]);
+GT.Param.OIWSwitchBtn = JSON.parse(GT.Parameters["SwitchBtn"]);
+GT.Param.OIWDecimalDigit = Number(GT.Parameters["DecimalDigit"]);
 
-GT.Param.OIWColorSet = JSON.parse(GT.Parameters['ColorSet']);
+GT.Param.OIWColorSet = JSON.parse(GT.Parameters["ColorSet"]);
 
 //SceneSet
-GT.Param.OIWSceneItemSet = JSON.parse(GT.Parameters['Scene_Item']);
-GT.Param.OIWSceneSkillSet = JSON.parse(GT.Parameters['Scene_Skill']);
-GT.Param.OIWSceneEquipSet = JSON.parse(GT.Parameters['Scene_Equip']);
-GT.Param.OIWSceneShopSet = JSON.parse(GT.Parameters['Scene_Shop']);
-GT.Param.OIWSceneBattleSet = JSON.parse(GT.Parameters['Scene_Battle']);
-GT.Param.OIWSceneSTSSet = JSON.parse(GT.Parameters['Scene_STS']);
+GT.Param.OIWSceneItemSet = JSON.parse(GT.Parameters["Scene_Item"]);
+GT.Param.OIWSceneSkillSet = JSON.parse(GT.Parameters["Scene_Skill"]);
+GT.Param.OIWSceneEquipSet = JSON.parse(GT.Parameters["Scene_Equip"]);
+GT.Param.OIWSceneShopSet = JSON.parse(GT.Parameters["Scene_Shop"]);
+GT.Param.OIWSceneBattleSet = JSON.parse(GT.Parameters["Scene_Battle"]);
+GT.Param.OIWSceneSTSSet = JSON.parse(GT.Parameters["Scene_STS"]);
 
 //Text
-GT.Param.OIWShowIcon = eval(GT.Parameters['ShowIcon']);
-GT.Param.OIWMainText = JSON.parse(GT.Parameters['MainText']);
-GT.Param.OIWActionText = JSON.parse(GT.Parameters['ActionText']);
-GT.Param.OIWDamageText = JSON.parse(GT.Parameters['DamageText']);
-GT.Param.OIWSkillCostText = JSON.parse(GT.Parameters['SkillCostText']);
-GT.Param.OIWObjRequireText = JSON.parse(GT.Parameters['ObjRequireText']);
-GT.Param.OIWQualitySet = JSON.parse(GT.Parameters['QualitySet']);
+GT.Param.OIWShowIcon = eval(GT.Parameters["ShowIcon"]);
+GT.Param.OIWMainText = JSON.parse(GT.Parameters["MainText"]);
+GT.Param.OIWActionText = JSON.parse(GT.Parameters["ActionText"]);
+GT.Param.OIWDamageText = JSON.parse(GT.Parameters["DamageText"]);
+GT.Param.OIWSkillCostText = JSON.parse(GT.Parameters["SkillCostText"]);
+GT.Param.OIWObjRequireText = JSON.parse(GT.Parameters["ObjRequireText"]);
+GT.Param.OIWQualitySet = JSON.parse(GT.Parameters["QualitySet"]);
 
 //Trait
-GT.Param.OIWResistText = JSON.parse(GT.Parameters['ResistText']);
-GT.Param.OIWNParamTextShow = JSON.parse(GT.Parameters['NParamText']);
-GT.Param.OIWXParamText = JSON.parse(GT.Parameters['XParamText']);
-GT.Param.OIWSParamText = JSON.parse(GT.Parameters['SParamText']);
-GT.Param.OIWAttackText = JSON.parse(GT.Parameters['AttackText']);
-GT.Param.OIWSkillText = JSON.parse(GT.Parameters['SkillText']);
-GT.Param.OIWEquipText = JSON.parse(GT.Parameters['EquipText']);
-GT.Param.OIWBResultText = JSON.parse(GT.Parameters['BResultText']);
-GT.Param.OIWOtherTraitText = JSON.parse(GT.Parameters['OtherTraitText']);
+GT.Param.OIWResistText = JSON.parse(GT.Parameters["ResistText"]);
+GT.Param.OIWNParamTextShow = JSON.parse(GT.Parameters["NParamText"]);
+GT.Param.OIWXParamText = JSON.parse(GT.Parameters["XParamText"]);
+GT.Param.OIWSParamText = JSON.parse(GT.Parameters["SParamText"]);
+GT.Param.OIWAttackText = JSON.parse(GT.Parameters["AttackText"]);
+GT.Param.OIWSkillText = JSON.parse(GT.Parameters["SkillText"]);
+GT.Param.OIWEquipText = JSON.parse(GT.Parameters["EquipText"]);
+GT.Param.OIWBResultText = JSON.parse(GT.Parameters["BResultText"]);
+GT.Param.OIWOtherTraitText = JSON.parse(GT.Parameters["OtherTraitText"]);
 
 //EffectText
-GT.Param.OIWRecoverText = JSON.parse(GT.Parameters['RecoverText']);
-GT.Param.OIWStateBuffText = JSON.parse(GT.Parameters['StateBuffText']);
-GT.Param.OIWOtherEffectText = JSON.parse(GT.Parameters['OtherEffectText']);
+GT.Param.OIWRecoverText = JSON.parse(GT.Parameters["RecoverText"]);
+GT.Param.OIWStateBuffText = JSON.parse(GT.Parameters["StateBuffText"]);
+GT.Param.OIWOtherEffectText = JSON.parse(GT.Parameters["OtherEffectText"]);
 
 //=============================================================================
 // DataManager
 //=============================================================================
 
 GT.OIWin.DataManager_isDatabaseLoaded = DataManager.isDatabaseLoaded;
-DataManager.isDatabaseLoaded = function() {
-    if (!GT.OIWin.DataManager_isDatabaseLoaded.call(this)) 
-		return false;
-    if (!GT._loaded_GT_OIWin) {
+DataManager.isDatabaseLoaded = function () {
+	if (!GT.OIWin.DataManager_isDatabaseLoaded.call(this)) return false;
+	if (!GT._loaded_GT_OIWin) {
 		this.processOIWinNotetags($dataItems);
-        this.processOIWinNotetags($dataWeapons);
-        this.processOIWinNotetags($dataArmors);
+		this.processOIWinNotetags($dataWeapons);
+		this.processOIWinNotetags($dataArmors);
 		this.processOIWinNotetags($dataSkills);
-        GT._loaded_GT_OIWin = true;
-    }
-    return true;
+		GT._loaded_GT_OIWin = true;
+	}
+	return true;
 };
 
 DataManager.processOIWinNotetags = function (group) {
-    for (var i = 1; i < group.length; i++) {
-        var obj = group[i];
-        this.setupObjectInfoNotetags(obj);
-    }
+	for (var i = 1; i < group.length; i++) {
+		var obj = group[i];
+		this.setupObjectInfoNotetags(obj);
+	}
 };
 
 DataManager.setupObjectInfoNotetags = function (obj) {
@@ -1457,47 +1456,38 @@ DataManager.setupObjectInfoNotetags = function (obj) {
 	var note4 = /<(?:底部信息)>/i;
 	var note5 = /<\/(?:底部信息)>/i;
 	var note6 = /<(?:帮助插入):([前后PA])>/;
-	
-    var notedata = obj.note.split(/[\r\n]+/);
+
+	var notedata = obj.note.split(/[\r\n]+/);
 	obj.preInfos = [];
 	obj.afterInfos = [];
 	obj.topInfoText = [];
 	obj.bottomInfoText = [];
-	var evalMode = 'none';
-	
-    for (var i = 0; i < notedata.length; i++) {
-        var line = notedata[i];
-        if (line.match(note1)) {
-			if (RegExp.$1 === '前' || RegExp.$1 === 'P') 
-				obj.preInfos.push(RegExp.$2);
-            if (RegExp.$1 === '后' || RegExp.$1 === 'A') 
-				obj.afterInfos.push(RegExp.$2);
-        }
-		else if (line.match(note2)) {
-            evalMode = 'info text top';
-        } 
-		else if (line.match(note3)) {
-            evalMode = 'none';
-        } 
-		else if (line.match(note4)) {
-            evalMode = 'info text bottom';
-        } 
-		else if (line.match(note5)) {
-            evalMode = 'none';
-        }
-		else if (line.match(note6) && obj.description !== '') {
-			if (RegExp.$1 === '前' || RegExp.$1 === 'P') 
+	var evalMode = "none";
+
+	for (var i = 0; i < notedata.length; i++) {
+		var line = notedata[i];
+		if (line.match(note1)) {
+			if (RegExp.$1 === "前" || RegExp.$1 === "P") obj.preInfos.push(RegExp.$2);
+			if (RegExp.$1 === "后" || RegExp.$1 === "A") obj.afterInfos.push(RegExp.$2);
+		} else if (line.match(note2)) {
+			evalMode = "info text top";
+		} else if (line.match(note3)) {
+			evalMode = "none";
+		} else if (line.match(note4)) {
+			evalMode = "info text bottom";
+		} else if (line.match(note5)) {
+			evalMode = "none";
+		} else if (line.match(note6) && obj.description !== "") {
+			if (RegExp.$1 === "前" || RegExp.$1 === "P")
 				obj.topInfoText = obj.topInfoText.concat(obj.description.split(/[\r\n]+/));
-            if (RegExp.$1 === '后' || RegExp.$1 === 'A') 
+			if (RegExp.$1 === "后" || RegExp.$1 === "A")
 				obj.bottomInfoText = obj.bottomInfoText.concat(obj.description.split(/[\r\n]+/));
-        }
-		else if (evalMode === 'info text top') {
-            obj.topInfoText.push(line);
-        } 
-		else if (evalMode === 'info text bottom') {
-            obj.bottomInfoText.push(line);
-        }
-    }
+		} else if (evalMode === "info text top") {
+			obj.topInfoText.push(line);
+		} else if (evalMode === "info text bottom") {
+			obj.bottomInfoText.push(line);
+		}
+	}
 };
 
 //=============================================================================
@@ -1511,11 +1501,11 @@ function Window_ObjectInfo() {
 Window_ObjectInfo.prototype = Object.create(Window_Base.prototype);
 Window_ObjectInfo.prototype.constructor = Window_ObjectInfo;
 
-Window_ObjectInfo.prototype.initialize = function(windowSet) {
+Window_ObjectInfo.prototype.initialize = function (windowSet) {
 	this._windowSet = windowSet;
 	this._item = null;
 	this._actor = null;
-	this._category = '';
+	this._category = "";
 	this._data = [];
 	this._textTop = [];
 	this._textBottom = [];
@@ -1555,21 +1545,25 @@ Window_ObjectInfo.prototype.textPadding = function () {
 	return Math.round(Window_Base.prototype.textPadding.call(this) * this.scaleRate());
 };
 
-Window_ObjectInfo.prototype.maxCols = function() {
-	if (eval(this._windowSet.FixWindow) && eval(this._windowSet.FixMaxCols))
-		return 1;
+Window_ObjectInfo.prototype.maxCols = function () {
+	if (eval(this._windowSet.FixWindow) && eval(this._windowSet.FixMaxCols)) return 1;
 	var rows = GT.Param.OIWMaxRows;
 	rows = [0].concat(rows);
 	var length = this.dataLength();
 	for (var i = 0; i < rows.length - 1; i++) {
-		if (length >= rows[i] && length < rows[i + 1]) 
-			return i + 1;
+		if (length >= rows[i] && length < rows[i + 1]) return i + 1;
 	}
 	return rows.length;
 };
 
-Window_ObjectInfo.prototype.dataLength = function() {
-	var length = this._data.length + this._textTop.length + this._textBottom.length + this._damageData.length + this._requireData.length + this._costData.length;
+Window_ObjectInfo.prototype.dataLength = function () {
+	var length =
+		this._data.length +
+		this._textTop.length +
+		this._textBottom.length +
+		this._damageData.length +
+		this._requireData.length +
+		this._costData.length;
 	return length;
 };
 
@@ -1579,10 +1573,10 @@ Window_ObjectInfo.prototype.processDrawIcon = function (iconIndex, textState) {
 };
 
 Window_ObjectInfo.prototype.drawIcon = function (iconIndex, x, y) {
-	var bitmap = ImageManager.loadSystem('IconSet');
+	var bitmap = ImageManager.loadSystem("IconSet");
 	var pw = Window_Base._iconWidth;
 	var ph = Window_Base._iconHeight;
-	var sx = iconIndex % 16 * pw;
+	var sx = (iconIndex % 16) * pw;
 	var sy = Math.floor(iconIndex / 16) * ph;
 	var rate = this.scaleRate();
 	this.contents._context.imageSmoothingEnabled = false;
@@ -1597,8 +1591,8 @@ Window_ObjectInfo.prototype.setActor = function (actor) {
 };
 
 Window_ObjectInfo.prototype.setItem = function (item, targetWindow) {
-	if (Imported.FTKR_STS && SceneManager._scene instanceof Scene_STS && item && item.id) { 
-	    item = $dataSkills[item.id]; 
+	if (Imported.FTKR_STS && SceneManager._scene instanceof Scene_STS && item && item.id) {
+		item = $dataSkills[item.id];
 	}
 	if (this._item === item) return;
 	this._item = item;
@@ -1612,8 +1606,7 @@ Window_ObjectInfo.prototype.setItem = function (item, targetWindow) {
 		this.refresh();
 		this.updatePosition(targetWindow);
 		this.open();
-	}
-	else {
+	} else {
 		this.close();
 	}
 };
@@ -1633,11 +1626,9 @@ Window_ObjectInfo.prototype.makeObjInfo = function () {
 	this.getObjPreInfos();
 	if (DataManager.isItem(item)) {
 		this.getItemInfo();
-	}
-	else if (DataManager.isWeapon(item) || DataManager.isArmor(item)) {
+	} else if (DataManager.isWeapon(item) || DataManager.isArmor(item)) {
 		this.getEquipInfo();
-	}
-	else if (DataManager.isSkill(item)) {
+	} else if (DataManager.isSkill(item)) {
 		this.getSkillInfo();
 	}
 	this.getObjAfterInfos();
@@ -1668,126 +1659,114 @@ Window_ObjectInfo.prototype.getSkillInfo = function () {
 	this.getObjCost();
 };
 
-Window_ObjectInfo.prototype.getObjCategory = function() {
+Window_ObjectInfo.prototype.getObjCategory = function () {
 	var item = this._item;
-	var text = '';
+	var text = "";
 	if (item.itemCategory && item.itemCategory.length) {
-		for (var i = 0; i < item.itemCategory.length; i++) { 
-		    if (text !== '') text += '/';
-		    text += item.itemCategory[i];
+		for (var i = 0; i < item.itemCategory.length; i++) {
+			if (text !== "") text += "/";
+			text += item.itemCategory[i];
 		}
-	}
-	else if (DataManager.isItem(item)) {
-		if (text !== '') text += '/';
-		if (item.itypeId === 1)
-		    text += TextManager.item;
-		else if (item.itypeId === 2)
-			text += TextManager.keyItem;
+	} else if (DataManager.isItem(item)) {
+		if (text !== "") text += "/";
+		if (item.itypeId === 1) text += TextManager.item;
+		else if (item.itypeId === 2) text += TextManager.keyItem;
 	}
 	if (DataManager.isWeapon(item)) {
-		if (text !== '') text += '/';
+		if (text !== "") text += "/";
 		text += $dataSystem.weaponTypes[item.wtypeId];
-	}
-	else if (DataManager.isArmor(item)) {
-		if (text !== '') text += '/';
+	} else if (DataManager.isArmor(item)) {
+		if (text !== "") text += "/";
 		text += $dataSystem.equipTypes[item.etypeId];
-	}
-	else if (DataManager.isSkill(item)) {
+	} else if (DataManager.isSkill(item)) {
 		text = this.getSkillType(item);
 	}
-	if (item.consumable && this.getObjTextShow('OIWMainText','Consumable'))
-		text += '/' + String(JSON.parse(GT.Param.OIWMainText.Consumable).Name);
+	if (item.consumable && this.getObjTextShow("OIWMainText", "Consumable"))
+		text += "/" + String(JSON.parse(GT.Param.OIWMainText.Consumable).Name);
 	this._category = text;
 };
 
-Window_ObjectInfo.prototype.getSkillType = function(item) {
+Window_ObjectInfo.prototype.getSkillType = function (item) {
 	return $dataSystem.skillTypes[item.stypeId];
 };
-	
-Window_ObjectInfo.prototype.getObjPreInfos = function() {
+
+Window_ObjectInfo.prototype.getObjPreInfos = function () {
 	var item = this._item;
-	if (item.baseItemId)
-		item = DataManager.getBaseItem(item);
+	if (item.baseItemId) item = DataManager.getBaseItem(item);
 	if (item.preInfos && item.preInfos.length) {
 		this._data = this._data.concat(item.preInfos);
 	}
 };
 
-Window_ObjectInfo.prototype.getObjAfterInfos = function() {
+Window_ObjectInfo.prototype.getObjAfterInfos = function () {
 	var item = this._item;
-	if (item.baseItemId)
-		item = DataManager.getBaseItem(item);
-	if (item.afterInfos && item.afterInfos.length)
-		this._data = this._data.concat(item.afterInfos);
+	if (item.baseItemId) item = DataManager.getBaseItem(item);
+	if (item.afterInfos && item.afterInfos.length) this._data = this._data.concat(item.afterInfos);
 };
 
-Window_ObjectInfo.prototype.getObjInfoText = function() {
+Window_ObjectInfo.prototype.getObjInfoText = function () {
 	var item = this._item;
-	if (item.baseItemId)
-		item = DataManager.getBaseItem(item);
-	if (item.topInfoText && item.topInfoText.length) 
-	    this._textTop = this._textTop.concat(item.topInfoText);
-	if (item.bottomInfoText && item.bottomInfoText.length) 
-	    this._textBottom = this._textBottom.concat(item.bottomInfoText);
+	if (item.baseItemId) item = DataManager.getBaseItem(item);
+	if (item.topInfoText && item.topInfoText.length) this._textTop = this._textTop.concat(item.topInfoText);
+	if (item.bottomInfoText && item.bottomInfoText.length)
+		this._textBottom = this._textBottom.concat(item.bottomInfoText);
 	if (Imported.YEP_ItemCore && eval(GT.Param.OIWMainText.ShowTopBottomText)) {
-		if (item.infoTextTop && item.infoTextTop !== '')
+		if (item.infoTextTop && item.infoTextTop !== "")
 			this._textTop = this._textTop.concat(item.infoTextTop.split(/[\r\n]+/));
-		if (item.infoTextBottom && item.infoTextBottom !== '')
+		if (item.infoTextBottom && item.infoTextBottom !== "")
 			this._textBottom = this._textBottom.concat(item.infoTextBottom.split(/[\r\n]+/));
 	}
 };
 
-Window_ObjectInfo.prototype.getObjScope = function() {
+Window_ObjectInfo.prototype.getObjScope = function () {
 	var item = this._item;
-	if (item.scope === 0 || !this.getObjTextShow('OIWMainText','Scope')) return;
-	var text = this.getObjText('OIWMainText','Scope') + this.textColon();
+	if (item.scope === 0 || !this.getObjTextShow("OIWMainText", "Scope")) return;
+	var text = this.getObjText("OIWMainText", "Scope") + this.textColon();
 	var scopeText = JSON.parse(GT.Param.OIWMainText.ScopeText);
 	text += this.addBasicColor(scopeText[item.scope - 1]);
 	this._data.push(text);
 };
 
-Window_ObjectInfo.prototype.getObjOccasion = function() {
+Window_ObjectInfo.prototype.getObjOccasion = function () {
 	var item = this._item;
-	if (!this.getObjTextShow('OIWMainText', 'Occasion')) return;
+	if (!this.getObjTextShow("OIWMainText", "Occasion")) return;
 	if (item.passiveStates && item.passiveStates.length && item.occasion === 3) return;
-	var text = this.getObjText('OIWMainText', 'Occasion') + this.textColon();
+	var text = this.getObjText("OIWMainText", "Occasion") + this.textColon();
 	var occaText = JSON.parse(GT.Param.OIWMainText.OccasionText);
 	text += this.addBasicColor(occaText[item.occasion]);
 	this._data.push(text);
 };
 
-Window_ObjectInfo.prototype.getObjAction = function() {
+Window_ObjectInfo.prototype.getObjAction = function () {
 	var item = this._item;
-	var category = 'OIWActionText';
-	var text = '';
-	if (this.getObjTextShow(category, 'Speed') && item.speed !== 0) {
-		text = this.getObjText(category, 'Speed') + this.textColon();
-		if (item.speed > 0)  
-			text += this.addIncreaseColor('+' + Math.floor(item.speed));
-		else
-			text += this.addIncreaseColor(Math.floor(item.speed));
+	var category = "OIWActionText";
+	var text = "";
+	if (this.getObjTextShow(category, "Speed") && item.speed !== 0) {
+		text = this.getObjText(category, "Speed") + this.textColon();
+		if (item.speed > 0) text += this.addIncreaseColor("+" + Math.floor(item.speed));
+		else text += this.addIncreaseColor(Math.floor(item.speed));
 		this._data.push(text);
 	}
-	if (this.getObjTextShow(category, 'SuccessRate')) {
+	if (this.getObjTextShow(category, "SuccessRate")) {
 		if (!item.passiveStates || !item.passiveStates.length) {
-			text = this.getObjText(category, 'SuccessRate') + this.textColon(); 
-			text += this.addBasicColor(Math.floor(item.successRate) + '%');
+			text = this.getObjText(category, "SuccessRate") + this.textColon();
+			text += this.addBasicColor(Math.floor(item.successRate) + "%");
 			this._data.push(text);
 		}
 	}
-	if (this.getObjTextShow(category, 'Repeats') && item.repeats !== 1) {
-		text = this.getObjText(category, 'Repeats') + this.textColon(); 
+	if (this.getObjTextShow(category, "Repeats") && item.repeats !== 1) {
+		text = this.getObjText(category, "Repeats") + this.textColon();
 		text += this.addBasicColor(Math.floor(item.repeats));
 		this._data.push(text);
 	}
-	if (this.getObjTextShow(category, 'TpGain') && item.tpGain !== 0) {
-		text = this.getObjText(category, 'TpGain') + this.textColon(); 
+	if (this.getObjTextShow(category, "TpGain") && item.tpGain !== 0) {
+		text = this.getObjText(category, "TpGain") + this.textColon();
 		text += this.addBasicColor(Math.floor(item.tpGain));
 		this._data.push(text);
 	}
-	if (this.getObjTextShow(category, 'HitType')) {
+	if (this.getObjTextShow(category, "HitType")) {
 		if (!item.passiveStates || !item.passiveStates.length) {
-			text = this.getObjText(category, 'HitType') + this.textColon(); 
+			text = this.getObjText(category, "HitType") + this.textColon();
 			var hitTypeText = JSON.parse(GT.Param.OIWActionText.HitTypeText);
 			text += this.addBasicColor(hitTypeText[item.hitType]);
 			this._data.push(text);
@@ -1795,88 +1774,86 @@ Window_ObjectInfo.prototype.getObjAction = function() {
 	}
 };
 
-Window_ObjectInfo.prototype.getObjDamage = function() {
+Window_ObjectInfo.prototype.getObjDamage = function () {
 	var item = this._item;
 	if (item.damage.type <= 0) return;
-	var category = 'OIWDamageText';
+	var category = "OIWDamageText";
 	var damage = item.damage;
-	var text = '';
-	if (this.getObjTextShow(category, 'Type')) {
-		text = this.getObjText(category, 'Type') + this.textColon();
+	var text = "";
+	if (this.getObjTextShow(category, "Type")) {
+		text = this.getObjText(category, "Type") + this.textColon();
 		var damageTypeText = JSON.parse(GT.Param.OIWDamageText.TypeText);
 		text += this.addBasicColor(damageTypeText[damage.type - 1]);
 		text = this.getObjDamageEle(text, damage);
-		if (damage.critical && this.getObjTextShow(category, 'Critical')) 
-			text += this.addBasicColor('/' + this.getObjText(category, 'Critical', 1));
+		if (damage.critical && this.getObjTextShow(category, "Critical"))
+			text += this.addBasicColor("/" + this.getObjText(category, "Critical", 1));
 		this._damageData.push(text);
 	}
-	if (this.getObjTextShow(category, 'Formula')) {
-		text = this.getObjText(category, 'Formula') + this.textColon(); 
+	if (this.getObjTextShow(category, "Formula")) {
+		text = this.getObjText(category, "Formula") + this.textColon();
 		text += this.addBasicColor(damage.formula);
 		this._damageData.push(text);
 	}
-	if (this.getObjTextShow(category, 'Variance') && damage.variance !== 0) {
-		text = this.getObjText(category, 'Variance') + this.textColon(); 
-		text += this.addBasicColor(Math.floor(damage.variance) + '%');
+	if (this.getObjTextShow(category, "Variance") && damage.variance !== 0) {
+		text = this.getObjText(category, "Variance") + this.textColon();
+		text += this.addBasicColor(Math.floor(damage.variance) + "%");
 		this._damageData.push(text);
 	}
 };
 
-Window_ObjectInfo.prototype.getObjDamageEle = function(text, damage) {
-	var category = 'OIWDamageText';
-	if (!this.getObjTextShow(category, 'Element')) return text;
+Window_ObjectInfo.prototype.getObjDamageEle = function (text, damage) {
+	var category = "OIWDamageText";
+	if (!this.getObjTextShow(category, "Element")) return text;
 	if (damage.elementId > 0) {
-		text += this.addBasicColor('/' + $dataSystem.elements[damage.elementId] + this.getObjText(category, 'Element', 1));
+		text += this.addBasicColor("/" + $dataSystem.elements[damage.elementId] + this.getObjText(category, "Element", 1));
 	}
 	return text;
 };
 
-Window_ObjectInfo.prototype.getObjCost = function() {
+Window_ObjectInfo.prototype.getObjCost = function () {
 	var item = this._item;
-	if (Imported.YEP_SkillCore)
-		this.getObjHMTpCost(item, 'Hp');
-	this.getObjHMTpCost(item, 'Mp');
-	this.getObjHMTpCost(item, 'Tp');
-	if (!this._lastData.length) this._lastData.push('---');
+	if (Imported.YEP_SkillCore) this.getObjHMTpCost(item, "Hp");
+	this.getObjHMTpCost(item, "Mp");
+	this.getObjHMTpCost(item, "Tp");
+	if (!this._lastData.length) this._lastData.push("---");
 	this.getObjOtherCost(item);
 	this.getObjCustomDisplayCost(item);
 };
 
-Window_ObjectInfo.prototype.getObjOtherCost = function(item) {
-};
+Window_ObjectInfo.prototype.getObjOtherCost = function (item) {};
 
-Window_ObjectInfo.prototype.getObjHMTpCost = function(skill, code) {
+Window_ObjectInfo.prototype.getObjHMTpCost = function (skill, code) {
 	if (!this._actor) return;
-    if (this._actor['skill' + code + 'Cost'](skill) <= 0) return;
-	var fmt = String(GT.Param.OIWSkillCostText[code + 'Format']);
-	var color = Number(GT.Param.OIWSkillCostText[code + 'TextColor']);
-	var icon = Number(GT.Param.OIWSkillCostText[code + 'Icon']);
-	var text = fmt.format(this._actor['skill' + code + 'Cost'](skill), TextManager[code.toLowerCase() + 'A']);
-	text = '\\c[' + color + ']' + text;
-    if (icon > 0) {
-		text += '\\I[' + icon + ']';
-    }
+	if (this._actor["skill" + code + "Cost"](skill) <= 0) return;
+	var fmt = String(GT.Param.OIWSkillCostText[code + "Format"]);
+	var color = Number(GT.Param.OIWSkillCostText[code + "TextColor"]);
+	var icon = Number(GT.Param.OIWSkillCostText[code + "Icon"]);
+	var text = fmt.format(this._actor["skill" + code + "Cost"](skill), TextManager[code.toLowerCase() + "A"]);
+	text = "\\c[" + color + "]" + text;
+	if (icon > 0) {
+		text += "\\I[" + icon + "]";
+	}
 	this._lastData.push(text);
 };
 
-Window_ObjectInfo.prototype.getObjCustomDisplayCost = function(skill) {
+Window_ObjectInfo.prototype.getObjCustomDisplayCost = function (skill) {
 	if (!Imported.YEP_SkillCore) return;
-	if (!this.getObjTextShow('OIWSkillCostText','CustomCost')) return;
-    if (skill.customCostText === '') return;
-	var text = this.getObjText('OIWSkillCostText','CustomCost') + this.textColon() + skill.customCostText;
+	if (!this.getObjTextShow("OIWSkillCostText", "CustomCost")) return;
+	if (skill.customCostText === "") return;
+	var text = this.getObjText("OIWSkillCostText", "CustomCost") + this.textColon() + skill.customCostText;
 	this._costData.push(text);
 };
 
 Window_ObjectInfo.prototype.getObjBaseParam = function () {
 	var item = this._item;
 	if (!item.params) return;
-	var codeList = ['MHP', 'MMP', 'ATK', 'DEF', 'MAT', 'MDF', 'AGI', 'LUK'];
-	for (var i = 0; i < 8; i++) {			
+	var codeList = ["MHP", "MMP", "ATK", "DEF", "MAT", "MDF", "AGI", "LUK"];
+	for (var i = 0; i < 8; i++) {
 		var value = item.params[i];
 		var show = eval(GT.Param.OIWNParamTextShow[codeList[i]]);
 		if (value !== 0 && show) {
 			var text = this.addSystemColor(TextManager.param(i));
-			text += value > 0 ? this.addIncreaseColor('+' + Math.round(value)) : this.addDecreaseColor(Math.round(value));
+			text += value > 0 ? this.addIncreaseColor("+" + Math.round(value)) : this.addDecreaseColor(Math.round(value));
 			this._data.push(text);
 		}
 	}
@@ -1884,103 +1861,92 @@ Window_ObjectInfo.prototype.getObjBaseParam = function () {
 
 Window_ObjectInfo.prototype.getObjTraits = function (item) {
 	if (!item.traits) return;
-	item.traits.forEach(function(trait) {
+	item.traits.forEach(function (trait) {
 		var code = trait.code;
-		if (code > 10 && code < 15) 
-			this.getObjTraitResist(trait, item);
-		else if (code > 20 && code < 24) 
-			this.getObjTraitParam(trait, item);
-		else if (code > 30 && code < 35) 
-			this.getObjTraitAttack(trait, item);
-		else if (code > 40 && code < 45) 
-			this.getObjTraitSkill(trait, item);
-		else if (code > 50 && code < 56) 
-			this.getObjTraitEquip(trait, item);
-		else if (code > 60 && code < 65)
-			this.getObjTraitOther(trait, item);
+		if (code > 10 && code < 15) this.getObjTraitResist(trait, item);
+		else if (code > 20 && code < 24) this.getObjTraitParam(trait, item);
+		else if (code > 30 && code < 35) this.getObjTraitAttack(trait, item);
+		else if (code > 40 && code < 45) this.getObjTraitSkill(trait, item);
+		else if (code > 50 && code < 56) this.getObjTraitEquip(trait, item);
+		else if (code > 60 && code < 65) this.getObjTraitOther(trait, item);
 	}, this);
 };
 
-Window_ObjectInfo.prototype.getObjEffects = function() {
+Window_ObjectInfo.prototype.getObjEffects = function () {
 	if (!this._item.effects) return;
-	this._item.effects.forEach(function(effect) {
+	this._item.effects.forEach(function (effect) {
 		var code = effect.code;
-		if (code > 10 && code < 14) 
-			this.getObjEffectValue(effect);
-		else if (code > 20 && code < 23) 
-			this.getObjEffectState(effect);
-		else if (code > 30 && code < 35) 
-			this.getObjEffectBuff(effect);
-		else if (code > 40 && code < 45) 
-			this.getObjEffectOther(effect);
+		if (code > 10 && code < 14) this.getObjEffectValue(effect);
+		else if (code > 20 && code < 23) this.getObjEffectState(effect);
+		else if (code > 30 && code < 35) this.getObjEffectBuff(effect);
+		else if (code > 40 && code < 45) this.getObjEffectOther(effect);
 	}, this);
 };
 
-Window_ObjectInfo.prototype.getObjTraitResist = function(trait, item) {
-	var category = 'OIWResistText';
-	var codeList = ['Attribute', 'Debuff', 'State', 'StateImmunity'];
+Window_ObjectInfo.prototype.getObjTraitResist = function (trait, item) {
+	var category = "OIWResistText";
+	var codeList = ["Attribute", "Debuff", "State", "StateImmunity"];
 	var code = codeList[(trait.code % 10) - 1];
 	if (this.getObjTextShow(category, code)) {
 		var dataId = trait.dataId;
 		var value = 100 - trait.value * 100;
-		if (code === 'StateImmunity') {
+		if (code === "StateImmunity") {
 			var state = $dataStates[dataId];
 			var text = this.getObjText(category, code) + this.textColon();
-			if (GT.Param.OIWShowIcon && state.iconIndex !== 0) 
-				text += '\\I['+ state.iconIndex + ']';
+			if (GT.Param.OIWShowIcon && state.iconIndex !== 0) text += "\\I[" + state.iconIndex + "]";
 			text += this.addBasicColor(state.name);
 			return this.pushData(text, item);
 		}
-		if (code === 'Attribute')
-			var text = $dataSystem.elements[dataId];
-		else if (code === 'Debuff')
-			var text = TextManager.param(dataId);
+		if (code === "Attribute") var text = $dataSystem.elements[dataId];
+		else if (code === "Debuff") var text = TextManager.param(dataId);
 		else {
 			var state = $dataStates[dataId];
 			var text = state.name;
-			if (GT.Param.OIWShowIcon && state.iconIndex !== 0) 
-				text = '\\I['+ state.iconIndex + ']' + text;
+			if (GT.Param.OIWShowIcon && state.iconIndex !== 0) text = "\\I[" + state.iconIndex + "]" + text;
 		}
 		text = this.addSystemColor(text);
-		text += this.getObjText(category, code); 
-		text += value > 0 ? this.addIncreaseColor('+' + this.sortValueDD(value) + '%') : this.addDecreaseColor(this.sortValueDD(value) + '%');
+		text += this.getObjText(category, code);
+		text +=
+			value > 0
+				? this.addIncreaseColor("+" + this.sortValueDD(value) + "%")
+				: this.addDecreaseColor(this.sortValueDD(value) + "%");
 		this.pushData(text, item);
 	}
 };
 
-Window_ObjectInfo.prototype.getObjTraitParam = function(trait, item) {
-	var categoryList = ['OIWNParamText', 'OIWXParamText', 'OIWSParamText'];
+Window_ObjectInfo.prototype.getObjTraitParam = function (trait, item) {
+	var categoryList = ["OIWNParamText", "OIWXParamText", "OIWSParamText"];
 	var category = categoryList[(trait.code % 20) - 1];
 	var dataId = trait.dataId;
 	var value = trait.value;
-	if (category === 'OIWNParamText') {
-		var codeList = ['MHP', 'MMP', 'ATK', 'DEF', 'MAT', 'MDF', 'AGI', 'LUK'];
+	if (category === "OIWNParamText") {
+		var codeList = ["MHP", "MMP", "ATK", "DEF", "MAT", "MDF", "AGI", "LUK"];
 		var code = codeList[dataId];
 		if (eval(GT.Param.OIWNParamTextShow[code]) && value !== 1.0) {
 			var text = this.addSystemColor(TextManager.param(dataId));
-			var valueText = '\u00d7' + Math.round(this.sortValueDD(value * 100)) + '%';
+			var valueText = "\u00d7" + Math.round(this.sortValueDD(value * 100)) + "%";
 			valueText = value > 1.0 ? this.addIncreaseColor(valueText) : this.addDecreaseColor(valueText);
 			text += valueText;
 			this.pushData(text, item);
 		}
 	}
-	if (category === 'OIWXParamText') {
-		var codeList = ['HIT', 'EVA', 'CRI', 'CEV', 'MEV', 'MRF', 'CNT', 'HRG', 'MRG', 'TRG'];
+	if (category === "OIWXParamText") {
+		var codeList = ["HIT", "EVA", "CRI", "CEV", "MEV", "MRF", "CNT", "HRG", "MRG", "TRG"];
 		var code = codeList[dataId];
 		if (this.getObjTextShow(category, code) && value !== 0) {
 			var text = this.getObjText(category, code);
-			var valueText = Math.round(this.sortValueDD(value * 100)) + '%';
-			valueText = value > 0 ? this.addIncreaseColor('+' + valueText) : this.addDecreaseColor(valueText);
+			var valueText = Math.round(this.sortValueDD(value * 100)) + "%";
+			valueText = value > 0 ? this.addIncreaseColor("+" + valueText) : this.addDecreaseColor(valueText);
 			text += valueText;
 			this.pushData(text, item);
 		}
 	}
-	if (category === 'OIWSParamText') {
-		var codeList = ['TGR', 'GRD', 'REC', 'PHA', 'MCR', 'TCR', 'PDR', 'MDR', 'FDR', 'EXR'];
+	if (category === "OIWSParamText") {
+		var codeList = ["TGR", "GRD", "REC", "PHA", "MCR", "TCR", "PDR", "MDR", "FDR", "EXR"];
 		var code = codeList[dataId];
 		if (this.getObjTextShow(category, code) && value !== 1.0) {
 			var text = this.getObjText(category, code);
-			var valueText = '\u00d7' + Math.round(this.sortValueDD(value * 100)) + '%';
+			var valueText = "\u00d7" + Math.round(this.sortValueDD(value * 100)) + "%";
 			valueText = this.addBasicColor(valueText);
 			text += valueText;
 			this.pushData(text, item);
@@ -1988,94 +1954,82 @@ Window_ObjectInfo.prototype.getObjTraitParam = function(trait, item) {
 	}
 };
 
-Window_ObjectInfo.prototype.getObjTraitAttack = function(trait, item) {
-	var category = 'OIWAttackText';
-	var codeList = ['AtkAttribute', 'AtkState', 'AtkSpeed', 'AtkAppend'];
+Window_ObjectInfo.prototype.getObjTraitAttack = function (trait, item) {
+	var category = "OIWAttackText";
+	var codeList = ["AtkAttribute", "AtkState", "AtkSpeed", "AtkAppend"];
 	var code = codeList[(trait.code % 30) - 1];
 	var dataId = trait.dataId;
-    var value = trait.value;
-	var force = [33, 34].contains(trait.code) ? (value !== 0) : true;
+	var value = trait.value;
+	var force = [33, 34].contains(trait.code) ? value !== 0 : true;
 	if (this.getObjTextShow(category, code) && force) {
-		if (code === 'AtkAttribute')
-			var text = this.addBasicColor($dataSystem.elements[dataId]);
-		else if (code === 'AtkState') {
-			var text = '';
-			if (GT.Param.OIWShowIcon && $dataStates[dataId].iconIndex) 
-				text += '\\I['+ $dataStates[dataId].iconIndex + ']';
-			text += this.addBasicColor($dataStates[dataId].name + ' ' + Math.floor(this.sortValueDD(value * 100)) + '%');
-		}
-		else if (value > 0)
-			var text = this.addIncreaseColor('+' + Math.floor(value));
-		else
-			var text = this.addDecreaseColor(Math.floor(value));
+		if (code === "AtkAttribute") var text = this.addBasicColor($dataSystem.elements[dataId]);
+		else if (code === "AtkState") {
+			var text = "";
+			if (GT.Param.OIWShowIcon && $dataStates[dataId].iconIndex) text += "\\I[" + $dataStates[dataId].iconIndex + "]";
+			text += this.addBasicColor($dataStates[dataId].name + " " + Math.floor(this.sortValueDD(value * 100)) + "%");
+		} else if (value > 0) var text = this.addIncreaseColor("+" + Math.floor(value));
+		else var text = this.addDecreaseColor(Math.floor(value));
 		text = this.getObjText(category, code) + this.textColon() + text;
 		this.pushData(text, item);
 	}
 };
 
-Window_ObjectInfo.prototype.getObjTraitSkill = function(trait, item) {
-	var category = 'OIWSkillText';
-	var codeList = ['AddSType', 'SealStype', 'AddSkill', 'SealSkill'];
+Window_ObjectInfo.prototype.getObjTraitSkill = function (trait, item) {
+	var category = "OIWSkillText";
+	var codeList = ["AddSType", "SealStype", "AddSkill", "SealSkill"];
 	var code = codeList[(trait.code % 40) - 1];
 	if (this.getObjTextShow(category, code)) {
 		var dataId = trait.dataId;
-		if (code === 'AddSType' || code === 'SealStype')
-			var text = $dataSystem.skillTypes[dataId];
+		if (code === "AddSType" || code === "SealStype") var text = $dataSystem.skillTypes[dataId];
 		else {
 			var text = $dataSkills[dataId].name;
 			if (GT.Param.OIWShowIcon && $dataSkills[dataId].iconIndex)
-				text = '\\I['+ $dataSkills[dataId].iconIndex + ']' + text;
+				text = "\\I[" + $dataSkills[dataId].iconIndex + "]" + text;
 		}
 		text = this.getObjText(category, code) + this.textColon() + this.addBasicColor(text);
 		this.pushData(text, item);
 	}
 };
 
-Window_ObjectInfo.prototype.getObjTraitEquip = function(trait, item) {
-	var category = 'OIWEquipText';
-	var codeList = ['EquipWeapon', 'EquipArmor', 'FixEquip', 'SealEquip', 'EquipSlot'];
+Window_ObjectInfo.prototype.getObjTraitEquip = function (trait, item) {
+	var category = "OIWEquipText";
+	var codeList = ["EquipWeapon", "EquipArmor", "FixEquip", "SealEquip", "EquipSlot"];
 	var code = codeList[(trait.code % 50) - 1];
 	if (this.getObjTextShow(category, code)) {
 		var dataId = trait.dataId;
-		if (code === 'EquipWeapon')
-			var text = $dataSystem.weaponTypes[dataId];
-		else if (code === 'EquipArmor')
-			var text = $dataSystem.armorTypes[dataId];
-		else if (code === 'EquipSlot')
-			var text = String(JSON.parse(GT.Param.OIWEquipText.EquipSlotText)[dataId]);
-		else 
-			var text = $dataSystem.equipTypes[dataId];
+		if (code === "EquipWeapon") var text = $dataSystem.weaponTypes[dataId];
+		else if (code === "EquipArmor") var text = $dataSystem.armorTypes[dataId];
+		else if (code === "EquipSlot") var text = String(JSON.parse(GT.Param.OIWEquipText.EquipSlotText)[dataId]);
+		else var text = $dataSystem.equipTypes[dataId];
 		text = this.getObjText(category, code) + this.textColon() + this.addBasicColor(text);
 		this.pushData(text, item);
 	}
 };
 
-Window_ObjectInfo.prototype.getObjTraitOther = function(trait, item) {
-	var category = 'OIWOtherTraitText';
-	var codeList = ['MoreAction', 'SpecialSign', 'DisappearEffect', 'PartyAbility'];
+Window_ObjectInfo.prototype.getObjTraitOther = function (trait, item) {
+	var category = "OIWOtherTraitText";
+	var codeList = ["MoreAction", "SpecialSign", "DisappearEffect", "PartyAbility"];
 	var code = codeList[(trait.code % 60) - 1];
 	if (this.getObjTextShow(category, code)) {
 		var dataId = trait.dataId;
-		if (code === 'MoreAction') {
-			var text = this.sortValueDD(trait.value * 100) + '%';
-		}
-		else 
-			var text = String(JSON.parse(GT.Param[category][code + 'Text'])[dataId]);
+		if (code === "MoreAction") {
+			var text = this.sortValueDD(trait.value * 100) + "%";
+		} else var text = String(JSON.parse(GT.Param[category][code + "Text"])[dataId]);
 		text = this.getObjText(category, code) + this.textColon() + this.addBasicColor(text);
 		this.pushData(text, item);
 	}
 };
 
-Window_ObjectInfo.prototype.getObjEffectValue = function(effect) {
-	var category = 'OIWRecoverText';
-	var codeList1 = ['HPRecover', 'MPRecover', 'TPRecover'];
-	var codeList2 = ['HPCost', 'MPCost', 'TPCost'];
+Window_ObjectInfo.prototype.getObjEffectValue = function (effect) {
+	var category = "OIWRecoverText";
+	var codeList1 = ["HPRecover", "MPRecover", "TPRecover"];
+	var codeList2 = ["HPCost", "MPCost", "TPCost"];
 	var code1 = codeList1[(effect.code % 10) - 1];
 	var code2 = codeList2[(effect.code % 10) - 1];
-	var text = '';
+	var text = "";
 	var both = false;
-	if (code1 === 'TPRecover' && code2 === 'TPCost') {
-		if(this.getObjTextShow(category, code1)){
+	if (code1 === "TPRecover" && code2 === "TPCost") {
+		if (this.getObjTextShow(category, code1)) {
 			text = this.getObjText(category, code1) + this.textColon();
 			text += this.addIncreaseColor(Math.floor(effect.value1));
 			this._data.push(text);
@@ -2085,79 +2039,73 @@ Window_ObjectInfo.prototype.getObjEffectValue = function(effect) {
 	if (this.getObjTextShow(category, code1)) {
 		text = this.getObjText(category, code1) + this.textColon();
 		if (effect.value1 > 0) {
-			text += this.addIncreaseColor(this.sortValueDD(effect.value1 * 100) + '%');
+			text += this.addIncreaseColor(this.sortValueDD(effect.value1 * 100) + "%");
 			both = true;
 		}
-		if(effect.value2 > 0){
-			if (both) text += this.addIncreaseColor('+');
+		if (effect.value2 > 0) {
+			if (both) text += this.addIncreaseColor("+");
 			text += this.addIncreaseColor(Math.floor(effect.value2));
 		}
-		if(effect.value1 > 0 || effect.value2 > 0) this._data.push(text);
+		if (effect.value1 > 0 || effect.value2 > 0) this._data.push(text);
 	}
 	both = false;
 	if (this.getObjTextShow(category, code2)) {
 		text = this.getObjText(category, code2) + this.textColon();
 		if (effect.value1 < 0) {
-			text += this.addDecreaseColor(Math.abs(this.sortValueDD(effect.value1 * 100)) + '%');
+			text += this.addDecreaseColor(Math.abs(this.sortValueDD(effect.value1 * 100)) + "%");
 			both = true;
 		}
-		if(effect.value2 < 0){
-			if (both) text += this.addDecreaseColor('+');
+		if (effect.value2 < 0) {
+			if (both) text += this.addDecreaseColor("+");
 			text += this.addDecreaseColor(Math.abs(Math.floor(effect.value2)));
 		}
-		if(effect.value1 < 0 || effect.value2 < 0) this._data.push(text);
+		if (effect.value1 < 0 || effect.value2 < 0) this._data.push(text);
 	}
 };
 
-Window_ObjectInfo.prototype.getObjEffectState = function(effect) {
-	var category = 'OIWStateBuffText';
-	var codeList = ['AddState', 'RemoveState'];
+Window_ObjectInfo.prototype.getObjEffectState = function (effect) {
+	var category = "OIWStateBuffText";
+	var codeList = ["AddState", "RemoveState"];
 	var code = codeList[(effect.code % 20) - 1];
-	if(this.getObjTextShow(category, code)){
+	if (this.getObjTextShow(category, code)) {
 		var state = $dataStates[effect.dataId];
-		if (state && effect.value1 > 0) { 
+		if (state && effect.value1 > 0) {
 			var text = this.getObjText(category, code) + this.textColon();
-			if (GT.Param.OIWShowIcon && state.iconIndex !== 0) 
-				text += '\\I['+ state.iconIndex + ']';
-			text += this.addBasicColor(state.name + ' ' + this.sortValueDD(effect.value1 * 100) + '%');
+			if (GT.Param.OIWShowIcon && state.iconIndex !== 0) text += "\\I[" + state.iconIndex + "]";
+			text += this.addBasicColor(state.name + " " + this.sortValueDD(effect.value1 * 100) + "%");
 			this._data.push(text);
 		}
 	}
 };
 
-Window_ObjectInfo.prototype.getObjEffectBuff = function(effect) {
-	var category = 'OIWStateBuffText';
-	var codeList = ['AddBuff', 'AddDebuff', 'RemoveBuff', 'RemoveDebuff'];
+Window_ObjectInfo.prototype.getObjEffectBuff = function (effect) {
+	var category = "OIWStateBuffText";
+	var codeList = ["AddBuff", "AddDebuff", "RemoveBuff", "RemoveDebuff"];
 	var code = codeList[(effect.code % 30) - 1];
-	if(this.getObjTextShow(category, code)){
+	if (this.getObjTextShow(category, code)) {
 		var name = TextManager.param(effect.dataId);
-        if (code === 'AddBuff' || code === 'RemoveBuff')		
-		    var icon = Game_BattlerBase.ICON_BUFF_START + effect.dataId;
-		if (code === 'AddDebuff' || code === 'RemoveDebuff')		
-		    var icon = Game_BattlerBase.ICON_DEBUFF_START + effect.dataId;
+		if (code === "AddBuff" || code === "RemoveBuff") var icon = Game_BattlerBase.ICON_BUFF_START + effect.dataId;
+		if (code === "AddDebuff" || code === "RemoveDebuff") var icon = Game_BattlerBase.ICON_DEBUFF_START + effect.dataId;
 		var turnText = String(GT.Param.OIWStateBuffText.TurnText);
 		var text = this.getObjText(category, code) + this.textColon();
 		//text += '\\I['+ icon + ']' + this.addBasicColor(name);
 		text += this.addBasicColor(name);
-		if(code === 'AddBuff' || code === 'AddDebuff') 
-			text += this.addBasicColor(' ' + Math.floor(effect.value1) + turnText);
+		if (code === "AddBuff" || code === "AddDebuff")
+			text += this.addBasicColor(" " + Math.floor(effect.value1) + turnText);
 		this._data.push(text);
 	}
 };
 
-Window_ObjectInfo.prototype.getObjEffectOther = function(effect) {
-	var category = 'OIWOtherEffectText';
-	var codeList = ['SpecialEffect', 'GrowUp', 'LearnSkill', 'CommonEvent'];
+Window_ObjectInfo.prototype.getObjEffectOther = function (effect) {
+	var category = "OIWOtherEffectText";
+	var codeList = ["SpecialEffect", "GrowUp", "LearnSkill", "CommonEvent"];
 	var code = codeList[(effect.code % 40) - 1];
 	if (this.getObjTextShow(category, code)) {
-		if (code === 'SpecialEffect')
-			var text = String(GT.Param.OIWOtherEffectText.EscapeText);
-		else if (code === 'GrowUp')
-			var text = TextManager.param(effect.dataId) + this.addIncreaseColor('+' + Math.floor(effect.value1));
-		else if (code === 'LearnSkill')
-			var text = $dataSkills[effect.dataId].name;
-		else 
-			var text = $dataCommonEvents[effect.dataId].name;
+		if (code === "SpecialEffect") var text = String(GT.Param.OIWOtherEffectText.EscapeText);
+		else if (code === "GrowUp")
+			var text = TextManager.param(effect.dataId) + this.addIncreaseColor("+" + Math.floor(effect.value1));
+		else if (code === "LearnSkill") var text = $dataSkills[effect.dataId].name;
+		else var text = $dataCommonEvents[effect.dataId].name;
 		text = this.getObjText(category, code) + this.textColon() + this.addBasicColor(text);
 		this._data.push(text);
 	}
@@ -2165,8 +2113,8 @@ Window_ObjectInfo.prototype.getObjEffectOther = function(effect) {
 
 Window_ObjectInfo.prototype.getSkillWeaponRequirements = function () {
 	var item = this._item;
-	if (!this.getObjTextShow('OIWObjRequireText','WtypeRequire')) return;
-	var text = this.getObjText('OIWObjRequireText','WtypeRequire') + this.textColon();
+	if (!this.getObjTextShow("OIWObjRequireText", "WtypeRequire")) return;
+	var text = this.getObjText("OIWObjRequireText", "WtypeRequire") + this.textColon();
 	if (item.requiredWtypeId1) {
 		var text1 = text + this.addBasicColor($dataSystem.weaponTypes[item.requiredWtypeId1]);
 		this._requireData.push(text1);
@@ -2178,12 +2126,14 @@ Window_ObjectInfo.prototype.getSkillWeaponRequirements = function () {
 };
 
 Window_ObjectInfo.prototype.getObjLastInfo = function () {
-	var text = '';
-	if (this.getObjTextShow('OIWMainText','PriceText') && !DataManager.isSkill(this._item)) {
-		text = this.addSystemColor(this.getObjText('OIWMainText','PriceText')) + this.textColon() + this.addBasicColor(this._item.price);
+	var text = "";
+	if (this.getObjTextShow("OIWMainText", "PriceText") && !DataManager.isSkill(this._item)) {
+		text =
+			this.addSystemColor(this.getObjText("OIWMainText", "PriceText")) +
+			this.textColon() +
+			this.addBasicColor(this._item.price);
 		this._lastData.push(text);
 	}
-	
 };
 
 Window_ObjectInfo.prototype.calculateWindowSize = function () {
@@ -2192,17 +2142,16 @@ Window_ObjectInfo.prototype.calculateWindowSize = function () {
 	if (eval(this._windowSet.FixWindow) && windowWidth && windowHeight) {
 		this.width = windowWidth;
 		this.height = windowHeight;
-	}
-	else if (this.dataLength() === 0) {
+	} else if (this.dataLength() === 0) {
 		this.width = 0;
 		this.height = 0;
-	}
-	else {
+	} else {
 		var width = this.calculateTitleWidth();
 		width = this.calAllDataWidth(width);
 		width = Math.max(this.calculateLastInfoWidth(), width);
 		var height = this.calAllDataHeight();
-		this.width = this.standardPadding() * 2 + this.textPadding() * this.maxCols() * 2 + width * this.maxCols() + windowWidth;
+		this.width =
+			this.standardPadding() * 2 + this.textPadding() * this.maxCols() * 2 + width * this.maxCols() + windowWidth;
 		this.height = this.standardPadding() * 2 + height + windowHeight;
 	}
 };
@@ -2210,7 +2159,7 @@ Window_ObjectInfo.prototype.calculateWindowSize = function () {
 Window_ObjectInfo.prototype.calAllDataHeight = function () {
 	var height = this.titleHeight();
 	height += this.dataHeight();
-    height += this.exDataHeight(this._textTop);
+	height += this.exDataHeight(this._textTop);
 	height += this.exDataHeight(this._textBottom);
 	height += this.exDataHeight(this._requireData);
 	height += this.exDataHeight(this._damageData);
@@ -2254,13 +2203,12 @@ Window_ObjectInfo.prototype.calculateLastInfoWidth = function () {
 		var lineWidth = this.textWidthEx(line);
 		width = Math.max(lineWidth, width);
 	}
-	if (this._lastData.length < 3) return width * 3 / this.maxCols();
-	return width * 4 / this.maxCols();
+	if (this._lastData.length < 3) return (width * 3) / this.maxCols();
+	return (width * 4) / this.maxCols();
 };
 
 Window_ObjectInfo.prototype.titleHeight = function () {
-	if (!eval(this._windowSet.ShowBigIcon))
-		return this.lineHeight() * 2.5 + this.textPadding() * 2;
+	if (!eval(this._windowSet.ShowBigIcon)) return this.lineHeight() * 2.5 + this.textPadding() * 2;
 	return this.lineHeight() * 3 + this.textPadding() * 2;
 };
 
@@ -2283,7 +2231,7 @@ Window_ObjectInfo.prototype.exDataHeight = function (data) {
 };
 
 Window_ObjectInfo.prototype.LastInfoHeight = function () {
-    var height = this.lineHeight();
+	var height = this.lineHeight();
 	if (height) height += this.textPadding() * 1.5;
 	return height;
 };
@@ -2325,8 +2273,7 @@ Window_ObjectInfo.prototype.refresh = function () {
 	this.drawLastInfo();
 };
 
-Window_ObjectInfo.prototype.drawOtherInfo = function () {
-};
+Window_ObjectInfo.prototype.drawOtherInfo = function () {};
 
 Window_ObjectInfo.prototype.drawBackground = function () {
 	var x = 0;
@@ -2340,8 +2287,8 @@ Window_ObjectInfo.prototype.drawBackground = function () {
 };
 
 Window_ObjectInfo.prototype.drawFillRect = function (x, y, w, h, color) {
-	if(!eval(this._windowSet.WindowBack)) return;
-    this.contents.fillRect(x, y, w, h, color);
+	if (!eval(this._windowSet.WindowBack)) return;
+	this.contents.fillRect(x, y, w, h, color);
 	var itemColor = this.getItemColor();
 	if (itemColor && !this.isSeniorColor(itemColor)) {
 		this.contents.paintOpacity = 100;
@@ -2351,117 +2298,104 @@ Window_ObjectInfo.prototype.drawFillRect = function (x, y, w, h, color) {
 };
 
 Window_ObjectInfo.prototype.drawOutline = function (x, y, w, h, color) {
-	if(!eval(this._windowSet.WindowOutline)) return;
+	if (!eval(this._windowSet.WindowOutline)) return;
 	var itemColor = this.getItemColor();
 	if (itemColor && !this.isSeniorColor(itemColor)) {
-	    this.contents.fillRect(x, y, w, 1, itemColor);//上横
-		this.contents.gradientFillRect(x, y, 1, h, itemColor, color, true);//左竖
-		this.contents.gradientFillRect(x + w - 1, y, 1, h, itemColor, color, true);//右竖
-		this.contents.fillRect(x, y + this.titleHeight(), w - 1, 1, itemColor);//中横
+		this.contents.fillRect(x, y, w, 1, itemColor); //上横
+		this.contents.gradientFillRect(x, y, 1, h, itemColor, color, true); //左竖
+		this.contents.gradientFillRect(x + w - 1, y, 1, h, itemColor, color, true); //右竖
+		this.contents.fillRect(x, y + this.titleHeight(), w - 1, 1, itemColor); //中横
+	} else {
+		this.contents.fillRect(x, y, w, 1, color); //上横
+		this.contents.fillRect(x, y, 1, h, color); //左竖
+		this.contents.fillRect(x + w - 1, y, 1, h, color); //右竖
+		this.contents.fillRect(x, y + this.titleHeight(), w - 1, 1, color); //中横
 	}
-	else {
-		this.contents.fillRect(x, y, w, 1, color);//上横
-		this.contents.fillRect(x, y, 1, h, color);//左竖
-	    this.contents.fillRect(x + w - 1, y, 1, h, color);//右竖
-		this.contents.fillRect(x, y + this.titleHeight(), w - 1, 1, color);//中横
-	}
-	this.contents.fillRect(x, y + h - 1, w - 1, 1, color);//下横
+	this.contents.fillRect(x, y + h - 1, w - 1, 1, color); //下横
 };
 
 Window_ObjectInfo.prototype.getItemColor = function () {
 	if (!Imported.Drill_ItemTextColor) return null;
 	var item = this._item;
 	var color = null;
-	if (item.baseItemId)
-		item = DataManager.getBaseItem(item);
-	if(DataManager.isItem(item))
-		color = $gameSystem._drill_ITC_items[item.id];
-	else if(DataManager.isWeapon(item))
-		color = $gameSystem._drill_ITC_weapons[item.id];
-	else if(DataManager.isArmor(item))
-		color = $gameSystem._drill_ITC_armors[item.id];
-	else if(DataManager.isSkill(item))
-		color = $gameSystem._drill_ITC_skills[item.id];
+	if (item.baseItemId) item = DataManager.getBaseItem(item);
+	if (DataManager.isItem(item)) color = $gameSystem._drill_ITC_items[item.id];
+	else if (DataManager.isWeapon(item)) color = $gameSystem._drill_ITC_weapons[item.id];
+	else if (DataManager.isArmor(item)) color = $gameSystem._drill_ITC_armors[item.id];
+	else if (DataManager.isSkill(item)) color = $gameSystem._drill_ITC_skills[item.id];
 	return color;
 };
 
 Window_ObjectInfo.prototype.isSeniorColor = function (color) {
-	if (typeof(color) == "string" && color != '' && color.indexOf("drill__") != -1 )
-		return true;
+	if (typeof color == "string" && color != "" && color.indexOf("drill__") != -1) return true;
 	return false;
 };
 
-Window_ObjectInfo.prototype.drawItemName = function() {
+Window_ObjectInfo.prototype.drawItemName = function () {
 	var item = this._item;
 	if (Imported.Drill_ItemTextColor) {
-	    this._drill_ITC_isDrawingItemName = true;
-	    this._drill_ITC_curItem = item;
+		this._drill_ITC_isDrawingItemName = true;
+		this._drill_ITC_curItem = item;
 	}
 	if (Imported.Drill_ItemTextFilter) {
-	    this._drill_ITFi_isDrawingItemName = true;
-	    this._drill_ITFi_curItem = item;
+		this._drill_ITFi_isDrawingItemName = true;
+		this._drill_ITFi_curItem = item;
 	}
 	var x = this.textPadding();
 	var y = 0;
 	var width = 312;
-    if (item) {
+	if (item) {
 		var iconBoxWidth = this.drawItemIcon(x, y);
-        this.resetTextColor();
+		this.resetTextColor();
 		this.contents.fontSize *= 1.3;
-        this.drawText(item.name, iconBoxWidth, y + this.textPadding(), width - iconBoxWidth);
+		this.drawText(item.name, iconBoxWidth, y + this.textPadding(), width - iconBoxWidth);
 		this.resetFontSettings();
-    }
-	if (Imported.Drill_ItemTextColor) 
-		this._drill_ITC_isDrawingItemName = false;
-	if (Imported.Drill_ItemTextFilter) 
-		this._drill_ITFi_isDrawingItemName = false;
+	}
+	if (Imported.Drill_ItemTextColor) this._drill_ITC_isDrawingItemName = false;
+	if (Imported.Drill_ItemTextFilter) this._drill_ITFi_isDrawingItemName = false;
 	if (this.getItemColor() && !this.isSeniorColor(this.getItemColor())) return;
-	if(!eval(this._windowSet.WindowOutline)) 
-		this.drawHorzLine(this.titleHeight());
+	if (!eval(this._windowSet.WindowOutline)) this.drawHorzLine(this.titleHeight());
 };
 
-Window_ObjectInfo.prototype.drawItemIcon = function(x, y) {
+Window_ObjectInfo.prototype.drawItemIcon = function (x, y) {
 	var width = 0;
 	if (eval(this._windowSet.ShowBigIcon)) {
 		if (this.itemHasPictureImage()) {
-            this.readyItemPictureImage(this._item);
-		}
-		else {
+			this.readyItemPictureImage(this._item);
+		} else {
 			this.drawLargeIcon();
 		}
 		width = this.titleHeight();
-	}
-	else {
+	} else {
 		this.drawIcon(this._item.iconIndex, x + 2, y + 2 + this.textPadding());
 		width = (Window_Base._iconWidth + 15) * this.scaleRate();
 	}
 	return width;
 };
 
-Window_ObjectInfo.prototype.itemHasPictureImage = function() {
+Window_ObjectInfo.prototype.itemHasPictureImage = function () {
 	return false;
 };
 
-Window_ObjectInfo.prototype.readyItemPictureImage = function(item) {
+Window_ObjectInfo.prototype.readyItemPictureImage = function (item) {};
+
+Window_ObjectInfo.prototype.drawLargeIcon = function () {
+	var iconIndex = this._item.iconIndex;
+	var bitmap = ImageManager.loadSystem("IconSet");
+	var pw = Window_Base._iconWidth;
+	var ph = Window_Base._iconHeight;
+	var sx = (iconIndex % 16) * pw;
+	var sy = Math.floor(iconIndex / 16) * ph;
+	var dw = this.lineHeight() * 3;
+	var dh = this.lineHeight() * 3;
+	var dx = this.textPadding();
+	var dy = this.textPadding();
+	this.contents._context.imageSmoothingEnabled = false;
+	this.contents.blt(bitmap, sx, sy, pw, ph, dx, dy, dw, dh);
+	this.contents._context.imageSmoothingEnabled = true;
 };
 
-Window_ObjectInfo.prototype.drawLargeIcon = function() {
-    var iconIndex = this._item.iconIndex;
-    var bitmap = ImageManager.loadSystem('IconSet');
-    var pw = Window_Base._iconWidth;
-    var ph = Window_Base._iconHeight;
-    var sx = iconIndex % 16 * pw;
-    var sy = Math.floor(iconIndex / 16) * ph;
-    var dw = this.lineHeight() * 3;
-    var dh = this.lineHeight() * 3;
-    var dx = this.textPadding();
-    var dy = this.textPadding();
-    this.contents._context.imageSmoothingEnabled = false;
-    this.contents.blt(bitmap, sx, sy, pw, ph, dx, dy, dw, dh);
-    this.contents._context.imageSmoothingEnabled = true;
-};
-
-Window_ObjectInfo.prototype.drawItemCategory = function() {
+Window_ObjectInfo.prototype.drawItemCategory = function () {
 	if (!eval(GT.Param.OIWMainText.ShowCategory)) return;
 	var text = this._category;
 	var x = eval(this._windowSet.ShowBigIcon) ? this.titleHeight() : this.textPadding();
@@ -2485,7 +2419,10 @@ Window_ObjectInfo.prototype.drawObjectInfo = function () {
 	var x = 0;
 	var y = 0;
 	var width = this.contents.width / this.maxCols();
-	var rows = this._data.length % this.maxCols() ? Math.ceil(this._data.length / this.maxCols()) : this._data.length / this.maxCols();
+	var rows =
+		this._data.length % this.maxCols()
+			? Math.ceil(this._data.length / this.maxCols())
+			: this._data.length / this.maxCols();
 	for (var i = 0; i < this._data.length; i++) {
 		x = this.textPadding() + Math.floor(i / rows) * width;
 		y = (i % rows) * this.lineHeight() + this.titleHeight() + this.exDataHeight(this._textTop) + this.textPadding();
@@ -2510,7 +2447,8 @@ Window_ObjectInfo.prototype.drawDamage = function () {
 Window_ObjectInfo.prototype.drawInfoTextBottom = function () {
 	if (!this._textBottom.length) return;
 	var x = this.textPadding();
-	var y = this.titleHeight() + this.exDataHeight(this._textTop) + this.dataHeight() + this.exDataHeight(this._damageData);
+	var y =
+		this.titleHeight() + this.exDataHeight(this._textTop) + this.dataHeight() + this.exDataHeight(this._damageData);
 	if (this._stateData) y += this.stateHeight();
 	this.drawHorzLine(y);
 	y += this.textPadding();
@@ -2524,7 +2462,12 @@ Window_ObjectInfo.prototype.drawInfoTextBottom = function () {
 Window_ObjectInfo.prototype.drawCost = function () {
 	if (!this._costData.length) return;
 	var x = this.textPadding();
-	var y = this.titleHeight() + this.exDataHeight(this._textTop) + this.dataHeight() + this.exDataHeight(this._damageData) + this.exDataHeight(this._textBottom);
+	var y =
+		this.titleHeight() +
+		this.exDataHeight(this._textTop) +
+		this.dataHeight() +
+		this.exDataHeight(this._damageData) +
+		this.exDataHeight(this._textBottom);
 	if (this._stateData) y += this.stateHeight();
 	this.drawHorzLine(y);
 	y += this.textPadding();
@@ -2538,7 +2481,13 @@ Window_ObjectInfo.prototype.drawCost = function () {
 Window_ObjectInfo.prototype.drawRequirements = function () {
 	if (!this._requireData.length) return;
 	var x = this.textPadding();
-	var y = this.titleHeight() + this.exDataHeight(this._textTop) + this.dataHeight() + this.exDataHeight(this._damageData) + this.exDataHeight(this._textBottom) + this.exDataHeight(this._costData);
+	var y =
+		this.titleHeight() +
+		this.exDataHeight(this._textTop) +
+		this.dataHeight() +
+		this.exDataHeight(this._damageData) +
+		this.exDataHeight(this._textBottom) +
+		this.exDataHeight(this._costData);
 	if (this._stateData) y += this.stateHeight();
 	this.drawHorzLine(y);
 	y += this.textPadding();
@@ -2552,7 +2501,7 @@ Window_ObjectInfo.prototype.drawRequirements = function () {
 Window_ObjectInfo.prototype.drawLastInfo = function () {
 	var length = this._lastData.length;
 	var x = this.textPadding();
-	var y = this.contents.height - this.lineHeight() - this.textPadding()/2;
+	var y = this.contents.height - this.lineHeight() - this.textPadding() / 2;
 	var dw = 0;
 	this.drawHorzLine(y - this.textPadding());
 	this.drawItemQuality();
@@ -2564,24 +2513,23 @@ Window_ObjectInfo.prototype.drawLastInfo = function () {
 	}
 };
 
-Window_ObjectInfo.prototype.drawItemQuality = function() {
+Window_ObjectInfo.prototype.drawItemQuality = function () {
 	if (!this.getItemColor()) return;
 	var qualityList = GT.Param.OIWQualitySet;
-	var text = '';
+	var text = "";
 	for (var i = 0; i < qualityList.length; i++) {
-		if (String(JSON.parse(qualityList[i]).ColorCategory) === '普通颜色')
-		    var color = String(DrillUp.drill_COC_getColor(Number(JSON.parse(qualityList[i]).QualityColor) - 1));
-		else
-			var color = String(DrillUp.drill_COC_getSeniorColor(Number(JSON.parse(qualityList[i]).QualityColor) - 1));
+		if (String(JSON.parse(qualityList[i]).ColorCategory) === "普通颜色")
+			var color = String(DrillUp.drill_COC_getColor(Number(JSON.parse(qualityList[i]).QualityColor) - 1));
+		else var color = String(DrillUp.drill_COC_getSeniorColor(Number(JSON.parse(qualityList[i]).QualityColor) - 1));
 		if (color === this.getItemColor()) {
 			text = String(JSON.parse(qualityList[i]).QualityText);
 			break;
 		}
 	}
-	if (text !== '') {
+	if (text !== "") {
 		this.changeTextColor(this.getItemColor());
 		var x = this.contents.width - this.textPadding() * 2 - this.textWidth(text);
-		var y = this.contents.height - this.lineHeight() - this.textPadding()/2;
+		var y = this.contents.height - this.lineHeight() - this.textPadding() / 2;
 		this.drawText(text, x, y);
 		this.resetTextColor();
 	}
@@ -2590,98 +2538,104 @@ Window_ObjectInfo.prototype.drawItemQuality = function() {
 Window_ObjectInfo.prototype.drawHorzLine = function (y) {
 	var backColor = String(GT.Param.OIWColorSet.BackColor);
 	var lineColor = String(GT.Param.OIWColorSet.DelimiterColor);
-    this.contents.gradientFillRect(1, y, this.contents.width / 4 - 1, 1, backColor, lineColor);
+	this.contents.gradientFillRect(1, y, this.contents.width / 4 - 1, 1, backColor, lineColor);
 	this.contents.fillRect(this.contents.width / 4, y, this.contents.width / 2, 1, lineColor);
-	this.contents.gradientFillRect(this.contents.width * 3/4 - 1.5, y, this.contents.width / 4, 1, lineColor, backColor);
+	this.contents.gradientFillRect(
+		(this.contents.width * 3) / 4 - 1.5,
+		y,
+		this.contents.width / 4,
+		1,
+		lineColor,
+		backColor,
+	);
 };
 
-Window_ObjectInfo.prototype.sortValueDD = function(value) {
+Window_ObjectInfo.prototype.sortValueDD = function (value) {
 	return value.toFixed(GT.Param.OIWDecimalDigit);
 };
 
-Window_ObjectInfo.prototype.getObjTextShow = function(category, code) {
+Window_ObjectInfo.prototype.getObjTextShow = function (category, code) {
 	return eval(JSON.parse(GT.Param[category][code]).Show);
 };
 
-Window_ObjectInfo.prototype.getObjText = function(category, code, noColor) {
+Window_ObjectInfo.prototype.getObjText = function (category, code, noColor) {
 	var text = String(JSON.parse(GT.Param[category][code]).Name);
-	if (!noColor)
-		text = this.addSystemColor(text);
+	if (!noColor) text = this.addSystemColor(text);
 	return text;
 };
 
-Window_ObjectInfo.prototype.textColon = function() {
+Window_ObjectInfo.prototype.textColon = function () {
 	return String(GT.Param.OIWMainText.Colon);
 };
 
-Window_ObjectInfo.prototype.pushData = function(text, item) {
+Window_ObjectInfo.prototype.pushData = function (text, item) {
 	return this._data.push(text);
 };
 
-Window_ObjectInfo.prototype.textWidthEx = function(text) {
+Window_ObjectInfo.prototype.textWidthEx = function (text) {
 	return this.drawTextEx(text, 0, this.contents.height);
 };
 
-Window_ObjectInfo.prototype.addSystemColor = function(text) {
+Window_ObjectInfo.prototype.addSystemColor = function (text) {
 	var color = Number(GT.Param.OIWColorSet.SystemColor);
-	return '\\c[' + color + ']' + text + '\\c[0]';
+	return "\\c[" + color + "]" + text + "\\c[0]";
 };
 
-Window_ObjectInfo.prototype.addBasicColor = function(text) {
+Window_ObjectInfo.prototype.addBasicColor = function (text) {
 	var color = Number(GT.Param.OIWColorSet.BasicColor);
-	return '\\c[' + color + ']' + text + '\\c[0]';
+	return "\\c[" + color + "]" + text + "\\c[0]";
 };
 
-Window_ObjectInfo.prototype.addIncreaseColor = function(text) {
+Window_ObjectInfo.prototype.addIncreaseColor = function (text) {
 	var color = Number(GT.Param.OIWColorSet.IncreaseColor);
-	return '\\c[' + color + ']' + text + '\\c[0]';
+	return "\\c[" + color + "]" + text + "\\c[0]";
 };
 
-Window_ObjectInfo.prototype.addDecreaseColor = function(text) {
+Window_ObjectInfo.prototype.addDecreaseColor = function (text) {
 	var color = Number(GT.Param.OIWColorSet.DecreaseColor);
-	return '\\c[' + color + ']' + text + '\\c[0]';
+	return "\\c[" + color + "]" + text + "\\c[0]";
 };
 
-Window_ObjectInfo.prototype.update = function() {
-    Window_Base.prototype.update.call(this);
-    this.processWheel();
+Window_ObjectInfo.prototype.update = function () {
+	Window_Base.prototype.update.call(this);
+	this.processWheel();
 };
 
-Window_ObjectInfo.prototype.processWheel = function() {
+Window_ObjectInfo.prototype.processWheel = function () {
 	if (!this.isOpen()) return;
 	if (!eval(this._windowSet.FixWindow)) return;
-    if (!this.isInsideFrame()) return;
-    var threshold = 20;
-    if (TouchInput.wheelY >= threshold) {
+	if (!this.isInsideFrame()) return;
+	var threshold = 20;
+	if (TouchInput.wheelY >= threshold) {
 		this.scrollOriginDown(this.scrollSpeed() * 4);
-    }
-    if (TouchInput.wheelY <= -threshold) {
+	}
+	if (TouchInput.wheelY <= -threshold) {
 		this.scrollOriginUp(this.scrollSpeed() * 4);
-    }
+	}
 };
 
-Window_ObjectInfo.prototype.isInsideFrame = function() {
-    var x = this.canvasToLocalX(TouchInput._mouseOverX);
-    var y = this.canvasToLocalY(TouchInput._mouseOverY);
-    return x >= 0 && y >= 0 && x < this.width && y < this.height;
+Window_ObjectInfo.prototype.isInsideFrame = function () {
+	var x = this.canvasToLocalX(TouchInput._mouseOverX);
+	var y = this.canvasToLocalY(TouchInput._mouseOverY);
+	return x >= 0 && y >= 0 && x < this.width && y < this.height;
 };
 
-Window_ObjectInfo.prototype.scrollOriginDown = function(speed) {
-    var value = this.contentsHeight() - this.height + this.standardPadding() * 2;
-    this.origin.y = Math.min(value, this.origin.y + speed);
+Window_ObjectInfo.prototype.scrollOriginDown = function (speed) {
+	var value = this.contentsHeight() - this.height + this.standardPadding() * 2;
+	this.origin.y = Math.min(value, this.origin.y + speed);
 };
 
-Window_ObjectInfo.prototype.scrollOriginUp = function(speed) {
-    this.origin.y = Math.max(0, this.origin.y - speed);
+Window_ObjectInfo.prototype.scrollOriginUp = function (speed) {
+	this.origin.y = Math.max(0, this.origin.y - speed);
 };
 
-Window_ObjectInfo.prototype.scrollSpeed = function() {
-    return Number(this._windowSet.ScrollSpeed);
+Window_ObjectInfo.prototype.scrollSpeed = function () {
+	return Number(this._windowSet.ScrollSpeed);
 };
 
-Window_ObjectInfo.prototype.contentsHeight = function() {
-    var standard = this.height - this.standardPadding() * 2;
-    return Math.max(standard, this.calAllDataHeight());
+Window_ObjectInfo.prototype.contentsHeight = function () {
+	var standard = this.height - this.standardPadding() * 2;
+	return Math.max(standard, this.calAllDataHeight());
 };
 
 //=============================================================================
@@ -2701,14 +2655,19 @@ Window_Selectable.prototype.select = function (index) {
 };
 
 GT.OIWin.Window_Selectable_activate = Window_Selectable.prototype.activate;
-Window_Selectable.prototype.activate = function() {
+Window_Selectable.prototype.activate = function () {
 	GT.OIWin.Window_Selectable_activate.call(this);
-	if (this._objInfoWindow && !this._objInfoWindow.isOpen() && this._objInfoWindow._showInfo && this._objInfoWindow.dataLength()) 
+	if (
+		this._objInfoWindow &&
+		!this._objInfoWindow.isOpen() &&
+		this._objInfoWindow._showInfo &&
+		this._objInfoWindow.dataLength()
+	)
 		this._objInfoWindow.open();
 };
 
 GT.OIWin.Window_Selectable_deactivate = Window_Selectable.prototype.deactivate;
-Window_Selectable.prototype.deactivate = function() {
+Window_Selectable.prototype.deactivate = function () {
 	GT.OIWin.Window_Selectable_deactivate.call(this);
 	if (this._objInfoWindow) {
 		this._objInfoWindow.close();
@@ -2716,17 +2675,19 @@ Window_Selectable.prototype.deactivate = function() {
 };
 
 GT.OIWin.Window_Selectable_processHandling = Window_Selectable.prototype.processHandling;
-Window_Selectable.prototype.processHandling = function() {
+Window_Selectable.prototype.processHandling = function () {
 	GT.OIWin.Window_Selectable_processHandling.call(this);
 	if (this.isOpenAndActive() && this._objInfoWindow && this.isIwSwitchTriggered()) {
 		SoundManager.playCursor();
 		this._objInfoWindow._showInfo = !this._objInfoWindow._showInfo;
-		(this._objInfoWindow._showInfo && this._objInfoWindow.dataLength()) ? this._objInfoWindow.open() : this._objInfoWindow.close();
+		this._objInfoWindow._showInfo && this._objInfoWindow.dataLength()
+			? this._objInfoWindow.open()
+			: this._objInfoWindow.close();
 		this._objInfoWindow.setItem(this.item(), this);
 	}
 };
 
-Window_Selectable.prototype.isIwSwitchTriggered = function() {
+Window_Selectable.prototype.isIwSwitchTriggered = function () {
 	for (var i = 0; i < GT.Param.OIWSwitchBtn.length; i++) {
 		var key = GT.Param.OIWSwitchBtn[i];
 		if (Input.isTriggered(key)) return true;
@@ -2734,14 +2695,14 @@ Window_Selectable.prototype.isIwSwitchTriggered = function() {
 	return false;
 };
 
-Window_Selectable.prototype.isInsideFrame = function() {
-    var x = this.canvasToLocalX(TouchInput._mouseOverX);
-    var y = this.canvasToLocalY(TouchInput._mouseOverY);
-    return x >= 0 && y >= 0 && x < this.width && y < this.height;
+Window_Selectable.prototype.isInsideFrame = function () {
+	var x = this.canvasToLocalX(TouchInput._mouseOverX);
+	var y = this.canvasToLocalY(TouchInput._mouseOverY);
+	return x >= 0 && y >= 0 && x < this.width && y < this.height;
 };
 
 GT.OIWin.Window_Selectable_processWheel = Window_Selectable.prototype.processWheel;
-Window_Selectable.prototype.processWheel = function() {
+Window_Selectable.prototype.processWheel = function () {
 	//if (!this.isInsideFrame()) return;
 	GT.OIWin.Window_Selectable_processWheel.call(this);
 };
@@ -2750,36 +2711,24 @@ Window_Selectable.prototype.processWheel = function() {
 // Scene_Base
 //=============================================================================
 
-Scene_Base.prototype.createObjInfoWindow = function() {
+Scene_Base.prototype.createObjInfoWindow = function () {
 	this._objInfoWindow = new Window_ObjectInfo(this._objInfoWindowSet);
 	this.addChild(this._objInfoWindow);
-	if (this._buyWindow) 
-		this._buyWindow.setObjInfoWindow(this._objInfoWindow);
-	if (this._sellWindow) 
-		this._sellWindow.setObjInfoWindow(this._objInfoWindow);
-	if (this._slotWindow) 
-		this._slotWindow.setObjInfoWindow(this._objInfoWindow);
-	if (this._itemWindow)
-		this._itemWindow.setObjInfoWindow(this._objInfoWindow);
-	if (this._skillWindow) 
-		this._skillWindow.setObjInfoWindow(this._objInfoWindow);
-	if (Imported.FTKR_STS && this._stsSkillTreeWindow) 
-		this._stsSkillTreeWindow.setObjInfoWindow(this._objInfoWindow);
+	if (this._buyWindow) this._buyWindow.setObjInfoWindow(this._objInfoWindow);
+	if (this._sellWindow) this._sellWindow.setObjInfoWindow(this._objInfoWindow);
+	if (this._slotWindow) this._slotWindow.setObjInfoWindow(this._objInfoWindow);
+	if (this._itemWindow) this._itemWindow.setObjInfoWindow(this._objInfoWindow);
+	if (this._skillWindow) this._skillWindow.setObjInfoWindow(this._objInfoWindow);
+	if (Imported.FTKR_STS && this._stsSkillTreeWindow) this._stsSkillTreeWindow.setObjInfoWindow(this._objInfoWindow);
 };
 
-Scene_Base.prototype.getObjInfoWindowSet = function() {
-	if (this.constructor === Scene_Item)
-		this._objInfoWindowSet = GT.Param.OIWSceneItemSet;
-	else if (this.constructor === Scene_Skill)
-		this._objInfoWindowSet = GT.Param.OIWSceneSkillSet;
-	else if (this.constructor === Scene_Equip)
-		this._objInfoWindowSet = GT.Param.OIWSceneEquipSet;
-	else if (this.constructor === Scene_Shop)
-		this._objInfoWindowSet = GT.Param.OIWSceneShopSet;
-	else if (this.constructor === Scene_Battle)
-		this._objInfoWindowSet = GT.Param.OIWSceneBattleSet;
-	else if (Imported.FTKR_STS && this.constructor === Scene_STS)
-		this._objInfoWindowSet = GT.Param.OIWSceneSTSSet;
+Scene_Base.prototype.getObjInfoWindowSet = function () {
+	if (this.constructor === Scene_Item) this._objInfoWindowSet = GT.Param.OIWSceneItemSet;
+	else if (this.constructor === Scene_Skill) this._objInfoWindowSet = GT.Param.OIWSceneSkillSet;
+	else if (this.constructor === Scene_Equip) this._objInfoWindowSet = GT.Param.OIWSceneEquipSet;
+	else if (this.constructor === Scene_Shop) this._objInfoWindowSet = GT.Param.OIWSceneShopSet;
+	else if (this.constructor === Scene_Battle) this._objInfoWindowSet = GT.Param.OIWSceneBattleSet;
+	else if (Imported.FTKR_STS && this.constructor === Scene_STS) this._objInfoWindowSet = GT.Param.OIWSceneSTSSet;
 };
 
 //=============================================================================
@@ -2787,7 +2736,7 @@ Scene_Base.prototype.getObjInfoWindowSet = function() {
 //=============================================================================
 
 GT.OIWin.Scene_Item_create = Scene_Item.prototype.create;
-Scene_Item.prototype.create = function() {
+Scene_Item.prototype.create = function () {
 	GT.OIWin.Scene_Item_create.call(this);
 	if (eval(GT.Param.OIWSceneItemSet.ShowWindow)) {
 		this.getObjInfoWindowSet();
@@ -2800,7 +2749,7 @@ Scene_Item.prototype.create = function() {
 //=============================================================================
 
 GT.OIWin.Scene_Skill_create = Scene_Skill.prototype.create;
-Scene_Skill.prototype.create = function() {
+Scene_Skill.prototype.create = function () {
 	GT.OIWin.Scene_Skill_create.call(this);
 	if (eval(GT.Param.OIWSceneSkillSet.ShowWindow)) {
 		this.getObjInfoWindowSet();
@@ -2858,8 +2807,8 @@ Scene_Equip.prototype.onItemCancel = function () {
 GT.OIWin.Scene_Shop_create = Scene_Shop.prototype.create;
 Scene_Shop.prototype.create = function () {
 	GT.OIWin.Scene_Shop_create.call(this);
-	if (eval(GT.Param.OIWSceneShopSet.ShowWindow)) { 
-	    this.getObjInfoWindowSet();
+	if (eval(GT.Param.OIWSceneShopSet.ShowWindow)) {
+		this.getObjInfoWindowSet();
 		this.createObjInfoWindow();
 	}
 };
@@ -2869,7 +2818,7 @@ Scene_Shop.prototype.create = function () {
 //=============================================================================
 
 GT.OIWin.Scene_Battle_create = Scene_Battle.prototype.create;
-Scene_Battle.prototype.create = function() {
+Scene_Battle.prototype.create = function () {
 	GT.OIWin.Scene_Battle_create.call(this);
 	if (eval(GT.Param.OIWSceneBattleSet.ShowWindow)) {
 		this.getObjInfoWindowSet();
@@ -2877,30 +2826,29 @@ Scene_Battle.prototype.create = function() {
 	}
 };
 
-if(Imported.FTKR_STS) {
-//=============================================================================
-// Scene_STS
-//=============================================================================
+if (Imported.FTKR_STS) {
+	//=============================================================================
+	// Scene_STS
+	//=============================================================================
 
-GT.OIWin.Scene_STS_createSkillTreeWindow = Scene_STS.prototype.createSkillTreeWindow;
-Scene_STS.prototype.createSkillTreeWindow = function() {
-	GT.OIWin.Scene_STS_createSkillTreeWindow.call(this);
-	if (eval(GT.Param.OIWSceneSTSSet.ShowWindow)) {
-		this.getObjInfoWindowSet();
-		this.createObjInfoWindow();
-		this._objInfoWindow.setActor(this.actor());
-	}
-};
+	GT.OIWin.Scene_STS_createSkillTreeWindow = Scene_STS.prototype.createSkillTreeWindow;
+	Scene_STS.prototype.createSkillTreeWindow = function () {
+		GT.OIWin.Scene_STS_createSkillTreeWindow.call(this);
+		if (eval(GT.Param.OIWSceneSTSSet.ShowWindow)) {
+			this.getObjInfoWindowSet();
+			this.createObjInfoWindow();
+			this._objInfoWindow.setActor(this.actor());
+		}
+	};
 
-GT.OIWin.Scene_STS_refreshActor = Scene_STS.prototype.refreshActor;
-Scene_STS.prototype.refreshActor = function () {
-	GT.OIWin.Scene_STS_refreshActor.call(this);
-	if (this._objInfoWindow) {
-		this._objInfoWindow.setActor(this.actor());
-	}
-};
-
-}//Imported.FTKR_STS
+	GT.OIWin.Scene_STS_refreshActor = Scene_STS.prototype.refreshActor;
+	Scene_STS.prototype.refreshActor = function () {
+		GT.OIWin.Scene_STS_refreshActor.call(this);
+		if (this._objInfoWindow) {
+			this._objInfoWindow.setActor(this.actor());
+		}
+	};
+} //Imported.FTKR_STS
 
 //=============================================================================
 // End of File

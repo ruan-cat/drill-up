@@ -9,7 +9,7 @@ function Game_Party() {
 	this.initialize.apply(this, arguments);
 }
 
-//设置原形 
+//设置原形
 Game_Party.prototype = Object.create(Game_Unit.prototype);
 //设置创造者
 Game_Party.prototype.constructor = Game_Party;
@@ -18,7 +18,7 @@ Game_Party.prototype.constructor = Game_Party;
 Game_Party.ABILITY_ENCOUNTER_HALF = 0;
 //游戏队伍 能力遭遇无效
 Game_Party.ABILITY_ENCOUNTER_NONE = 1;
-//游戏队伍 能力突然袭击 
+//游戏队伍 能力突然袭击
 Game_Party.ABILITY_CANCEL_SURPRISE = 2;
 //游戏队伍 能力先发制人
 Game_Party.ABILITY_RAISE_PREEMPTIVE = 3;
@@ -26,7 +26,6 @@ Game_Party.ABILITY_RAISE_PREEMPTIVE = 3;
 Game_Party.ABILITY_GOLD_DOUBLE = 4;
 //游戏队伍 能力物品掉落双倍
 Game_Party.ABILITY_DROP_ITEM_DOUBLE = 5;
-
 
 //初始化
 Game_Party.prototype.initialize = function () {
@@ -63,12 +62,12 @@ Game_Party.prototype.exists = function () {
 };
 //大小
 Game_Party.prototype.size = function () {
-	//返回 成员组 长度 
+	//返回 成员组 长度
 	return this.members().length;
 };
 //是空的
 Game_Party.prototype.isEmpty = function () {
-	//返回 大小() === 0 
+	//返回 大小() === 0
 	return this.size() === 0;
 };
 //成员组
@@ -87,10 +86,12 @@ Game_Party.prototype.allMembers = function () {
 //战斗成员组
 Game_Party.prototype.battleMembers = function () {
 	//返回 所有成员组() 切割(0 , 最大战斗成员() ) 过滤 方法(角色)
-	return this.allMembers().slice(0, this.maxBattleMembers()).filter(function (actor) {
-		//角色 是出现的()
-		return actor.isAppeared();
-	});
+	return this.allMembers()
+		.slice(0, this.maxBattleMembers())
+		.filter(function (actor) {
+			//角色 是出现的()
+			return actor.isAppeared();
+		});
 };
 //最大战斗成员
 Game_Party.prototype.maxBattleMembers = function () {
@@ -177,7 +178,7 @@ Game_Party.prototype.itemContainer = function (item) {
 	} else if (DataManager.isArmor(item)) {
 		//返回 防具组
 		return this._armors;
-		//否则 
+		//否则
 	} else {
 		//返回 null
 		return null;
@@ -187,7 +188,7 @@ Game_Party.prototype.itemContainer = function (item) {
 Game_Party.prototype.setupStartingMembers = function () {
 	//角色组 = []
 	this._actors = [];
-	//数据系统 队伍成员组 对每一个 方法(成员id) 
+	//数据系统 队伍成员组 对每一个 方法(成员id)
 	$dataSystem.partyMembers.forEach(function (actorId) {
 		//如果(游戏角色组 角色(角色id))
 		if ($gameActors.actor(actorId)) {
@@ -204,7 +205,7 @@ Game_Party.prototype.name = function () {
 	//如果(战斗成员组数 === 0 )
 	if (numBattleMembers === 0) {
 		//返回 ""
-		return '';
+		return "";
 		//否则 如果(战斗成员组数 === 1 )
 	} else if (numBattleMembers === 1) {
 		//返回 领导者() 名称
@@ -257,10 +258,13 @@ Game_Party.prototype.setupBattleTestItems = function () {
 //最高等级
 Game_Party.prototype.highestLevel = function () {
 	//返回 数学 最大值 应用(null , 成员组() 映射 方法(角色)
-	return Math.max.apply(null, this.members().map(function (actor) {
-		//返回 角色 等级
-		return actor.level;
-	}));
+	return Math.max.apply(
+		null,
+		this.members().map(function (actor) {
+			//返回 角色 等级
+			return actor.level;
+		}),
+	);
 };
 //增加角色
 Game_Party.prototype.addActor = function (actorId) {
@@ -311,7 +315,6 @@ Game_Party.prototype.maxGold = function () {
 	return 99999999;
 };
 
-
 //步数
 Game_Party.prototype.steps = function () {
 	//返回 步数
@@ -354,7 +357,7 @@ Game_Party.prototype.hasItem = function (item, includeEquip) {
 	} else if (includeEquip && this.isAnyMemberEquipped(item)) {
 		//返回 true
 		return true;
-		//否则 
+		//否则
 	} else {
 		//返回 false
 		return false;
@@ -368,7 +371,6 @@ Game_Party.prototype.isAnyMemberEquipped = function (item) {
 		return actor.equips().contains(item);
 	});
 };
-
 
 //获得物品
 Game_Party.prototype.gainItem = function (item, amount, includeEquip) {
@@ -447,7 +449,7 @@ Game_Party.prototype.isAllDead = function () {
 	if (Game_Unit.prototype.isAllDead.call(this)) {
 		//返回 在战斗() 或者 不是 是空的()
 		return this.inBattle() || !this.isEmpty();
-		//否则 
+		//否则
 	} else {
 		//返回 false
 		return false;
@@ -488,7 +490,7 @@ Game_Party.prototype.makeMenuActorNext = function () {
 		index = (index + 1) % this.members().length;
 		//设置菜单角色( 成员组()[索引] )
 		this.setMenuActor(this.members()[index]);
-		//否则 
+		//否则
 	} else {
 		//设置菜单角色( 成员组()[0] )
 		this.setMenuActor(this.members()[0]);
@@ -504,7 +506,7 @@ Game_Party.prototype.makeMenuActorPrevious = function () {
 		index = (index + this.members().length - 1) % this.members().length;
 		//设置菜单角色( 成员组()[索引] )
 		this.setMenuActor(this.members()[index]);
-		//否则 
+		//否则
 	} else {
 		//设置菜单角色( 成员组()[0] )
 		this.setMenuActor(this.members()[0]);
@@ -608,7 +610,7 @@ Game_Party.prototype.ratePreemptive = function (troopAgi) {
 	var rate = this.agility() >= troopAgi ? 0.05 : 0.03;
 	//如果( 有提升先发制人() )
 	if (this.hasRaisePreemptive()) {
-		//比例 *= 4 
+		//比例 *= 4
 		rate *= 4;
 	}
 	//返回 比例

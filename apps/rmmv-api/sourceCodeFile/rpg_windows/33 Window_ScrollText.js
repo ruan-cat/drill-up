@@ -18,7 +18,7 @@ function Window_ScrollText() {
 	this.initialize.apply(this, arguments);
 }
 
-//设置原形 
+//设置原形
 Window_ScrollText.prototype = Object.create(Window_Base.prototype);
 //设置创造者
 Window_ScrollText.prototype.constructor = Window_ScrollText;
@@ -29,7 +29,7 @@ Window_ScrollText.prototype.initialize = function () {
 	Window_Base.prototype.initialize.call(this, 0, 0, width, height);
 	this.opacity = 0;
 	this.hide();
-	this._text = '';
+	this._text = "";
 	this._allTextHeight = 0;
 };
 //更新
@@ -53,7 +53,7 @@ Window_ScrollText.prototype.startMessage = function () {
 //刷新
 Window_ScrollText.prototype.refresh = function () {
 	var textState = {
-		index: 0
+		index: 0,
 	};
 	textState.text = this.convertEscapeCharacters(this._text);
 	this.resetFontSettings();
@@ -86,8 +86,7 @@ Window_ScrollText.prototype.isFastForward = function () {
 	if ($gameMessage.scrollNoFast()) {
 		return false;
 	} else {
-		return (Input.isPressed('ok') || Input.isPressed('shift') ||
-			TouchInput.isPressed());
+		return Input.isPressed("ok") || Input.isPressed("shift") || TouchInput.isPressed();
 	}
 };
 //快发送比例

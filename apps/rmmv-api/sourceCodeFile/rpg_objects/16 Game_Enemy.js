@@ -8,7 +8,7 @@ function Game_Enemy() {
 	this.initialize.apply(this, arguments);
 }
 
-//设置原形 
+//设置原形
 Game_Enemy.prototype = Object.create(Game_Battler.prototype);
 //设置创造者
 Game_Enemy.prototype.constructor = Game_Enemy;
@@ -26,7 +26,7 @@ Game_Enemy.prototype.initMembers = function () {
 	//敌人id = 0
 	this._enemyId = 0;
 	//标记 = ""
-	this._letter = '';
+	this._letter = "";
 	//复数 = false
 	this._plural = false;
 	//画面x = 0
@@ -103,22 +103,25 @@ Game_Enemy.prototype.gold = function () {
 //制作掉落物品组
 Game_Enemy.prototype.makeDropItems = function () {
 	//返回 敌人() 掉落物品组 缩减 方法(r ,di//掉落物品)
-	return this.enemy().dropItems.reduce(function (r, di) {
-		//如果(掉落物品 种类 >0 并且 数学 随机数() * 掉落物品 出现率 < 掉落物品比例() )
-		if (di.kind > 0 && Math.random() * di.denominator < this.dropItemRate()) {
-			//返回 r 连接( 物品对象(掉落物品 种类 , 掉落物品 数据id ) )
-			return r.concat(this.itemObject(di.kind, di.dataId));
-			//否则 
-		} else {
-			//返回 r
-			return r;
-		}
-		//绑定(this),[] )
-	}.bind(this), []);
+	return this.enemy().dropItems.reduce(
+		function (r, di) {
+			//如果(掉落物品 种类 >0 并且 数学 随机数() * 掉落物品 出现率 < 掉落物品比例() )
+			if (di.kind > 0 && Math.random() * di.denominator < this.dropItemRate()) {
+				//返回 r 连接( 物品对象(掉落物品 种类 , 掉落物品 数据id ) )
+				return r.concat(this.itemObject(di.kind, di.dataId));
+				//否则
+			} else {
+				//返回 r
+				return r;
+			}
+			//绑定(this),[] )
+		}.bind(this),
+		[],
+	);
 };
 //掉落物品比例
 Game_Enemy.prototype.dropItemRate = function () {
-	//返回 如果 游戏队伍 有掉落物品双倍() 返回 2 否则 返回 1 
+	//返回 如果 游戏队伍 有掉落物品双倍() 返回 2 否则 返回 1
 	return $gameParty.hasDropItemDouble() ? 2 : 1;
 };
 //物品对象
@@ -174,12 +177,12 @@ Game_Enemy.prototype.originalName = function () {
 //名称
 Game_Enemy.prototype.name = function () {
 	//返回 原始名称() + (如果 复数 返回 标记 否则 返回 "")
-	return this.originalName() + (this._plural ? this._letter : '');
+	return this.originalName() + (this._plural ? this._letter : "");
 };
 //是标记空
 Game_Enemy.prototype.isLetterEmpty = function () {
 	//返回 标记 === ""
-	return this._letter === '';
+	return this._letter === "";
 };
 //设置标记
 Game_Enemy.prototype.setLetter = function (letter) {
@@ -196,7 +199,7 @@ Game_Enemy.prototype.performActionStart = function (action) {
 	//游戏战斗者 表现动作开始 呼叫(this , 动作)
 	Game_Battler.prototype.performActionStart.call(this, action);
 	//请求效果("whiten"//变白 )
-	this.requestEffect('whiten');
+	this.requestEffect("whiten");
 };
 //表现动作
 Game_Enemy.prototype.performAction = function (action) {
@@ -215,7 +218,7 @@ Game_Enemy.prototype.performDamage = function () {
 	//声音管理器 播放敌人伤害()
 	SoundManager.playEnemyDamage();
 	//请求效果("blink"//闪烁 )
-	this.requestEffect('blink');
+	this.requestEffect("blink");
 };
 //表现死亡
 Game_Enemy.prototype.performCollapse = function () {
@@ -226,23 +229,23 @@ Game_Enemy.prototype.performCollapse = function () {
 		//当 0
 		case 0:
 			//请求效果("collapse"//死亡 )
-			this.requestEffect('collapse');
+			this.requestEffect("collapse");
 			//声音管理器 播放敌人死亡()
 			SoundManager.playEnemyCollapse();
 			//中断
 			break;
-			//当 1
+		//当 1
 		case 1:
 			//请求效果("bossCollapse"//boss死亡 )
-			this.requestEffect('bossCollapse');
+			this.requestEffect("bossCollapse");
 			//声音管理器 播放boss死亡1()
 			SoundManager.playBossCollapse1();
 			//中断
 			break;
-			//当 2
+		//当 2
 		case 2:
 			//请求效果("instantCollapse"//立即死亡 )
-			this.requestEffect('instantCollapse');
+			this.requestEffect("instantCollapse");
 			//中断
 			break;
 	}
@@ -256,7 +259,7 @@ Game_Enemy.prototype.transform = function (enemyId) {
 	//如果( 原始名称()!== 名称 )
 	if (this.originalName() !== name) {
 		//标记 = ""
-		this._letter = '';
+		this._letter = "";
 		//复数 = false
 		this._plural = false;
 	}
@@ -280,27 +283,27 @@ Game_Enemy.prototype.meetsCondition = function (action) {
 		case 1:
 			//返回 满足回合条件(参数1,参数2)
 			return this.meetsTurnCondition(param1, param2);
-			//当 2
+		//当 2
 		case 2:
 			//返回 满足hp条件(参数1,参数2)
 			return this.meetsHpCondition(param1, param2);
-			//当 3
+		//当 3
 		case 3:
 			//返回 满足mp条件(参数1,参数2)
 			return this.meetsMpCondition(param1, param2);
-			//当 4
+		//当 4
 		case 4:
 			//返回 满足状态条件(参数1)
 			return this.meetsStateCondition(param1);
-			//当 5
+		//当 5
 		case 5:
 			//返回 满足队伍等级条件(参数1)
 			return this.meetsPartyLevelCondition(param1);
-			//当 6
+		//当 6
 		case 6:
 			//返回 满足开关条件(参数1)
 			return this.meetsSwitchCondition(param1);
-			//缺省
+		//缺省
 		default:
 			//返回 true
 			return true;
@@ -374,7 +377,7 @@ Game_Enemy.prototype.selectAction = function (actionList, ratingZero) {
 				return action;
 			}
 		}
-		//否则 
+		//否则
 	} else {
 		//返回 null
 		return null;
@@ -383,10 +386,13 @@ Game_Enemy.prototype.selectAction = function (actionList, ratingZero) {
 //选择所有动作组
 Game_Enemy.prototype.selectAllActions = function (actionList) {
 	//评分最大 - 数学 最大值 应用(null,动作列表 映射 方法( a//动作 ))
-	var ratingMax = Math.max.apply(null, actionList.map(function (a) {
-		//返回 a 评分
-		return a.rating;
-	}));
+	var ratingMax = Math.max.apply(
+		null,
+		actionList.map(function (a) {
+			//返回 a 评分
+			return a.rating;
+		}),
+	);
 	//评分零 = 评分最大 - 3
 	var ratingZero = ratingMax - 3;
 	//动作列表 =  动作列表 过滤 方法(a//动作)
@@ -419,5 +425,5 @@ Game_Enemy.prototype.makeActions = function () {
 		}
 	}
 	//设置动作状态( "waiting"//等待 )
-	this.setActionState('waiting');
+	this.setActionState("waiting");
 };

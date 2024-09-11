@@ -1,4 +1,3 @@
-
 //-----------------------------------------------------------------------------
 /**长方形的类
  * The rectangle class.
@@ -11,14 +10,14 @@
  * @param {Number} height The height of the rectangle 矩形的高度
  */
 function Rectangle() {
-    this.initialize.apply(this, arguments);
+	this.initialize.apply(this, arguments);
 }
 
 Rectangle.prototype = Object.create(PIXI.Rectangle.prototype);
 Rectangle.prototype.constructor = Rectangle;
 
-Rectangle.prototype.initialize = function(x, y, width, height) {
-    PIXI.Rectangle.call(this, x, y, width, height);
+Rectangle.prototype.initialize = function (x, y, width, height) {
+	PIXI.Rectangle.call(this, x, y, width, height);
 };
 
 /**空矩形

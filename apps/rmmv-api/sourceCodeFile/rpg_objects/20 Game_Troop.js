@@ -7,19 +7,67 @@ function Game_Troop() {
 	this.initialize.apply(this, arguments);
 }
 
-//设置原形 
+//设置原形
 Game_Troop.prototype = Object.create(Game_Unit.prototype);
 //设置创造者
 Game_Troop.prototype.constructor = Game_Troop;
 //半字母表
 Game_Troop.LETTER_TABLE_HALF = [
-	' A', ' B', ' C', ' D', ' E', ' F', ' G', ' H', ' I', ' J', ' K', ' L', ' M',
-	' N', ' O', ' P', ' Q', ' R', ' S', ' T', ' U', ' V', ' W', ' X', ' Y', ' Z'
+	" A",
+	" B",
+	" C",
+	" D",
+	" E",
+	" F",
+	" G",
+	" H",
+	" I",
+	" J",
+	" K",
+	" L",
+	" M",
+	" N",
+	" O",
+	" P",
+	" Q",
+	" R",
+	" S",
+	" T",
+	" U",
+	" V",
+	" W",
+	" X",
+	" Y",
+	" Z",
 ];
-//全字母表 
+//全字母表
 Game_Troop.LETTER_TABLE_FULL = [
-	'Ａ', 'Ｂ', 'Ｃ', 'Ｄ', 'Ｅ', 'Ｆ', 'Ｇ', 'Ｈ', 'Ｉ', 'Ｊ', 'Ｋ', 'Ｌ', 'Ｍ',
-	'Ｎ', 'Ｏ', 'Ｐ', 'Ｑ', 'Ｒ', 'Ｓ', 'Ｔ', 'Ｕ', 'Ｖ', 'Ｗ', 'Ｘ', 'Ｙ', 'Ｚ'
+	"Ａ",
+	"Ｂ",
+	"Ｃ",
+	"Ｄ",
+	"Ｅ",
+	"Ｆ",
+	"Ｇ",
+	"Ｈ",
+	"Ｉ",
+	"Ｊ",
+	"Ｋ",
+	"Ｌ",
+	"Ｍ",
+	"Ｎ",
+	"Ｏ",
+	"Ｐ",
+	"Ｑ",
+	"Ｒ",
+	"Ｓ",
+	"Ｔ",
+	"Ｕ",
+	"Ｖ",
+	"Ｗ",
+	"Ｘ",
+	"Ｙ",
+	"Ｚ",
 ];
 //初始化
 Game_Troop.prototype.initialize = function () {
@@ -84,7 +132,7 @@ Game_Troop.prototype.setup = function (troopId) {
 		if ($dataEnemies[member.enemyId]) {
 			//敌人id = 成员 敌人id
 			var enemyId = member.enemyId;
-			//x = 成员 x 
+			//x = 成员 x
 			var x = member.x;
 			//y = 成员 y
 			var y = member.y;
@@ -113,7 +161,7 @@ Game_Troop.prototype.makeUniqueNames = function () {
 		if (enemy.isAlive() && enemy.isLetterEmpty()) {
 			//名称 = 敌人 原始名称()
 			var name = enemy.originalName();
-			//n = 名称计数[名称] || 0 
+			//n = 名称计数[名称] || 0
 			var n = this._namesCount[name] || 0;
 			//敌人 设置标记( 表[n % 表 长度])
 			enemy.setLetter(table[n % table.length]);
@@ -137,8 +185,7 @@ Game_Troop.prototype.makeUniqueNames = function () {
 //字母表
 Game_Troop.prototype.letterTable = function () {
 	//返回 如果 游戏系统 是中文日文韩文() 返回 游戏敌群 半字母表 否则 返回 全字母表
-	return $gameSystem.isCJK() ? Game_Troop.LETTER_TABLE_FULL :
-		Game_Troop.LETTER_TABLE_HALF;
+	return $gameSystem.isCJK() ? Game_Troop.LETTER_TABLE_FULL : Game_Troop.LETTER_TABLE_HALF;
 };
 //敌人名称组
 Game_Troop.prototype.enemyNames = function () {
@@ -161,10 +208,15 @@ Game_Troop.prototype.enemyNames = function () {
 Game_Troop.prototype.meetsConditions = function (page) {
 	//条件 = 页 条件
 	var c = page.conditions;
-	//如果 (不是 条件 回合结束 并且 不是 条件 回合有效 并且 不是 条件 敌人有效 并且   
-	if (!c.turnEnding && !c.turnValid && !c.enemyValid &&
+	//如果 (不是 条件 回合结束 并且 不是 条件 回合有效 并且 不是 条件 敌人有效 并且
+	if (
+		!c.turnEnding &&
+		!c.turnValid &&
+		!c.enemyValid &&
 		//不是 条件 角色有效 并且 不是 条件 开关有效
-		!c.actorValid && !c.switchValid) {
+		!c.actorValid &&
+		!c.switchValid
+	) {
 		//返回 false
 		return false; // Conditions not set
 	}
@@ -184,12 +236,12 @@ Game_Troop.prototype.meetsConditions = function (page) {
 		//b = 条件 回合b
 		var b = c.turnB;
 		//如果(( b === 0  并且 n !== a ))
-		if ((b === 0 && n !== a)) {
+		if (b === 0 && n !== a) {
 			//返回 false
 			return false;
 		}
 		//如果( ( b>0 并且 (n<1 或者 n<a 或者 n%b !== a%b )   ) )
-		if ((b > 0 && (n < 1 || n < a || n % b !== a % b))) {
+		if (b > 0 && (n < 1 || n < a || n % b !== a % b)) {
 			//返回 false
 			return false;
 		}
@@ -206,7 +258,7 @@ Game_Troop.prototype.meetsConditions = function (page) {
 	}
 	//如果(条件 角色有效 )
 	if (c.actorValid) {
-		//角色 = 游戏角色组 角色(条件 角色索引) 
+		//角色 = 游戏角色组 角色(条件 角色索引)
 		var actor = $gameActors.actor(c.actorId);
 		//如果(不是 角色 或者 角色 hp比例() * 100 > 条件角色hp)
 		if (!actor || actor.hpRate() * 100 > c.actorHp) {
@@ -231,7 +283,7 @@ Game_Troop.prototype.setupBattleEvent = function () {
 	if (!this._interpreter.isRunning()) {
 		//如果( 事件解释器 安装储存公共事件() )
 		if (this._interpreter.setupReservedCommonEvent()) {
-			//返回 
+			//返回
 			return;
 		}
 		//页组 = 敌群() 页组
@@ -274,7 +326,7 @@ Game_Troop.prototype.increaseTurn = function () {
 };
 //经验值总数
 Game_Troop.prototype.expTotal = function () {
-	//返回 死的成员组() 缩减 方法( r , 敌人 ) 
+	//返回 死的成员组() 缩减 方法( r , 敌人 )
 	return this.deadMembers().reduce(function (r, enemy) {
 		//返回 r + 敌人 经验值()
 		return r + enemy.exp();
@@ -283,12 +335,14 @@ Game_Troop.prototype.expTotal = function () {
 };
 //金钱总数
 Game_Troop.prototype.goldTotal = function () {
-	//返回 死的成员组() 缩减 方法( r , 敌人 ) 
-	return this.deadMembers().reduce(function (r, enemy) {
-		//返回 r + 敌人 金钱()
-		return r + enemy.gold();
-		// 0 ) * 金钱比例()
-	}, 0) * this.goldRate();
+	//返回 死的成员组() 缩减 方法( r , 敌人 )
+	return (
+		this.deadMembers().reduce(function (r, enemy) {
+			//返回 r + 敌人 金钱()
+			return r + enemy.gold();
+			// 0 ) * 金钱比例()
+		}, 0) * this.goldRate()
+	);
 };
 //金钱比例
 Game_Troop.prototype.goldRate = function () {
@@ -297,7 +351,7 @@ Game_Troop.prototype.goldRate = function () {
 };
 //制作掉落物品组
 Game_Troop.prototype.makeDropItems = function () {
-	//返回 死的成员组() 缩减 方法( r , 敌人 ) 
+	//返回 死的成员组() 缩减 方法( r , 敌人 )
 	return this.deadMembers().reduce(function (r, enemy) {
 		//返回 r 连接(敌人 制作掉落物品组() )
 		return r.concat(enemy.makeDropItems());
