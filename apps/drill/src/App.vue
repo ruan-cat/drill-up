@@ -2,6 +2,8 @@
 import { ElConfigProvider, ElNotification } from "element-plus";
 
 import HelloWorld from "./components/HelloWorld.vue";
+import RightInfo from "components/right-info/right-info.vue";
+
 // import "@/inform/inform";
 
 /**
@@ -10,12 +12,12 @@ import HelloWorld from "./components/HelloWorld.vue";
  */
 const globalZIndex = ref(2);
 
-ElNotification({
-	title: "你好，使用了 element-plus 🎉",
-	message: "这是测试的全局显示内容",
-	duration: 0,
-	zIndex: 20,
-});
+// ElNotification({
+// 	title: "你好，使用了 element-plus 🎉",
+// 	message: "这是测试的全局显示内容",
+// 	duration: 0,
+// 	zIndex: 20,
+// });
 
 onMounted(() => {
 	console.log(" in $gameScreen ", window!.$gameScreen);
@@ -33,12 +35,15 @@ onMounted(() => {
 				<img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
 			</a>
 			<HelloWorld msg="Vite + Vue" />
+			<RightInfo></RightInfo>
 		</ElConfigProvider>
 	</section>
 </template>
 
 <style lang="scss" scoped>
 .vite-vue-app-root {
+	height: 95vh;
+	width: 95vw;
 }
 
 .logo {
