@@ -18,8 +18,8 @@
 		"resolveJsonModule": true,
 		"allowJs": true,
 		"noEmit": true,
-		// "rootDir": "./js",
-		// "baseUrl": "./js",
+		"rootDir": ".",
+		"baseUrl": ".",
 		"outDir": "dist",
 		"types": [
 			"fpsmeter",
