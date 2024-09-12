@@ -12,11 +12,19 @@ Graphics._modifyExistingElements = function () {
 	// });
 
 	console.warn(` 兄弟，咋们用vite了，都是热更新，就不要手动重设dom了。不做吃力不讨好的事情。 `);
+};
 
-	// elements.
-	// for (var i = 0; i < elements.length; i++) {
-	// 	if (elements[i].style.zIndex > 0) {
-	// 		elements[i].style.zIndex = 0;
-	// 	}
-	// }
+const Graphics_createUpperCanvas_alias = Graphics._createUpperCanvas;
+Graphics._createUpperCanvas = function () {
+	Graphics_createUpperCanvas_alias.call(this);
+
+	// 获取dom不合适，获取不到
+	// const upperCanvasDom = document.getElementById("upperCanvas") as HTMLCanvasElement;
+	// upperCanvasDom.style.margin = "initial";
+	// upperCanvasDom.style.marginLeft = "0px";
+
+	// 重设dom的所在位置
+	Graphics._upperCanvas.style.margin = "initial";
+	Graphics._upperCanvas.style.marginLeft = "0px";
+	console.log(" 完成设置 ");
 };
