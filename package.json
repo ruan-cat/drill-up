@@ -23,6 +23,7 @@
 		"prettier": "prettier --write ."
 	},
 	"dependencies": {
+		"@ruan-cat/utils": "^1.0.2",
 		"lodash-es": "^4.17.21",
 		"pinia-plugin-persistedstate": "^3.2.1"
 	},
