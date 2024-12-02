@@ -4,6 +4,7 @@
 	"description": "wait",
 	"main": "main.js",
 	"scripts": {
+		"rm:node_modules": "rimraf node_modules",
 		"make-jsdoc-stable": "node node_modules/jsdoc/jsdoc.js -c jsdoc.js",
 		"http-server-doc": "http-server ./rpgmv-api-doc/",
 		"make-jsdoc-1": "node ./node_modules/.bin/jsdoc -c jsdoc.js",

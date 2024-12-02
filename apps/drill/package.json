@@ -11,6 +11,7 @@
 		"vue-tsc": "vue-tsc -b",
 		"build": "vite build",
 		"preview": "vite preview",
+		"rm:node_modules": "rimraf node_modules",
 		"lint:eslint": "eslint . --fix",
 		"format:prettier": "prettier --write . >logs/prettier-format-logs.md"
 	},
