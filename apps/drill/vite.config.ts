@@ -1,16 +1,29 @@
+import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { createHtmlPlugin } from "vite-plugin-html";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-import { fileURLToPath, URL } from "node:url";
+import { config as dotenvConfig } from "@dotenvx/dotenvx";
+
+// 拓展返回值
+declare module "@dotenvx/dotenvx" {
+	interface DotenvParseOutput {
+		[name: string]: string;
+		publicDir: string;
+	}
+}
+
+const res = dotenvConfig().parsed;
+// console.log(res);
+const publicDir = res!.publicDir;
 
 // https://vitejs.dev/config/
 export default defineConfig({
 	base: "/",
 
-	publicDir: "drill-project",
+	publicDir,
 
 	server: {
 		port: 8080,
@@ -23,9 +36,7 @@ export default defineConfig({
 		// 重设index.html的入口 和 全局ts文件的注入
 		createHtmlPlugin({
 			minify: false,
-			// entry: "../src/main.ts",
-			// entry: "./src/main.ts",
-			template: "drill-project/index.html",
+			template: `${publicDir}/index.html`,
 
 			/**
 			 * 需要注入 index.html ejs 模版的数据
