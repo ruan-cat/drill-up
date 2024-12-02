@@ -1,20 +1,12 @@
 {
-    "name": "rmmz-game",
-    "main": "index.html",
-    "chromium-args": "--force-color-profile=srgb",
-    "window": {
-        "title": "QJ-World",
-        "width": 816,
-        "height": 624,
-        "position": "center",
-        "icon": "icon/icon.png"
-    },
-    "packageManager": "pnpm@9.14.2",
-    "scripts": {
-        "dev": "vite --port 8080 --open",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "vite": "^6.0.2"
-    }
+	"name": "rmmz-game",
+	"main": "index.html",
+	"chromium-args": "--force-color-profile=srgb",
+	"window": {
+		"title": "QJ-World",
+		"width": 816,
+		"height": 624,
+		"position": "center",
+		"icon": "icon/icon.png"
+	}
 }
