@@ -1,0 +1,14 @@
+The source of png below img/projectiles:
+
+
+flame[16,8].png and flame2[16,8].png：
+https://secaly.itch.io/projectile-effect-vfx-pack
+
+M Folder：
+https://teamlemonjuice.itch.io/lsp
+
+MSE Folder：
+https://creativekind.itch.io/magic-spell-effects-4
+
+sword Foler:
+https://snoopethduckduck.itch.io/

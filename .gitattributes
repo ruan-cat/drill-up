@@ -41,4 +41,10 @@
 # 视频
 *.webm binary
 
+# rmmz的文件后缀
+*.wasm binary
+*.woff binary
+*.efkefc binary
+*.efkmodel binary
+
 
