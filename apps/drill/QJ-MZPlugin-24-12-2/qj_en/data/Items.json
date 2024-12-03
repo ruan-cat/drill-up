@@ -1,0 +1,6 @@
+[
+null,
+{"id":1,"animationId":0,"consumable":true,"damage":{"critical":false,"elementId":0,"formula":"0","type":0,"variance":20},"description":"送给喜欢的人吧。","effects":[],"hitType":0,"iconIndex":182,"itypeId":1,"name":"鲜花","note":"","occasion":0,"price":0,"repeats":1,"scope":7,"speed":0,"successRate":100,"tpGain":0},
+{"id":2,"animationId":0,"consumable":true,"damage":{"critical":false,"elementId":0,"formula":"0","type":0,"variance":20},"description":"放置在地图上就可以存放物品了。","effects":[],"hitType":0,"iconIndex":306,"itypeId":1,"name":"盒子","note":"","occasion":0,"price":0,"repeats":1,"scope":7,"speed":0,"successRate":100,"tpGain":0},
+{"id":3,"animationId":0,"consumable":true,"damage":{"critical":false,"elementId":0,"formula":"0","type":0,"variance":20},"description":"吃掉后可以恢复体力。","effects":[{"code":11,"dataId":0,"value1":0,"value2":10}],"hitType":0,"iconIndex":274,"itypeId":1,"name":"汉堡","note":"","occasion":0,"price":0,"repeats":1,"scope":7,"speed":0,"successRate":100,"tpGain":0}
+]
