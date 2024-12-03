@@ -9,9 +9,9 @@
 	"scripts": {
 		"dev": "vite",
 		"vue-tsc": "vue-tsc -b",
-		"build": "vite build",
 		"build:drill": "vite build --mode drill",
 		"build:qj-en": "vite build --mode qj-en",
+		"build": "pnpm run -r \"/^build:.*/\" ",
 		"preview": "vite preview",
 		"clear": "rimraf .vercel dist",
 		"rm:node_modules": "rimraf node_modules",
