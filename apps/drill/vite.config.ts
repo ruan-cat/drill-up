@@ -30,6 +30,11 @@ export default defineConfig({
 		open: true,
 	},
 
+	preview: {
+		port: 8080,
+		open: true,
+	},
+
 	plugins: [
 		vue(),
 
