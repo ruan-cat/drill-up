@@ -10,29 +10,29 @@ const config: Config = {
 
 	deployTargets: [
 		// 仇九rmmz项目
-		// {
-		// 	type: "userCommands",
-		// 	outputDirectory: "dist/qj-en",
-		// 	targetCWD: "./apps/drill",
-		// 	url: [
-		// 		//
-		// 		"qj-rmmz.ruancat6312.top",
-		// 		"qj-mz-plugins-24-12-2.ruancat6312.top",
-		// 	],
-		// 	userCommands: ["pnpm -C=./apps/drill build:qj-en"],
-		// },
-
-		// 钻头项目
 		{
 			type: "userCommands",
-			outputDirectory: "dist/drill",
+			outputDirectory: "dist",
 			targetCWD: "./apps/drill",
 			url: [
 				//
-				"drill-mv.ruancat6312.top",
+				"qj-rmmz.ruancat6312.top",
+				"qj-mz-plugins-24-12-2.ruancat6312.top",
 			],
-			userCommands: ["pnpm -C=./apps/drill build:drill"],
+			userCommands: ["pnpm -C=./apps/drill build:qj-en"],
 		},
+
+		// 钻头项目
+		// {
+		// 	type: "userCommands",
+		// 	outputDirectory: "dist/drill",
+		// 	targetCWD: "./apps/drill",
+		// 	url: [
+		// 		//
+		// 		"drill-mv.ruancat6312.top",
+		// 	],
+		// 	userCommands: ["pnpm -C=./apps/drill build:drill"],
+		// },
 	],
 };
 

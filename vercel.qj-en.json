@@ -1,0 +1,14 @@
+{
+	"framework": "vite",
+	"installCommand": "corepack enable && corepack install && pnpm i",
+	"buildCommand": "pnpm run build:qj-en",
+	"outputDirectory": "dist",
+	"devCommand": null,
+	"public": false,
+	"cleanUrls": true,
+	"git": {
+		"deploymentEnabled": {
+			"main": false
+		}
+	}
+}
