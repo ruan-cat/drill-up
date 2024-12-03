@@ -6,6 +6,8 @@ const config: Config = {
 	vercelOrgId: "",
 	vercelProjectId: "",
 
+	isShowCommand: true,
+
 	deployTargets: [
 		// 仇九rmmz项目
 		{
