@@ -11,9 +11,9 @@ logs
 
 
 # 全部的库文件
-libs/**/*.js
+**/libs/**/*.js
 # 全部的插件不做处理
-plugins/**/*.js
+**/plugins/**/*.js
 
 apps/drill/drill-project/js/libs/**/*.js
 
@@ -39,4 +39,4 @@ plugins.js
 QJ-MZPlugin-24-12-2/**/*.css
 QJ-MZPlugin-24-12-2/**/effects
 QJ-MZPlugin-24-12-2/**/fonts
-QJ-MZPlugin-24-12-2/**/libs
+
