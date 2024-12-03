@@ -26,11 +26,23 @@ declare module "@dotenvx/dotenvx" {
 export default defineConfig(({ mode }) => {
 	// 提供类型声明 便于得到使用提示
 	const env = loadEnv(mode, process.cwd()) as unknown as ImportMetaEnv;
+
 	const VITE_project_flag_name = env.VITE_project_flag_name;
 	const VITE_project_path = env.VITE_project_path;
 
+	// console.log(" ??? env ", env);
+	// console.log(" ??? import.meta.env ", import.meta.env);
+	// console.log(" ??? process.env ", process.env);
+	console.log(" process.env.isSingleDomain=true ", process.env?.isSingleDomain);
+
+	/**
+	 * 是否是单一域名的场景？
+	 * 如果是，就需要在base路径前面加上项目标识名。
+	 */
+	const base = process.env?.isSingleDomain === "true" ? `/${VITE_project_flag_name}/` : "/";
+
 	return {
-		base: "/",
+		base,
 
 		publicDir: VITE_project_path,
 

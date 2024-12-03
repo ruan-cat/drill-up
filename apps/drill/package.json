@@ -11,7 +11,7 @@
 		"vue-tsc": "vue-tsc -b",
 		"build:drill": "vite build --mode drill",
 		"build:qj-en": "vite build --mode qj-en",
-		"build": "pnpm run -r \"/^build:.*/\" ",
+		"build": "cross-env isSingleDomain=true pnpm run -r \"/^build:.*/\" ",
 		"preview": "vite preview",
 		"clear": "rimraf .vercel dist",
 		"rm:node_modules": "rimraf node_modules",
