@@ -29,7 +29,8 @@
 		"rm:node_modules": "pnpm -r rm:node_modules && rimraf node_modules pnpm-lock.yaml",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"prettier": "prettier --write ."
+		"prettier": "prettier --write .",
+		"deploy-vercel": "node --import=tsx ./scripts/vercel-deploy-tool.ts --env-path=.env.deploy-vercel"
 	},
 	"dependencies": {
 		"@ruan-cat/utils": "^1.0.2",
