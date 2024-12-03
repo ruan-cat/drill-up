@@ -41,13 +41,15 @@ export default defineConfig(({ mode }) => {
 	 */
 	const base = process.env?.isSingleDomain === "true" ? `/${VITE_project_flag_name}/` : "/";
 
+	const outDir = process.env?.isSingleDomain === "true" ? `dist/${VITE_project_flag_name}` : "dist";
+
 	return {
 		base,
 
 		publicDir: VITE_project_path,
 
 		build: {
-			outDir: `dist/${VITE_project_flag_name}`,
+			outDir,
 		},
 
 		server: {
