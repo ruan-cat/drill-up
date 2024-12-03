@@ -34,3 +34,9 @@ plugins.js
 
 # data文件夹下的json文件不做处理
 **/data/*.json
+
+# 忽略掉rmmz项目内的静态资源 和 库文件
+QJ-MZPlugin-24-12-2/**/*.css
+QJ-MZPlugin-24-12-2/**/effects
+QJ-MZPlugin-24-12-2/**/fonts
+QJ-MZPlugin-24-12-2/**/libs
