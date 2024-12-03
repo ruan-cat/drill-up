@@ -54,6 +54,9 @@ components.d.ts
 # 默认忽略掉本地生成的 vercel 目录
 .vercel
 
+# 忽略掉部署工具生成的配置文件
+vercel.null.def.json
+
 # 忽略掉特定的 部署用的环境变量文件
 .env.deploy-vercel
 
