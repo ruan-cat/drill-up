@@ -31,3 +31,6 @@ MOG_*.js
 
 # 插件配置文件不做处理
 plugins.js
+
+# data文件夹下的json文件不做处理
+**/data/*.json
