@@ -12,7 +12,7 @@ const config: Config = {
 		// 仇九rmmz项目
 		{
 			type: "userCommands",
-			outputDirectory: "dist",
+			outputDirectory: "dist/qj-en",
 			targetCWD: "./apps/drill",
 			url: [
 				//
@@ -20,7 +20,7 @@ const config: Config = {
 				//
 				"qj-mz-plugins-24-12-2.ruancat6312.top",
 			],
-			userCommands: ["pnpm -C=./apps/drill build"],
+			userCommands: ["pnpm -C=./apps/drill build:qj-en"],
 		},
 	],
 };

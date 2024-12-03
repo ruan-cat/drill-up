@@ -13,6 +13,7 @@
 		"build:drill": "vite build --mode drill",
 		"build:qj-en": "vite build --mode qj-en",
 		"preview": "vite preview",
+		"clear": "rimraf .vercel dist",
 		"rm:node_modules": "rimraf node_modules",
 		"lint:eslint": "eslint . --fix",
 		"format:prettier": "prettier --write . >logs/prettier-format-logs.md"
