@@ -11,6 +11,7 @@
 		"vue-tsc": "vue-tsc -b",
 		"tauri:init": "tauri init",
 		"tauri:dev": "tauri dev",
+		"tauri:build": "tauri build",
 		"build:drill": "vite build --mode drill",
 		"build:qj-en": "vite build --mode qj-en",
 		"build-muti": "cross-env isSingleDomain=true pnpm run -r \"/^build:.*/\" ",

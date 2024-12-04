@@ -1,8 +1,8 @@
 {
 	"$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-	"productName": "钻头项目",
+	"productName": "drill-project",
 	"version": "0.1.0",
-	"identifier": "com.tauri.dev",
+	"identifier": "com.qiujiu-demo.dev",
 	"build": {
 		"frontendDist": "../dist",
 		"devUrl": "http://localhost:8080",
