@@ -38,6 +38,9 @@ const config = {
 	indexFormat: "table",
 	useCodeBlocks: true,
 	expandObjects: true,
+	treatWarningsAsErrors: false,
+	// TODO: 跳过错误检查 但是项目内全部的js都是类型错误的，跳过检查后就无法生成文档了。
+	skipErrorChecking: true,
 };
 
 export default config;
