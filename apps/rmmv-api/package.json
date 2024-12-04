@@ -9,7 +9,8 @@
 		"http-server-doc": "http-server ./rpgmv-api-doc/",
 		"make-jsdoc-1": "node ./node_modules/.bin/jsdoc -c jsdoc.js",
 		"make-jsdoc-1-npx": "npx jsdoc -c jsdoc.js",
-		"make-jsdoc-2": "jsdoc -c jsdoc.js"
+		"make-jsdoc-2": "jsdoc -c jsdoc.js",
+		"typedoc": "typedoc --options typedoc.config.mjs"
 	},
 	"repository": {
 		"type": "git",
@@ -27,6 +28,9 @@
 		"jsdoc-to-markdown": "^7.1.1",
 		"minami": "^1.2.3",
 		"swiper": "~5.0.4",
-		"tui-jsdoc-template": "^1.2.2"
+		"tui-jsdoc-template": "^1.2.2",
+		"typedoc": "^0.27.2",
+		"typedoc-plugin-markdown": "^4.3.1",
+		"typescript": "^5.7.2"
 	}
 }
