@@ -15,7 +15,7 @@
 		"build:drill": "vite build --mode drill",
 		"build:qj-en": "vite build --mode qj-en",
 		"build-muti": "cross-env isSingleDomain=true pnpm run -r \"/^build:.*/\" ",
-		"build": "pnpm run build:drill",
+		"build": "pnpm run build:qj-en",
 		"preview": "vite preview",
 		"clear": "rimraf .vercel dist",
 		"rm:node_modules": "rimraf node_modules",
