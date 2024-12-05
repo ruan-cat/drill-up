@@ -13,7 +13,7 @@ logs
 # 全部的库文件
 **/libs/**/*.js
 # 全部的插件不做处理
-**/plugins/**/*.js
+# **/plugins/**/*.js
 
 apps/drill/drill-project/js/libs/**/*.js
 

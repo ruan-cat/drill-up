@@ -8,7 +8,7 @@
  * @base QJ-MapProjectileMZ
  * @orderAfter QJ-MapProjectileMZ
  *
- * @help 
+ * @help
  * need QJ-MapProjectileMZ
  * set the attribute z of projectile or laser to:
  *"MF_BR"     Transform the current projectile to a distorted effect and place it below the player
@@ -17,14 +17,14 @@
  *"MF_UG"     Transform the current projectile to a exposure effect and place it above the player
  *
  *
-*/
+ */
 
 /*:zh
  * @target MZ MV
  * @plugindesc [QJ-MapProjectileMZ滤镜弹幕][24-12-2]
  * @author Qiu Jiu
  *
- * @help 
+ * @help
  * 需要有QJ-MapProjectileMZ
  * 在发射弹幕时将z值设置成如下值即可将弹幕变成对应的功能：
  *"MF_BR"     将当前弹幕变成扭曲效果，且在玩家之下
@@ -33,11 +33,11 @@
  *"MF_UG"     将当前弹幕变成曝光效果，且在玩家之上
  *
  *
-*/
+ */
 //=============================================================================
 //
 //=============================================================================
-QJ.mapFilter = {reWrite:{}};
+QJ.mapFilter = { reWrite: {} };
 //=============================================================================
 //
 //=============================================================================
@@ -45,92 +45,95 @@ QJ.mapFilter = {reWrite:{}};
 //
 //=============================================================================
 (($ = {}) => {
-//=============================================================================
-//
-//=============================================================================
-var isMV = Utils.RPGMAKER_NAME === 'MV';
-//=============================================================================
-//
-//=============================================================================
-$.Spriteset_Map_createLowerLayer = Spriteset_Map.prototype.createLowerLayer;
-Spriteset_Map.prototype.createLowerLayer = function() {
+	//=============================================================================
+	//
+	//=============================================================================
+	var isMV = Utils.RPGMAKER_NAME === "MV";
+	//=============================================================================
+	//
+	//=============================================================================
+	$.Spriteset_Map_createLowerLayer = Spriteset_Map.prototype.createLowerLayer;
+	Spriteset_Map.prototype.createLowerLayer = function () {
+		this.addChild((this._mapFilterContainer0 = new Sprite_ProjectileContainerQJMZ()));
+		this.addChild((this._mapFilterContainer1 = new Sprite_ProjectileContainerQJMZ()));
+		this._mapFilterBelow = new MapEffectFilter(this._mapFilterContainer0, this._mapFilterContainer1);
 
-    this.addChild(this._mapFilterContainer0 = new Sprite_ProjectileContainerQJMZ());
-    this.addChild(this._mapFilterContainer1 = new Sprite_ProjectileContainerQJMZ());
-    this._mapFilterBelow = new MapEffectFilter(this._mapFilterContainer0,this._mapFilterContainer1);
+		this.addChild((this._mapFilterContainer2 = new Sprite_ProjectileContainerQJMZ()));
+		this.addChild((this._mapFilterContainer3 = new Sprite_ProjectileContainerQJMZ()));
 
-    this.addChild(this._mapFilterContainer2 = new Sprite_ProjectileContainerQJMZ());
-    this.addChild(this._mapFilterContainer3 = new Sprite_ProjectileContainerQJMZ());
+		this._mapFilterContainer0.visible = false;
+		this._mapFilterContainer1.visible = false;
+		this._mapFilterContainer2.visible = false;
+		this._mapFilterContainer3.visible = false;
 
-    this._mapFilterContainer0.visible = false;
-    this._mapFilterContainer1.visible = false;
-    this._mapFilterContainer2.visible = false;
-    this._mapFilterContainer3.visible = false;
+		this._mapFilterUpper = new MapEffectFilter(this._mapFilterContainer2, this._mapFilterContainer3);
+		$.Spriteset_Map_createLowerLayer.call(this);
 
-    this._mapFilterUpper = new MapEffectFilter(this._mapFilterContainer2,this._mapFilterContainer3);
-    $.Spriteset_Map_createLowerLayer.call(this);
-
-    if (isMV) {
-        if (this._tilemap.lowerZLayer) this.addFilterTo(this._mapFilterBelow,this._tilemap.lowerZLayer);
-        this.addFilterTo(this._mapFilterUpper,this);
-    }
-};
-if (!isMV) {
-$.Spriteset_Base_createOverallFilters = Spriteset_Base.prototype.createOverallFilters;
-Spriteset_Base.prototype.createOverallFilters = function() {
-    $.Spriteset_Base_createOverallFilters.call(this);
-    if (this._tilemap._lowerLayer) this.addFilterTo(this._mapFilterBelow,this._tilemap._lowerLayer);
-    this.addFilterTo(this._mapFilterUpper,this);
-};
-}
-$.Spriteset_Map_createBulletQJExtra_Lightning = Spriteset_Map.prototype.createBulletQJExtra;
-Spriteset_Map.prototype.createBulletQJExtra = function(index,type,data,spriteData) {
-    $.Spriteset_Map_createBulletQJExtra_Lightning.apply(this,arguments);
-    if (data.data.z==="MF_BR") {//Below charter, Replace filter
-        this._mapFilterContainer0.addChild(spriteData);
-    } else if (data.data.z==="MF_BG") {//Below charter, Glow filter
-        this._mapFilterContainer1.addChild(spriteData);
-    } else if (data.data.z==="MF_UR") {//Upper charter, Replace filter
-        this._mapFilterContainer2.addChild(spriteData);
-    } else if (data.data.z==="MF_UG") {//Upper charter, Glow filter
-        this._mapFilterContainer3.addChild(spriteData);
-    }
-};
-$.Spriteset_Map_findBulletContainerQJ = Spriteset_Map.prototype.findBulletContainerQJ;
-Spriteset_Map.prototype.findBulletContainerQJ = function(index) {
-    let data = $gameMap.bulletQJ(index);
-    let container = $.Spriteset_Map_findBulletContainerQJ.apply(this,arguments);
-    if (!!container) return container;
-    else if (data.data.z==="MF_BR") return this._mapFilterContainer0;
-    else if (data.data.z==="MF_BG") return this._mapFilterContainer1;
-    else if (data.data.z==="MF_UR") return this._mapFilterContainer2;
-    else if (data.data.z==="MF_UG") return this._mapFilterContainer3;
-    else return null;
-};
-$.Spriteset_Map_update = Spriteset_Map.prototype.update;
-Spriteset_Map.prototype.update = function() {
-    $.Spriteset_Map_update.call(this);
-    this._mapFilterBelow.update();
-    this._mapFilterUpper.update();
-};
-Spriteset_Map.prototype.addFilterTo = function(filter,target) {
-    if (target.filters) {
-        target.filters.push(filter);
-        target.filters = target.filters;
-    } else {
-        target.filters = [filter];
-    }
-    let margin = 20;
-    target.filterArea = new PIXI.Rectangle(-margin,-margin,Graphics.width+margin*2,Graphics.height+margin*2);
-};
-//=============================================================================
-//
-//=============================================================================
-if (isMV) {
-//=============================================================================
-//
-//=============================================================================
-var vertex = `
+		if (isMV) {
+			if (this._tilemap.lowerZLayer) this.addFilterTo(this._mapFilterBelow, this._tilemap.lowerZLayer);
+			this.addFilterTo(this._mapFilterUpper, this);
+		}
+	};
+	if (!isMV) {
+		$.Spriteset_Base_createOverallFilters = Spriteset_Base.prototype.createOverallFilters;
+		Spriteset_Base.prototype.createOverallFilters = function () {
+			$.Spriteset_Base_createOverallFilters.call(this);
+			if (this._tilemap._lowerLayer) this.addFilterTo(this._mapFilterBelow, this._tilemap._lowerLayer);
+			this.addFilterTo(this._mapFilterUpper, this);
+		};
+	}
+	$.Spriteset_Map_createBulletQJExtra_Lightning = Spriteset_Map.prototype.createBulletQJExtra;
+	Spriteset_Map.prototype.createBulletQJExtra = function (index, type, data, spriteData) {
+		$.Spriteset_Map_createBulletQJExtra_Lightning.apply(this, arguments);
+		if (data.data.z === "MF_BR") {
+			//Below charter, Replace filter
+			this._mapFilterContainer0.addChild(spriteData);
+		} else if (data.data.z === "MF_BG") {
+			//Below charter, Glow filter
+			this._mapFilterContainer1.addChild(spriteData);
+		} else if (data.data.z === "MF_UR") {
+			//Upper charter, Replace filter
+			this._mapFilterContainer2.addChild(spriteData);
+		} else if (data.data.z === "MF_UG") {
+			//Upper charter, Glow filter
+			this._mapFilterContainer3.addChild(spriteData);
+		}
+	};
+	$.Spriteset_Map_findBulletContainerQJ = Spriteset_Map.prototype.findBulletContainerQJ;
+	Spriteset_Map.prototype.findBulletContainerQJ = function (index) {
+		let data = $gameMap.bulletQJ(index);
+		let container = $.Spriteset_Map_findBulletContainerQJ.apply(this, arguments);
+		if (!!container) return container;
+		else if (data.data.z === "MF_BR") return this._mapFilterContainer0;
+		else if (data.data.z === "MF_BG") return this._mapFilterContainer1;
+		else if (data.data.z === "MF_UR") return this._mapFilterContainer2;
+		else if (data.data.z === "MF_UG") return this._mapFilterContainer3;
+		else return null;
+	};
+	$.Spriteset_Map_update = Spriteset_Map.prototype.update;
+	Spriteset_Map.prototype.update = function () {
+		$.Spriteset_Map_update.call(this);
+		this._mapFilterBelow.update();
+		this._mapFilterUpper.update();
+	};
+	Spriteset_Map.prototype.addFilterTo = function (filter, target) {
+		if (target.filters) {
+			target.filters.push(filter);
+			target.filters = target.filters;
+		} else {
+			target.filters = [filter];
+		}
+		let margin = 20;
+		target.filterArea = new PIXI.Rectangle(-margin, -margin, Graphics.width + margin * 2, Graphics.height + margin * 2);
+	};
+	//=============================================================================
+	//
+	//=============================================================================
+	if (isMV) {
+		//=============================================================================
+		//
+		//=============================================================================
+		var vertex = `
 attribute vec2 aVertexPosition;
 attribute vec2 aTextureCoord;
 
@@ -145,7 +148,7 @@ void main(void) {
 }
 `;
 
-var fragment = `
+		var fragment = `
 varying vec2 vTextureCoord;
 uniform sampler2D uSampler;
 
@@ -200,60 +203,60 @@ void main(void) {
     gl_FragColor = vec4(r,g,b,a);
 }
 `;
-//=============================================================================
-//
-//=============================================================================
-function MapEffectFilter() {
-    this.initialize.apply(this,arguments);
-}
-window.MapEffectFilter = MapEffectFilter;
-MapEffectFilter.prototype = Object.create(PIXI.Filter.prototype);
-MapEffectFilter.prototype.constructor = MapEffectFilter;
-MapEffectFilter.prototype.initialize = function(replaceContainer,glowContainer) {
-    PIXI.Filter.call(this,vertex,fragment);
-    this.uniforms.rate = [1,1];
-    this._replaceContainer = replaceContainer;
-    this._glowContainer = glowContainer;
-    this.uniforms.replaceTexture = PIXI.RenderTexture.create(Graphics.width,Graphics.height);
-    this.uniforms.glowTexture = PIXI.RenderTexture.create(Graphics.width,Graphics.height);
-    this._needInitGlowTexture = true;
-};
-MapEffectFilter.prototype.update = function() {
-    //===============================================================
-    let renderer = Graphics._renderer;
-    //===============================================================
-    this._replaceContainer.visible = true;
-    this._glowContainer.visible = true;
+		//=============================================================================
+		//
+		//=============================================================================
+		function MapEffectFilter() {
+			this.initialize.apply(this, arguments);
+		}
+		window.MapEffectFilter = MapEffectFilter;
+		MapEffectFilter.prototype = Object.create(PIXI.Filter.prototype);
+		MapEffectFilter.prototype.constructor = MapEffectFilter;
+		MapEffectFilter.prototype.initialize = function (replaceContainer, glowContainer) {
+			PIXI.Filter.call(this, vertex, fragment);
+			this.uniforms.rate = [1, 1];
+			this._replaceContainer = replaceContainer;
+			this._glowContainer = glowContainer;
+			this.uniforms.replaceTexture = PIXI.RenderTexture.create(Graphics.width, Graphics.height);
+			this.uniforms.glowTexture = PIXI.RenderTexture.create(Graphics.width, Graphics.height);
+			this._needInitGlowTexture = true;
+		};
+		MapEffectFilter.prototype.update = function () {
+			//===============================================================
+			let renderer = Graphics._renderer;
+			//===============================================================
+			this._replaceContainer.visible = true;
+			this._glowContainer.visible = true;
 
-    if (this._needInitGlowTexture) {
-        this._needInitGlowTexture = false;
-        renderer.textureManager.updateTexture(this.uniforms.glowTexture.baseTexture,0);
-        let rendererTarget = this.uniforms.glowTexture.baseTexture._glRenderTargets[renderer.CONTEXT_UID];
-        rendererTarget.clearColor = [0.5,0.5,0.5,1.0];
-    }
+			if (this._needInitGlowTexture) {
+				this._needInitGlowTexture = false;
+				renderer.textureManager.updateTexture(this.uniforms.glowTexture.baseTexture, 0);
+				let rendererTarget = this.uniforms.glowTexture.baseTexture._glRenderTargets[renderer.CONTEXT_UID];
+				rendererTarget.clearColor = [0.5, 0.5, 0.5, 1.0];
+			}
 
-    this._replaceContainer.updateTransform();
-    this._glowContainer.updateTransform();
-    renderer.render(this._replaceContainer,this.uniforms.replaceTexture,true,null,true);
-    renderer.render(this._glowContainer,this.uniforms.glowTexture,true,null,true);
+			this._replaceContainer.updateTransform();
+			this._glowContainer.updateTransform();
+			renderer.render(this._replaceContainer, this.uniforms.replaceTexture, true, null, true);
+			renderer.render(this._glowContainer, this.uniforms.glowTexture, true, null, true);
 
-    this._replaceContainer.visible = false;
-    this._glowContainer.visible = false;
-    //===============================================================
-};
-MapEffectFilter.prototype.apply = function(filterManager, input, output, clear, currentState) {
-    this.uniforms.rate[0] = Graphics.width/input.size.width;
-    this.uniforms.rate[1] = Graphics.height/input.size.height;
-    PIXI.Filter.prototype.apply.call(this,filterManager, input, output, clear, currentState);
-};
-//=============================================================================
-//
-//=============================================================================
-} else {
-//=============================================================================
-//
-//=============================================================================
-var vertex = `
+			this._replaceContainer.visible = false;
+			this._glowContainer.visible = false;
+			//===============================================================
+		};
+		MapEffectFilter.prototype.apply = function (filterManager, input, output, clear, currentState) {
+			this.uniforms.rate[0] = Graphics.width / input.size.width;
+			this.uniforms.rate[1] = Graphics.height / input.size.height;
+			PIXI.Filter.prototype.apply.call(this, filterManager, input, output, clear, currentState);
+		};
+		//=============================================================================
+		//
+		//=============================================================================
+	} else {
+		//=============================================================================
+		//
+		//=============================================================================
+		var vertex = `
 attribute vec2 aVertexPosition;
 attribute vec2 aTextureCoord;
 
@@ -268,7 +271,7 @@ void main(void) {
 }
 `;
 
-var fragment = `
+		var fragment = `
 varying vec2 vTextureCoord;
 uniform sampler2D uSampler;
 
@@ -308,47 +311,47 @@ void main(void) {
     gl_FragColor = vec4(r,g,b,a);
 }
 `;
-//=============================================================================
-//
-//=============================================================================
-function MapEffectFilter() {
-    this.initialize.apply(this,arguments);
-}
-window.MapEffectFilter = MapEffectFilter;
-MapEffectFilter.prototype = Object.create(PIXI.Filter.prototype);
-MapEffectFilter.prototype.constructor = MapEffectFilter;
-MapEffectFilter.prototype.initialize = function(replaceContainer,glowContainer) {
-    PIXI.Filter.call(this,vertex,fragment);
-    this._replaceContainer = replaceContainer;
-    this._glowContainer = glowContainer;
-    this.uniforms.replaceTexture = PIXI.RenderTexture.create(Graphics.width,Graphics.height);
-    this.uniforms.glowTexture = PIXI.RenderTexture.create(Graphics.width,Graphics.height);
-    this.uniforms.glowTexture.baseTexture.clearColor = [0.5,0.5,0.5,1.0];
-};
-MapEffectFilter.prototype.update = function() {
-    //===============================================================
-    let renderer = Graphics._app.renderer;
-    //===============================================================
-    this._replaceContainer.visible = true;
-    this._glowContainer.visible = true;
+		//=============================================================================
+		//
+		//=============================================================================
+		function MapEffectFilter() {
+			this.initialize.apply(this, arguments);
+		}
+		window.MapEffectFilter = MapEffectFilter;
+		MapEffectFilter.prototype = Object.create(PIXI.Filter.prototype);
+		MapEffectFilter.prototype.constructor = MapEffectFilter;
+		MapEffectFilter.prototype.initialize = function (replaceContainer, glowContainer) {
+			PIXI.Filter.call(this, vertex, fragment);
+			this._replaceContainer = replaceContainer;
+			this._glowContainer = glowContainer;
+			this.uniforms.replaceTexture = PIXI.RenderTexture.create(Graphics.width, Graphics.height);
+			this.uniforms.glowTexture = PIXI.RenderTexture.create(Graphics.width, Graphics.height);
+			this.uniforms.glowTexture.baseTexture.clearColor = [0.5, 0.5, 0.5, 1.0];
+		};
+		MapEffectFilter.prototype.update = function () {
+			//===============================================================
+			let renderer = Graphics._app.renderer;
+			//===============================================================
+			this._replaceContainer.visible = true;
+			this._glowContainer.visible = true;
 
-    this._replaceContainer.updateTransform();
-    this._glowContainer.updateTransform();
-    renderer.render(this._replaceContainer,this.uniforms.replaceTexture,true,null,true);
-    renderer.render(this._glowContainer,this.uniforms.glowTexture,true,null,true);
+			this._replaceContainer.updateTransform();
+			this._glowContainer.updateTransform();
+			renderer.render(this._replaceContainer, this.uniforms.replaceTexture, true, null, true);
+			renderer.render(this._glowContainer, this.uniforms.glowTexture, true, null, true);
 
-    this._replaceContainer.visible = false;
-    this._glowContainer.visible = false;
-    //===============================================================
-};
-//=============================================================================
-//
-//=============================================================================
-}
-//=============================================================================
-//
-//=============================================================================
-/*
+			this._replaceContainer.visible = false;
+			this._glowContainer.visible = false;
+			//===============================================================
+		};
+		//=============================================================================
+		//
+		//=============================================================================
+	}
+	//=============================================================================
+	//
+	//=============================================================================
+	/*
 QJ.sssssss = function() {
     QJ.MPMZ.Shoot({
         img:"normalMap0",
@@ -359,9 +362,9 @@ QJ.sssssss = function() {
     });
 };
 */
-//=============================================================================
-//
-//=============================================================================
+	//=============================================================================
+	//
+	//=============================================================================
 })(QJ.mapFilter.reWrite);
 //=============================================================================
 //
