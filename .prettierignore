@@ -40,3 +40,9 @@ QJ-MZPlugin-24-12-2/**/*.css
 QJ-MZPlugin-24-12-2/**/effects
 QJ-MZPlugin-24-12-2/**/fonts
 
+# tauri生成的文件，不做处理
+**/src-tauri/target/
+**/src-tauri/gen/schemas
+
+
+
