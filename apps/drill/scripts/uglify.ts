@@ -2,6 +2,7 @@ import path, { dirname, resolve, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import * as fs from "node:fs";
 
+import { format } from "prettier";
 import * as UglifyJS from "uglify-js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -19,7 +20,7 @@ function compressJSFiles(dir: string) {
 		files.forEach((file) => {
 			const filePath = path.join(dir, file);
 
-			fs.stat(filePath, (error, stat) => {
+			fs.stat(filePath, async (error, stat) => {
 				if (error) {
 					console.error("Error stating file.", error);
 					return;
@@ -39,8 +40,11 @@ function compressJSFiles(dir: string) {
 						return;
 					}
 
-					fs.writeFileSync(filePath, result.code, "utf8");
-					console.log(`Successfully compressed: ${filePath}`);
+					// 使用 prettier 格式化文件。
+					const formattedCode = await format(result.code, { parser: "babel" });
+
+					fs.writeFileSync(filePath, formattedCode, "utf8");
+					console.log(`Successfully compressed and formatted: ${filePath}`);
 				} else if (stat.isDirectory()) {
 					compressJSFiles(filePath);
 				}
