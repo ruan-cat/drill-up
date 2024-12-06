@@ -44,6 +44,15 @@ export default defineConfig(({ mode }) => {
 	const outDir = process.env?.isSingleDomain === "true" ? `dist/${VITE_project_flag_name}` : "dist";
 
 	return {
+		/**
+		 * TODO: 尝试使用root配置 完成项目路径配置
+		 * https://cn.vite.dev/config/shared-options#root
+		 * https://cn.vite.dev/guide/#specifying-alternative-root
+		 *
+		 * 配置root 配置vite命令运行时期望的根目录
+		 */
+		// root
+
 		base,
 
 		publicDir: VITE_project_path,
