@@ -7,6 +7,7 @@
 	"scripts": {
 		"rm:node_modules": "rimraf node_modules",
 		"test": "echo \"Error: no test specified\" && exit 1",
+		"make-doc": "jsdoc2md --files ./rpg_*.js > ./dist/jsdoc2md-res.md",
 		"make": "typedoc"
 	},
 	"keywords": [],
@@ -15,5 +16,8 @@
 	"dependencies": {
 		"typedoc": "^0.27.2",
 		"typedoc-plugin-markdown": "^4.3.1"
+	},
+	"devDependencies": {
+		"jsdoc-to-markdown": "^7.1.1"
 	}
 }

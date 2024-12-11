@@ -352,13 +352,13 @@ Scene_Base.prototype.slowFadeSpeed = function() {
     return this.fadeSpeed() * 2;
 };
 
-//-----------------------------------------------------------------------------
-// 场景_启动 
-// Scene_Boot
-// 
-// 初始化整个游戏的场景类。 
-// The scene class for initializing the entire game.
-
+/** 
+ * 场景_启动
+ * @description
+ * 初始化整个游戏的场景类。
+ * 
+ * The scene class for initializing the entire game.
+ */
 function Scene_Boot() {
     this.initialize.apply(this, arguments);
 }
