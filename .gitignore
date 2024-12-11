@@ -60,3 +60,5 @@ vercel.null.def.json
 # 忽略掉特定的 部署用的环境变量文件
 .env.deploy-vercel
 
+# 不应该提交到仓库中
+*.code-workspace
