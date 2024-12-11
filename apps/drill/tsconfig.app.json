@@ -4,7 +4,11 @@
 		"target": "ES2020",
 		"useDefineForClassFields": true,
 		"module": "ESNext",
-		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"lib": [
+			"ES2020",
+			"DOM",
+			"DOM.Iterable"
+		],
 		"skipLibCheck": true,
 		/* Bundler mode */
 		"moduleResolution": "bundler",
@@ -18,11 +22,17 @@
 		"noFallthroughCasesInSwitch": true,
 		"types": [
 			// https://juejin.cn/post/7262322846252613693
-			"element-plus/global.d.ts"
+			"element-plus/global.d.ts",
+			// 目前包含的rmmv源码，包含了部分node的全局常量，故需要提供类型声明包
+			"node"
 		],
 		"paths": {
-			"@/*": ["./src/*"],
-			"components/*": ["./src/components/*"]
+			"@/*": [
+				"./src/*"
+			],
+			"components/*": [
+				"./src/components/*"
+			]
 		}
 	},
 	"include": [

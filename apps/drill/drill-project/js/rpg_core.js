@@ -152,6 +152,7 @@ Math.randomInt = function(max) {
     return Math.floor(max * Math.random());
 };
 
+// TODO: 测试自己生成的文件，能否实现完全代替rmmv源码？
 //-----------------------------------------------------------------------------
 /**
  * The static class that defines utility methods.
@@ -161,7 +162,6 @@ Math.randomInt = function(max) {
 function Utils() {
     throw new Error('This is a static class');
 }
-
 /**
  * The name of the RPG Maker. 'MV' in the current version.
  *
@@ -171,7 +171,6 @@ function Utils() {
  * @final
  */
 Utils.RPGMAKER_NAME = 'MV';
-
 /**
  * The version of the RPG Maker.
  *
@@ -181,7 +180,6 @@ Utils.RPGMAKER_NAME = 'MV';
  * @final
  */
 Utils.RPGMAKER_VERSION = "1.6.1";
-
 /**
  * Checks whether the option is in the query string.
  *
@@ -195,7 +193,6 @@ Utils.isOptionValid = function(name) {
     if (typeof nw !== "undefined" && nw.App.argv.length > 0 && nw.App.argv[0].split('&').contains(name)) {return 1;};
     return 0;
 };
-
 /**
  * Checks whether the platform is NW.js.
  *
@@ -206,7 +203,6 @@ Utils.isOptionValid = function(name) {
 Utils.isNwjs = function() {
     return typeof require === 'function' && typeof process === 'object';
 };
-
 /**
  * Checks whether the platform is a mobile device.
  *
@@ -218,7 +214,6 @@ Utils.isMobileDevice = function() {
     var r = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
     return !!navigator.userAgent.match(r);
 };
-
 /**
  * Checks whether the browser is Mobile Safari.
  *
@@ -231,7 +226,6 @@ Utils.isMobileSafari = function() {
     return !!(agent.match(/iPhone|iPad|iPod/) && agent.match(/AppleWebKit/) &&
               !agent.match('CriOS'));
 };
-
 /**
  * Checks whether the browser is Android Chrome.
  *
@@ -243,7 +237,6 @@ Utils.isAndroidChrome = function() {
     var agent = navigator.userAgent;
     return !!(agent.match(/Android/) && agent.match(/Chrome/));
 };
-
 /**
  * Checks whether the browser can read files in the game folder.
  *
@@ -264,7 +257,6 @@ Utils.canReadGameFiles = function() {
         return false;
     }
 };
-
 /**
  * Makes a CSS color string from RGB values.
  *
@@ -281,12 +273,10 @@ Utils.rgbToCssColor = function(r, g, b) {
     b = Math.round(b);
     return 'rgb(' + r + ',' + g + ',' + b + ')';
 };
-
 Utils._id = 1;
 Utils.generateRuntimeId = function(){
     return Utils._id++;
 };
-
 Utils._supportPassiveEvent = null;
 /**
  * Test this browser support passive event feature

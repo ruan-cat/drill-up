@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"target": "ES5",
+		"module": "None",
+		"outDir": "./dist",
+		"rootDir": "./src/rmmv-code-ts",
+		"strict": true,
+		"esModuleInterop": false,
+		"skipLibCheck": true,
+		"alwaysStrict": false,
+		"checkJs": false,
+		"forceConsistentCasingInFileNames": true,
+		"traceResolution": false,
+		"types": [
+			"node"
+		],
+	},
+	"include": [
+		"./src/rmmv-code-ts/**/*.ts"
+	],
+	"exclude": [
+		"node_modules",
+		"**/*.spec.ts"
+	]
+}
