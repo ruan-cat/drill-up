@@ -48,7 +48,7 @@ module.exports = {
 		},
 
 		// 使用主题插件 tui-jsdoc-template 的配置
-		// name: '阮中楠的文档',
+		// name: '阮喵喵的文档',
 		// footerText: '底部导航栏文字',
 	},
 

@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------
 /**
  * @class JsExtensions
- * @author 阮中楠（翻译）
+ * @author 阮喵喵（翻译）
  * @classdesc
  * 这不是一个类,但是包含一些方法添加到标准js中方法
  * This is not a class, but contains some methods that will be added to the

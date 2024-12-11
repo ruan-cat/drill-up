@@ -5,7 +5,7 @@
  * The window for displaying the map name on the map screen.
  * 地图画面显示地图名称的窗口
  *
- * @author 阮中楠（JSDoc注释翻译作者）
+ * @author 阮喵喵（JSDoc注释翻译作者）
  *
  * @description
  * 这个类的背景画图是画在_windowContentsSprite上，即contents

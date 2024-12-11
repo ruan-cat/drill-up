@@ -306,7 +306,7 @@ Window_Selectable.prototype.hideHelpWindow = function () {
 };
 
 /**
- * @author 阮中楠
+ * @author 阮喵喵
  * @param {*} symbol
  * @param {*} method
  * @description

@@ -2,13 +2,13 @@
  * @fileoverview
  * DataManager,The static class that manages the database and game objects.
  * 数据管理器,这个静态的类 管理 数据库 和 游戏对象
- * @author 阮中楠（翻译）
+ * @author 阮喵喵（翻译）
  * @version 不懂
  */
 
 /**
  * @class DataManager
- * @author 阮中楠（翻译）
+ * @author 阮喵喵（翻译）
  * @classdesc
  * 数据管理者类，这个类专门进行数据的储存。这个类很加侧重数据的导入。
  *
@@ -384,7 +384,7 @@ DataManager.isArmor = function (item) {
 /**
  * @description
  * 创建游戏对象，数据管理者将几乎全部的数据生成。
- * @author 阮中楠（翻译）
+ * @author 阮喵喵（翻译）
  */
 DataManager.createGameObjects = function () {
 	//$gameTemp         = 新 游戏临时()
