@@ -22,3 +22,11 @@
 ## 让 rm 源码实现自主的类型生成 提供类型声明
 
 应该考虑让自己手头上的纯 js 文件，生成出 typescript 类型声明文件。
+
+## 期望生成的 js 不包含 iife
+
+目前简单写了一些 class 风格的源码，但是总是被 tsc 生成为 iife 形式的代码。
+
+- https://stackoverflow.com/questions/36217183/why-is-typescript-generating-an-iife-for-a-class
+
+该文章说，这是 typescript 的默认行为，不能更改。
