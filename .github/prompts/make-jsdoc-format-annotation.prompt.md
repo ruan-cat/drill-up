@@ -11,7 +11,6 @@
 你只可以阅读并修改以下文件：
 
 @main.js
-@plugins.js
 @rpg_core.js
 @rpg_managers.js
 @rpg_objects.js
