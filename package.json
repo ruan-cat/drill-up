@@ -12,11 +12,6 @@
 		"vscode": "^1.22.0",
 		"pnpm": ">=9.5.0"
 	},
-	"config": {
-		"commitizen": {
-			"path": "node_modules/cz-git"
-		}
-	},
 	"keywords": [
 		"drill-up",
 		"monorepo"
@@ -42,6 +37,7 @@
 		"@antfu/eslint-config": "^2.21.1",
 		"@eslint/eslintrc": "^3.1.0",
 		"@eslint/js": "^9.5.0",
+		"@ruan-cat/commitlint-config": "^1.0.5",
 		"@ruan-cat/generate-code-workspace": "^0.2.1",
 		"@ruan-cat/vercel-deploy-tool": "^0.5.0",
 		"@types/lodash-es": "^4.17.12",
@@ -50,7 +46,7 @@
 		"commitizen": "^4.3.1",
 		"cpx2": "^7.0.1",
 		"cross-env": "^7.0.3",
-		"cz-git": "^1.11.0",
+		"cz-git": "^1.11.1",
 		"eslint": "^9.5.0",
 		"eslint-config-flat-gitignore": "^0.1.5",
 		"eslint-config-prettier": "^9.1.0",
