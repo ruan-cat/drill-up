@@ -36,3 +36,8 @@ apps\gitee.jiumengjun.rmmv\rpg_windows.js
 2. 提出转换计划，并执行你的计划。
 3. 归纳已经有的模块。
 4. 将全部的模块注释转换进度，写入到 `.github\prompts\make-jsdoc-format-annotation.todo.md` 文件内。这个文件将作为你的进度记录文件，当你每完成一个模块的注释格式转换后，就在此文档内记录进度。
+
+## 其他注意事项
+
+1. 不需要你处理目标 .js 文件产生的任何 typescript 类型报错。
+2. 每完成一个模块的格式转换后，停下来，让我检查一遍。
