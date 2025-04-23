@@ -8,17 +8,7 @@
 
 ## 可以被修改的文件
 
-你只可以阅读并修改以下文件：
-
-@main.js
-@rpg_core.js
-@rpg_managers.js
-@rpg_objects.js
-@rpg_windows.js
-@rpg_scenes.js
-@rpg_sprites.js
-
-如果你无法有效读取，可以按照以下我提供的文件地址来读取：
+你只可以阅读并修改以下我提供的文件地址来读取：
 
 apps\gitee.jiumengjun.rmmv\main.js
 apps\gitee.jiumengjun.rmmv\rpg_core.js
@@ -40,4 +30,5 @@ apps\gitee.jiumengjun.rmmv\rpg_windows.js
 ## 其他注意事项
 
 1. 不需要你处理目标 .js 文件产生的任何 typescript 类型报错。
-2. 每完成一个模块的格式转换后，停下来，让我检查一遍。
+2. 不要处理任何 lint 错误。
+3. 每完成一个模块的格式转换后，停下来，让我检查一遍。
