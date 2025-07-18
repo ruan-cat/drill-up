@@ -17,14 +17,14 @@
 	"scripts": {
 		"preinstall": "npm run corepack:pnpm && npx only-allow pnpm",
 		"up-taze": "pnpm -w up @ruan-cat/taze-config -L && npx taze -r",
-		"code-workspace:create": "node --import=tsx ./scripts/generate.code-workspace.ts --name=rm具体项目工作区",
+		"code-workspace:create": "tsx ./scripts/generate.code-workspace.ts --name=rm具体项目工作区",
 		"corepack:pnpm": "corepack enable && corepack install",
 		"git:fetch": "git fetch -p",
 		"rm:node_modules": "pnpm -r rm:node_modules && rimraf node_modules pnpm-lock.yaml",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"prettier": "prettier --write .",
-		"deploy-vercel": "node --import=tsx ./scripts/vercel-deploy-tool.ts --env-path=.env.deploy-vercel"
+		"deploy-vercel": "tsx ./scripts/vercel-deploy-tool.ts --env-path=.env.deploy-vercel"
 	},
 	"dependencies": {
 		"@ruan-cat/utils": "^4.9.0",

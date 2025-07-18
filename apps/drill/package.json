@@ -20,7 +20,7 @@
 		"build:qj-en": "vite build --mode qj-en",
 		"build-muti": "cross-env isSingleDomain=true pnpm run -r \"/^build:.*/\" ",
 		"build": "pnpm run build:qj-en",
-		"postbuild": "node --import=tsx ./scripts/uglify.ts",
+		"postbuild": "tsx ./scripts/uglify.ts",
 		"preview": "vite preview",
 		"clear": "rimraf .vercel dist",
 		"rm:node_modules": "rimraf node_modules",
