@@ -19,169 +19,180 @@
 				</div>
 			</template>
 
-			<!-- 错误显示 -->
-			<ElAlert v-if="hasError" :title="lastError || ''" type="error" closable @close="clearError" class="error-alert" />
+			<ElScrollbar height="calc(100vh - 140px)" class="panel-scrollbar">
+				<div class="scroll-content">
+					<!-- 错误显示 -->
+					<ElAlert
+						v-if="hasError"
+						:title="lastError || ''"
+						type="error"
+						closable
+						@close="clearError"
+						class="error-alert"
+					/>
 
-			<!-- 连接状态和操作 -->
-			<ElRow :gutter="20" class="control-section">
-				<ElCol :span="12">
-					<ElButton @click="refreshGameState" :loading="isLoading" type="primary" :icon="RefreshRight">
-						刷新游戏状态
-					</ElButton>
-				</ElCol>
-				<ElCol :span="12">
-					<ElButton @click="checkConnection" :icon="Connection"> 检查连接 </ElButton>
-				</ElCol>
-			</ElRow>
+					<!-- 连接状态和操作 -->
+					<ElRow :gutter="20" class="control-section">
+						<ElCol :span="12">
+							<ElButton @click="refreshGameState" :loading="isLoading" type="primary" :icon="RefreshRight">
+								刷新游戏状态
+							</ElButton>
+						</ElCol>
+						<ElCol :span="12">
+							<ElButton @click="checkConnection" :icon="Connection"> 检查连接 </ElButton>
+						</ElCol>
+					</ElRow>
 
-			<!-- 变量控制 -->
-			<ElDivider content-position="left">
-				<h4>🔢 变量控制</h4>
-			</ElDivider>
-			<ElRow :gutter="20" class="control-section">
-				<ElCol :span="6">
-					<ElInputNumber v-model="variableId" :min="1" :max="999" placeholder="变量ID" />
-				</ElCol>
-				<ElCol :span="10">
-					<ElInput v-model="variableValue" placeholder="变量值" />
-				</ElCol>
-				<ElCol :span="8">
-					<ElButton @click="updateVariable" type="primary" :disabled="!isConnected"> 更新变量 </ElButton>
-				</ElCol>
-			</ElRow>
-			<div class="current-value" v-if="gameState.variables[variableId] !== undefined">
-				当前值: <ElTag>{{ gameState.variables[variableId] }}</ElTag>
-			</div>
+					<!-- 变量控制 -->
+					<ElDivider content-position="left">
+						<h4>🔢 变量控制</h4>
+					</ElDivider>
+					<ElRow :gutter="20" class="control-section">
+						<ElCol :span="6">
+							<ElInputNumber v-model="variableId" :min="1" :max="999" placeholder="变量ID" />
+						</ElCol>
+						<ElCol :span="10">
+							<ElInput v-model="variableValue" placeholder="变量值" />
+						</ElCol>
+						<ElCol :span="8">
+							<ElButton @click="updateVariable" type="primary" :disabled="!isConnected"> 更新变量 </ElButton>
+						</ElCol>
+					</ElRow>
+					<div class="current-value" v-if="gameState.variables[variableId] !== undefined">
+						当前值: <ElTag>{{ gameState.variables[variableId] }}</ElTag>
+					</div>
 
-			<!-- 开关控制 -->
-			<ElDivider content-position="left">
-				<h4>🔘 开关控制</h4>
-			</ElDivider>
-			<ElRow :gutter="20" class="control-section">
-				<ElCol :span="8">
-					<ElInputNumber v-model="switchId" :min="1" :max="999" placeholder="开关ID" />
-				</ElCol>
-				<ElCol :span="8">
-					<ElButton
-						@click="toggleSwitch"
-						:type="gameState.switches[switchId] ? 'success' : 'info'"
-						:disabled="!isConnected"
-					>
-						{{ gameState.switches[switchId] ? "ON" : "OFF" }}
-					</ElButton>
-				</ElCol>
-				<ElCol :span="8">
-					<ElTag :type="gameState.switches[switchId] ? 'success' : 'info'">
-						状态: {{ gameState.switches[switchId] ? "开启" : "关闭" }}
-					</ElTag>
-				</ElCol>
-			</ElRow>
+					<!-- 开关控制 -->
+					<ElDivider content-position="left">
+						<h4>🔘 开关控制</h4>
+					</ElDivider>
+					<ElRow :gutter="20" class="control-section">
+						<ElCol :span="8">
+							<ElInputNumber v-model="switchId" :min="1" :max="999" placeholder="开关ID" />
+						</ElCol>
+						<ElCol :span="8">
+							<ElButton
+								@click="toggleSwitch"
+								:type="gameState.switches[switchId] ? 'success' : 'info'"
+								:disabled="!isConnected"
+							>
+								{{ gameState.switches[switchId] ? "ON" : "OFF" }}
+							</ElButton>
+						</ElCol>
+						<ElCol :span="8">
+							<ElTag :type="gameState.switches[switchId] ? 'success' : 'info'">
+								状态: {{ gameState.switches[switchId] ? "开启" : "关闭" }}
+							</ElTag>
+						</ElCol>
+					</ElRow>
 
-			<!-- 消息发送 -->
-			<ElDivider content-position="left">
-				<h4>💬 消息控制</h4>
-			</ElDivider>
-			<ElRow :gutter="20" class="control-section">
-				<ElCol :span="16">
-					<ElInput v-model="message" placeholder="输入要显示的消息" @keyup.enter="sendMessage" />
-				</ElCol>
-				<ElCol :span="8">
-					<ElButton @click="sendMessage" type="primary" :disabled="!isConnected || !message.trim()">
-						发送消息
-					</ElButton>
-				</ElCol>
-			</ElRow>
+					<!-- 消息发送 -->
+					<ElDivider content-position="left">
+						<h4>💬 消息控制</h4>
+					</ElDivider>
+					<ElRow :gutter="20" class="control-section">
+						<ElCol :span="16">
+							<ElInput v-model="message" placeholder="输入要显示的消息" @keyup.enter="sendMessage" />
+						</ElCol>
+						<ElCol :span="8">
+							<ElButton @click="sendMessage" type="primary" :disabled="!isConnected || !message.trim()">
+								发送消息
+							</ElButton>
+						</ElCol>
+					</ElRow>
 
-			<!-- 音效控制 -->
-			<ElDivider content-position="left">
-				<h4>🔊 音效控制</h4>
-			</ElDivider>
-			<ElRow :gutter="20" class="control-section">
-				<ElCol :span="12">
-					<ElSelect v-model="selectedSE" placeholder="选择音效">
-						<ElOption v-for="se in commonSEs" :key="se.value" :label="se.label" :value="se.value" />
-					</ElSelect>
-				</ElCol>
-				<ElCol :span="6">
-					<ElSlider v-model="seVolume" :min="0" :max="100" />
-				</ElCol>
-				<ElCol :span="6">
-					<ElButton @click="playSelectedSE" type="primary" :disabled="!isConnected || !selectedSE"> 播放 </ElButton>
-				</ElCol>
-			</ElRow>
+					<!-- 音效控制 -->
+					<ElDivider content-position="left">
+						<h4>🔊 音效控制</h4>
+					</ElDivider>
+					<ElRow :gutter="20" class="control-section">
+						<ElCol :span="12">
+							<ElSelect v-model="selectedSE" placeholder="选择音效">
+								<ElOption v-for="se in commonSEs" :key="se.value" :label="se.label" :value="se.value" />
+							</ElSelect>
+						</ElCol>
+						<ElCol :span="6">
+							<ElSlider v-model="seVolume" :min="0" :max="100" />
+						</ElCol>
+						<ElCol :span="6">
+							<ElButton @click="playSelectedSE" type="primary" :disabled="!isConnected || !selectedSE"> 播放 </ElButton>
+						</ElCol>
+					</ElRow>
 
-			<!-- 场景控制 -->
-			<ElDivider content-position="left">
-				<h4>🎬 场景控制</h4>
-			</ElDivider>
-			<ElRow :gutter="20" class="control-section">
-				<ElCol :span="12">
-					<ElSelect v-model="selectedScene" placeholder="选择场景">
-						<ElOption v-for="scene in commonScenes" :key="scene.value" :label="scene.label" :value="scene.value" />
-					</ElSelect>
-				</ElCol>
-				<ElCol :span="12">
-					<ElButton @click="changeToSelectedScene" type="warning" :disabled="!isConnected || !selectedScene">
-						切换场景
-					</ElButton>
-				</ElCol>
-			</ElRow>
+					<!-- 场景控制 -->
+					<ElDivider content-position="left">
+						<h4>🎬 场景控制</h4>
+					</ElDivider>
+					<ElRow :gutter="20" class="control-section">
+						<ElCol :span="12">
+							<ElSelect v-model="selectedScene" placeholder="选择场景">
+								<ElOption v-for="scene in commonScenes" :key="scene.value" :label="scene.label" :value="scene.value" />
+							</ElSelect>
+						</ElCol>
+						<ElCol :span="12">
+							<ElButton @click="changeToSelectedScene" type="warning" :disabled="!isConnected || !selectedScene">
+								切换场景
+							</ElButton>
+						</ElCol>
+					</ElRow>
 
-			<!-- 传送控制 -->
-			<ElDivider content-position="left">
-				<h4>🚀 传送控制</h4>
-			</ElDivider>
-			<ElRow :gutter="20" class="control-section">
-				<ElCol :span="6">
-					<ElInputNumber v-model="transferData.mapId" :min="1" placeholder="地图ID" />
-				</ElCol>
-				<ElCol :span="6">
-					<ElInputNumber v-model="transferData.x" :min="0" placeholder="X坐标" />
-				</ElCol>
-				<ElCol :span="6">
-					<ElInputNumber v-model="transferData.y" :min="0" placeholder="Y坐标" />
-				</ElCol>
-				<ElCol :span="6">
-					<ElButton @click="transferPlayer" type="danger" :disabled="!isConnected || !transferData.mapId">
-						传送
-					</ElButton>
-				</ElCol>
-			</ElRow>
+					<!-- 传送控制 -->
+					<ElDivider content-position="left">
+						<h4>🚀 传送控制</h4>
+					</ElDivider>
+					<ElRow :gutter="20" class="control-section">
+						<ElCol :span="6">
+							<ElInputNumber v-model="transferData.mapId" :min="1" placeholder="地图ID" />
+						</ElCol>
+						<ElCol :span="6">
+							<ElInputNumber v-model="transferData.x" :min="0" placeholder="X坐标" />
+						</ElCol>
+						<ElCol :span="6">
+							<ElInputNumber v-model="transferData.y" :min="0" placeholder="Y坐标" />
+						</ElCol>
+						<ElCol :span="6">
+							<ElButton @click="transferPlayer" type="danger" :disabled="!isConnected || !transferData.mapId">
+								传送
+							</ElButton>
+						</ElCol>
+					</ElRow>
 
-			<!-- 玩家数据显示 -->
-			<ElDivider content-position="left">
-				<h4>👤 玩家数据</h4>
-			</ElDivider>
-			<ElDescriptions :column="2" border>
-				<ElDescriptionsItem label="姓名">
-					<ElTag type="info">{{ gameState.playerData.name || "未知" }}</ElTag>
-				</ElDescriptionsItem>
-				<ElDescriptionsItem label="等级">
-					<ElTag type="success">{{ gameState.playerData.level }}</ElTag>
-				</ElDescriptionsItem>
-				<ElDescriptionsItem label="HP">
-					<ElProgress :percentage="(gameState.playerData.hp / 1000) * 100" :show-text="false" />
-					<span class="progress-text">{{ gameState.playerData.hp }}</span>
-				</ElDescriptionsItem>
-				<ElDescriptionsItem label="MP">
-					<ElProgress :percentage="(gameState.playerData.mp / 500) * 100" :show-text="false" color="#409eff" />
-					<span class="progress-text">{{ gameState.playerData.mp }}</span>
-				</ElDescriptionsItem>
-				<ElDescriptionsItem label="经验值">
-					<ElTag type="warning">{{ gameState.playerData.exp }}</ElTag>
-				</ElDescriptionsItem>
-				<ElDescriptionsItem label="当前场景">
-					<ElTag type="primary">{{ gameState.currentScene || "未知" }}</ElTag>
-				</ElDescriptionsItem>
-				<ElDescriptionsItem label="当前地图">
-					<ElTag>地图 {{ gameState.mapId || 0 }}</ElTag>
-				</ElDescriptionsItem>
-				<ElDescriptionsItem label="连接状态">
-					<ElTag :type="isConnected ? 'success' : 'danger'">
-						{{ isConnected ? "已连接" : "未连接" }}
-					</ElTag>
-				</ElDescriptionsItem>
-			</ElDescriptions>
+					<!-- 玩家数据显示 -->
+					<ElDivider content-position="left">
+						<h4>👤 玩家数据</h4>
+					</ElDivider>
+					<ElDescriptions :column="2" border>
+						<ElDescriptionsItem label="姓名">
+							<ElTag type="info">{{ gameState.playerData.name || "未知" }}</ElTag>
+						</ElDescriptionsItem>
+						<ElDescriptionsItem label="等级">
+							<ElTag type="success">{{ gameState.playerData.level }}</ElTag>
+						</ElDescriptionsItem>
+						<ElDescriptionsItem label="HP">
+							<ElProgress :percentage="(gameState.playerData.hp / 1000) * 100" :show-text="false" />
+							<span class="progress-text">{{ gameState.playerData.hp }}</span>
+						</ElDescriptionsItem>
+						<ElDescriptionsItem label="MP">
+							<ElProgress :percentage="(gameState.playerData.mp / 500) * 100" :show-text="false" color="#409eff" />
+							<span class="progress-text">{{ gameState.playerData.mp }}</span>
+						</ElDescriptionsItem>
+						<ElDescriptionsItem label="经验值">
+							<ElTag type="warning">{{ gameState.playerData.exp }}</ElTag>
+						</ElDescriptionsItem>
+						<ElDescriptionsItem label="当前场景">
+							<ElTag type="primary">{{ gameState.currentScene || "未知" }}</ElTag>
+						</ElDescriptionsItem>
+						<ElDescriptionsItem label="当前地图">
+							<ElTag>地图 {{ gameState.mapId || 0 }}</ElTag>
+						</ElDescriptionsItem>
+						<ElDescriptionsItem label="连接状态">
+							<ElTag :type="isConnected ? 'success' : 'danger'">
+								{{ isConnected ? "已连接" : "未连接" }}
+							</ElTag>
+						</ElDescriptionsItem>
+					</ElDescriptions>
+				</div>
+			</ElScrollbar>
 		</ElCard>
 	</div>
 </template>
@@ -204,6 +215,7 @@ import {
 	ElOption,
 	ElSlider,
 	ElMessage,
+	ElScrollbar,
 } from "element-plus";
 import { RefreshRight, Connection } from "@element-plus/icons-vue";
 import { useGameState } from "@/composables/useGameState";
@@ -346,8 +358,7 @@ onUnmounted(() => {
 	top: 20px;
 	right: 20px;
 	width: 400px;
-	max-height: calc(100vh - 40px);
-	overflow-y: auto;
+	height: calc(100vh - 40px);
 	background: rgba(255, 255, 255, 0.95);
 	backdrop-filter: blur(10px);
 	border-radius: 8px;
@@ -362,6 +373,15 @@ onUnmounted(() => {
 	margin-bottom: 0;
 	border: none;
 	background: transparent;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+:deep(.el-card__body) {
+	flex: 1;
+	padding: 0;
+	overflow: hidden;
 }
 
 .card-header {
@@ -453,23 +473,30 @@ onUnmounted(() => {
 	color: #409eff;
 }
 
-/* 浮动面板的滚动条样式 */
-.game-panel::-webkit-scrollbar {
-	width: 6px;
+/* Element Plus 滚动条样式优化 */
+.panel-scrollbar {
+	height: 100%;
 }
 
-.game-panel::-webkit-scrollbar-track {
-	background: rgba(0, 0, 0, 0.1);
+.scroll-content {
+	padding: 20px;
+}
+
+:deep(.el-scrollbar__wrap) {
+	overflow-x: hidden;
+}
+
+:deep(.el-scrollbar__bar) {
+	z-index: 10001;
+}
+
+:deep(.el-scrollbar__thumb) {
+	background-color: rgba(64, 158, 255, 0.5);
 	border-radius: 3px;
 }
 
-.game-panel::-webkit-scrollbar-thumb {
-	background: rgba(64, 158, 255, 0.5);
-	border-radius: 3px;
-}
-
-.game-panel::-webkit-scrollbar-thumb:hover {
-	background: rgba(64, 158, 255, 0.7);
+:deep(.el-scrollbar__thumb:hover) {
+	background-color: rgba(64, 158, 255, 0.7);
 }
 
 /* 折叠按钮样式 */

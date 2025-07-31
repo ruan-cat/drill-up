@@ -6,4 +6,5 @@ export default tsAlias({
 	 * @default 'tsconfig.json'
 	 */
 	tsConfigName: "tsconfig.json",
+	// tsConfigName: "../../../tsconfig.app.json",
 });
