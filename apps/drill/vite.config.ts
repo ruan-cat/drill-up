@@ -1,11 +1,6 @@
 import { fileURLToPath, URL } from "node:url";
 import { defineConfig, loadEnv } from "vite";
-import vue from "@vitejs/plugin-vue";
-import { createHtmlPlugin } from "vite-plugin-html";
-import AutoImport from "unplugin-auto-import/vite";
-import Components from "unplugin-vue-components/vite";
-import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-import { vitePluginTsupRpgmv } from "./plugins/vite-plugin-tsup-rpgmv";
+import { getPluginsList } from "./build/plugins";
 
 import "./types/vite-env.d.ts";
 
@@ -62,52 +57,7 @@ export default defineConfig(({ mode }) => {
 			open: true,
 		},
 
-		plugins: [
-			// RPGMV插件自动构建器 - 在开发服务器启动前构建TypeScript插件
-			vitePluginTsupRpgmv({
-				verbose: true, // 启用详细日志
-				forceRebuild: false, // 仅在需要时构建
-			}) as any,
-
-			vue(),
-
-			// 重设index.html的入口 和 全局ts文件的注入
-			createHtmlPlugin({
-				minify: false,
-				template: `${VITE_project_path}/index.html`,
-
-				/**
-				 * 需要注入 index.html ejs 模版的数据
-				 */
-				inject: {
-					data: {
-						// 出现在模版中的 <%- title %>
-						title: "插件集合示例",
-
-						// 出现在模版中的<%- injectScript %>
-						// 可以正常打包
-						injectScript: `<script async type="module" src="../src/main.ts"></script>`,
-					},
-
-					tags: [
-						{
-							injectTo: "body-prepend",
-							tag: "section",
-							attrs: {
-								id: "vue-root-app",
-							},
-						},
-					],
-				},
-			}),
-
-			AutoImport({
-				imports: ["vue"],
-				resolvers: [ElementPlusResolver()],
-			}),
-
-			Components({ dts: true, version: 3, resolvers: [ElementPlusResolver()] }),
-		],
+		plugins: getPluginsList({ env }),
 
 		resolve: {
 			alias: {

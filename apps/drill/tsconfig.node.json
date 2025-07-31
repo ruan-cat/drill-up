@@ -20,6 +20,6 @@
 	"include": [
 		"vite.config.ts",
 		"./scripts",
-		"./plugins"
+		"./build"
 	]
 }
