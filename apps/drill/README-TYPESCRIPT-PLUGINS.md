@@ -22,8 +22,8 @@
 ### 3. 增强的开发体验
 
 ```bash
-# 🚀 一键启动完整开发环境
-pnpm run dev:full
+# 🚀 零配置开发启动（自动构建插件）
+pnpm run dev:drill
 
 # 🔄 监听模式构建插件
 pnpm run build:rpgmv-plugins:watch
@@ -57,23 +57,66 @@ drill-project/js/plugins/
 | ---------- | ------------ | ---------- |
 | TypeScript | 插件源码语言 | 最新       |
 | tsup       | 插件构建工具 | v8.5.0     |
+| Vite       | 自动构建集成 | v5.4.1     |
 | ES5        | 目标兼容性   | RPGMV 兼容 |
 | IIFE       | 输出格式     | 插件标准   |
 
+## 🚀 零配置自动构建系统
+
+### 🎯 新特性亮点
+
+项目现已集成 **Vite 自动构建插件**，实现了以下突破性改进：
+
+```mermaid
+graph LR
+    A[启动开发] --> B[自动检测插件]
+    B --> C[智能构建决策]
+    C --> D[tsup 编程式构建]
+    D --> E[Vite 开发服务器]
+
+    F[文件变化] --> G[HMR 检测]
+    G --> H[自动重构建]
+    H --> I[热重载完成]
+```
+
+#### ✨ 核心优势
+
+- **🔥 零启动成本**：`pnpm run dev:drill` 一键启动
+- **🧠 智能构建**：仅在需要时构建，避免重复操作
+- **⚡ 热重载支持**：TypeScript 文件变化自动重新构建
+- **🛡️ 错误处理**：友好的构建失败提示
+- **📦 生产就绪**：构建命令同样自动处理
+
+### 📋 自动构建工作流程
+
+#### 开发模式 (Development)
+
+1. 运行 `pnpm run dev:drill`
+2. Vite 插件检查插件是否需要构建
+3. 调用 tsup 的 `build()` 函数进行构建
+4. 启动 Vite 开发服务器
+5. 监听 `src/rpgmv-plugins/` 文件变化并自动重新构建
+
+#### 生产模式 (Production)
+
+1. 运行 `pnpm run build:drill`
+2. 构建前自动处理 RPGMV 插件
+3. 继续 Vue 应用的生产构建
+
 ## 🎯 开发流程
 
-### 开发新插件
+### 开发新插件（🆕 简化流程）
 
 1. 在 `src/rpgmv-plugins/` 创建 `.ts` 文件
 2. 在 `tsup.config.ts` 添加入口配置
-3. 运行 `pnpm run build:rpgmv-plugins`
+3. **直接运行 `pnpm run dev:drill`** ✨ (自动构建!)
 4. 在 `index.html` 引用生成的 `.js` 文件
 
-### 修改现有插件
+### 修改现有插件（🆕 热重载）
 
 1. 编辑 `src/rpgmv-plugins/VueBridge.ts`
-2. 运行构建命令重新生成
-3. 刷新浏览器查看效果
+2. **保存文件即可** ✨ (自动重新构建!)
+3. 浏览器自动刷新查看效果
 
 ## 📊 构建配置特性
 
@@ -144,30 +187,45 @@ AudioManager.playSe(audio);
 
 ## 🎉 使用建议
 
-### 推荐开发流程
+### 推荐开发流程（🆕 极简版）
 
 ```bash
-# 1. 启动完整开发环境 (自动构建插件+启动服务器)
-pnpm run dev:full
+# 🚀 一键启动 - 自动构建插件并启动开发服务器
+pnpm run dev:drill
 
-# 2. 在另一个终端监听插件变化 (可选)
+# 就这么简单！无需额外配置或脚本 ✨
+```
+
+### 高级开发模式
+
+```bash
+# 如果需要单独监听插件变化（一般不需要）
 pnpm run build:rpgmv-plugins:watch
 ```
 
 ### 生产环境构建
 
 ```bash
-# 构建所有插件用于生产环境
-pnpm run build:rpgmv-plugins
+# 生产构建 - 自动构建插件然后构建Vue应用
+pnpm run build:drill
 ```
 
 ## 🚀 立即开始
 
-运行以下命令启动完整的 TypeScript 开发环境：
+运行以下命令启动现代化的 TypeScript 开发环境：
 
 ```bash
 cd apps/drill
-pnpm run dev:full
+pnpm run dev:drill
 ```
 
-现在你可以享受类型安全、热重载的现代化 RPGMV 插件开发体验！ 🎮✨
+**就这一条命令！** 🎯
+
+现在你可以享受：
+
+- ✅ 类型安全的 RPGMV 插件开发
+- ✅ 自动构建和热重载
+- ✅ 零配置的开发体验
+- ✅ 现代化的工具链
+
+🎮✨ **开发从未如此简单！**

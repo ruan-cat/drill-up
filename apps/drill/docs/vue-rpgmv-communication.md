@@ -223,17 +223,16 @@ watch(isConnected, (connected) => {
 ### 构建命令
 
 ```bash
-# 构建所有RPGMV插件
-pnpm run build:rpgmv-plugins
+# 🚀 推荐：零配置开发（自动构建插件）
+pnpm run dev:drill
 
-# 监听模式构建(开发时)
-pnpm run build:rpgmv-plugins:watch
+# 手动构建命令
+pnpm run build:rpgmv-plugins          # 构建所有RPGMV插件
+pnpm run build:rpgmv-plugins:watch    # 监听模式构建插件
 
-# 完整开发环境(自动构建插件+启动开发服务器)
-pnpm run dev:full
-
-# 强制重新构建插件并启动开发服务器
-pnpm run dev:full:rebuild
+# 🎯 新特性说明
+# dev:drill 命令现在会通过 Vite 插件自动构建 RPGMV 插件
+# 无需额外的 dev:full 或 dev:full:rebuild 命令
 ```
 
 ### 插件源码位置

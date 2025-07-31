@@ -10,8 +10,6 @@
 		"dev": "vite",
 		"dev:drill": "vite --mode drill",
 		"dev:qj-en": "vite --mode qj-en",
-		"dev:full": "tsx scripts/build-and-dev.ts",
-		"dev:full:rebuild": "tsx scripts/build-and-dev.ts --rebuild",
 		"vue-tsc": "vue-tsc -b",
 		"tauri:init": "tauri init",
 		"tauri:dev": "tauri dev",

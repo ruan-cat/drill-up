@@ -1,22 +1,13 @@
 import { fileURLToPath, URL } from "node:url";
-import type { ConfigEnv } from "vite";
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { createHtmlPlugin } from "vite-plugin-html";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-import { config as dotenvConfig } from "@dotenvx/dotenvx";
+import { vitePluginTsupRpgmv } from "./plugins/vite-plugin-tsup-rpgmv";
 
 import "./types/vite-env.d.ts";
-
-// 拓展返回值
-declare module "@dotenvx/dotenvx" {
-	interface DotenvParseOutput {
-		[name: string]: string;
-		publicDir: string;
-	}
-}
 
 // const res = dotenvConfig().parsed;
 // // console.log(res);
@@ -72,6 +63,12 @@ export default defineConfig(({ mode }) => {
 		},
 
 		plugins: [
+			// RPGMV插件自动构建器 - 在开发服务器启动前构建TypeScript插件
+			vitePluginTsupRpgmv({
+				verbose: true, // 启用详细日志
+				forceRebuild: false, // 仅在需要时构建
+			}) as any,
+
 			vue(),
 
 			// 重设index.html的入口 和 全局ts文件的注入

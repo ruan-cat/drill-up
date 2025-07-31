@@ -108,15 +108,69 @@ pnpm run build:rpgmv-plugins:watch
 ## 可用的脚本命令
 
 ```bash
-# 基础开发命令
-pnpm run dev:drill                    # 启动vite开发服务器
-pnpm run build:rpgmv-plugins          # 构建所有RPGMV插件
+# 基础开发命令（🚀 推荐使用）
+pnpm run dev:drill                    # 启动vite开发服务器（自动构建插件）
+pnpm run build:rpgmv-plugins          # 手动构建所有RPGMV插件
 pnpm run build:rpgmv-plugins:watch    # 监听模式构建插件
 
-# 增强开发命令
-pnpm run dev:full                     # 自动构建插件并启动开发服务器
-pnpm run dev:full:rebuild             # 强制重新构建插件并启动开发服务器
+# 🎯 新特性：自动构建集成
+# 现在所有 pnpm run dev:* 和 pnpm run build:* 命令都会
+# 通过 Vite 插件自动构建 RPGMV 插件，无需额外脚本！
 ```
+
+## 🔄 自动构建系统
+
+### Vite 插件集成
+
+项目已集成 **自动构建系统**，通过自定义的 Vite 插件在开发服务器启动前和生产构建前自动处理 RPGMV 插件的构建：
+
+#### 工作原理
+
+```mermaid
+graph TD
+    A[运行 pnpm run dev:drill] --> B[Vite 启动]
+    B --> C[vite-plugin-tsup-rpgmv 激活]
+    C --> D{检查插件是否需要构建}
+    D -->|需要构建| E[调用 tsup build 函数]
+    D -->|已是最新| F[跳过构建]
+    E --> F
+    F --> G[启动 Vite 开发服务器]
+
+    H[修改 src/rpgmv-plugins/*.ts] --> I[HMR 检测文件变化]
+    I --> J[自动重新构建插件]
+    J --> K[热重载完成]
+```
+
+#### 智能构建策略
+
+- **条件构建**：仅在输出文件不存在时构建
+- **热重载支持**：自动检测 `src/rpgmv-plugins/` 目录变化
+- **构建缓存**：避免重复构建已最新的插件
+- **详细日志**：可选的构建过程详细输出
+
+#### 配置选项
+
+Vite 插件位于 `plugins/vite-plugin-tsup-rpgmv.ts`，支持以下配置：
+
+```typescript
+// vite.config.ts
+vitePluginTsupRpgmv({
+	verbose: true, // 启用详细日志
+	forceRebuild: false, // 强制重新构建
+	outputPaths: [
+		// 检查的输出文件路径
+		"drill-project/js/plugins/VueBridge.js",
+	],
+});
+```
+
+### 优势特性
+
+✅ **零配置启动**：直接运行 `pnpm run dev:drill` 即可  
+✅ **自动依赖检测**：智能判断是否需要重新构建  
+✅ **开发体验优化**：文件变化时自动热重载  
+✅ **错误处理**：构建失败时的友好错误提示  
+✅ **生产就绪**：生产构建时同样自动处理插件
 
 ## 类型安全
 
