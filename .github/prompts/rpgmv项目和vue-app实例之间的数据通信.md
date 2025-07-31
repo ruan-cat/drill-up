@@ -11,3 +11,7 @@
 ## RPGMV 的插件应该由 tsup 插件打包生成
 
 我不希望出现直接编写 RPGMV 的 js 插件的情况，我希望在 apps\drill\src 目录内定义 typescript 编写的插件，以 iife 的形式打包 RPGMV 插件，并直接输出到 apps\drill\drill-project\js\plugins 目录内。
+
+## 启动 vite 项目时，通过 vite 的 plugins 插件机制实现 RPGMV 插件的预构建
+
+RPGMV 的插件应该由 tsup 插件打包生成，与此同时，在本地启动 vite 项目前，也需要先打包构建好 RPGMV 的 js 插件，然后再开始本地启动 vite 项目。
