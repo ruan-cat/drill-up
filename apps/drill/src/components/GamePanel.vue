@@ -1,6 +1,13 @@
 <template>
-	<div class="game-panel">
-		<ElCard class="panel-card">
+	<div class="game-panel" :class="{ 'panel-collapsed': isCollapsed }">
+		<!-- 折叠按钮 -->
+		<div class="collapse-button" @click="toggleCollapse">
+			<ElIcon :size="20">
+				<component :is="isCollapsed ? 'ArrowLeft' : 'ArrowRight'" />
+			</ElIcon>
+		</div>
+
+		<ElCard class="panel-card" v-show="!isCollapsed">
 			<template #header>
 				<div class="card-header">
 					<h3>🎮 游戏状态控制面板</h3>
@@ -13,7 +20,7 @@
 			</template>
 
 			<!-- 错误显示 -->
-			<ElAlert v-if="hasError" :title="lastError" type="error" closable @close="clearError" class="error-alert" />
+			<ElAlert v-if="hasError" :title="lastError || ''" type="error" closable @close="clearError" class="error-alert" />
 
 			<!-- 连接状态和操作 -->
 			<ElRow :gutter="20" class="control-section">
@@ -229,6 +236,14 @@ const selectedSE = ref("");
 const seVolume = ref(90);
 const selectedScene = ref("");
 
+// 面板折叠状态
+const isCollapsed = ref(false);
+
+// 折叠/展开面板
+const toggleCollapse = () => {
+	isCollapsed.value = !isCollapsed.value;
+};
+
 const transferData = reactive({
 	mapId: 1,
 	x: 0,
@@ -326,13 +341,25 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .game-panel {
-	padding: 20px;
-	max-width: 1200px;
-	margin: 0 auto;
+	/* 浮动面板样式 */
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	width: 400px;
+	max-height: calc(100vh - 40px);
+	overflow-y: auto;
+	background: rgba(255, 255, 255, 0.95);
+	backdrop-filter: blur(10px);
+	border-radius: 8px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+	pointer-events: auto; /* 恢复点击事件 */
+	z-index: 1001; /* 确保在游戏界面之上 */
 }
 
 .panel-card {
-	margin-bottom: 20px;
+	margin-bottom: 0;
+	border: none;
+	background: transparent;
 }
 
 .card-header {
@@ -401,5 +428,71 @@ onUnmounted(() => {
 
 :deep(.el-slider) {
 	margin: 0 10px;
+}
+
+/* 浮动面板的滚动条样式 */
+.game-panel::-webkit-scrollbar {
+	width: 6px;
+}
+
+.game-panel::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 3px;
+}
+
+.game-panel::-webkit-scrollbar-thumb {
+	background: rgba(64, 158, 255, 0.5);
+	border-radius: 3px;
+}
+
+.game-panel::-webkit-scrollbar-thumb:hover {
+	background: rgba(64, 158, 255, 0.7);
+}
+
+/* 折叠按钮样式 */
+.collapse-button {
+	position: absolute;
+	left: -30px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 30px;
+	height: 60px;
+	background: rgba(64, 158, 255, 0.9);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 8px 0 0 8px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	z-index: 1002;
+}
+
+.collapse-button:hover {
+	background: rgba(64, 158, 255, 1);
+	transform: translateY(-50%) scale(1.05);
+}
+
+/* 折叠状态样式 */
+.panel-collapsed {
+	width: 0;
+	overflow: hidden;
+}
+
+.panel-collapsed .collapse-button {
+	left: -30px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+	.game-panel {
+		width: calc(100vw - 40px);
+		right: 20px;
+		left: 20px;
+	}
+
+	.collapse-button {
+		left: -30px;
+	}
 }
 </style>

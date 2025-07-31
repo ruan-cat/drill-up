@@ -28,15 +28,17 @@ onMounted(() => {
 <template>
 	<section class="vite-vue-app-root">
 		<ElConfigProvider :z-index="globalZIndex">
-			<a href="https://vitejs.dev" target="_blank">
-				<!-- 不使用来自 public 内提供的配置 -->
-				<!-- <img src="/vite.svg" class="logo" alt="Vite logo" /> -->
+			<!-- 隐藏原有的 Vue 应用内容，只显示游戏界面 -->
+			<!-- <a href="https://vitejs.dev" target="_blank">
+				<img src="/vite.svg" class="logo" alt="Vite logo" />
 			</a>
 			<a href="https://vuejs.org/" target="_blank">
 				<img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
 			</a>
 			<HelloWorld msg="Vite + Vue" />
-			<RightInfo></RightInfo>
+			<RightInfo></RightInfo> -->
+
+			<!-- 浮动游戏控制面板 -->
 			<GamePanel />
 		</ElConfigProvider>
 	</section>
@@ -44,8 +46,14 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .vite-vue-app-root {
-	height: 95vh;
-	width: 95vw;
+	/* 让 Vue 应用完全透明，不干扰游戏界面 */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none; /* 允许点击穿透到游戏界面 */
+	z-index: 1000; /* 确保在游戏界面之上 */
 }
 
 .logo {
