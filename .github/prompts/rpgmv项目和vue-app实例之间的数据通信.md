@@ -7,3 +7,7 @@
 请你帮我设计一个数据通信方案，实现数据的双向通信。
 
 比如 vite 项目的 vue 组件可以修改 RPGMV 的全局变量，RPGMV 内的变量发生变化时，也能够通过函数或者是事件监听的方式，通知到 vue 组件做出相应。
+
+## RPGMV 的插件应该由 tsup 插件打包生成
+
+我不希望出现直接编写 RPGMV 的 js 插件的情况，我希望在 apps\drill\src 目录内定义 typescript 编写的插件，以 iife 的形式打包 RPGMV 插件，并直接输出到 apps\drill\drill-project\js\plugins 目录内。
