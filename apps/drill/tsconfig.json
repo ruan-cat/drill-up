@@ -27,7 +27,15 @@
 			// https://github.com/pixijs/pixi-typescript/tree/v4.5.4
 			"pixi.js"
 			// "@types/pixi.js"
-		]
+		],
+		"paths": {
+			"@/*": [
+				"src/*"
+			],
+			"components/*": [
+				"src/components/*"
+			]
+		}
 	},
 	"include": [
 		// 包含全部的类型声明文件

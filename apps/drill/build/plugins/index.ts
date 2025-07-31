@@ -4,16 +4,17 @@
  * 统一导出所有自定义的Vite插件
  */
 
-export { vitePluginTsupRpgmv } from "./vite-plugin-tsup-rpgmv";
-
 import type { PluginOption, ConfigEnv } from "vite";
-import { vitePluginTsupRpgmv } from "./vite-plugin-tsup-rpgmv";
 
 import vue from "@vitejs/plugin-vue";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { createHtmlPlugin } from "vite-plugin-html";
+
+import { vitePluginTsupRpgmv } from "./vite-plugin-tsup-rpgmv/index";
+// 集中封装后的 别名插件
+import tsAlias from "./vite-plugin-ts-alias/index";
 
 export interface GetPluginsListParams {
 	/**
@@ -75,5 +76,8 @@ export function getPluginsList(params: GetPluginsListParams): PluginOption[] {
 		}),
 
 		Components({ dts: true, version: 3, resolvers: [ElementPlusResolver()] }),
+
+		// 路径别名插件
+		tsAlias,
 	];
 }

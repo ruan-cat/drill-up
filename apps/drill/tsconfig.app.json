@@ -26,14 +26,6 @@
 			// 目前包含的rmmv源码，包含了部分node的全局常量，故需要提供类型声明包
 			"node"
 		],
-		"paths": {
-			"@/*": [
-				"./src/*"
-			],
-			"components/*": [
-				"./src/components/*"
-			]
-		}
 	},
 	"include": [
 		"./src/**/*.ts",

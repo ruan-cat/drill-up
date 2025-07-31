@@ -10,7 +10,7 @@ import { existsSync } from "fs";
 import { resolve } from "path";
 import type { Plugin } from "vite";
 
-interface TsupRpgmvPluginOptions {
+export interface TsupRpgmvPluginOptions {
 	/**
 	 * tsup配置选项
 	 */
