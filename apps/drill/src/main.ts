@@ -5,6 +5,7 @@ import { GameBridge } from "./bridge/GameBridge";
 
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
+import { getElementPlusConfig } from "./config/element-plus";
 
 // 全量加载数据
 // import "./rmmv-code-ts/index";
@@ -20,7 +21,8 @@ const gameBridge = new GameBridge();
 // 暴露到全局，供RPGMV插件使用
 window.gameBridge = gameBridge;
 
-app.use(ElementPlus);
+// 配置 Element Plus 全局设置
+app.use(ElementPlus, getElementPlusConfig());
 app.mount("#vue-root-app");
 
 // 监听RPGMV准备就绪事件

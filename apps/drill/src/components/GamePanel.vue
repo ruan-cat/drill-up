@@ -506,39 +506,7 @@ onUnmounted(() => {
 	left: -30px;
 }
 
-/* 确保 Element Plus 组件有足够高的层级 */
-:deep(.el-select-dropdown) {
-	z-index: 99999 !important;
-}
-
-:deep(.el-popper) {
-	z-index: 99999 !important;
-}
-
-:deep(.el-tooltip) {
-	z-index: 99999 !important;
-}
-
-:deep(.el-message) {
-	z-index: 99999 !important;
-}
-
-:deep(.el-notification) {
-	z-index: 99999 !important;
-}
-
-:deep(.el-dialog) {
-	z-index: 99999 !important;
-}
-
-:deep(.el-drawer) {
-	z-index: 99999 !important;
-}
-
-/* 强制所有 Element Plus 弹出层使用最高层级 */
-:deep([class*="el-"]:not(.game-panel):not(.panel-card)) {
-	z-index: 99999 !important;
-}
+/* Element Plus 组件样式优化 */
 
 /* 响应式设计 */
 @media (max-width: 768px) {

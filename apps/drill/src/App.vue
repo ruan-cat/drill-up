@@ -9,7 +9,8 @@ import GamePanel from "./components/GamePanel.vue";
 
 /**
  * 全局组件index值
- * 默认element-plus的全部组件高于mv的内容
+ * 通过 main.ts 中的 ElementPlus 全局配置统一设置
+ * 这里主要用于 ElConfigProvider 的备用配置
  */
 const globalZIndex = ref(99999);
 
@@ -27,6 +28,10 @@ onMounted(() => {
 
 <template>
 	<section class="vite-vue-app-root">
+		<!-- 
+			ElConfigProvider 用于局部配置，但主要依赖 main.ts 中的全局配置
+			全局 zIndex 已在 main.ts 中通过 ElementPlus 配置统一设置
+		-->
 		<ElConfigProvider :z-index="globalZIndex">
 			<!-- 隐藏原有的 Vue 应用内容，只显示游戏界面 -->
 			<!-- <a href="https://vitejs.dev" target="_blank">
@@ -67,33 +72,5 @@ onMounted(() => {
 }
 .logo.vue:hover {
 	filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
-
-<style lang="scss">
-/* 全局样式：确保所有弹出层都有最高层级 */
-.el-select-dropdown {
-	z-index: 99999 !important;
-}
-
-.el-popper {
-	z-index: 99999 !important;
-}
-
-.el-message {
-	z-index: 99999 !important;
-}
-
-.el-notification {
-	z-index: 99999 !important;
-}
-
-/* 强制设置 Element Plus 的 CSS 变量 */
-:root {
-	--el-z-index-popper: 99999 !important;
-	--el-z-index-message: 99999 !important;
-	--el-z-index-notification: 99999 !important;
-	--el-z-index-dialog: 99999 !important;
-	--el-z-index-drawer: 99999 !important;
 }
 </style>
