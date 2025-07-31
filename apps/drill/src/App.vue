@@ -3,6 +3,7 @@ import { ElConfigProvider, ElNotification } from "element-plus";
 
 import HelloWorld from "./components/HelloWorld.vue";
 import RightInfo from "components/right-info/right-info.vue";
+import GamePanel from "./components/GamePanel.vue";
 
 // import "@/inform/inform";
 
@@ -36,6 +37,7 @@ onMounted(() => {
 			</a>
 			<HelloWorld msg="Vite + Vue" />
 			<RightInfo></RightInfo>
+			<GamePanel />
 		</ElConfigProvider>
 	</section>
 </template>
