@@ -353,7 +353,9 @@ onUnmounted(() => {
 	border-radius: 8px;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 	pointer-events: auto; /* 恢复点击事件 */
-	z-index: 1001; /* 确保在游戏界面之上 */
+	z-index: 9999; /* 提高层级，确保下拉列表可见 */
+	/* 确保面板不会遮挡下拉列表 */
+	overflow: visible;
 }
 
 .panel-card {
@@ -430,6 +432,27 @@ onUnmounted(() => {
 	margin: 0 10px;
 }
 
+/* 改善下拉列表的显示效果 */
+:deep(.el-select-dropdown) {
+	background: rgba(255, 255, 255, 0.98);
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(64, 158, 255, 0.2);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+:deep(.el-select-dropdown .el-select-dropdown__item) {
+	color: #333;
+}
+
+:deep(.el-select-dropdown .el-select-dropdown__item:hover) {
+	background-color: rgba(64, 158, 255, 0.1);
+}
+
+:deep(.el-select-dropdown .el-select-dropdown__item.selected) {
+	background-color: rgba(64, 158, 255, 0.2);
+	color: #409eff;
+}
+
 /* 浮动面板的滚动条样式 */
 .game-panel::-webkit-scrollbar {
 	width: 6px;
@@ -465,7 +488,7 @@ onUnmounted(() => {
 	border-radius: 8px 0 0 8px;
 	cursor: pointer;
 	transition: all 0.3s ease;
-	z-index: 1002;
+	z-index: 10000; /* 提高层级 */
 }
 
 .collapse-button:hover {
@@ -481,6 +504,40 @@ onUnmounted(() => {
 
 .panel-collapsed .collapse-button {
 	left: -30px;
+}
+
+/* 确保 Element Plus 组件有足够高的层级 */
+:deep(.el-select-dropdown) {
+	z-index: 99999 !important;
+}
+
+:deep(.el-popper) {
+	z-index: 99999 !important;
+}
+
+:deep(.el-tooltip) {
+	z-index: 99999 !important;
+}
+
+:deep(.el-message) {
+	z-index: 99999 !important;
+}
+
+:deep(.el-notification) {
+	z-index: 99999 !important;
+}
+
+:deep(.el-dialog) {
+	z-index: 99999 !important;
+}
+
+:deep(.el-drawer) {
+	z-index: 99999 !important;
+}
+
+/* 强制所有 Element Plus 弹出层使用最高层级 */
+:deep([class*="el-"]:not(.game-panel):not(.panel-card)) {
+	z-index: 99999 !important;
 }
 
 /* 响应式设计 */

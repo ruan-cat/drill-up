@@ -11,7 +11,7 @@ import GamePanel from "./components/GamePanel.vue";
  * 全局组件index值
  * 默认element-plus的全部组件高于mv的内容
  */
-const globalZIndex = ref(2);
+const globalZIndex = ref(99999);
 
 // ElNotification({
 // 	title: "你好，使用了 element-plus 🎉",
@@ -53,7 +53,7 @@ onMounted(() => {
 	width: 100%;
 	height: 100%;
 	pointer-events: none; /* 允许点击穿透到游戏界面 */
-	z-index: 1000; /* 确保在游戏界面之上 */
+	z-index: 9998; /* 确保在游戏界面之上，但低于控制面板 */
 }
 
 .logo {
@@ -67,5 +67,33 @@ onMounted(() => {
 }
 .logo.vue:hover {
 	filter: drop-shadow(0 0 2em #42b883aa);
+}
+</style>
+
+<style lang="scss">
+/* 全局样式：确保所有弹出层都有最高层级 */
+.el-select-dropdown {
+	z-index: 99999 !important;
+}
+
+.el-popper {
+	z-index: 99999 !important;
+}
+
+.el-message {
+	z-index: 99999 !important;
+}
+
+.el-notification {
+	z-index: 99999 !important;
+}
+
+/* 强制设置 Element Plus 的 CSS 变量 */
+:root {
+	--el-z-index-popper: 99999 !important;
+	--el-z-index-message: 99999 !important;
+	--el-z-index-notification: 99999 !important;
+	--el-z-index-dialog: 99999 !important;
+	--el-z-index-drawer: 99999 !important;
 }
 </style>
