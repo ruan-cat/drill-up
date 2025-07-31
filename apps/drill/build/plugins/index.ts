@@ -12,6 +12,9 @@ import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { createHtmlPlugin } from "vite-plugin-html";
 
+// 开发调试插件
+import vueDevTools from "vite-plugin-vue-devtools";
+
 import { vitePluginTsupRpgmv } from "./vite-plugin-tsup-rpgmv/index";
 // 集中封装后的 别名插件
 import tsAlias from "./vite-plugin-ts-alias/index";
@@ -39,6 +42,16 @@ export function getPluginsList(params: GetPluginsListParams): PluginOption[] {
 		}) as any,
 
 		vue(),
+
+		/**
+		 * 开发调试插件
+		 * @description
+		 * vueDevTools 必须在 createHtmlPlugin 的前面导入
+		 *
+		 * @see https://devtools.vuejs.org/help/troubleshooting#devtools-vite-plugin-doesn-t-render-as-expected
+		 * @see https://github.com/vuejs/devtools/issues/278#issuecomment-2167415057
+		 */
+		vueDevTools(),
 
 		// 重设index.html的入口 和 全局ts文件的注入
 		createHtmlPlugin({
