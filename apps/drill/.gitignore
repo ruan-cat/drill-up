@@ -1,2 +1,2 @@
 # 忽略掉自动构建生成的 VueBridge.js 插件
-**/js/plugins/VueBridge.js
+drill-project/js/plugins/VueBridge.js
