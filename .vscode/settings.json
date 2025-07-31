@@ -11,7 +11,8 @@
 		// "**/node_modules": true,
 		// "**/dist": true,
 		// "**/.git": true,
-		"**/build": true,
+		// 取消隐藏build目录
+		// "**/build": true,
 		"**/bower_components": true,
 		"**/out": true,
 		"**/.svn": true,
