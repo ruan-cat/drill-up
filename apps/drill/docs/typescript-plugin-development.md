@@ -109,9 +109,16 @@ pnpm run build:rpgmv-plugins:watch
 
 ```bash
 # 基础开发命令（🚀 推荐使用）
+
+# 在 apps/drill 目录下运行：
 pnpm run dev:drill                    # 启动vite开发服务器（自动构建插件）
 pnpm run build:rpgmv-plugins          # 手动构建所有RPGMV插件
 pnpm run build:rpgmv-plugins:watch    # 监听模式构建插件
+
+# 在项目根目录下运行（新增便捷脚本）：
+pnpm run dev:drill                    # 自动切换到 apps/drill 并启动开发服务器
+pnpm run build:drill                  # 自动切换到 apps/drill 并构建项目
+pnpm run build:rpgmv-plugins          # 自动切换到 apps/drill 并构建插件
 
 # 🎯 新特性：自动构建集成
 # 现在所有 pnpm run dev:* 和 pnpm run build:* 命令都会

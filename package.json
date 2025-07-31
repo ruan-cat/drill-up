@@ -24,7 +24,10 @@
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"prettier": "prettier --write .",
-		"deploy-vercel": "tsx ./scripts/vercel-deploy-tool.ts --env-path=.env.deploy-vercel"
+		"deploy-vercel": "tsx ./scripts/vercel-deploy-tool.ts --env-path=.env.deploy-vercel",
+		"dev:drill": "pnpm --filter @ruan-cat/drill-up run dev:drill",
+		"build:drill": "pnpm --filter @ruan-cat/drill-up run build:drill",
+		"build:rpgmv-plugins": "pnpm --filter @ruan-cat/drill-up run build:rpgmv-plugins"
 	},
 	"dependencies": {
 		"@ruan-cat/utils": "^4.9.1",

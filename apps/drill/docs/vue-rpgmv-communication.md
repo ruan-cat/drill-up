@@ -224,7 +224,12 @@ watch(isConnected, (connected) => {
 
 ```bash
 # 🚀 推荐：零配置开发（自动构建插件）
+
+# 在 apps/drill 目录下运行：
 pnpm run dev:drill
+
+# 在项目根目录下运行（新增便捷脚本）：
+pnpm run dev:drill                    # 自动切换到 apps/drill 并启动开发服务器
 
 # 手动构建命令
 pnpm run build:rpgmv-plugins          # 构建所有RPGMV插件

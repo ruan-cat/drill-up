@@ -23,7 +23,12 @@
 
 ```bash
 # 🚀 零配置开发启动（自动构建插件）
+
+# 在 apps/drill 目录下运行：
 pnpm run dev:drill
+
+# 在项目根目录下运行（新增便捷脚本）：
+pnpm run dev:drill                    # 自动切换到 apps/drill 并启动开发服务器
 
 # 🔄 监听模式构建插件
 pnpm run build:rpgmv-plugins:watch
@@ -215,6 +220,10 @@ pnpm run build:drill
 运行以下命令启动现代化的 TypeScript 开发环境：
 
 ```bash
+# 方式1：在项目根目录下运行（推荐）
+pnpm run dev:drill
+
+# 方式2：在 apps/drill 目录下运行
 cd apps/drill
 pnpm run dev:drill
 ```
