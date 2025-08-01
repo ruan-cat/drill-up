@@ -18,6 +18,7 @@ import vueDevTools from "vite-plugin-vue-devtools";
 import { vitePluginTsupRpgmv } from "./vite-plugin-tsup-rpgmv/index";
 // 集中封装后的 别名插件
 import tsAlias from "./vite-plugin-ts-alias/index";
+import tsAliasSelf from "./vite-plugin-ts-alias-self/index";
 
 export interface GetPluginsListParams {
 	/**
@@ -91,6 +92,10 @@ export function getPluginsList(params: GetPluginsListParams): PluginOption[] {
 		Components({ dts: true, version: 3, resolvers: [ElementPlusResolver()] }),
 
 		// 路径别名插件
-		tsAlias,
+		// tsAlias,
+
+		tsAliasSelf({
+			tsConfigName: "tsconfig.app.json",
+		}),
 	];
 }

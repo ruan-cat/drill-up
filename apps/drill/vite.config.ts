@@ -37,7 +37,7 @@ export default defineConfig(({ mode }) => {
 		 *
 		 * 配置root 配置vite命令运行时期望的根目录
 		 */
-		// root
+		root: process.cwd(),
 
 		base,
 
