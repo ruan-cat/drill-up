@@ -91,11 +91,6 @@ export function getPluginsList(params: GetPluginsListParams): PluginOption[] {
 		Components({ dts: true, version: 3, resolvers: [ElementPlusResolver()] }),
 
 		// 路径别名插件
-		// tsAlias,
-
-		tsAliasSelf({
-			tsConfigName: "tsconfig.app.json",
-			// tsConfigName: "tsconfig.json",
-		}),
+		tsAlias,
 	];
 }

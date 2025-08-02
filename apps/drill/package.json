@@ -38,6 +38,7 @@
 	"devDependencies": {
 		"@antfu/eslint-config": "^3.16.0",
 		"@dotenvx/dotenvx": "^1.48.4",
+		"@ruan-cat/vite-plugin-ts-alias": "^0.1.0",
 		"@swc/core": "^1.13.3",
 		"@tauri-apps/cli": "^2.7.1",
 		"@types/eslint-config-prettier": "^6.11.3",
@@ -59,7 +60,6 @@
 		"upath": "^2.0.1",
 		"vite": "^5.4.1",
 		"vite-plugin-html": "^3.2.2",
-		"vite-plugin-ts-alias": "^0.1.1",
 		"vite-plugin-vue-devtools": "^7.7.7",
 		"vue-tsc": "^2.2.12"
 	}
