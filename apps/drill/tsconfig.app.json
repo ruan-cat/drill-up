@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
 		"composite": true,
+		"baseUrl": ".",
 		"target": "ES2020",
 		"useDefineForClassFields": true,
 		"module": "ESNext",
@@ -28,10 +29,10 @@
 		],
 		"paths": {
 			"@/*": [
-				"./src/*"
+				"src/*"
 			],
 			"components/*": [
-				"./src/components/*"
+				"src/components/*"
 			]
 		}
 	},
