@@ -1,6 +1,9 @@
 packages:
-  - "packages/*"
-  - "apps/*"
-  - "demos/*"
-  - "docs/*"
-  - "utils"
+  - packages/*
+  - apps/*
+  - demos/*
+  - docs/*
+  - utils
+
+onlyBuiltDependencies:
+  - vue-demi
