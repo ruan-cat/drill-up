@@ -15,11 +15,20 @@
 
 #### 待转换文件详细信息
 
-- [ ] **rpg_core.js** - JavaScript扩展和基础功能
-  - 主要模块：JsExtensions, Number/String/Array原型扩展
-  - 当前状态：部分已有JSDoc格式，需要补充和标准化
-  - 预计工作量：轻度转换
-  - 完成度：0%
+- [ ] **rpg_core.js** - JavaScript扩展和基础功能  
+  - 主要模块：JsExtensions, Utils工具类, 缓存系统(CacheEntry/CacheMap/ImageCache/RequestQueue), 基础图形类(Point/Rectangle), Bitmap类
+  - 当前状态：🔄 **持续转换中** - 已完成多个核心模块的JSDoc格式转换
+  - 工作内容：
+    - ✅ **JavaScript扩展模块**：Utils.generateRuntimeId添加完整JSDoc注释
+    - ✅ **缓存系统模块**：
+      - CacheEntry类所有方法（free, allocate, setTimeToLive, isStillAlive, touch）
+      - CacheMap类构造函数和核心方法（checkTTL, getItem）
+      - ImageCache类完整注释（initialize, add, get, reserve, releaseReservation, _truncateCache, _mustBeHeld, isReady, getErrorBitmap）
+      - RequestQueue类完整注释（initialize, enqueue, update, raisePriority, clear）
+    - ✅ **基础图形类模块**：Point和Rectangle类的initialize方法注释
+    - 🔄 **进行中**：Bitmap类模块转换
+  - 转换时间：2025-08-22 
+  - 完成度：50%（已完成缓存系统、基础图形类等核心模块）
 
 - [ ] **rpg_managers.js** - 数据和游戏管理器
   - 主要模块：DataManager, ConfigManager, ImageManager, AudioManager, TextManager, SceneManager, BattleManager, PluginManager

@@ -283,6 +283,15 @@ Utils.rgbToCssColor = function(r, g, b) {
 };
 
 Utils._id = 1;
+
+/**
+ * Generates a unique runtime ID.
+ * 生成一个唯一的运行时ID。
+ *
+ * @static
+ * @method generateRuntimeId
+ * @return {Number} A unique runtime ID
+ */
 Utils.generateRuntimeId = function(){
     return Utils._id++;
 };
@@ -312,13 +321,14 @@ Utils.isSupportPassiveEvent = function() {
 
 //-----------------------------------------------------------------------------
 /**
- * The resource class. Allows to be collected as a garbage if not use for some time or ticks
+ * The resource class. Allows to be collected as a garbage if not use for some time or ticks.
+ * 资源类。如果在一段时间或滴答数内未使用，则允许被垃圾回收。
  *
  * @class CacheEntry
  * @constructor
- * @param {ResourceManager} resource manager
- * @param {string} key, url of the resource
- * @param {string} item - Bitmap, HTML5Audio, WebAudio - whatever you want to store in the cache
+ * @param {Object} cache - The cache manager
+ * @param {String} key - URL of the resource
+ * @param {Object} item - Bitmap, HTML5Audio, WebAudio - whatever you want to store in the cache
  */
 function CacheEntry(cache, key, item) {
     this.cache = cache;
@@ -333,7 +343,11 @@ function CacheEntry(cache, key, item) {
 }
 
 /**
- * frees the resource
+ * Frees the resource from cache.
+ * 从缓存中释放资源。
+ *
+ * @method free
+ * @param {Boolean} byTTL - Whether the resource is freed by TTL
  */
 CacheEntry.prototype.free = function (byTTL) {
     this.freedByTTL = byTTL || false;
@@ -344,8 +358,11 @@ CacheEntry.prototype.free = function (byTTL) {
 };
 
 /**
- * Allocates the resource
- * @returns {CacheEntry}
+ * Allocates the resource in cache.
+ * 在缓存中分配资源。
+ *
+ * @method allocate
+ * @return {CacheEntry} Returns this cache entry
  */
 CacheEntry.prototype.allocate = function () {
     if (!this.cached) {
@@ -357,10 +374,13 @@ CacheEntry.prototype.allocate = function () {
 };
 
 /**
- * Sets the time to live
- * @param {number} ticks TTL in ticks, 0 if not set
- * @param {number} time TTL in seconds, 0 if not set
- * @returns {CacheEntry}
+ * Sets the time to live for the cache entry.
+ * 设置缓存条目的生存时间。
+ *
+ * @method setTimeToLive
+ * @param {Number} ticks - TTL in ticks, 0 if not set
+ * @param {Number} seconds - TTL in seconds, 0 if not set
+ * @return {CacheEntry} Returns this cache entry
  */
 CacheEntry.prototype.setTimeToLive = function (ticks, seconds) {
     this.ttlTicks = ticks || 0;
@@ -368,6 +388,13 @@ CacheEntry.prototype.setTimeToLive = function (ticks, seconds) {
     return this;
 };
 
+/**
+ * Checks whether the cache entry is still alive (not expired).
+ * 检查缓存条目是否仍然有效（未过期）。
+ *
+ * @method isStillAlive
+ * @return {Boolean} True if the cache entry is still alive
+ */
 CacheEntry.prototype.isStillAlive = function () {
     var cache = this.cache;
     return ((this.ttlTicks == 0) || (this.touchTicks + this.ttlTicks < cache.updateTicks )) &&
@@ -375,8 +402,11 @@ CacheEntry.prototype.isStillAlive = function () {
 };
 
 /**
- * makes sure that resource wont freed by Time To Live
- * if resource was already freed by TTL, put it in cache again
+ * Makes sure that resource won't be freed by Time To Live.
+ * If resource was already freed by TTL, put it in cache again.
+ * 确保资源不会被生存时间释放。如果资源已经被TTL释放，则重新放入缓存。
+ *
+ * @method touch
  */
 CacheEntry.prototype.touch = function () {
     var cache = this.cache;
@@ -392,9 +422,12 @@ CacheEntry.prototype.touch = function () {
 };
 
 /**
- * Cache for images, audio, or any other kind of resource
- * @param manager
+ * Cache for images, audio, or any other kind of resource.
+ * 图像、音频或任何其他类型资源的缓存。
+ *
+ * @class CacheMap
  * @constructor
+ * @param {Object} manager - The cache manager
  */
 function CacheMap(manager) {
     this.manager = manager;
@@ -407,7 +440,10 @@ function CacheMap(manager) {
 }
 
 /**
- * checks ttl of all elements and removes dead ones
+ * Checks TTL of all elements and removes dead ones.
+ * 检查所有元素的TTL并移除失效的条目。
+ *
+ * @method checkTTL
  */
 CacheMap.prototype.checkTTL = function () {
     var cache = this._inner;
@@ -429,9 +465,12 @@ CacheMap.prototype.checkTTL = function () {
 };
 
 /**
- * cache item
- * @param key url of cache element
- * @returns {*|null}
+ * Gets a cached item by key.
+ * 通过键获取缓存项。
+ *
+ * @method getItem
+ * @param {String} key - URL of cache element
+ * @return {Object|null} The cached item or null if not found
  */
 CacheMap.prototype.getItem = function (key) {
     var entry = this._inner[key];
@@ -461,16 +500,46 @@ CacheMap.prototype.update = function(ticks, delta) {
     }
 };
 
+/**
+ * Cache for storing image bitmaps.
+ * 存储图像位图的缓存。
+ *
+ * @class ImageCache
+ * @constructor
+ */
 function ImageCache(){
     this.initialize.apply(this, arguments);
 }
 
+/**
+ * The cache size limit in bytes.
+ * 缓存大小限制（字节）。
+ *
+ * @static
+ * @property limit
+ * @type Number
+ * @default 10485760
+ */
 ImageCache.limit = 10 * 1000 * 1000;
 
+/**
+ * Initialize the image cache.
+ * 初始化图像缓存。
+ *
+ * @method initialize
+ */
 ImageCache.prototype.initialize = function(){
     this._items = {};
 };
 
+/**
+ * Adds a bitmap to the image cache.
+ * 向图像缓存中添加位图。
+ *
+ * @method add
+ * @param {String} key - The cache key
+ * @param {Bitmap} value - The bitmap to cache
+ */
 ImageCache.prototype.add = function(key, value){
     this._items[key] = {
         bitmap: value,
@@ -481,6 +550,14 @@ ImageCache.prototype.add = function(key, value){
     this._truncateCache();
 };
 
+/**
+ * Gets a bitmap from the image cache.
+ * 从图像缓存中获取位图。
+ *
+ * @method get
+ * @param {String} key - The cache key
+ * @return {Bitmap|null} The cached bitmap or null if not found
+ */
 ImageCache.prototype.get = function(key){
     if(this._items[key]){
         var item = this._items[key];
@@ -491,6 +568,15 @@ ImageCache.prototype.get = function(key){
     return null;
 };
 
+/**
+ * Reserves a bitmap in the image cache.
+ * 在图像缓存中保留位图。
+ *
+ * @method reserve
+ * @param {String} key - The cache key
+ * @param {Bitmap} value - The bitmap to reserve
+ * @param {String} reservationId - The reservation ID
+ */
 ImageCache.prototype.reserve = function(key, value, reservationId){
     if(!this._items[key]){
         this._items[key] = {
@@ -503,6 +589,13 @@ ImageCache.prototype.reserve = function(key, value, reservationId){
     this._items[key].reservationId = reservationId;
 };
 
+/**
+ * Releases items with the specified reservation ID.
+ * 释放具有指定保留ID的项目。
+ *
+ * @method releaseReservation
+ * @param {String} reservationId - The reservation ID to release
+ */
 ImageCache.prototype.releaseReservation = function(reservationId){
     var items = this._items;
 
@@ -515,6 +608,13 @@ ImageCache.prototype.releaseReservation = function(reservationId){
         });
 };
 
+/**
+ * Truncates the cache to fit within the size limit.
+ * 截断缓存以适应大小限制。
+ *
+ * @private
+ * @method _truncateCache
+ */
 ImageCache.prototype._truncateCache = function(){
     var items = this._items;
     var sizeLeft = ImageCache.limit;
@@ -533,6 +633,15 @@ ImageCache.prototype._truncateCache = function(){
     }.bind(this));
 };
 
+/**
+ * Checks whether an item must be held in cache.
+ * 检查项目是否必须保留在缓存中。
+ *
+ * @private
+ * @method _mustBeHeld
+ * @param {Object} item - The cache item to check
+ * @return {Boolean} True if the item must be held
+ */
 ImageCache.prototype._mustBeHeld = function(item){
     // request only is weak so It's purgeable
     if(item.bitmap.isRequestOnly()) return false;
@@ -544,6 +653,13 @@ ImageCache.prototype._mustBeHeld = function(item){
     return false;
 };
 
+/**
+ * Checks whether all cached bitmaps are ready.
+ * 检查所有缓存的位图是否已准备好。
+ *
+ * @method isReady
+ * @return {Boolean} True if all cached bitmaps are ready
+ */
 ImageCache.prototype.isReady = function(){
     var items = this._items;
     return !Object.keys(items).some(function(key){
@@ -551,6 +667,13 @@ ImageCache.prototype.isReady = function(){
     });
 };
 
+/**
+ * Gets the first error bitmap from the cache.
+ * 从缓存中获取第一个错误位图。
+ *
+ * @method getErrorBitmap
+ * @return {Bitmap|null} The error bitmap or null if no error found
+ */
 ImageCache.prototype.getErrorBitmap = function(){
     var items = this._items;
     var bitmap = null;
@@ -566,14 +689,35 @@ ImageCache.prototype.getErrorBitmap = function(){
 
     return null;
 };
+/**
+ * The request queue class for managing asynchronous requests.
+ * 用于管理异步请求的请求队列类。
+ *
+ * @class RequestQueue
+ * @constructor
+ */
 function RequestQueue(){
     this.initialize.apply(this, arguments);
 }
 
+/**
+ * Initialize the request queue.
+ * 初始化请求队列。
+ *
+ * @method initialize
+ */
 RequestQueue.prototype.initialize = function(){
     this._queue = [];
 };
 
+/**
+ * Enqueues a request.
+ * 将请求加入队列。
+ *
+ * @method enqueue
+ * @param {String} key - The request key
+ * @param {Object} value - The request value
+ */
 RequestQueue.prototype.enqueue = function(key, value){
     this._queue.push({
         key: key,
@@ -581,6 +725,12 @@ RequestQueue.prototype.enqueue = function(key, value){
     });
 };
 
+/**
+ * Updates the request queue, processing requests sequentially.
+ * 更新请求队列，顺序处理请求。
+ *
+ * @method update
+ */
 RequestQueue.prototype.update = function(){
     if(this._queue.length === 0) return;
 
@@ -595,6 +745,13 @@ RequestQueue.prototype.update = function(){
     }
 };
 
+/**
+ * Raises the priority of a request by moving it to the front of the queue.
+ * 通过将请求移动到队列前端来提高其优先级。
+ *
+ * @method raisePriority
+ * @param {String} key - The request key to prioritize
+ */
 RequestQueue.prototype.raisePriority = function(key){
     for(var n = 0; n < this._queue.length; n++){
         var item = this._queue[n];
@@ -606,6 +763,12 @@ RequestQueue.prototype.raisePriority = function(key){
     }
 };
 
+/**
+ * Clears all requests from the queue.
+ * 清除队列中的所有请求。
+ *
+ * @method clear
+ */
 RequestQueue.prototype.clear = function(){
     this._queue.splice(0);
 };
@@ -625,6 +788,14 @@ function Point() {
 Point.prototype = Object.create(PIXI.Point.prototype);
 Point.prototype.constructor = Point;
 
+/**
+ * Initialize the point.
+ * 初始化点。
+ *
+ * @method initialize
+ * @param {Number} x - The x coordinate
+ * @param {Number} y - The y coordinate
+ */
 Point.prototype.initialize = function(x, y) {
     PIXI.Point.call(this, x, y);
 };
@@ -661,6 +832,16 @@ function Rectangle() {
 Rectangle.prototype = Object.create(PIXI.Rectangle.prototype);
 Rectangle.prototype.constructor = Rectangle;
 
+/**
+ * Initialize the rectangle.
+ * 初始化矩形。
+ *
+ * @method initialize
+ * @param {Number} x - The x coordinate for the upper-left corner
+ * @param {Number} y - The y coordinate for the upper-left corner
+ * @param {Number} width - The width of the rectangle
+ * @param {Number} height - The height of the rectangle
+ */
 Rectangle.prototype.initialize = function(x, y, width, height) {
     PIXI.Rectangle.call(this, x, y, width, height);
 };
@@ -751,6 +932,15 @@ Bitmap._reuseImages = [];
  */
 
 
+/**
+ * Creates the canvas and context for the bitmap.
+ * 为位图创建画布和上下文。
+ *
+ * @private
+ * @method _createCanvas
+ * @param {Number} width - The width of the canvas
+ * @param {Number} height - The height of the canvas
+ */
 Bitmap.prototype._createCanvas = function(width, height){
     this.__canvas = this.__canvas || document.createElement('canvas');
     this.__context = this.__canvas.getContext('2d');
@@ -771,6 +961,14 @@ Bitmap.prototype._createCanvas = function(width, height){
     this._setDirty();
 };
 
+/**
+ * Creates the base texture from the given source.
+ * 从给定源创建基础纹理。
+ *
+ * @private
+ * @method _createBaseTexture
+ * @param {Object} source - The source for the texture (canvas or image)
+ */
 Bitmap.prototype._createBaseTexture = function(source){
     this.__baseTexture = new PIXI.BaseTexture(source);
     this.__baseTexture.mipmap = false;
@@ -784,6 +982,13 @@ Bitmap.prototype._createBaseTexture = function(source){
     }
 };
 
+/**
+ * Clears the image instance and prepares it for reuse.
+ * 清除图像实例并准备重用。
+ *
+ * @private
+ * @method _clearImgInstance
+ */
 Bitmap.prototype._clearImgInstance = function(){
     this._image.src = "";
     this._image.onload = null;
@@ -820,6 +1025,13 @@ Object.defineProperties(Bitmap.prototype, {
     }
 });
 
+/**
+ * Renews the canvas if the image size has changed.
+ * 如果图像大小已更改，则更新画布。
+ *
+ * @private
+ * @method _renewCanvas
+ */
 Bitmap.prototype._renewCanvas = function(){
     var newImage = this._image;
     if(newImage && this.__canvas && (this.__canvas.width < newImage.width || this.__canvas.height < newImage.height)){
@@ -827,6 +1039,14 @@ Bitmap.prototype._renewCanvas = function(){
     }
 };
 
+/**
+ * Initialize the bitmap.
+ * 初始化位图。
+ *
+ * @method initialize
+ * @param {Number} width - The width of the bitmap
+ * @param {Number} height - The height of the bitmap
+ */
 Bitmap.prototype.initialize = function(width, height) {
     if(!this._defer){
         this._createCanvas(width, height);
@@ -842,6 +1062,7 @@ Bitmap.prototype.initialize = function(width, height) {
 
     /**
      * Cache entry, for images. In all cases _url is the same as cacheEntry.key
+     * 缓存条目，用于图像。在所有情况下，_url 与 cacheEntry.key 相同。
      * @type CacheEntry
      */
     this.cacheEntry = null;
@@ -967,7 +1188,9 @@ Bitmap.prototype.isError = function() {
 };
 
 /**
- * touch the resource
+ * Touch the resource to prevent it from being removed from cache.
+ * 触摸资源以防止其从缓存中移除。
+ *
  * @method touch
  */
 Bitmap.prototype.touch = function() {
@@ -9146,6 +9369,12 @@ JsonEx._resetPrototype = function(value, prototype) {
 };
 
 
+/**
+ * The static class for handling file decryption.
+ * 用于处理文件解密的静态类。
+ *
+ * @class Decrypter
+ */
 function Decrypter() {
     throw new Error('This is a static class');
 }
