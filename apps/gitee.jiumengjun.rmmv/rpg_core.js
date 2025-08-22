@@ -9392,6 +9392,15 @@ Decrypter.SIGNATURE = "5250474d56000000";
 Decrypter.VER = "000301";
 Decrypter.REMAIN = "0000000000";
 
+/**
+ * Checks whether the image should be ignored for encryption.
+ * 检查图像是否应在加密时被忽略。
+ *
+ * @static
+ * @method checkImgIgnore
+ * @param {String} url - The image URL to check
+ * @return {Boolean} True if the image should be ignored
+ */
 Decrypter.checkImgIgnore = function(url){
     for(var cnt = 0; cnt < this._ignoreList.length; cnt++) {
         if(url === this._ignoreList[cnt]) return true;
@@ -9399,6 +9408,15 @@ Decrypter.checkImgIgnore = function(url){
     return false;
 };
 
+/**
+ * Decrypts an encrypted image and loads it into the bitmap.
+ * 解密加密图像并将其加载到位图中。
+ *
+ * @static
+ * @method decryptImg
+ * @param {String} url - The URL of the encrypted image
+ * @param {Bitmap} bitmap - The bitmap object to load the image into
+ */
 Decrypter.decryptImg = function(url, bitmap) {
     url = this.extToEncryptExt(url);
 
@@ -9508,6 +9526,18 @@ function ResourceHandler() {
 ResourceHandler._reloaders = [];
 ResourceHandler._defaultRetryInterval = [500, 1000, 3000];
 
+/**
+ * Creates a loader function that handles retries for resource loading.
+ * 创建一个处理资源加载重试的加载器函数。
+ *
+ * @static
+ * @method createLoader
+ * @param {String} url - The URL of the resource
+ * @param {Function} retryMethod - The method to call for retry
+ * @param {Function} resignMethod - The method to call when giving up
+ * @param {Array} retryInterval - Array of retry intervals in milliseconds
+ * @return {Function} The loader function
+ */
 ResourceHandler.createLoader = function(url, retryMethod, resignMethod, retryInterval) {
     retryInterval = retryInterval || this._defaultRetryInterval;
     var reloaders = this._reloaders;
@@ -9534,10 +9564,25 @@ ResourceHandler.createLoader = function(url, retryMethod, resignMethod, retryInt
     };
 };
 
+/**
+ * Checks whether any reloaders exist.
+ * 检查是否存在任何重加载器。
+ *
+ * @static
+ * @method exists
+ * @return {Boolean} True if reloaders exist
+ */
 ResourceHandler.exists = function() {
     return this._reloaders.length > 0;
 };
 
+/**
+ * Retries all failed resource loading operations.
+ * 重试所有失败的资源加载操作。
+ *
+ * @static
+ * @method retry
+ */
 ResourceHandler.retry = function() {
     if (this._reloaders.length > 0) {
         Graphics.eraseLoadingError();

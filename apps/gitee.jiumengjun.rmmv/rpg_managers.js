@@ -3,12 +3,12 @@
 //=============================================================================
 
 //-----------------------------------------------------------------------------
-// 数据管理器
-// DataManager
-//
-// 管理数据和游戏对象的静态类。
-// The static class that manages the database and game objects.
-
+/**
+ * The static class that manages the database and game objects.
+ * 管理数据和游戏对象的静态类。
+ *
+ * @class DataManager
+ */
 function DataManager() {
     throw new Error('This is a static class');
 }
@@ -64,7 +64,13 @@ DataManager._databaseFiles = [
     { name: '$dataMapInfos',     src: 'MapInfos.json'     }   // 地图信息 
 ];
 
-/* 加载数据库 */
+/**
+ * Loads the database files.
+ * 加载数据库文件。
+ *
+ * @static
+ * @method loadDatabase
+ */
 DataManager.loadDatabase = function() {
     var test = this.isBattleTest() || this.isEventTest();
     var prefix = test ? 'Test_' : '';
@@ -78,7 +84,15 @@ DataManager.loadDatabase = function() {
     }
 };
 
-/* 加载数据文件 */
+/**
+ * Loads a data file from the server.
+ * 从服务器加载数据文件。
+ *
+ * @static
+ * @method loadDataFile
+ * @param {String} name - The global variable name to store the data
+ * @param {String} src - The source file name
+ */
 DataManager.loadDataFile = function(name, src) {
     var xhr = new XMLHttpRequest();
     var url = 'data/' + src;
