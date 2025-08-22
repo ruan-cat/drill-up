@@ -12,13 +12,19 @@
 
 你只可以阅读并修改以下我提供的文件地址来读取：
 
-apps\gitee.jiumengjun.rmmv\main.js
-apps\gitee.jiumengjun.rmmv\rpg_core.js
-apps\gitee.jiumengjun.rmmv\rpg_managers.js
-apps\gitee.jiumengjun.rmmv\rpg_objects.js
-apps\gitee.jiumengjun.rmmv\rpg_scenes.js
-apps\gitee.jiumengjun.rmmv\rpg_sprites.js
-apps\gitee.jiumengjun.rmmv\rpg_windows.js
+- apps\gitee.jiumengjun.rmmv\main.js
+- apps\gitee.jiumengjun.rmmv\rpg_core.js
+- apps\gitee.jiumengjun.rmmv\rpg_managers.js
+- apps\gitee.jiumengjun.rmmv\rpg_objects.js
+- apps\gitee.jiumengjun.rmmv\rpg_scenes.js
+- apps\gitee.jiumengjun.rmmv\rpg_sprites.js
+- apps\gitee.jiumengjun.rmmv\rpg_windows.js
+
+## 模仿其他项目的格式做代码拆分
+
+请你先做代码拆分，再开始根据拆分后的代码，做 jsdoc 的格式转换和翻译工作。
+
+请你模仿 `apps\rmmv-api\sourceCodeFile` 目录内的代码拆分方式，将 `apps\gitee.jiumengjun.rmmv` 目录内的代码拆分到 `apps\gitee.jiumengjun.rmmv\sourceCodeFile` 目录内。
 
 ## 逐步地完成格式转换
 
@@ -27,7 +33,11 @@ apps\gitee.jiumengjun.rmmv\rpg_windows.js
 1. 首先请扫描我提供给你的全部 .js 格式代码。
 2. 提出转换计划，并执行你的计划。
 3. 归纳已经有的模块。
-4. 将全部的模块注释转换进度，写入到 `.github\prompts\make-jsdoc-format-annotation.todo.md` 文件内。这个文件将作为你的进度记录文件，当你每完成一个模块的注释格式转换后，就在此文档内记录进度。
+4. 将全部的模块注释转换进度，写入到 `apps\gitee.jiumengjun.rmmv\make-jsdoc-format-annotation\index.todo.md` 文件内。这个文件将作为你的进度记录文件，当你每完成一个模块的注释格式转换后，就在此文档内记录进度。
+
+## 补全中文翻译
+
+如果你看到一段注释，有英文，但是没有中文注释时，请补全注释。
 
 ## 其他注意事项
 
@@ -37,3 +47,4 @@ apps\gitee.jiumengjun.rmmv\rpg_windows.js
 4. 每完成一个模块后，就去更新进度文件。
 5. 在格式转换的时候，适当的对没有中文的注释，增加中文注释。实现英文翻译成中文注释。
 6. 保留英文注释。
+7. 中文翻译在上面，然后才是英文注释。
