@@ -111,7 +111,14 @@ DataManager.loadDataFile = function(name, src) {
     xhr.send();
 };
 
-/* 数据库是否加载完毕 */
+/**
+ * Checks whether the database is loaded completely.
+ * 检查数据库是否完全加载。
+ *
+ * @static
+ * @method isDatabaseLoaded
+ * @return {Boolean} True if the database is loaded
+ */
 DataManager.isDatabaseLoaded = function() {
     this.checkError();
     for (var i = 0; i < this._databaseFiles.length; i++) {
@@ -122,7 +129,14 @@ DataManager.isDatabaseLoaded = function() {
     return true;
 };
 
-/* 加载地图数据 */
+/**
+ * Loads map data for the specified map ID.
+ * 加载指定地图ID的地图数据。
+ *
+ * @static
+ * @method loadMapData
+ * @param {Number} mapId - The map ID to load
+ */
 DataManager.loadMapData = function(mapId) {
     if (mapId > 0) {
         var filename = 'Map%1.json'.format(mapId.padZero(3));
@@ -133,7 +147,13 @@ DataManager.loadMapData = function(mapId) {
     }
 };
 
-/* 制作空地图 */
+/**
+ * Creates an empty map data.
+ * 创建空的地图数据。
+ *
+ * @static
+ * @method makeEmptyMap
+ */
 DataManager.makeEmptyMap = function() {
     $dataMap = {};
     $dataMap.data = [];
@@ -143,13 +163,27 @@ DataManager.makeEmptyMap = function() {
     $dataMap.scrollType = 3;
 };
 
-/* 地图是否加载 */
+/**
+ * Checks whether the map data is loaded.
+ * 检查地图数据是否已加载。
+ *
+ * @static
+ * @method isMapLoaded
+ * @return {Boolean} True if the map data is loaded
+ */
 DataManager.isMapLoaded = function() {
     this.checkError();
     return !!$dataMap;
 };
 
-/* 当加载 */
+/**
+ * Called when a data file is loaded.
+ * 当数据文件加载时调用。
+ *
+ * @static
+ * @method onLoad
+ * @param {Object} object - The loaded data object
+ */
 DataManager.onLoad = function(object) {
     var array;
     if (object === $dataMap) {
@@ -173,8 +207,13 @@ DataManager.onLoad = function(object) {
     }
 };
 
-/* 提取元数据 
- * 解析 <key:value> 或 <key> 格式的字符串，一般用于备注。
+/**
+ * Extracts metadata from note strings in <key:value> or <key> format.
+ * 从备注字符串中提取<key:value>或<key>格式的元数据。
+ *
+ * @static
+ * @method extractMetadata
+ * @param {Object} data - The data object containing a note property
  */
 DataManager.extractMetadata = function(data) {
     var re = /<([^<>:]+)(:?)([^>]*)>/g;
@@ -193,44 +232,102 @@ DataManager.extractMetadata = function(data) {
     }
 };
 
-/* 检测错误 */
+/**
+ * Checks for loading errors and throws an exception if any.
+ * 检查加载错误，如果有错误则抛出异常。
+ *
+ * @static
+ * @method checkError
+ */
 DataManager.checkError = function() {
     if (DataManager._errorUrl) {
         throw new Error('Failed to load: ' + DataManager._errorUrl);
     }
 };
 
-/* 是否是战斗测试 */
+/**
+ * Checks whether the game is running in battle test mode.
+ * 检查游戏是否在战斗测试模式下运行。
+ *
+ * @static
+ * @method isBattleTest
+ * @return {Boolean} True if in battle test mode
+ */
 DataManager.isBattleTest = function() {
     return Utils.isOptionValid('btest');
 };
 
-/* 是否是事件测试 */
+/**
+ * Checks whether the game is running in event test mode.
+ * 检查游戏是否在事件测试模式下运行。
+ *
+ * @static
+ * @method isEventTest
+ * @return {Boolean} True if in event test mode
+ */
 DataManager.isEventTest = function() {
     return Utils.isOptionValid('etest');
 };
 
-/* 是否是技能 */
+/**
+ * Checks whether the specified item is a skill.
+ * 检查指定物品是否为技能。
+ *
+ * @static
+ * @method isSkill
+ * @param {Object} item - The item to check
+ * @return {Boolean} True if the item is a skill
+ */
 DataManager.isSkill = function(item) {
     return item && $dataSkills.contains(item);
 };
 
-/* 是否是物品 */
+/**
+ * Checks whether the specified item is an item.
+ * 检查指定物品是否为物品。
+ *
+ * @static
+ * @method isItem
+ * @param {Object} item - The item to check
+ * @return {Boolean} True if the item is an item
+ */
 DataManager.isItem = function(item) {
     return item && $dataItems.contains(item);
 };
 
-/* 是否是武器 */
+/**
+ * Checks whether the specified item is a weapon.
+ * 检查指定物品是否为武器。
+ *
+ * @static
+ * @method isWeapon
+ * @param {Object} item - The item to check
+ * @return {Boolean} True if the item is a weapon
+ */
 DataManager.isWeapon = function(item) {
     return item && $dataWeapons.contains(item);
 };
 
-/* 是否是护甲 */
+/**
+ * Checks whether the specified item is an armor.
+ * 检查指定物品是否为护甲。
+ *
+ * @static
+ * @method isArmor
+ * @param {Object} item - The item to check
+ * @return {Boolean} True if the item is an armor
+ */
 DataManager.isArmor = function(item) {
     return item && $dataArmors.contains(item);
 };
 
-/* 创建游戏对象 */
+/**
+ * Creates all the game objects.
+ * 创建所有游戏对象。
+ *
+ * @static
+ * @method createGameObjects
+ */
 DataManager.createGameObjects = function() {
     $gameTemp          = new Game_Temp();
     $gameSystem        = new Game_System();
@@ -247,7 +344,13 @@ DataManager.createGameObjects = function() {
     $gamePlayer        = new Game_Player();
 };
 
-/* 设置新游戏 */
+/**
+ * Sets up a new game.
+ * 设置新游戏。
+ *
+ * @static
+ * @method setupNewGame
+ */
 DataManager.setupNewGame = function() {
     this.createGameObjects();
     this.selectSavefileForNewGame();
@@ -257,7 +360,13 @@ DataManager.setupNewGame = function() {
     Graphics.frameCount = 0;
 };
 
-/* 设置战斗测试 */
+/**
+ * Sets up a battle test.
+ * 设置战斗测试。
+ *
+ * @static
+ * @method setupBattleTest
+ */
 DataManager.setupBattleTest = function() {
     this.createGameObjects();
     $gameParty.setupBattleTest();
@@ -266,7 +375,13 @@ DataManager.setupBattleTest = function() {
     BattleManager.playBattleBgm();
 };
 
-/* 设置事件测试 */
+/**
+ * Sets up an event test.
+ * 设置事件测试。
+ *
+ * @static
+ * @method setupEventTest
+ */
 DataManager.setupEventTest = function() {
     this.createGameObjects();
     this.selectSavefileForNewGame();
@@ -275,7 +390,14 @@ DataManager.setupEventTest = function() {
     $gamePlayer.setTransparent(false);
 };
 
-/* 加载全局信息 */
+/**
+ * Loads global info for all save files.
+ * 加载所有存档文件的全局信息。
+ *
+ * @static
+ * @method loadGlobalInfo
+ * @return {Array} The global info array
+ */
 DataManager.loadGlobalInfo = function() {
     var json;
     try {
