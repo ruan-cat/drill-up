@@ -8,46 +8,6 @@
 
 
 
-//-----------------------------------------------------------------------------
-// 游戏_独立开关 
-// Game_SelfSwitches
-//
-// 独立开关的游戏对象类。 
-// The game object class for self switches.
-
-function Game_SelfSwitches() {
-    this.initialize.apply(this, arguments);
-}
-
-/* 初始化 */
-Game_SelfSwitches.prototype.initialize = function() {
-    this.clear();
-};
-
-/* 清空 */
-Game_SelfSwitches.prototype.clear = function() {
-    this._data = {};
-};
-
-/* 值 */
-Game_SelfSwitches.prototype.value = function(key) {
-    return !!this._data[key];
-};
-
-/* 设置值 */
-Game_SelfSwitches.prototype.setValue = function(key, value) {
-    if (value) {
-        this._data[key] = true;
-    } else {
-        delete this._data[key];
-    }
-    this.onChange();
-};
-
-/* 当改变 */
-Game_SelfSwitches.prototype.onChange = function() {
-    $gameMap.requestRefresh();
-};
 
 //-----------------------------------------------------------------------------
 // 游戏_画面 
