@@ -977,7 +977,7 @@ if (true) {
 				if (cmp(x, a[mid]) < 0) hi = mid;
 				else lo = mid + 1;
 			}
-			return [].splice.apply(a, [lo, lo - lo].concat(x)), x;
+			return ([].splice.apply(a, [lo, lo - lo].concat(x)), x);
 		},
 		heappush = function (array, item, cmp) {
 			array.push(item);
@@ -1005,7 +1005,7 @@ if (true) {
 		heappushpop = function (array, item, cmp) {
 			var _ref;
 			if (array.length && cmp(array[0], item) < 0) {
-				(_ref = [array[0], item]), (item = _ref[0]), (array[0] = _ref[1]);
+				((_ref = [array[0], item]), (item = _ref[0]), (array[0] = _ref[1]));
 				_siftup(array, 0, cmp);
 			}
 			return item;
@@ -3076,19 +3076,19 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\n\nuniform float gamma;\nuniform float contrast;\nuniform float saturation;\nuniform float brightness;\nuniform float red;\nuniform float green;\nuniform float blue;\nuniform float alpha;\n\nvoid main(void)\n{\n    vec4 c = texture2D(uSampler, vTextureCoord);\n\n    if (c.a > 0.0) {\n        c.rgb /= c.a;\n\n        vec3 rgb = pow(c.rgb, vec3(1. / gamma));\n        rgb = mix(vec3(.5), mix(vec3(dot(vec3(.2125, .7154, .0721), rgb)), rgb, saturation), contrast);\n        rgb.r *= red;\n        rgb.g *= green;\n        rgb.b *= blue;\n        c.rgb = rgb * brightness;\n\n        c.rgb *= c.a;\n    }\n\n    gl_FragColor = c * alpha;\n}\n",
 			c = (function (e) {
 				function t(t) {
-					e.call(this, a, u),
+					(e.call(this, a, u),
 						Object.assign(
 							this,
 							{ gamma: 1, saturation: 1, contrast: 1, brightness: 1, red: 1, green: 1, blue: 1, alpha: 1 },
 							t,
-						);
+						));
 				}
 				return (
 					e && (t.__proto__ = e),
 					(t.prototype = Object.create(e && e.prototype)),
 					(t.prototype.constructor = t),
 					(t.prototype.apply = function (e, t, n, r) {
-						(this.uniforms.gamma = Math.max(this.gamma, 1e-4)),
+						((this.uniforms.gamma = Math.max(this.gamma, 1e-4)),
 							(this.uniforms.saturation = this.saturation),
 							(this.uniforms.contrast = this.contrast),
 							(this.uniforms.brightness = this.brightness),
@@ -3096,7 +3096,7 @@ if (!PIXI.filters.EmbossFilter) {
 							(this.uniforms.green = this.green),
 							(this.uniforms.blue = this.blue),
 							(this.uniforms.alpha = this.alpha),
-							e.applyFilter(this, t, n, r);
+							e.applyFilter(this, t, n, r));
 					}),
 					t
 				);
@@ -3108,7 +3108,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"\nvarying vec2 vTextureCoord;\nuniform sampler2D uSampler;\n\nuniform vec2 uOffset;\nuniform vec4 filterClamp;\n\nvoid main(void)\n{\n    vec4 color = vec4(0.0);\n\n    // Sample top left pixel\n    color += texture2D(uSampler, clamp(vec2(vTextureCoord.x - uOffset.x, vTextureCoord.y + uOffset.y), filterClamp.xy, filterClamp.zw));\n\n    // Sample top right pixel\n    color += texture2D(uSampler, clamp(vec2(vTextureCoord.x + uOffset.x, vTextureCoord.y + uOffset.y), filterClamp.xy, filterClamp.zw));\n\n    // Sample bottom right pixel\n    color += texture2D(uSampler, clamp(vec2(vTextureCoord.x + uOffset.x, vTextureCoord.y - uOffset.y), filterClamp.xy, filterClamp.zw));\n\n    // Sample bottom left pixel\n    color += texture2D(uSampler, clamp(vec2(vTextureCoord.x - uOffset.x, vTextureCoord.y - uOffset.y), filterClamp.xy, filterClamp.zw));\n\n    // Average\n    color *= 0.25;\n\n    gl_FragColor = color;\n}\n",
 			d = (function (e) {
 				function t(t, r, o) {
-					void 0 === t && (t = 4),
+					(void 0 === t && (t = 4),
 						void 0 === r && (r = 3),
 						void 0 === o && (o = !1),
 						e.call(this, f, o ? p : h),
@@ -3117,9 +3117,9 @@ if (!PIXI.filters.EmbossFilter) {
 						(this.pixelSize = 1),
 						(this._clamp = o),
 						(this._kernels = null),
-						Array.isArray(t) ? (this.kernels = t) : ((this._blur = t), (this.quality = r));
+						Array.isArray(t) ? (this.kernels = t) : ((this._blur = t), (this.quality = r)));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var r = {
 					kernels: { configurable: !0 },
 					clamp: { configurable: !0 },
@@ -3133,31 +3133,31 @@ if (!PIXI.filters.EmbossFilter) {
 							i = this.pixelSize.x / t._frame.width,
 							l = this.pixelSize.y / t._frame.height;
 						if (1 === this._quality || 0 === this._blur)
-							(o = this._kernels[0] + 0.5),
+							((o = this._kernels[0] + 0.5),
 								(this.uniforms.uOffset[0] = o * i),
 								(this.uniforms.uOffset[1] = o * l),
-								e.applyFilter(this, t, n, r);
+								e.applyFilter(this, t, n, r));
 						else {
 							for (var s, a = e.getFilterTexture(), u = t, c = a, f = this._quality - 1, h = 0; h < f; h++)
-								(o = this._kernels[h] + 0.5),
+								((o = this._kernels[h] + 0.5),
 									(this.uniforms.uOffset[0] = o * i),
 									(this.uniforms.uOffset[1] = o * l),
 									e.applyFilter(this, u, c, 1),
 									(s = u),
 									(u = c),
-									(c = s);
-							(o = this._kernels[f] + 0.5),
+									(c = s));
+							((o = this._kernels[f] + 0.5),
 								(this.uniforms.uOffset[0] = o * i),
 								(this.uniforms.uOffset[1] = o * l),
 								e.applyFilter(this, u, n, r),
-								e.returnFilterTexture(a);
+								e.returnFilterTexture(a));
 						}
 					}),
 					(t.prototype._generateKernels = function () {
 						var e = this._blur,
 							t = this._quality,
 							n = [e];
-						if (e > 0) for (var r = e, o = e / t, i = 1; i < t; i++) (r -= o), n.push(r);
+						if (e > 0) for (var r = e, o = e / t, i = 1; i < t; i++) ((r -= o), n.push(r));
 						this._kernels = n;
 					}),
 					(r.kernels.get = function () {
@@ -3187,13 +3187,13 @@ if (!PIXI.filters.EmbossFilter) {
 						return this._quality;
 					}),
 					(r.quality.set = function (e) {
-						(this._quality = Math.max(1, Math.round(e))), this._generateKernels();
+						((this._quality = Math.max(1, Math.round(e))), this._generateKernels());
 					}),
 					(r.blur.get = function () {
 						return this._blur;
 					}),
 					(r.blur.set = function (e) {
-						(this._blur = e), this._generateKernels();
+						((this._blur = e), this._generateKernels());
 					}),
 					Object.defineProperties(t.prototype, r),
 					t
@@ -3204,9 +3204,9 @@ if (!PIXI.filters.EmbossFilter) {
 				"\nuniform sampler2D uSampler;\nvarying vec2 vTextureCoord;\n\nuniform float threshold;\n\nvoid main() {\n    vec4 color = texture2D(uSampler, vTextureCoord);\n\n    // A simple & fast algorithm for getting brightness.\n    // It's inaccuracy , but good enought for this feature.\n    float _max = max(max(color.r, color.g), color.b);\n    float _min = min(min(color.r, color.g), color.b);\n    float brightness = (_max + _min) * 0.5;\n\n    if(brightness > threshold) {\n        gl_FragColor = color;\n    } else {\n        gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);\n    }\n}\n",
 			v = (function (e) {
 				function t(t) {
-					void 0 === t && (t = 0.5), e.call(this, m, g), (this.threshold = t);
+					(void 0 === t && (t = 0.5), e.call(this, m, g), (this.threshold = t));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { threshold: { configurable: !0 } };
 				return (
 					(n.threshold.get = function () {
@@ -3223,7 +3223,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"uniform sampler2D uSampler;\nvarying vec2 vTextureCoord;\n\nuniform sampler2D bloomTexture;\nuniform float bloomScale;\nuniform float brightness;\n\nvoid main() {\n    vec4 color = texture2D(uSampler, vTextureCoord);\n    color.rgb *= brightness;\n    vec4 bloomColor = vec4(texture2D(bloomTexture, vTextureCoord).rgb, 0.0);\n    bloomColor.rgb *= bloomScale;\n    gl_FragColor = color + bloomColor;\n}\n",
 			y = (function (e) {
 				function t(t) {
-					e.call(this, m, x),
+					(e.call(this, m, x),
 						"number" == typeof t && (t = { threshold: t }),
 						(t = Object.assign(
 							{
@@ -3239,19 +3239,19 @@ if (!PIXI.filters.EmbossFilter) {
 							t,
 						)),
 						(this.bloomScale = t.bloomScale),
-						(this.brightness = t.brightness);
+						(this.brightness = t.brightness));
 					var n = t.kernels,
 						o = t.blur,
 						i = t.quality,
 						l = t.pixelSize,
 						s = t.resolution;
-					(this._extractFilter = new v(t.threshold)),
+					((this._extractFilter = new v(t.threshold)),
 						(this._extractFilter.resolution = s),
 						(this._blurFilter = n ? new d(n) : new d(o, i)),
 						(this.pixelSize = l),
-						(this.resolution = s);
+						(this.resolution = s));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = {
 					resolution: { configurable: !0 },
 					threshold: { configurable: !0 },
@@ -3265,21 +3265,21 @@ if (!PIXI.filters.EmbossFilter) {
 						var i = e.getFilterTexture();
 						this._extractFilter.apply(e, t, i, 1, o);
 						var l = e.getFilterTexture();
-						this._blurFilter.apply(e, i, l, 1, o),
+						(this._blurFilter.apply(e, i, l, 1, o),
 							(this.uniforms.bloomScale = this.bloomScale),
 							(this.uniforms.brightness = this.brightness),
 							(this.uniforms.bloomTexture = l),
 							e.applyFilter(this, t, n, r),
 							e.returnFilterTexture(l),
-							e.returnFilterTexture(i);
+							e.returnFilterTexture(i));
 					}),
 					(n.resolution.get = function () {
 						return this._resolution;
 					}),
 					(n.resolution.set = function (e) {
-						(this._resolution = e),
+						((this._resolution = e),
 							this._extractFilter && (this._extractFilter.resolution = e),
-							this._blurFilter && (this._blurFilter.resolution = e);
+							this._blurFilter && (this._blurFilter.resolution = e));
 					}),
 					(n.threshold.get = function () {
 						return this._extractFilter.threshold;
@@ -3320,9 +3320,9 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\n\nuniform vec4 filterArea;\nuniform float pixelSize;\nuniform sampler2D uSampler;\n\nvec2 mapCoord( vec2 coord )\n{\n    coord *= filterArea.xy;\n    coord += filterArea.zw;\n\n    return coord;\n}\n\nvec2 unmapCoord( vec2 coord )\n{\n    coord -= filterArea.zw;\n    coord /= filterArea.xy;\n\n    return coord;\n}\n\nvec2 pixelate(vec2 coord, vec2 size)\n{\n    return floor( coord / size ) * size;\n}\n\nvec2 getMod(vec2 coord, vec2 size)\n{\n    return mod( coord , size) / size;\n}\n\nfloat character(float n, vec2 p)\n{\n    p = floor(p*vec2(4.0, -4.0) + 2.5);\n\n    if (clamp(p.x, 0.0, 4.0) == p.x)\n    {\n        if (clamp(p.y, 0.0, 4.0) == p.y)\n        {\n            if (int(mod(n/exp2(p.x + 5.0*p.y), 2.0)) == 1) return 1.0;\n        }\n    }\n    return 0.0;\n}\n\nvoid main()\n{\n    vec2 coord = mapCoord(vTextureCoord);\n\n    // get the rounded color..\n    vec2 pixCoord = pixelate(coord, vec2(pixelSize));\n    pixCoord = unmapCoord(pixCoord);\n\n    vec4 color = texture2D(uSampler, pixCoord);\n\n    // determine the character to use\n    float gray = (color.r + color.g + color.b) / 3.0;\n\n    float n =  65536.0;             // .\n    if (gray > 0.2) n = 65600.0;    // :\n    if (gray > 0.3) n = 332772.0;   // *\n    if (gray > 0.4) n = 15255086.0; // o\n    if (gray > 0.5) n = 23385164.0; // &\n    if (gray > 0.6) n = 15252014.0; // 8\n    if (gray > 0.7) n = 13199452.0; // @\n    if (gray > 0.8) n = 11512810.0; // #\n\n    // get the mod..\n    vec2 modd = getMod(coord, vec2(pixelSize));\n\n    gl_FragColor = color * character( n, vec2(-1.0) + modd * 2.0);\n\n}\n",
 			C = (function (e) {
 				function t(t) {
-					void 0 === t && (t = 8), e.call(this, _, b), (this.size = t);
+					(void 0 === t && (t = 8), e.call(this, _, b), (this.size = t));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { size: { configurable: !0 } };
 				return (
 					(n.size.get = function () {
@@ -3340,7 +3340,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"precision mediump float;\n\nvarying vec2 vTextureCoord;\nuniform sampler2D uSampler;\nuniform vec4 filterArea;\n\nuniform float transformX;\nuniform float transformY;\nuniform vec3 lightColor;\nuniform float lightAlpha;\nuniform vec3 shadowColor;\nuniform float shadowAlpha;\n\nvoid main(void) {\n    vec2 transform = vec2(1.0 / filterArea) * vec2(transformX, transformY);\n    vec4 color = texture2D(uSampler, vTextureCoord);\n    float light = texture2D(uSampler, vTextureCoord - transform).a;\n    float shadow = texture2D(uSampler, vTextureCoord + transform).a;\n\n    color.rgb = mix(color.rgb, lightColor, clamp((color.a - light) * lightAlpha, 0.0, 1.0));\n    color.rgb = mix(color.rgb, shadowColor, clamp((color.a - shadow) * shadowAlpha, 0.0, 1.0));\n    gl_FragColor = vec4(color.rgb * color.a, color.a);\n}\n",
 			z = (function (e) {
 				function t(t) {
-					void 0 === t && (t = {}),
+					(void 0 === t && (t = {}),
 						e.call(this, S, F),
 						(this.uniforms.lightColor = new Float32Array(3)),
 						(this.uniforms.shadowColor = new Float32Array(3)),
@@ -3353,9 +3353,9 @@ if (!PIXI.filters.EmbossFilter) {
 						(this.lightColor = t.lightColor),
 						(this.lightAlpha = t.lightAlpha),
 						(this.shadowColor = t.shadowColor),
-						(this.shadowAlpha = t.shadowAlpha);
+						(this.shadowAlpha = t.shadowAlpha));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var r = {
 					rotation: { configurable: !0 },
 					thickness: { configurable: !0 },
@@ -3366,20 +3366,20 @@ if (!PIXI.filters.EmbossFilter) {
 				};
 				return (
 					(t.prototype._updateTransform = function () {
-						(this.uniforms.transformX = this._thickness * Math.cos(this._angle)),
-							(this.uniforms.transformY = this._thickness * Math.sin(this._angle));
+						((this.uniforms.transformX = this._thickness * Math.cos(this._angle)),
+							(this.uniforms.transformY = this._thickness * Math.sin(this._angle)));
 					}),
 					(r.rotation.get = function () {
 						return this._angle / n.DEG_TO_RAD;
 					}),
 					(r.rotation.set = function (e) {
-						(this._angle = e * n.DEG_TO_RAD), this._updateTransform();
+						((this._angle = e * n.DEG_TO_RAD), this._updateTransform());
 					}),
 					(r.thickness.get = function () {
 						return this._thickness;
 					}),
 					(r.thickness.set = function (e) {
-						(this._thickness = e), this._updateTransform();
+						((this._thickness = e), this._updateTransform());
 					}),
 					(r.lightColor.get = function () {
 						return o.rgb2hex(this.uniforms.lightColor);
@@ -3412,7 +3412,7 @@ if (!PIXI.filters.EmbossFilter) {
 			A = (function (e) {
 				function t(t, o, a, u) {
 					var c, f;
-					void 0 === t && (t = 2),
+					(void 0 === t && (t = 2),
 						void 0 === o && (o = 4),
 						void 0 === a && (a = r.settings.RESOLUTION),
 						void 0 === u && (u = 5),
@@ -3425,17 +3425,17 @@ if (!PIXI.filters.EmbossFilter) {
 						(this.blurXFilter = new s.BlurFilterPass(!0, c, o, a, u)),
 						(this.blurYFilter = new s.BlurFilterPass(!1, f, o, a, u)),
 						(this.blurYFilter.blendMode = i.BLEND_MODES.SCREEN),
-						(this.defaultFilter = new l.AlphaFilter());
+						(this.defaultFilter = new l.AlphaFilter()));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var o = { blur: { configurable: !0 }, blurX: { configurable: !0 }, blurY: { configurable: !0 } };
 				return (
 					(t.prototype.apply = function (e, t, n) {
 						var r = e.getFilterTexture(!0);
-						this.defaultFilter.apply(e, t, n),
+						(this.defaultFilter.apply(e, t, n),
 							this.blurXFilter.apply(e, t, r),
 							this.blurYFilter.apply(e, r, n),
-							e.returnFilterTexture(r);
+							e.returnFilterTexture(r));
 					}),
 					(o.blur.get = function () {
 						return this.blurXFilter.blur;
@@ -3468,18 +3468,21 @@ if (!PIXI.filters.EmbossFilter) {
 						var n = arguments[0],
 							r = arguments[1],
 							o = arguments[2];
-						(t = {}), void 0 !== n && (t.center = n), void 0 !== r && (t.radius = r), void 0 !== o && (t.strength = o);
+						((t = {}),
+							void 0 !== n && (t.center = n),
+							void 0 !== r && (t.radius = r),
+							void 0 !== o && (t.strength = o));
 					}
-					(this.uniforms.dimensions = new Float32Array(2)),
-						Object.assign(this, { center: [0.5, 0.5], radius: 100, strength: 1 }, t);
+					((this.uniforms.dimensions = new Float32Array(2)),
+						Object.assign(this, { center: [0.5, 0.5], radius: 100, strength: 1 }, t));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { radius: { configurable: !0 }, strength: { configurable: !0 }, center: { configurable: !0 } };
 				return (
 					(t.prototype.apply = function (e, t, n, r) {
-						(this.uniforms.dimensions[0] = t.filterFrame.width),
+						((this.uniforms.dimensions[0] = t.filterFrame.width),
 							(this.uniforms.dimensions[1] = t.filterFrame.height),
-							e.applyFilter(this, t, n, r);
+							e.applyFilter(this, t, n, r));
 					}),
 					(n.radius.get = function () {
 						return this.uniforms.radius;
@@ -3508,7 +3511,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\nuniform sampler2D colorMap;\nuniform float _mix;\nuniform float _size;\nuniform float _sliceSize;\nuniform float _slicePixelSize;\nuniform float _sliceInnerSize;\nvoid main() {\n    vec4 color = texture2D(uSampler, vTextureCoord.xy);\n\n    vec4 adjusted;\n    if (color.a > 0.0) {\n        color.rgb /= color.a;\n        float innerWidth = _size - 1.0;\n        float zSlice0 = min(floor(color.b * innerWidth), innerWidth);\n        float zSlice1 = min(zSlice0 + 1.0, innerWidth);\n        float xOffset = _slicePixelSize * 0.5 + color.r * _sliceInnerSize;\n        float s0 = xOffset + (zSlice0 * _sliceSize);\n        float s1 = xOffset + (zSlice1 * _sliceSize);\n        float yOffset = _sliceSize * 0.5 + color.g * (1.0 - _sliceSize);\n        vec4 slice0Color = texture2D(colorMap, vec2(s0,yOffset));\n        vec4 slice1Color = texture2D(colorMap, vec2(s1,yOffset));\n        float zOffset = fract(color.b * innerWidth);\n        adjusted = mix(slice0Color, slice1Color, zOffset);\n\n        color.rgb *= color.a;\n    }\n    gl_FragColor = vec4(mix(color, adjusted, _mix).rgb, color.a);\n\n}",
 			M = (function (e) {
 				function n(t, n, r) {
-					void 0 === n && (n = !1),
+					(void 0 === n && (n = !1),
 						void 0 === r && (r = 1),
 						e.call(this, D, P),
 						(this._size = 0),
@@ -3519,13 +3522,13 @@ if (!PIXI.filters.EmbossFilter) {
 						(this._nearest = !1),
 						(this.nearest = n),
 						(this.mix = r),
-						(this.colorMap = t);
+						(this.colorMap = t));
 				}
-				e && (n.__proto__ = e), (n.prototype = Object.create(e && e.prototype)), (n.prototype.constructor = n);
+				(e && (n.__proto__ = e), (n.prototype = Object.create(e && e.prototype)), (n.prototype.constructor = n));
 				var r = { colorSize: { configurable: !0 }, colorMap: { configurable: !0 }, nearest: { configurable: !0 } };
 				return (
 					(n.prototype.apply = function (e, t, n, r) {
-						(this.uniforms._mix = this.mix), e.applyFilter(this, t, n, r);
+						((this.uniforms._mix = this.mix), e.applyFilter(this, t, n, r));
 					}),
 					(r.colorSize.get = function () {
 						return this._size;
@@ -3534,7 +3537,7 @@ if (!PIXI.filters.EmbossFilter) {
 						return this._colorMap;
 					}),
 					(r.colorMap.set = function (e) {
-						e instanceof t.Texture || (e = t.Texture.from(e)),
+						(e instanceof t.Texture || (e = t.Texture.from(e)),
 							e &&
 								e.baseTexture &&
 								((e.baseTexture.scaleMode = this._scaleMode),
@@ -3548,13 +3551,13 @@ if (!PIXI.filters.EmbossFilter) {
 								(this.uniforms._slicePixelSize = this._slicePixelSize),
 								(this.uniforms._sliceInnerSize = this._sliceInnerSize),
 								(this.uniforms.colorMap = e)),
-							(this._colorMap = e);
+							(this._colorMap = e));
 					}),
 					(r.nearest.get = function () {
 						return this._nearest;
 					}),
 					(r.nearest.set = function (e) {
-						(this._nearest = e), (this._scaleMode = e ? i.SCALE_MODES.NEAREST : i.SCALE_MODES.LINEAR);
+						((this._nearest = e), (this._scaleMode = e ? i.SCALE_MODES.NEAREST : i.SCALE_MODES.LINEAR));
 						var t = this._colorMap;
 						t &&
 							t.baseTexture &&
@@ -3569,7 +3572,7 @@ if (!PIXI.filters.EmbossFilter) {
 						e && e.baseTexture && (e._updateID++, e.baseTexture.emit("update", e.baseTexture), (this.colorMap = e));
 					}),
 					(n.prototype.destroy = function (t) {
-						this._colorMap && this._colorMap.destroy(t), e.prototype.destroy.call(this);
+						(this._colorMap && this._colorMap.destroy(t), e.prototype.destroy.call(this));
 					}),
 					Object.defineProperties(n.prototype, r),
 					n
@@ -3580,9 +3583,9 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\nuniform vec3 color;\nvoid main(void) {\n    vec4 currentColor = texture2D(uSampler, vTextureCoord);\n    vec3 colorOverlay = color * currentColor.a;\n    gl_FragColor = vec4(colorOverlay.r, colorOverlay.g, colorOverlay.b, currentColor.a);\n}\n",
 			j = (function (e) {
 				function t(t) {
-					void 0 === t && (t = 0), e.call(this, R, k), (this.uniforms.color = new Float32Array(3)), (this.color = t);
+					(void 0 === t && (t = 0), e.call(this, R, k), (this.uniforms.color = new Float32Array(3)), (this.color = t));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { color: { configurable: !0 } };
 				return (
 					(n.color.set = function (e) {
@@ -3603,7 +3606,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\nuniform vec3 originalColor;\nuniform vec3 newColor;\nuniform float epsilon;\nvoid main(void) {\n    vec4 currentColor = texture2D(uSampler, vTextureCoord);\n    vec3 colorDiff = originalColor - (currentColor.rgb / max(currentColor.a, 0.0000000001));\n    float colorDistance = length(colorDiff);\n    float doReplace = step(colorDistance, epsilon);\n    gl_FragColor = vec4(mix(currentColor.rgb, (newColor + colorDiff) * currentColor.a, doReplace), currentColor.a);\n}\n",
 			I = (function (e) {
 				function t(t, n, r) {
-					void 0 === t && (t = 16711680),
+					(void 0 === t && (t = 16711680),
 						void 0 === n && (n = 0),
 						void 0 === r && (r = 0.4),
 						e.call(this, E, L),
@@ -3611,9 +3614,9 @@ if (!PIXI.filters.EmbossFilter) {
 						(this.uniforms.newColor = new Float32Array(3)),
 						(this.originalColor = t),
 						(this.newColor = n),
-						(this.epsilon = r);
+						(this.epsilon = r));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { originalColor: { configurable: !0 }, newColor: { configurable: !0 }, epsilon: { configurable: !0 } };
 				return (
 					(n.originalColor.set = function (e) {
@@ -3649,16 +3652,16 @@ if (!PIXI.filters.EmbossFilter) {
 				"precision mediump float;\n\nvarying mediump vec2 vTextureCoord;\n\nuniform sampler2D uSampler;\nuniform vec2 texelSize;\nuniform float matrix[9];\n\nvoid main(void)\n{\n   vec4 c11 = texture2D(uSampler, vTextureCoord - texelSize); // top left\n   vec4 c12 = texture2D(uSampler, vec2(vTextureCoord.x, vTextureCoord.y - texelSize.y)); // top center\n   vec4 c13 = texture2D(uSampler, vec2(vTextureCoord.x + texelSize.x, vTextureCoord.y - texelSize.y)); // top right\n\n   vec4 c21 = texture2D(uSampler, vec2(vTextureCoord.x - texelSize.x, vTextureCoord.y)); // mid left\n   vec4 c22 = texture2D(uSampler, vTextureCoord); // mid center\n   vec4 c23 = texture2D(uSampler, vec2(vTextureCoord.x + texelSize.x, vTextureCoord.y)); // mid right\n\n   vec4 c31 = texture2D(uSampler, vec2(vTextureCoord.x - texelSize.x, vTextureCoord.y + texelSize.y)); // bottom left\n   vec4 c32 = texture2D(uSampler, vec2(vTextureCoord.x, vTextureCoord.y + texelSize.y)); // bottom center\n   vec4 c33 = texture2D(uSampler, vTextureCoord + texelSize); // bottom right\n\n   gl_FragColor =\n       c11 * matrix[0] + c12 * matrix[1] + c13 * matrix[2] +\n       c21 * matrix[3] + c22 * matrix[4] + c23 * matrix[5] +\n       c31 * matrix[6] + c32 * matrix[7] + c33 * matrix[8];\n\n   gl_FragColor.a = c22.a;\n}\n",
 			N = (function (e) {
 				function t(t, n, r) {
-					void 0 === n && (n = 200),
+					(void 0 === n && (n = 200),
 						void 0 === r && (r = 200),
 						e.call(this, X, B),
 						(this.uniforms.texelSize = new Float32Array(2)),
 						(this.uniforms.matrix = new Float32Array(9)),
 						void 0 !== t && (this.matrix = t),
 						(this.width = n),
-						(this.height = r);
+						(this.height = r));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { matrix: { configurable: !0 }, width: { configurable: !0 }, height: { configurable: !0 } };
 				return (
 					(n.matrix.get = function () {
@@ -3694,7 +3697,10 @@ if (!PIXI.filters.EmbossFilter) {
 					e.call(this, G, q);
 				}
 				return (
-					e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t), t
+					e && (t.__proto__ = e),
+					(t.prototype = Object.create(e && e.prototype)),
+					(t.prototype.constructor = t),
+					t
 				);
 			})(t.Filter),
 			K = a,
@@ -3702,7 +3708,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\n\nuniform vec4 filterArea;\nuniform vec2 dimensions;\n\nconst float SQRT_2 = 1.414213;\n\nconst float light = 1.0;\n\nuniform float curvature;\nuniform float lineWidth;\nuniform float lineContrast;\nuniform bool verticalLine;\nuniform float noise;\nuniform float noiseSize;\n\nuniform float vignetting;\nuniform float vignettingAlpha;\nuniform float vignettingBlur;\n\nuniform float seed;\nuniform float time;\n\nfloat rand(vec2 co) {\n    return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);\n}\n\nvoid main(void)\n{\n    vec2 pixelCoord = vTextureCoord.xy * filterArea.xy;\n    vec2 coord = pixelCoord / dimensions;\n\n    vec2 dir = vec2(coord - vec2(0.5, 0.5));\n\n    float _c = curvature > 0. ? curvature : 1.;\n    float k = curvature > 0. ?(length(dir * dir) * 0.25 * _c * _c + 0.935 * _c) : 1.;\n    vec2 uv = dir * k;\n\n    gl_FragColor = texture2D(uSampler, vTextureCoord);\n    vec3 rgb = gl_FragColor.rgb;\n\n\n    if (noise > 0.0 && noiseSize > 0.0)\n    {\n        pixelCoord.x = floor(pixelCoord.x / noiseSize);\n        pixelCoord.y = floor(pixelCoord.y / noiseSize);\n        float _noise = rand(pixelCoord * noiseSize * seed) - 0.5;\n        rgb += _noise * noise;\n    }\n\n    if (lineWidth > 0.0) {\n        float v = (verticalLine ? uv.x * dimensions.x : uv.y * dimensions.y) * min(1.0, 2.0 / lineWidth ) / _c;\n        float j = 1. + cos(v * 1.2 - time) * 0.5 * lineContrast;\n        rgb *= j;\n        float segment = verticalLine ? mod((dir.x + .5) * dimensions.x, 4.) : mod((dir.y + .5) * dimensions.y, 4.);\n        rgb *= 0.99 + ceil(segment) * 0.015;\n    }\n\n    if (vignetting > 0.0)\n    {\n        float outter = SQRT_2 - vignetting * SQRT_2;\n        float darker = clamp((outter - length(dir) * SQRT_2) / ( 0.00001 + vignettingBlur * SQRT_2), 0.0, 1.0);\n        rgb *= darker + (1.0 - darker) * (1.0 - vignettingAlpha);\n    }\n\n    gl_FragColor.rgb = rgb;\n}\n",
 			Z = (function (e) {
 				function t(t) {
-					e.call(this, K, Y),
+					(e.call(this, K, Y),
 						(this.uniforms.dimensions = new Float32Array(2)),
 						(this.time = 0),
 						(this.seed = 0),
@@ -3722,9 +3728,9 @@ if (!PIXI.filters.EmbossFilter) {
 								time: 0,
 							},
 							t,
-						);
+						));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = {
 					curvature: { configurable: !0 },
 					lineWidth: { configurable: !0 },
@@ -3738,11 +3744,11 @@ if (!PIXI.filters.EmbossFilter) {
 				};
 				return (
 					(t.prototype.apply = function (e, t, n, r) {
-						(this.uniforms.dimensions[0] = t.filterFrame.width),
+						((this.uniforms.dimensions[0] = t.filterFrame.width),
 							(this.uniforms.dimensions[1] = t.filterFrame.height),
 							(this.uniforms.seed = this.seed),
 							(this.uniforms.time = this.time),
-							e.applyFilter(this, t, n, r);
+							e.applyFilter(this, t, n, r));
 					}),
 					(n.curvature.set = function (e) {
 						this.uniforms.curvature = e;
@@ -3807,9 +3813,9 @@ if (!PIXI.filters.EmbossFilter) {
 				"precision mediump float;\n\nvarying vec2 vTextureCoord;\nvarying vec4 vColor;\n\nuniform vec4 filterArea;\nuniform sampler2D uSampler;\n\nuniform float angle;\nuniform float scale;\n\nfloat pattern()\n{\n   float s = sin(angle), c = cos(angle);\n   vec2 tex = vTextureCoord * filterArea.xy;\n   vec2 point = vec2(\n       c * tex.x - s * tex.y,\n       s * tex.x + c * tex.y\n   ) * scale;\n   return (sin(point.x) * sin(point.y)) * 4.0;\n}\n\nvoid main()\n{\n   vec4 color = texture2D(uSampler, vTextureCoord);\n   float average = (color.r + color.g + color.b) / 3.0;\n   gl_FragColor = vec4(vec3(average * 10.0 - 5.0 + pattern()), color.a);\n}\n",
 			V = (function (e) {
 				function t(t, n) {
-					void 0 === t && (t = 1), void 0 === n && (n = 5), e.call(this, Q, U), (this.scale = t), (this.angle = n);
+					(void 0 === t && (t = 1), void 0 === n && (n = 5), e.call(this, Q, U), (this.scale = t), (this.angle = n));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { scale: { configurable: !0 }, angle: { configurable: !0 } };
 				return (
 					(n.scale.get = function () {
@@ -3833,7 +3839,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\nuniform float alpha;\nuniform vec3 color;\n\nuniform vec2 shift;\nuniform vec4 inputSize;\n\nvoid main(void){\n    vec4 sample = texture2D(uSampler, vTextureCoord - shift * inputSize.zw);\n\n    // Premultiply alpha\n    sample.rgb = color.rgb * sample.a;\n\n    // alpha user alpha\n    sample *= alpha;\n\n    gl_FragColor = sample;\n}",
 			J = (function (e) {
 				function t(t) {
-					t &&
+					(t &&
 						t.constructor !== Object &&
 						(console.warn("DropShadowFilter now uses options instead of (rotation, distance, blur, color, alpha)"),
 						(t = { rotation: t }),
@@ -3856,32 +3862,32 @@ if (!PIXI.filters.EmbossFilter) {
 							},
 							t,
 						)),
-						e.call(this);
+						e.call(this));
 					var o = t.kernels,
 						i = t.blur,
 						l = t.quality,
 						s = t.pixelSize,
 						a = t.resolution;
-					(this._tintFilter = new e(H, $)),
+					((this._tintFilter = new e(H, $)),
 						(this._tintFilter.uniforms.color = new Float32Array(4)),
 						(this._tintFilter.uniforms.shift = new n.Point()),
 						(this._tintFilter.resolution = a),
 						(this._blurFilter = o ? new d(o) : new d(i, l)),
 						(this.pixelSize = s),
-						(this.resolution = a);
+						(this.resolution = a));
 					var u = t.shadowOnly,
 						c = t.rotation,
 						f = t.distance,
 						h = t.alpha,
 						p = t.color;
-					(this.shadowOnly = u),
+					((this.shadowOnly = u),
 						(this.rotation = c),
 						(this.distance = f),
 						(this.alpha = h),
 						(this.color = p),
-						this._updatePadding();
+						this._updatePadding());
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var i = {
 					resolution: { configurable: !0 },
 					distance: { configurable: !0 },
@@ -3896,10 +3902,10 @@ if (!PIXI.filters.EmbossFilter) {
 				return (
 					(t.prototype.apply = function (e, t, n, r) {
 						var o = e.getFilterTexture();
-						this._tintFilter.apply(e, t, o, 1),
+						(this._tintFilter.apply(e, t, o, 1),
 							this._blurFilter.apply(e, o, n, r),
 							!0 !== this.shadowOnly && e.applyFilter(this, t, n, 0),
-							e.returnFilterTexture(o);
+							e.returnFilterTexture(o));
 					}),
 					(t.prototype._updatePadding = function () {
 						this.padding = this.distance + 2 * this.blur;
@@ -3914,21 +3920,21 @@ if (!PIXI.filters.EmbossFilter) {
 						return this._resolution;
 					}),
 					(i.resolution.set = function (e) {
-						(this._resolution = e),
+						((this._resolution = e),
 							this._tintFilter && (this._tintFilter.resolution = e),
-							this._blurFilter && (this._blurFilter.resolution = e);
+							this._blurFilter && (this._blurFilter.resolution = e));
 					}),
 					(i.distance.get = function () {
 						return this._distance;
 					}),
 					(i.distance.set = function (e) {
-						(this._distance = e), this._updatePadding(), this._updateShift();
+						((this._distance = e), this._updatePadding(), this._updateShift());
 					}),
 					(i.rotation.get = function () {
 						return this.angle / n.DEG_TO_RAD;
 					}),
 					(i.rotation.set = function (e) {
-						(this.angle = e * n.DEG_TO_RAD), this._updateShift();
+						((this.angle = e * n.DEG_TO_RAD), this._updateShift());
 					}),
 					(i.alpha.get = function () {
 						return this._tintFilter.uniforms.alpha;
@@ -3952,7 +3958,7 @@ if (!PIXI.filters.EmbossFilter) {
 						return this._blurFilter.blur;
 					}),
 					(i.blur.set = function (e) {
-						(this._blurFilter.blur = e), this._updatePadding();
+						((this._blurFilter.blur = e), this._updatePadding());
 					}),
 					(i.quality.get = function () {
 						return this._blurFilter.quality;
@@ -3975,9 +3981,9 @@ if (!PIXI.filters.EmbossFilter) {
 				"precision mediump float;\n\nvarying vec2 vTextureCoord;\n\nuniform sampler2D uSampler;\nuniform float strength;\nuniform vec4 filterArea;\n\n\nvoid main(void)\n{\n\tvec2 onePixel = vec2(1.0 / filterArea);\n\n\tvec4 color;\n\n\tcolor.rgb = vec3(0.5);\n\n\tcolor -= texture2D(uSampler, vTextureCoord - onePixel) * strength;\n\tcolor += texture2D(uSampler, vTextureCoord + onePixel) * strength;\n\n\tcolor.rgb = vec3((color.r + color.g + color.b) / 3.0);\n\n\tfloat alpha = texture2D(uSampler, vTextureCoord).a;\n\n\tgl_FragColor = vec4(color.rgb * alpha, alpha);\n}\n",
 			ne = (function (e) {
 				function t(t) {
-					void 0 === t && (t = 5), e.call(this, ee, te), (this.strength = t);
+					(void 0 === t && (t = 5), e.call(this, ee, te), (this.strength = t));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { strength: { configurable: !0 } };
 				return (
 					(n.strength.get = function () {
@@ -3995,7 +4001,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"// precision highp float;\n\nvarying vec2 vTextureCoord;\nuniform sampler2D uSampler;\n\nuniform vec4 filterArea;\nuniform vec4 filterClamp;\nuniform vec2 dimensions;\nuniform float aspect;\n\nuniform sampler2D displacementMap;\nuniform float offset;\nuniform float sinDir;\nuniform float cosDir;\nuniform int fillMode;\n\nuniform float seed;\nuniform vec2 red;\nuniform vec2 green;\nuniform vec2 blue;\n\nconst int TRANSPARENT = 0;\nconst int ORIGINAL = 1;\nconst int LOOP = 2;\nconst int CLAMP = 3;\nconst int MIRROR = 4;\n\nvoid main(void)\n{\n    vec2 coord = (vTextureCoord * filterArea.xy) / dimensions;\n\n    if (coord.x > 1.0 || coord.y > 1.0) {\n        return;\n    }\n\n    float cx = coord.x - 0.5;\n    float cy = (coord.y - 0.5) * aspect;\n    float ny = (-sinDir * cx + cosDir * cy) / aspect + 0.5;\n\n    // displacementMap: repeat\n    // ny = ny > 1.0 ? ny - 1.0 : (ny < 0.0 ? 1.0 + ny : ny);\n\n    // displacementMap: mirror\n    ny = ny > 1.0 ? 2.0 - ny : (ny < 0.0 ? -ny : ny);\n\n    vec4 dc = texture2D(displacementMap, vec2(0.5, ny));\n\n    float displacement = (dc.r - dc.g) * (offset / filterArea.x);\n\n    coord = vTextureCoord + vec2(cosDir * displacement, sinDir * displacement * aspect);\n\n    if (fillMode == CLAMP) {\n        coord = clamp(coord, filterClamp.xy, filterClamp.zw);\n    } else {\n        if( coord.x > filterClamp.z ) {\n            if (fillMode == TRANSPARENT) {\n                discard;\n            } else if (fillMode == LOOP) {\n                coord.x -= filterClamp.z;\n            } else if (fillMode == MIRROR) {\n                coord.x = filterClamp.z * 2.0 - coord.x;\n            }\n        } else if( coord.x < filterClamp.x ) {\n            if (fillMode == TRANSPARENT) {\n                discard;\n            } else if (fillMode == LOOP) {\n                coord.x += filterClamp.z;\n            } else if (fillMode == MIRROR) {\n                coord.x *= -filterClamp.z;\n            }\n        }\n\n        if( coord.y > filterClamp.w ) {\n            if (fillMode == TRANSPARENT) {\n                discard;\n            } else if (fillMode == LOOP) {\n                coord.y -= filterClamp.w;\n            } else if (fillMode == MIRROR) {\n                coord.y = filterClamp.w * 2.0 - coord.y;\n            }\n        } else if( coord.y < filterClamp.y ) {\n            if (fillMode == TRANSPARENT) {\n                discard;\n            } else if (fillMode == LOOP) {\n                coord.y += filterClamp.w;\n            } else if (fillMode == MIRROR) {\n                coord.y *= -filterClamp.w;\n            }\n        }\n    }\n\n    gl_FragColor.r = texture2D(uSampler, coord + red * (1.0 - seed * 0.4) / filterArea.xy).r;\n    gl_FragColor.g = texture2D(uSampler, coord + green * (1.0 - seed * 0.3) / filterArea.xy).g;\n    gl_FragColor.b = texture2D(uSampler, coord + blue * (1.0 - seed * 0.2) / filterArea.xy).b;\n    gl_FragColor.a = texture2D(uSampler, coord).a;\n}\n",
 			ie = (function (e) {
 				function r(n) {
-					void 0 === n && (n = {}),
+					(void 0 === n && (n = {}),
 						e.call(this, re, oe),
 						(this.uniforms.dimensions = new Float32Array(2)),
 						(n = Object.assign(
@@ -4029,9 +4035,9 @@ if (!PIXI.filters.EmbossFilter) {
 						(this._canvas.height = this.sampleSize),
 						(this.texture = t.Texture.from(this._canvas, { scaleMode: i.SCALE_MODES.NEAREST })),
 						(this._slices = 0),
-						(this.slices = n.slices);
+						(this.slices = n.slices));
 				}
-				e && (r.__proto__ = e), (r.prototype = Object.create(e && e.prototype)), (r.prototype.constructor = r);
+				(e && (r.__proto__ = e), (r.prototype = Object.create(e && e.prototype)), (r.prototype.constructor = r));
 				var o = {
 					sizes: { configurable: !0 },
 					offsets: { configurable: !0 },
@@ -4045,13 +4051,13 @@ if (!PIXI.filters.EmbossFilter) {
 					(r.prototype.apply = function (e, t, n, r) {
 						var o = t.filterFrame.width,
 							i = t.filterFrame.height;
-						(this.uniforms.dimensions[0] = o),
+						((this.uniforms.dimensions[0] = o),
 							(this.uniforms.dimensions[1] = i),
 							(this.uniforms.aspect = i / o),
 							(this.uniforms.seed = this.seed),
 							(this.uniforms.offset = this.offset),
 							(this.uniforms.fillMode = this.fillMode),
-							e.applyFilter(this, t, n, r);
+							e.applyFilter(this, t, n, r));
 					}),
 					(r.prototype._randomizeSizes = function () {
 						var e = this._sizes,
@@ -4062,13 +4068,13 @@ if (!PIXI.filters.EmbossFilter) {
 							for (var o = this._slices, i = 1, l = 0; l < t; l++) {
 								var s = i / (o - l),
 									a = Math.max(s * (1 - 0.6 * Math.random()), r);
-								(e[l] = a), (i -= a);
+								((e[l] = a), (i -= a));
 							}
 							e[t] = i;
 						} else {
 							for (var u = 1, c = Math.sqrt(1 / this._slices), f = 0; f < t; f++) {
 								var h = Math.max(c * u * Math.random(), r);
-								(e[f] = h), (u -= h);
+								((e[f] = h), (u -= h));
 							}
 							e[t] = u;
 						}
@@ -4078,14 +4084,14 @@ if (!PIXI.filters.EmbossFilter) {
 						for (var e = this._sizes, t = this._slices - 1; t > 0; t--) {
 							var n = (Math.random() * t) >> 0,
 								r = e[t];
-							(e[t] = e[n]), (e[n] = r);
+							((e[t] = e[n]), (e[n] = r));
 						}
 					}),
 					(r.prototype._randomizeOffsets = function () {
 						for (var e = 0; e < this._slices; e++) this._offsets[e] = Math.random() * (Math.random() < 0.5 ? -1 : 1);
 					}),
 					(r.prototype.refresh = function () {
-						this._randomizeSizes(), this._randomizeOffsets(), this.redraw();
+						(this._randomizeSizes(), this._randomizeOffsets(), this.redraw());
 					}),
 					(r.prototype.redraw = function () {
 						var e,
@@ -4098,9 +4104,9 @@ if (!PIXI.filters.EmbossFilter) {
 							var l = this._sizes[i] * t,
 								s = e > 0 ? e : 0,
 								a = e < 0 ? -e : 0;
-							(r.fillStyle = "rgba(" + s + ", " + a + ", 0, 1)"), r.fillRect(0, o >> 0, t, (l + 1) >> 0), (o += l);
+							((r.fillStyle = "rgba(" + s + ", " + a + ", 0, 1)"), r.fillRect(0, o >> 0, t, (l + 1) >> 0), (o += l));
 						}
-						n.baseTexture.update(), (this.uniforms.displacementMap = n);
+						(n.baseTexture.update(), (this.uniforms.displacementMap = n));
 					}),
 					(o.sizes.set = function (e) {
 						for (var t = Math.min(this._slices, e.length), n = 0; n < t; n++) this._sizes[n] = e[n];
@@ -4132,7 +4138,7 @@ if (!PIXI.filters.EmbossFilter) {
 						if (this._direction !== e) {
 							this._direction = e;
 							var t = e * n.DEG_TO_RAD;
-							(this.uniforms.sinDir = Math.sin(t)), (this.uniforms.cosDir = Math.cos(t));
+							((this.uniforms.sinDir = Math.sin(t)), (this.uniforms.cosDir = Math.cos(t)));
 						}
 					}),
 					(o.red.get = function () {
@@ -4154,20 +4160,20 @@ if (!PIXI.filters.EmbossFilter) {
 						this.uniforms.blue = e;
 					}),
 					(r.prototype.destroy = function () {
-						this.texture.destroy(!0),
+						(this.texture.destroy(!0),
 							(this.texture = null),
 							(this._canvas = null),
 							(this.red = null),
 							(this.green = null),
 							(this.blue = null),
 							(this._sizes = null),
-							(this._offsets = null);
+							(this._offsets = null));
 					}),
 					Object.defineProperties(r.prototype, o),
 					r
 				);
 			})(t.Filter);
-		(ie.TRANSPARENT = 0), (ie.ORIGINAL = 1), (ie.LOOP = 2), (ie.CLAMP = 3), (ie.MIRROR = 4);
+		((ie.TRANSPARENT = 0), (ie.ORIGINAL = 1), (ie.LOOP = 2), (ie.CLAMP = 3), (ie.MIRROR = 4));
 		var le = a,
 			se =
 				"varying vec2 vTextureCoord;\nvarying vec4 vColor;\n\nuniform sampler2D uSampler;\n\nuniform float outerStrength;\nuniform float innerStrength;\n\nuniform vec4 glowColor;\n\nuniform vec4 filterArea;\nuniform vec4 filterClamp;\nuniform bool knockout;\n\nconst float PI = 3.14159265358979323846264;\n\nconst float DIST = __DIST__;\nconst float ANGLE_STEP_SIZE = min(__ANGLE_STEP_SIZE__, PI * 2.0);\nconst float ANGLE_STEP_NUM = ceil(PI * 2.0 / ANGLE_STEP_SIZE);\n\nconst float MAX_TOTAL_ALPHA = ANGLE_STEP_NUM * DIST * (DIST + 1.0) / 2.0;\n\nvoid main(void) {\n    vec2 px = vec2(1.0 / filterArea.x, 1.0 / filterArea.y);\n\n    float totalAlpha = 0.0;\n\n    vec2 direction;\n    vec2 displaced;\n    vec4 curColor;\n\n    for (float angle = 0.0; angle < PI * 2.0; angle += ANGLE_STEP_SIZE) {\n       direction = vec2(cos(angle), sin(angle)) * px;\n\n       for (float curDistance = 0.0; curDistance < DIST; curDistance++) {\n           displaced = clamp(vTextureCoord + direction * \n                   (curDistance + 1.0), filterClamp.xy, filterClamp.zw);\n\n           curColor = texture2D(uSampler, displaced);\n\n           totalAlpha += (DIST - curDistance) * curColor.a;\n       }\n    }\n    \n    curColor = texture2D(uSampler, vTextureCoord);\n\n    float alphaRatio = (totalAlpha / MAX_TOTAL_ALPHA);\n\n    float innerGlowAlpha = (1.0 - alphaRatio) * innerStrength * curColor.a;\n    float innerGlowStrength = min(1.0, innerGlowAlpha);\n    \n    vec4 innerColor = mix(curColor, glowColor, innerGlowStrength);\n\n    float outerGlowAlpha = alphaRatio * outerStrength * (1. - curColor.a);\n    float outerGlowStrength = min(1.0 - innerColor.a, outerGlowAlpha);\n\n    vec4 outerGlowColor = outerGlowStrength * glowColor.rgba;\n    \n    if (knockout) {\n      float resultAlpha = outerGlowAlpha + innerGlowAlpha;\n      gl_FragColor = vec4(glowColor.rgb * resultAlpha, resultAlpha);\n    }\n    else {\n      gl_FragColor = innerColor + outerGlowColor;\n    }\n}\n",
@@ -4180,7 +4186,7 @@ if (!PIXI.filters.EmbossFilter) {
 						s = r.color,
 						a = r.knockout,
 						u = r.quality;
-					(o = Math.round(o)),
+					((o = Math.round(o)),
 						e.call(
 							this,
 							le,
@@ -4189,9 +4195,9 @@ if (!PIXI.filters.EmbossFilter) {
 								.replace(/__DIST__/gi, o.toFixed(0) + ".0"),
 						),
 						(this.uniforms.glowColor = new Float32Array([0, 0, 0, 1])),
-						Object.assign(this, { color: s, outerStrength: i, innerStrength: l, padding: o, knockout: a });
+						Object.assign(this, { color: s, outerStrength: i, innerStrength: l, padding: o, knockout: a }));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = {
 					color: { configurable: !0 },
 					outerStrength: { configurable: !0 },
@@ -4235,7 +4241,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\nuniform vec4 filterArea;\nuniform vec2 dimensions;\n\nuniform vec2 light;\nuniform bool parallel;\nuniform float aspect;\n\nuniform float gain;\nuniform float lacunarity;\nuniform float time;\n\n${perlin}\n\nvoid main(void) {\n    vec2 coord = vTextureCoord * filterArea.xy / dimensions.xy;\n\n    float d;\n\n    if (parallel) {\n        float _cos = light.x;\n        float _sin = light.y;\n        d = (_cos * coord.x) + (_sin * coord.y * aspect);\n    } else {\n        float dx = coord.x - light.x / dimensions.x;\n        float dy = (coord.y - light.y / dimensions.y) * aspect;\n        float dis = sqrt(dx * dx + dy * dy) + 0.00001;\n        d = dy / dis;\n    }\n\n    vec3 dir = vec3(d, d, 0.0);\n\n    float noise = turb(dir + vec3(time, 0.0, 62.1 + time) * 0.05, vec3(480.0, 320.0, 480.0), lacunarity, gain);\n    noise = mix(noise, 0.0, 0.3);\n    //fade vertically.\n    vec4 mist = vec4(noise, noise, noise, 1.0) * (1.0 - coord.y);\n    mist.a = 1.0;\n\n    gl_FragColor = texture2D(uSampler, vTextureCoord) + mist;\n}\n",
 			he = (function (e) {
 				function t(t) {
-					e.call(this, ue, fe.replace("${perlin}", ce)),
+					(e.call(this, ue, fe.replace("${perlin}", ce)),
 						(this.uniforms.dimensions = new Float32Array(2)),
 						"number" == typeof t &&
 							(console.warn("GodrayFilter now uses options instead of (angle, gain, lacunarity, time)"),
@@ -4250,22 +4256,22 @@ if (!PIXI.filters.EmbossFilter) {
 						(this.lacunarity = t.lacunarity),
 						(this.parallel = t.parallel),
 						(this.center = t.center),
-						(this.time = t.time);
+						(this.time = t.time));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var r = { angle: { configurable: !0 }, gain: { configurable: !0 }, lacunarity: { configurable: !0 } };
 				return (
 					(t.prototype.apply = function (e, t, n, r) {
 						var o = t.filterFrame,
 							i = o.width,
 							l = o.height;
-						(this.uniforms.light = this.parallel ? this._angleLight : this.center),
+						((this.uniforms.light = this.parallel ? this._angleLight : this.center),
 							(this.uniforms.parallel = this.parallel),
 							(this.uniforms.dimensions[0] = i),
 							(this.uniforms.dimensions[1] = l),
 							(this.uniforms.aspect = l / i),
 							(this.uniforms.time = this.time),
-							e.applyFilter(this, t, n, r);
+							e.applyFilter(this, t, n, r));
 					}),
 					(r.angle.get = function () {
 						return this._angle;
@@ -4273,7 +4279,7 @@ if (!PIXI.filters.EmbossFilter) {
 					(r.angle.set = function (e) {
 						this._angle = e;
 						var t = e * n.DEG_TO_RAD;
-						(this._angleLight.x = Math.cos(t)), (this._angleLight.y = Math.sin(t));
+						((this._angleLight.x = Math.cos(t)), (this._angleLight.y = Math.sin(t)));
 					}),
 					(r.gain.get = function () {
 						return this.uniforms.gain;
@@ -4296,7 +4302,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\nuniform vec4 filterArea;\n\nuniform vec2 uVelocity;\nuniform int uKernelSize;\nuniform float uOffset;\n\nconst int MAX_KERNEL_SIZE = 2048;\n\n// Notice:\n// the perfect way:\n//    int kernelSize = min(uKernelSize, MAX_KERNELSIZE);\n// BUT in real use-case , uKernelSize < MAX_KERNELSIZE almost always.\n// So use uKernelSize directly.\n\nvoid main(void)\n{\n    vec4 color = texture2D(uSampler, vTextureCoord);\n\n    if (uKernelSize == 0)\n    {\n        gl_FragColor = color;\n        return;\n    }\n\n    vec2 velocity = uVelocity / filterArea.xy;\n    float offset = -uOffset / length(uVelocity) - 0.5;\n    int k = uKernelSize - 1;\n\n    for(int i = 0; i < MAX_KERNEL_SIZE - 1; i++) {\n        if (i == k) {\n            break;\n        }\n        vec2 bias = velocity * (float(i) / float(k) + offset);\n        color += texture2D(uSampler, vTextureCoord + bias);\n    }\n    gl_FragColor = color / float(uKernelSize);\n}\n",
 			me = (function (e) {
 				function t(t, r, o) {
-					void 0 === t && (t = [0, 0]),
+					(void 0 === t && (t = [0, 0]),
 						void 0 === r && (r = 5),
 						void 0 === o && (o = 0),
 						e.call(this, pe, de),
@@ -4304,16 +4310,16 @@ if (!PIXI.filters.EmbossFilter) {
 						(this._velocity = new n.ObservablePoint(this.velocityChanged, this)),
 						(this.velocity = t),
 						(this.kernelSize = r),
-						(this.offset = o);
+						(this.offset = o));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var r = { velocity: { configurable: !0 }, offset: { configurable: !0 } };
 				return (
 					(t.prototype.apply = function (e, t, n, r) {
 						var o = this.velocity,
 							i = o.x,
 							l = o.y;
-						(this.uniforms.uKernelSize = 0 !== i || 0 !== l ? this.kernelSize : 0), e.applyFilter(this, t, n, r);
+						((this.uniforms.uKernelSize = 0 !== i || 0 !== l ? this.kernelSize : 0), e.applyFilter(this, t, n, r));
 					}),
 					(r.velocity.set = function (e) {
 						Array.isArray(e)
@@ -4324,7 +4330,7 @@ if (!PIXI.filters.EmbossFilter) {
 						return this._velocity;
 					}),
 					(t.prototype.velocityChanged = function () {
-						(this.uniforms.uVelocity[0] = this._velocity.x), (this.uniforms.uVelocity[1] = this._velocity.y);
+						((this.uniforms.uVelocity[0] = this._velocity.x), (this.uniforms.uVelocity[1] = this._velocity.y));
 					}),
 					(r.offset.set = function (e) {
 						this.uniforms.uOffset = e;
@@ -4341,7 +4347,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\n\nuniform float epsilon;\n\nconst int MAX_COLORS = %maxColors%;\n\nuniform vec3 originalColors[MAX_COLORS];\nuniform vec3 targetColors[MAX_COLORS];\n\nvoid main(void)\n{\n    gl_FragColor = texture2D(uSampler, vTextureCoord);\n\n    float alpha = gl_FragColor.a;\n    if (alpha < 0.0001)\n    {\n      return;\n    }\n\n    vec3 color = gl_FragColor.rgb / alpha;\n\n    for(int i = 0; i < MAX_COLORS; i++)\n    {\n      vec3 origColor = originalColors[i];\n      if (origColor.r < 0.0)\n      {\n        break;\n      }\n      vec3 colorDiff = origColor - color;\n      if (length(colorDiff) < epsilon)\n      {\n        vec3 targetColor = targetColors[i];\n        gl_FragColor = vec4((targetColor + colorDiff) * alpha, alpha);\n        return;\n      }\n    }\n}\n",
 			xe = (function (e) {
 				function t(t, n, r) {
-					void 0 === n && (n = 0.05),
+					(void 0 === n && (n = 0.05),
 						void 0 === r && (r = null),
 						(r = r || t.length),
 						e.call(this, ge, ve.replace(/%maxColors%/g, r)),
@@ -4350,9 +4356,9 @@ if (!PIXI.filters.EmbossFilter) {
 						(this._replacements = null),
 						(this.uniforms.originalColors = new Float32Array(3 * r)),
 						(this.uniforms.targetColors = new Float32Array(3 * r)),
-						(this.replacements = t);
+						(this.replacements = t));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { replacements: { configurable: !0 }, maxColors: { configurable: !0 }, epsilon: { configurable: !0 } };
 				return (
 					(n.replacements.set = function (e) {
@@ -4365,15 +4371,15 @@ if (!PIXI.filters.EmbossFilter) {
 						for (var i = 0; i < r; i++) {
 							var l = e[i],
 								s = l[0];
-							"number" == typeof s ? (s = o.hex2rgb(s)) : (l[0] = o.rgb2hex(s)),
+							("number" == typeof s ? (s = o.hex2rgb(s)) : (l[0] = o.rgb2hex(s)),
 								(t[3 * i] = s[0]),
 								(t[3 * i + 1] = s[1]),
-								(t[3 * i + 2] = s[2]);
+								(t[3 * i + 2] = s[2]));
 							var a = l[1];
-							"number" == typeof a ? (a = o.hex2rgb(a)) : (l[1] = o.rgb2hex(a)),
+							("number" == typeof a ? (a = o.hex2rgb(a)) : (l[1] = o.rgb2hex(a)),
 								(n[3 * i] = a[0]),
 								(n[3 * i + 1] = a[1]),
-								(n[3 * i + 2] = a[2]);
+								(n[3 * i + 2] = a[2]));
 						}
 						this._replacements = e;
 					}),
@@ -4401,7 +4407,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\nuniform vec4 filterArea;\nuniform vec2 dimensions;\n\nuniform float sepia;\nuniform float noise;\nuniform float noiseSize;\nuniform float scratch;\nuniform float scratchDensity;\nuniform float scratchWidth;\nuniform float vignetting;\nuniform float vignettingAlpha;\nuniform float vignettingBlur;\nuniform float seed;\n\nconst float SQRT_2 = 1.414213;\nconst vec3 SEPIA_RGB = vec3(112.0 / 255.0, 66.0 / 255.0, 20.0 / 255.0);\n\nfloat rand(vec2 co) {\n    return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);\n}\n\nvec3 Overlay(vec3 src, vec3 dst)\n{\n    // if (dst <= 0.5) then: 2 * src * dst\n    // if (dst > 0.5) then: 1 - 2 * (1 - dst) * (1 - src)\n    return vec3((dst.x <= 0.5) ? (2.0 * src.x * dst.x) : (1.0 - 2.0 * (1.0 - dst.x) * (1.0 - src.x)),\n                (dst.y <= 0.5) ? (2.0 * src.y * dst.y) : (1.0 - 2.0 * (1.0 - dst.y) * (1.0 - src.y)),\n                (dst.z <= 0.5) ? (2.0 * src.z * dst.z) : (1.0 - 2.0 * (1.0 - dst.z) * (1.0 - src.z)));\n}\n\n\nvoid main()\n{\n    gl_FragColor = texture2D(uSampler, vTextureCoord);\n    vec3 color = gl_FragColor.rgb;\n\n    if (sepia > 0.0)\n    {\n        float gray = (color.x + color.y + color.z) / 3.0;\n        vec3 grayscale = vec3(gray);\n\n        color = Overlay(SEPIA_RGB, grayscale);\n\n        color = grayscale + sepia * (color - grayscale);\n    }\n\n    vec2 coord = vTextureCoord * filterArea.xy / dimensions.xy;\n\n    if (vignetting > 0.0)\n    {\n        float outter = SQRT_2 - vignetting * SQRT_2;\n        vec2 dir = vec2(vec2(0.5, 0.5) - coord);\n        dir.y *= dimensions.y / dimensions.x;\n        float darker = clamp((outter - length(dir) * SQRT_2) / ( 0.00001 + vignettingBlur * SQRT_2), 0.0, 1.0);\n        color.rgb *= darker + (1.0 - darker) * (1.0 - vignettingAlpha);\n    }\n\n    if (scratchDensity > seed && scratch != 0.0)\n    {\n        float phase = seed * 256.0;\n        float s = mod(floor(phase), 2.0);\n        float dist = 1.0 / scratchDensity;\n        float d = distance(coord, vec2(seed * dist, abs(s - seed * dist)));\n        if (d < seed * 0.6 + 0.4)\n        {\n            highp float period = scratchDensity * 10.0;\n\n            float xx = coord.x * period + phase;\n            float aa = abs(mod(xx, 0.5) * 4.0);\n            float bb = mod(floor(xx / 0.5), 2.0);\n            float yy = (1.0 - bb) * aa + bb * (2.0 - aa);\n\n            float kk = 2.0 * period;\n            float dw = scratchWidth / dimensions.x * (0.75 + seed);\n            float dh = dw * kk;\n\n            float tine = (yy - (2.0 - dh));\n\n            if (tine > 0.0) {\n                float _sign = sign(scratch);\n\n                tine = s * tine / period + scratch + 0.1;\n                tine = clamp(tine + 1.0, 0.5 + _sign * 0.5, 1.5 + _sign * 0.5);\n\n                color.rgb *= tine;\n            }\n        }\n    }\n\n    if (noise > 0.0 && noiseSize > 0.0)\n    {\n        vec2 pixelCoord = vTextureCoord.xy * filterArea.xy;\n        pixelCoord.x = floor(pixelCoord.x / noiseSize);\n        pixelCoord.y = floor(pixelCoord.y / noiseSize);\n        // vec2 d = pixelCoord * noiseSize * vec2(1024.0 + seed * 512.0, 1024.0 - seed * 512.0);\n        // float _noise = snoise(d) * 0.5;\n        float _noise = rand(pixelCoord * noiseSize * seed) - 0.5;\n        color += _noise * noise;\n    }\n\n    gl_FragColor.rgb = color;\n}\n",
 			be = (function (e) {
 				function t(t, n) {
-					void 0 === n && (n = 0),
+					(void 0 === n && (n = 0),
 						e.call(this, ye, _e),
 						(this.uniforms.dimensions = new Float32Array(2)),
 						"number" == typeof t ? ((this.seed = t), (t = null)) : (this.seed = n),
@@ -4419,9 +4425,9 @@ if (!PIXI.filters.EmbossFilter) {
 								vignettingBlur: 0.3,
 							},
 							t,
-						);
+						));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = {
 					sepia: { configurable: !0 },
 					noise: { configurable: !0 },
@@ -4435,10 +4441,10 @@ if (!PIXI.filters.EmbossFilter) {
 				};
 				return (
 					(t.prototype.apply = function (e, t, n, r) {
-						(this.uniforms.dimensions[0] = t.filterFrame.width),
+						((this.uniforms.dimensions[0] = t.filterFrame.width),
 							(this.uniforms.dimensions[1] = t.filterFrame.height),
 							(this.uniforms.seed = this.seed),
-							e.applyFilter(this, t, n, r);
+							e.applyFilter(this, t, n, r));
 					}),
 					(n.sepia.set = function (e) {
 						this.uniforms.sepia = e;
@@ -4503,23 +4509,23 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\n\nuniform vec2 thickness;\nuniform vec4 outlineColor;\nuniform vec4 filterClamp;\n\nconst float DOUBLE_PI = 3.14159265358979323846264 * 2.;\n\nvoid main(void) {\n    vec4 ownColor = texture2D(uSampler, vTextureCoord);\n    vec4 curColor;\n    float maxAlpha = 0.;\n    vec2 displaced;\n    for (float angle = 0.; angle <= DOUBLE_PI; angle += ${angleStep}) {\n        displaced.x = vTextureCoord.x + thickness.x * cos(angle);\n        displaced.y = vTextureCoord.y + thickness.y * sin(angle);\n        curColor = texture2D(uSampler, clamp(displaced, filterClamp.xy, filterClamp.zw));\n        maxAlpha = max(maxAlpha, curColor.a);\n    }\n    float resultAlpha = max(maxAlpha, ownColor.a);\n    gl_FragColor = vec4((ownColor.rgb + outlineColor.rgb * (1. - ownColor.a)) * resultAlpha, resultAlpha);\n}\n",
 			Fe = (function (e) {
 				function t(n, r, o) {
-					void 0 === n && (n = 1), void 0 === r && (r = 0), void 0 === o && (o = 0.1);
+					(void 0 === n && (n = 1), void 0 === r && (r = 0), void 0 === o && (o = 0.1));
 					var i = Math.max(o * t.MAX_SAMPLES, t.MIN_SAMPLES),
 						l = ((2 * Math.PI) / i).toFixed(7);
-					e.call(this, Ce, Se.replace(/\$\{angleStep\}/, l)),
+					(e.call(this, Ce, Se.replace(/\$\{angleStep\}/, l)),
 						(this.uniforms.thickness = new Float32Array([0, 0])),
 						(this.thickness = n),
 						(this.uniforms.outlineColor = new Float32Array([0, 0, 0, 1])),
 						(this.color = r),
-						(this.quality = o);
+						(this.quality = o));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { color: { configurable: !0 } };
 				return (
 					(t.prototype.apply = function (e, t, n, r) {
-						(this.uniforms.thickness[0] = this.thickness / t._frame.width),
+						((this.uniforms.thickness[0] = this.thickness / t._frame.width),
 							(this.uniforms.thickness[1] = this.thickness / t._frame.height),
-							e.applyFilter(this, t, n, r);
+							e.applyFilter(this, t, n, r));
 					}),
 					(n.color.get = function () {
 						return o.rgb2hex(this.uniforms.outlineColor);
@@ -4531,22 +4537,22 @@ if (!PIXI.filters.EmbossFilter) {
 					t
 				);
 			})(t.Filter);
-		(Fe.MIN_SAMPLES = 1), (Fe.MAX_SAMPLES = 100);
+		((Fe.MIN_SAMPLES = 1), (Fe.MAX_SAMPLES = 100));
 		var ze = a,
 			Ae =
 				"precision mediump float;\n\nvarying vec2 vTextureCoord;\n\nuniform vec2 size;\nuniform sampler2D uSampler;\n\nuniform vec4 filterArea;\n\nvec2 mapCoord( vec2 coord )\n{\n    coord *= filterArea.xy;\n    coord += filterArea.zw;\n\n    return coord;\n}\n\nvec2 unmapCoord( vec2 coord )\n{\n    coord -= filterArea.zw;\n    coord /= filterArea.xy;\n\n    return coord;\n}\n\nvec2 pixelate(vec2 coord, vec2 size)\n{\n\treturn floor( coord / size ) * size;\n}\n\nvoid main(void)\n{\n    vec2 coord = mapCoord(vTextureCoord);\n\n    coord = pixelate(coord, size);\n\n    coord = unmapCoord(coord);\n\n    gl_FragColor = texture2D(uSampler, coord);\n}\n",
 			we = (function (e) {
 				function t(t) {
-					void 0 === t && (t = 10), e.call(this, ze, Ae), (this.size = t);
+					(void 0 === t && (t = 10), e.call(this, ze, Ae), (this.size = t));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { size: { configurable: !0 } };
 				return (
 					(n.size.get = function () {
 						return this.uniforms.size;
 					}),
 					(n.size.set = function (e) {
-						"number" == typeof e && (e = [e, e]), (this.uniforms.size = e);
+						("number" == typeof e && (e = [e, e]), (this.uniforms.size = e));
 					}),
 					Object.defineProperties(t.prototype, n),
 					t
@@ -4557,7 +4563,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\nuniform vec4 filterArea;\n\nuniform float uRadian;\nuniform vec2 uCenter;\nuniform float uRadius;\nuniform int uKernelSize;\n\nconst int MAX_KERNEL_SIZE = 2048;\n\nvoid main(void)\n{\n    vec4 color = texture2D(uSampler, vTextureCoord);\n\n    if (uKernelSize == 0)\n    {\n        gl_FragColor = color;\n        return;\n    }\n\n    float aspect = filterArea.y / filterArea.x;\n    vec2 center = uCenter.xy / filterArea.xy;\n    float gradient = uRadius / filterArea.x * 0.3;\n    float radius = uRadius / filterArea.x - gradient * 0.5;\n    int k = uKernelSize - 1;\n\n    vec2 coord = vTextureCoord;\n    vec2 dir = vec2(center - coord);\n    float dist = length(vec2(dir.x, dir.y * aspect));\n\n    float radianStep = uRadian;\n    if (radius >= 0.0 && dist > radius) {\n        float delta = dist - radius;\n        float gap = gradient;\n        float scale = 1.0 - abs(delta / gap);\n        if (scale <= 0.0) {\n            gl_FragColor = color;\n            return;\n        }\n        radianStep *= scale;\n    }\n    radianStep /= float(k);\n\n    float s = sin(radianStep);\n    float c = cos(radianStep);\n    mat2 rotationMatrix = mat2(vec2(c, -s), vec2(s, c));\n\n    for(int i = 0; i < MAX_KERNEL_SIZE - 1; i++) {\n        if (i == k) {\n            break;\n        }\n\n        coord -= center;\n        coord.y *= aspect;\n        coord = rotationMatrix * coord;\n        coord.y /= aspect;\n        coord += center;\n\n        vec4 sample = texture2D(uSampler, coord);\n\n        // switch to pre-multiplied alpha to correctly blur transparent images\n        // sample.rgb *= sample.a;\n\n        color += sample;\n    }\n\n    gl_FragColor = color / float(uKernelSize);\n}\n",
 			De = (function (e) {
 				function t(t, n, r, o) {
-					void 0 === t && (t = 0),
+					(void 0 === t && (t = 0),
 						void 0 === n && (n = [0, 0]),
 						void 0 === r && (r = 5),
 						void 0 === o && (o = -1),
@@ -4566,16 +4572,16 @@ if (!PIXI.filters.EmbossFilter) {
 						(this.angle = t),
 						(this.center = n),
 						(this.kernelSize = r),
-						(this.radius = o);
+						(this.radius = o));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { angle: { configurable: !0 }, center: { configurable: !0 }, radius: { configurable: !0 } };
 				return (
 					(t.prototype.apply = function (e, t, n, r) {
-						(this.uniforms.uKernelSize = 0 !== this._angle ? this.kernelSize : 0), e.applyFilter(this, t, n, r);
+						((this.uniforms.uKernelSize = 0 !== this._angle ? this.kernelSize : 0), e.applyFilter(this, t, n, r));
 					}),
 					(n.angle.set = function (e) {
-						(this._angle = e), (this.uniforms.uRadian = (e * Math.PI) / 180);
+						((this._angle = e), (this.uniforms.uRadian = (e * Math.PI) / 180));
 					}),
 					(n.angle.get = function () {
 						return this._angle;
@@ -4590,7 +4596,7 @@ if (!PIXI.filters.EmbossFilter) {
 						return this.uniforms.uRadius;
 					}),
 					(n.radius.set = function (e) {
-						(e < 0 || e === 1 / 0) && (e = -1), (this.uniforms.uRadius = e);
+						((e < 0 || e === 1 / 0) && (e = -1), (this.uniforms.uRadius = e));
 					}),
 					Object.defineProperties(t.prototype, n),
 					t
@@ -4601,7 +4607,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\n\nuniform vec4 filterArea;\nuniform vec4 filterClamp;\nuniform vec2 dimensions;\n\nuniform bool mirror;\nuniform float boundary;\nuniform vec2 amplitude;\nuniform vec2 waveLength;\nuniform vec2 alpha;\nuniform float time;\n\nfloat rand(vec2 co) {\n    return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);\n}\n\nvoid main(void)\n{\n    vec2 pixelCoord = vTextureCoord.xy * filterArea.xy;\n    vec2 coord = pixelCoord / dimensions;\n\n    if (coord.y < boundary) {\n        gl_FragColor = texture2D(uSampler, vTextureCoord);\n        return;\n    }\n\n    float k = (coord.y - boundary) / (1. - boundary + 0.0001);\n    float areaY = boundary * dimensions.y / filterArea.y;\n    float v = areaY + areaY - vTextureCoord.y;\n    float y = mirror ? v : vTextureCoord.y;\n\n    float _amplitude = ((amplitude.y - amplitude.x) * k + amplitude.x ) / filterArea.x;\n    float _waveLength = ((waveLength.y - waveLength.x) * k + waveLength.x) / filterArea.y;\n    float _alpha = (alpha.y - alpha.x) * k + alpha.x;\n\n    float x = vTextureCoord.x + cos(v * 6.28 / _waveLength - time) * _amplitude;\n    x = clamp(x, filterClamp.x, filterClamp.z);\n\n    vec4 color = texture2D(uSampler, vec2(x, y));\n\n    gl_FragColor = color * _alpha;\n}\n",
 			Re = (function (e) {
 				function t(t) {
-					e.call(this, Pe, Me),
+					(e.call(this, Pe, Me),
 						(this.uniforms.amplitude = new Float32Array(2)),
 						(this.uniforms.waveLength = new Float32Array(2)),
 						(this.uniforms.alpha = new Float32Array(2)),
@@ -4610,9 +4616,9 @@ if (!PIXI.filters.EmbossFilter) {
 							this,
 							{ mirror: !0, boundary: 0.5, amplitude: [0, 20], waveLength: [30, 100], alpha: [1, 1], time: 0 },
 							t,
-						);
+						));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = {
 					mirror: { configurable: !0 },
 					boundary: { configurable: !0 },
@@ -4622,10 +4628,10 @@ if (!PIXI.filters.EmbossFilter) {
 				};
 				return (
 					(t.prototype.apply = function (e, t, n, r) {
-						(this.uniforms.dimensions[0] = t.filterFrame.width),
+						((this.uniforms.dimensions[0] = t.filterFrame.width),
 							(this.uniforms.dimensions[1] = t.filterFrame.height),
 							(this.uniforms.time = this.time),
-							e.applyFilter(this, t, n, r);
+							e.applyFilter(this, t, n, r));
 					}),
 					(n.mirror.set = function (e) {
 						this.uniforms.mirror = e;
@@ -4640,19 +4646,19 @@ if (!PIXI.filters.EmbossFilter) {
 						return this.uniforms.boundary;
 					}),
 					(n.amplitude.set = function (e) {
-						(this.uniforms.amplitude[0] = e[0]), (this.uniforms.amplitude[1] = e[1]);
+						((this.uniforms.amplitude[0] = e[0]), (this.uniforms.amplitude[1] = e[1]));
 					}),
 					(n.amplitude.get = function () {
 						return this.uniforms.amplitude;
 					}),
 					(n.waveLength.set = function (e) {
-						(this.uniforms.waveLength[0] = e[0]), (this.uniforms.waveLength[1] = e[1]);
+						((this.uniforms.waveLength[0] = e[0]), (this.uniforms.waveLength[1] = e[1]));
 					}),
 					(n.waveLength.get = function () {
 						return this.uniforms.waveLength;
 					}),
 					(n.alpha.set = function (e) {
-						(this.uniforms.alpha[0] = e[0]), (this.uniforms.alpha[1] = e[1]);
+						((this.uniforms.alpha[0] = e[0]), (this.uniforms.alpha[1] = e[1]));
 					}),
 					(n.alpha.get = function () {
 						return this.uniforms.alpha;
@@ -4666,15 +4672,15 @@ if (!PIXI.filters.EmbossFilter) {
 				"precision mediump float;\n\nvarying vec2 vTextureCoord;\n\nuniform sampler2D uSampler;\nuniform vec4 filterArea;\nuniform vec2 red;\nuniform vec2 green;\nuniform vec2 blue;\n\nvoid main(void)\n{\n   gl_FragColor.r = texture2D(uSampler, vTextureCoord + red/filterArea.xy).r;\n   gl_FragColor.g = texture2D(uSampler, vTextureCoord + green/filterArea.xy).g;\n   gl_FragColor.b = texture2D(uSampler, vTextureCoord + blue/filterArea.xy).b;\n   gl_FragColor.a = texture2D(uSampler, vTextureCoord).a;\n}\n",
 			Ee = (function (e) {
 				function t(t, n, r) {
-					void 0 === t && (t = [-10, 0]),
+					(void 0 === t && (t = [-10, 0]),
 						void 0 === n && (n = [0, 10]),
 						void 0 === r && (r = [0, 0]),
 						e.call(this, ke, je),
 						(this.red = t),
 						(this.green = n),
-						(this.blue = r);
+						(this.blue = r));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { red: { configurable: !0 }, green: { configurable: !0 }, blue: { configurable: !0 } };
 				return (
 					(n.red.get = function () {
@@ -4704,7 +4710,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\nuniform vec4 filterArea;\nuniform vec4 filterClamp;\n\nuniform vec2 center;\n\nuniform float amplitude;\nuniform float wavelength;\n// uniform float power;\nuniform float brightness;\nuniform float speed;\nuniform float radius;\n\nuniform float time;\n\nconst float PI = 3.14159;\n\nvoid main()\n{\n    float halfWavelength = wavelength * 0.5 / filterArea.x;\n    float maxRadius = radius / filterArea.x;\n    float currentRadius = time * speed / filterArea.x;\n\n    float fade = 1.0;\n\n    if (maxRadius > 0.0) {\n        if (currentRadius > maxRadius) {\n            gl_FragColor = texture2D(uSampler, vTextureCoord);\n            return;\n        }\n        fade = 1.0 - pow(currentRadius / maxRadius, 2.0);\n    }\n\n    vec2 dir = vec2(vTextureCoord - center / filterArea.xy);\n    dir.y *= filterArea.y / filterArea.x;\n    float dist = length(dir);\n\n    if (dist <= 0.0 || dist < currentRadius - halfWavelength || dist > currentRadius + halfWavelength) {\n        gl_FragColor = texture2D(uSampler, vTextureCoord);\n        return;\n    }\n\n    vec2 diffUV = normalize(dir);\n\n    float diff = (dist - currentRadius) / halfWavelength;\n\n    float p = 1.0 - pow(abs(diff), 2.0);\n\n    // float powDiff = diff * pow(p, 2.0) * ( amplitude * fade );\n    float powDiff = 1.25 * sin(diff * PI) * p * ( amplitude * fade );\n\n    vec2 offset = diffUV * powDiff / filterArea.xy;\n\n    // Do clamp :\n    vec2 coord = vTextureCoord + offset;\n    vec2 clampedCoord = clamp(coord, filterClamp.xy, filterClamp.zw);\n    vec4 color = texture2D(uSampler, clampedCoord);\n    if (coord != clampedCoord) {\n        color *= max(0.0, 1.0 - length(coord - clampedCoord));\n    }\n\n    // No clamp :\n    // gl_FragColor = texture2D(uSampler, vTextureCoord + offset);\n\n    color.rgb *= 1.0 + (brightness - 1.0) * p * fade;\n\n    gl_FragColor = color;\n}\n",
 			Xe = (function (e) {
 				function t(t, n, r) {
-					void 0 === t && (t = [0, 0]),
+					(void 0 === t && (t = [0, 0]),
 						void 0 === n && (n = {}),
 						void 0 === r && (r = 0),
 						e.call(this, Le, Ie),
@@ -4718,9 +4724,9 @@ if (!PIXI.filters.EmbossFilter) {
 						(this.brightness = n.brightness),
 						(this.speed = n.speed),
 						(this.radius = n.radius),
-						(this.time = r);
+						(this.time = r));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = {
 					center: { configurable: !0 },
 					amplitude: { configurable: !0 },
@@ -4731,7 +4737,7 @@ if (!PIXI.filters.EmbossFilter) {
 				};
 				return (
 					(t.prototype.apply = function (e, t, n, r) {
-						(this.uniforms.time = this.time), e.applyFilter(this, t, n, r);
+						((this.uniforms.time = this.time), e.applyFilter(this, t, n, r));
 					}),
 					(n.center.get = function () {
 						return this.uniforms.center;
@@ -4778,21 +4784,21 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\nuniform sampler2D uSampler;\nuniform sampler2D uLightmap;\nuniform vec4 filterArea;\nuniform vec2 dimensions;\nuniform vec4 ambientColor;\nvoid main() {\n    vec4 diffuseColor = texture2D(uSampler, vTextureCoord);\n    vec2 lightCoord = (vTextureCoord * filterArea.xy) / dimensions;\n    vec4 light = texture2D(uLightmap, lightCoord);\n    vec3 ambient = ambientColor.rgb * ambientColor.a;\n    vec3 intensity = ambient + light.rgb;\n    vec3 finalColor = diffuseColor.rgb * intensity;\n    gl_FragColor = vec4(finalColor, diffuseColor.a);\n}\n",
 			Ge = (function (e) {
 				function t(t, n, r) {
-					void 0 === n && (n = 0),
+					(void 0 === n && (n = 0),
 						void 0 === r && (r = 1),
 						e.call(this, Be, Ne),
 						(this.uniforms.dimensions = new Float32Array(2)),
 						(this.uniforms.ambientColor = new Float32Array([0, 0, 0, r])),
 						(this.texture = t),
-						(this.color = n);
+						(this.color = n));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { texture: { configurable: !0 }, color: { configurable: !0 }, alpha: { configurable: !0 } };
 				return (
 					(t.prototype.apply = function (e, t, n, r) {
-						(this.uniforms.dimensions[0] = t.filterFrame.width),
+						((this.uniforms.dimensions[0] = t.filterFrame.width),
 							(this.uniforms.dimensions[1] = t.filterFrame.height),
-							e.applyFilter(this, t, n, r);
+							e.applyFilter(this, t, n, r));
 					}),
 					(n.texture.get = function () {
 						return this.uniforms.uLightmap;
@@ -4824,7 +4830,7 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\n\nuniform sampler2D uSampler;\nuniform float blur;\nuniform float gradientBlur;\nuniform vec2 start;\nuniform vec2 end;\nuniform vec2 delta;\nuniform vec2 texSize;\n\nfloat random(vec3 scale, float seed)\n{\n    return fract(sin(dot(gl_FragCoord.xyz + seed, scale)) * 43758.5453 + seed);\n}\n\nvoid main(void)\n{\n    vec4 color = vec4(0.0);\n    float total = 0.0;\n\n    float offset = random(vec3(12.9898, 78.233, 151.7182), 0.0);\n    vec2 normal = normalize(vec2(start.y - end.y, end.x - start.x));\n    float radius = smoothstep(0.0, 1.0, abs(dot(vTextureCoord * texSize - start, normal)) / gradientBlur) * blur;\n\n    for (float t = -30.0; t <= 30.0; t++)\n    {\n        float percent = (t + offset - 0.5) / 30.0;\n        float weight = 1.0 - abs(percent);\n        vec4 sample = texture2D(uSampler, vTextureCoord + delta / texSize * percent * radius);\n        sample.rgb *= sample.a;\n        color += sample * weight;\n        total += weight;\n    }\n\n    color /= total;\n    color.rgb /= color.a + 0.00001;\n\n    gl_FragColor = color;\n}\n",
 			Ke = (function (e) {
 				function t(t, r, o, i) {
-					void 0 === t && (t = 100),
+					(void 0 === t && (t = 100),
 						void 0 === r && (r = 600),
 						void 0 === o && (o = null),
 						void 0 === i && (i = null),
@@ -4835,9 +4841,9 @@ if (!PIXI.filters.EmbossFilter) {
 						(this.uniforms.end = i || new n.Point(600, window.innerHeight / 2)),
 						(this.uniforms.delta = new n.Point(30, 30)),
 						(this.uniforms.texSize = new n.Point(1024, 1024)),
-						this.updateDelta();
+						this.updateDelta());
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var r = {
 					blur: { configurable: !0 },
 					gradientBlur: { configurable: !0 },
@@ -4846,7 +4852,7 @@ if (!PIXI.filters.EmbossFilter) {
 				};
 				return (
 					(t.prototype.updateDelta = function () {
-						(this.uniforms.delta.x = 0), (this.uniforms.delta.y = 0);
+						((this.uniforms.delta.x = 0), (this.uniforms.delta.y = 0));
 					}),
 					(r.blur.get = function () {
 						return this.uniforms.blur;
@@ -4864,13 +4870,13 @@ if (!PIXI.filters.EmbossFilter) {
 						return this.uniforms.start;
 					}),
 					(r.start.set = function (e) {
-						(this.uniforms.start = e), this.updateDelta();
+						((this.uniforms.start = e), this.updateDelta());
 					}),
 					(r.end.get = function () {
 						return this.uniforms.end;
 					}),
 					(r.end.set = function (e) {
-						(this.uniforms.end = e), this.updateDelta();
+						((this.uniforms.end = e), this.updateDelta());
 					}),
 					Object.defineProperties(t.prototype, r),
 					t
@@ -4888,7 +4894,7 @@ if (!PIXI.filters.EmbossFilter) {
 						var e = this.uniforms.end.x - this.uniforms.start.x,
 							t = this.uniforms.end.y - this.uniforms.start.y,
 							n = Math.sqrt(e * e + t * t);
-						(this.uniforms.delta.x = e / n), (this.uniforms.delta.y = t / n);
+						((this.uniforms.delta.x = e / n), (this.uniforms.delta.y = t / n));
 					}),
 					t
 				);
@@ -4905,22 +4911,22 @@ if (!PIXI.filters.EmbossFilter) {
 						var e = this.uniforms.end.x - this.uniforms.start.x,
 							t = this.uniforms.end.y - this.uniforms.start.y,
 							n = Math.sqrt(e * e + t * t);
-						(this.uniforms.delta.x = -t / n), (this.uniforms.delta.y = e / n);
+						((this.uniforms.delta.x = -t / n), (this.uniforms.delta.y = e / n));
 					}),
 					t
 				);
 			})(Ke),
 			Qe = (function (e) {
 				function t(t, n, r, o) {
-					void 0 === t && (t = 100),
+					(void 0 === t && (t = 100),
 						void 0 === n && (n = 600),
 						void 0 === r && (r = null),
 						void 0 === o && (o = null),
 						e.call(this),
 						(this.tiltShiftXFilter = new Ye(t, n, r, o)),
-						(this.tiltShiftYFilter = new Ze(t, n, r, o));
+						(this.tiltShiftYFilter = new Ze(t, n, r, o)));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = {
 					blur: { configurable: !0 },
 					gradientBlur: { configurable: !0 },
@@ -4930,7 +4936,7 @@ if (!PIXI.filters.EmbossFilter) {
 				return (
 					(t.prototype.apply = function (e, t, n) {
 						var r = e.getFilterTexture();
-						this.tiltShiftXFilter.apply(e, t, r), this.tiltShiftYFilter.apply(e, r, n), e.returnFilterTexture(r);
+						(this.tiltShiftXFilter.apply(e, t, r), this.tiltShiftYFilter.apply(e, r, n), e.returnFilterTexture(r));
 					}),
 					(n.blur.get = function () {
 						return this.tiltShiftXFilter.blur;
@@ -4965,15 +4971,15 @@ if (!PIXI.filters.EmbossFilter) {
 				"varying vec2 vTextureCoord;\n\nuniform sampler2D uSampler;\nuniform float radius;\nuniform float angle;\nuniform vec2 offset;\nuniform vec4 filterArea;\n\nvec2 mapCoord( vec2 coord )\n{\n    coord *= filterArea.xy;\n    coord += filterArea.zw;\n\n    return coord;\n}\n\nvec2 unmapCoord( vec2 coord )\n{\n    coord -= filterArea.zw;\n    coord /= filterArea.xy;\n\n    return coord;\n}\n\nvec2 twist(vec2 coord)\n{\n    coord -= offset;\n\n    float dist = length(coord);\n\n    if (dist < radius)\n    {\n        float ratioDist = (radius - dist) / radius;\n        float angleMod = ratioDist * ratioDist * angle;\n        float s = sin(angleMod);\n        float c = cos(angleMod);\n        coord = vec2(coord.x * c - coord.y * s, coord.x * s + coord.y * c);\n    }\n\n    coord += offset;\n\n    return coord;\n}\n\nvoid main(void)\n{\n\n    vec2 coord = mapCoord(vTextureCoord);\n\n    coord = twist(coord);\n\n    coord = unmapCoord(coord);\n\n    gl_FragColor = texture2D(uSampler, coord );\n\n}\n",
 			He = (function (e) {
 				function t(t, n, r) {
-					void 0 === t && (t = 200),
+					(void 0 === t && (t = 200),
 						void 0 === n && (n = 4),
 						void 0 === r && (r = 20),
 						e.call(this, Ue, Ve),
 						(this.radius = t),
 						(this.angle = n),
-						(this.padding = r);
+						(this.padding = r));
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = { offset: { configurable: !0 }, radius: { configurable: !0 }, angle: { configurable: !0 } };
 				return (
 					(n.offset.get = function () {
@@ -5008,15 +5014,15 @@ if (!PIXI.filters.EmbossFilter) {
 							r = arguments[1],
 							o = arguments[2],
 							i = arguments[3];
-						(t = {}),
+						((t = {}),
 							void 0 !== n && (t.strength = n),
 							void 0 !== r && (t.center = r),
 							void 0 !== o && (t.innerRadius = o),
-							void 0 !== i && (t.radius = i);
+							void 0 !== i && (t.radius = i));
 					}
 					Object.assign(this, { strength: 0.1, center: [0, 0], innerRadius: 0, radius: -1 }, t);
 				}
-				e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t);
+				(e && (t.__proto__ = e), (t.prototype = Object.create(e && e.prototype)), (t.prototype.constructor = t));
 				var n = {
 					center: { configurable: !0 },
 					strength: { configurable: !0 },
@@ -5046,7 +5052,7 @@ if (!PIXI.filters.EmbossFilter) {
 						return this.uniforms.uRadius;
 					}),
 					(n.radius.set = function (e) {
-						(e < 0 || e === 1 / 0) && (e = -1), (this.uniforms.uRadius = e);
+						((e < 0 || e === 1 / 0) && (e = -1), (this.uniforms.uRadius = e));
 					}),
 					Object.defineProperties(t.prototype, n),
 					t

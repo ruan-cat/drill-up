@@ -11,15 +11,8 @@
 		"checkJs": false,
 		"forceConsistentCasingInFileNames": true,
 		"traceResolution": false,
-		"types": [
-			"node"
-		],
+		"types": ["node"]
 	},
-	"include": [
-		"./src/rmmv-code-ts/**/*.ts"
-	],
-	"exclude": [
-		"node_modules",
-		"**/*.spec.ts"
-	]
+	"include": ["./src/rmmv-code-ts/**/*.ts"],
+	"exclude": ["node_modules", "**/*.spec.ts"]
 }

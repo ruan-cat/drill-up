@@ -6,5 +6,5 @@ packages:
   - utils
 
 onlyBuiltDependencies:
-  - '@swc/core'
+  - "@swc/core"
   - vue-demi

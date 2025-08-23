@@ -5124,10 +5124,10 @@ Object.defineProperties(Game_QJBulletMZ.prototype, {
 			180;
 		sendData[15] = math.floor((math.random() * (i.opacityMax - i.opacityMin) + i.opacityMin) * 100) / 100;
 		sendData[16] = math.floor((math.random() * (i.scaleXMax - i.scaleXMin) + i.scaleXMin) * 100) / 100;
-		(sendData[17] = i.synScale
+		((sendData[17] = i.synScale
 			? sendData[16]
 			: math.floor((math.random() * (i.scaleYMax - i.scaleYMin) + i.scaleYMin) * 100) / 100),
-			(sendData[18] = i.existTime);
+			(sendData[18] = i.existTime));
 		sendData[19] = i.disappearTime;
 		sendData[20] = i.disappearScale;
 		sendData[21] = i.moveType.slice();

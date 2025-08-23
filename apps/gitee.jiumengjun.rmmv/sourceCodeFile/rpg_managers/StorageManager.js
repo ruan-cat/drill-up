@@ -15,7 +15,7 @@
  * @static
  */
 function StorageManager() {
-    throw new Error('This is a static class');
+	throw new Error("This is a static class");
 }
 
 /**
@@ -27,12 +27,12 @@ function StorageManager() {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @param {String} json - The JSON data to save - 要保存的JSON数据
  */
-StorageManager.save = function(savefileId, json) {
-    if (this.isLocalMode()) {
-        this.saveToLocalFile(savefileId, json);
-    } else {
-        this.saveToWebStorage(savefileId, json);
-    }
+StorageManager.save = function (savefileId, json) {
+	if (this.isLocalMode()) {
+		this.saveToLocalFile(savefileId, json);
+	} else {
+		this.saveToWebStorage(savefileId, json);
+	}
 };
 
 /**
@@ -44,12 +44,12 @@ StorageManager.save = function(savefileId, json) {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @returns {String} The loaded JSON data - 加载的JSON数据
  */
-StorageManager.load = function(savefileId) {
-    if (this.isLocalMode()) {
-        return this.loadFromLocalFile(savefileId);
-    } else {
-        return this.loadFromWebStorage(savefileId);
-    }
+StorageManager.load = function (savefileId) {
+	if (this.isLocalMode()) {
+		return this.loadFromLocalFile(savefileId);
+	} else {
+		return this.loadFromWebStorage(savefileId);
+	}
 };
 
 /**
@@ -61,12 +61,12 @@ StorageManager.load = function(savefileId) {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @returns {Boolean} True if the save file exists - 存档文件是否存在
  */
-StorageManager.exists = function(savefileId) {
-    if (this.isLocalMode()) {
-        return this.localFileExists(savefileId);
-    } else {
-        return this.webStorageExists(savefileId);
-    }
+StorageManager.exists = function (savefileId) {
+	if (this.isLocalMode()) {
+		return this.localFileExists(savefileId);
+	} else {
+		return this.webStorageExists(savefileId);
+	}
 };
 
 /**
@@ -77,12 +77,12 @@ StorageManager.exists = function(savefileId) {
  * Remove save file
  * @param {Number} savefileId - The save file ID - 存档文件ID
  */
-StorageManager.remove = function(savefileId) {
-    if (this.isLocalMode()) {
-        this.removeLocalFile(savefileId);
-    } else {
-        this.removeWebStorage(savefileId);
-    }
+StorageManager.remove = function (savefileId) {
+	if (this.isLocalMode()) {
+		this.removeLocalFile(savefileId);
+	} else {
+		this.removeWebStorage(savefileId);
+	}
 };
 
 /**
@@ -93,25 +93,25 @@ StorageManager.remove = function(savefileId) {
  * Backup save file
  * @param {Number} savefileId - The save file ID - 存档文件ID
  */
-StorageManager.backup = function(savefileId) {
-    if (this.exists(savefileId)) {
-        if (this.isLocalMode()) {
-            var data = this.loadFromLocalFile(savefileId);
-            var compressed = LZString.compressToBase64(data);
-            var fs = require('fs');
-            var dirPath = this.localFileDirectoryPath();
-            var filePath = this.localFilePath(savefileId) + ".bak";
-            if (!fs.existsSync(dirPath)) {
-                fs.mkdirSync(dirPath);
-            }
-            fs.writeFileSync(filePath, compressed);
-        } else {
-            var data = this.loadFromWebStorage(savefileId);
-            var compressed = LZString.compressToBase64(data);
-            var key = this.webStorageKey(savefileId) + "bak";
-            localStorage.setItem(key, compressed);
-        }
-    }
+StorageManager.backup = function (savefileId) {
+	if (this.exists(savefileId)) {
+		if (this.isLocalMode()) {
+			var data = this.loadFromLocalFile(savefileId);
+			var compressed = LZString.compressToBase64(data);
+			var fs = require("fs");
+			var dirPath = this.localFileDirectoryPath();
+			var filePath = this.localFilePath(savefileId) + ".bak";
+			if (!fs.existsSync(dirPath)) {
+				fs.mkdirSync(dirPath);
+			}
+			fs.writeFileSync(filePath, compressed);
+		} else {
+			var data = this.loadFromWebStorage(savefileId);
+			var compressed = LZString.compressToBase64(data);
+			var key = this.webStorageKey(savefileId) + "bak";
+			localStorage.setItem(key, compressed);
+		}
+	}
 };
 
 /**
@@ -123,12 +123,12 @@ StorageManager.backup = function(savefileId) {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @returns {Boolean} True if backup exists - 备份是否存在
  */
-StorageManager.backupExists = function(savefileId) {
-    if (this.isLocalMode()) {
-        return this.localFileBackupExists(savefileId);
-    } else {
-        return this.webStorageBackupExists(savefileId);
-    }
+StorageManager.backupExists = function (savefileId) {
+	if (this.isLocalMode()) {
+		return this.localFileBackupExists(savefileId);
+	} else {
+		return this.webStorageBackupExists(savefileId);
+	}
 };
 
 /**
@@ -139,15 +139,15 @@ StorageManager.backupExists = function(savefileId) {
  * Clean backup
  * @param {Number} savefileId - The save file ID - 存档文件ID
  */
-StorageManager.cleanBackup = function(savefileId) {
+StorageManager.cleanBackup = function (savefileId) {
 	if (this.backupExists(savefileId)) {
 		if (this.isLocalMode()) {
-			var fs = require('fs');
-            var dirPath = this.localFileDirectoryPath();
-            var filePath = this.localFilePath(savefileId);
-            fs.unlinkSync(filePath + ".bak");
+			var fs = require("fs");
+			var dirPath = this.localFileDirectoryPath();
+			var filePath = this.localFilePath(savefileId);
+			fs.unlinkSync(filePath + ".bak");
 		} else {
-		    var key = this.webStorageKey(savefileId);
+			var key = this.webStorageKey(savefileId);
 			localStorage.removeItem(key + "bak");
 		}
 	}
@@ -161,27 +161,27 @@ StorageManager.cleanBackup = function(savefileId) {
  * Restore backup
  * @param {Number} savefileId - The save file ID - 存档文件ID
  */
-StorageManager.restoreBackup = function(savefileId) {
-    if (this.backupExists(savefileId)) {
-        if (this.isLocalMode()) {
-            var data = this.loadFromLocalBackupFile(savefileId);
-            var compressed = LZString.compressToBase64(data);
-            var fs = require('fs');
-            var dirPath = this.localFileDirectoryPath();
-            var filePath = this.localFilePath(savefileId);
-            if (!fs.existsSync(dirPath)) {
-                fs.mkdirSync(dirPath);
-            }
-            fs.writeFileSync(filePath, compressed);
-            fs.unlinkSync(filePath + ".bak");
-        } else {
-            var data = this.loadFromWebStorageBackup(savefileId);
-            var compressed = LZString.compressToBase64(data);
-            var key = this.webStorageKey(savefileId);
-            localStorage.setItem(key, compressed);
-            localStorage.removeItem(key + "bak");
-        }
-    }
+StorageManager.restoreBackup = function (savefileId) {
+	if (this.backupExists(savefileId)) {
+		if (this.isLocalMode()) {
+			var data = this.loadFromLocalBackupFile(savefileId);
+			var compressed = LZString.compressToBase64(data);
+			var fs = require("fs");
+			var dirPath = this.localFileDirectoryPath();
+			var filePath = this.localFilePath(savefileId);
+			if (!fs.existsSync(dirPath)) {
+				fs.mkdirSync(dirPath);
+			}
+			fs.writeFileSync(filePath, compressed);
+			fs.unlinkSync(filePath + ".bak");
+		} else {
+			var data = this.loadFromWebStorageBackup(savefileId);
+			var compressed = LZString.compressToBase64(data);
+			var key = this.webStorageKey(savefileId);
+			localStorage.setItem(key, compressed);
+			localStorage.removeItem(key + "bak");
+		}
+	}
 };
 
 /**
@@ -194,8 +194,8 @@ StorageManager.restoreBackup = function(savefileId) {
  * Uses NW.js on PC platform as local mode.
  * @returns {Boolean} True if in local mode - 是否为本地模式
  */
-StorageManager.isLocalMode = function() {
-    return Utils.isNwjs();
+StorageManager.isLocalMode = function () {
+	return Utils.isNwjs();
 };
 
 /**
@@ -207,15 +207,15 @@ StorageManager.isLocalMode = function() {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @param {String} json - The JSON data to save - 要保存的JSON数据
  */
-StorageManager.saveToLocalFile = function(savefileId, json) {
-    var data = LZString.compressToBase64(json);
-    var fs = require('fs');
-    var dirPath = this.localFileDirectoryPath();
-    var filePath = this.localFilePath(savefileId);
-    if (!fs.existsSync(dirPath)) {
-        fs.mkdirSync(dirPath);
-    }
-    fs.writeFileSync(filePath, data);
+StorageManager.saveToLocalFile = function (savefileId, json) {
+	var data = LZString.compressToBase64(json);
+	var fs = require("fs");
+	var dirPath = this.localFileDirectoryPath();
+	var filePath = this.localFilePath(savefileId);
+	if (!fs.existsSync(dirPath)) {
+		fs.mkdirSync(dirPath);
+	}
+	fs.writeFileSync(filePath, data);
 };
 
 /**
@@ -227,14 +227,14 @@ StorageManager.saveToLocalFile = function(savefileId, json) {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @returns {String} The loaded data - 加载的数据
  */
-StorageManager.loadFromLocalFile = function(savefileId) {
-    var data = null;
-    var fs = require('fs');
-    var filePath = this.localFilePath(savefileId);
-    if (fs.existsSync(filePath)) {
-        data = fs.readFileSync(filePath, { encoding: 'utf8' });
-    }
-    return LZString.decompressFromBase64(data);
+StorageManager.loadFromLocalFile = function (savefileId) {
+	var data = null;
+	var fs = require("fs");
+	var filePath = this.localFilePath(savefileId);
+	if (fs.existsSync(filePath)) {
+		data = fs.readFileSync(filePath, { encoding: "utf8" });
+	}
+	return LZString.decompressFromBase64(data);
 };
 
 /**
@@ -246,14 +246,14 @@ StorageManager.loadFromLocalFile = function(savefileId) {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @returns {String} The loaded backup data - 加载的备份数据
  */
-StorageManager.loadFromLocalBackupFile = function(savefileId) {
-    var data = null;
-    var fs = require('fs');
-    var filePath = this.localFilePath(savefileId) + ".bak";
-    if (fs.existsSync(filePath)) {
-        data = fs.readFileSync(filePath, { encoding: 'utf8' });
-    }
-    return LZString.decompressFromBase64(data);
+StorageManager.loadFromLocalBackupFile = function (savefileId) {
+	var data = null;
+	var fs = require("fs");
+	var filePath = this.localFilePath(savefileId) + ".bak";
+	if (fs.existsSync(filePath)) {
+		data = fs.readFileSync(filePath, { encoding: "utf8" });
+	}
+	return LZString.decompressFromBase64(data);
 };
 
 /**
@@ -265,9 +265,9 @@ StorageManager.loadFromLocalBackupFile = function(savefileId) {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @returns {Boolean} True if backup exists - 备份是否存在
  */
-StorageManager.localFileBackupExists = function(savefileId) {
-    var fs = require('fs');
-    return fs.existsSync(this.localFilePath(savefileId) + ".bak");
+StorageManager.localFileBackupExists = function (savefileId) {
+	var fs = require("fs");
+	return fs.existsSync(this.localFilePath(savefileId) + ".bak");
 };
 
 /**
@@ -279,9 +279,9 @@ StorageManager.localFileBackupExists = function(savefileId) {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @returns {Boolean} True if file exists - 文件是否存在
  */
-StorageManager.localFileExists = function(savefileId) {
-    var fs = require('fs');
-    return fs.existsSync(this.localFilePath(savefileId));
+StorageManager.localFileExists = function (savefileId) {
+	var fs = require("fs");
+	return fs.existsSync(this.localFilePath(savefileId));
 };
 
 /**
@@ -292,12 +292,12 @@ StorageManager.localFileExists = function(savefileId) {
  * Remove local file
  * @param {Number} savefileId - The save file ID - 存档文件ID
  */
-StorageManager.removeLocalFile = function(savefileId) {
-    var fs = require('fs');
-    var filePath = this.localFilePath(savefileId);
-    if (fs.existsSync(filePath)) {
-        fs.unlinkSync(filePath);
-    }
+StorageManager.removeLocalFile = function (savefileId) {
+	var fs = require("fs");
+	var filePath = this.localFilePath(savefileId);
+	if (fs.existsSync(filePath)) {
+		fs.unlinkSync(filePath);
+	}
 };
 
 /**
@@ -309,10 +309,10 @@ StorageManager.removeLocalFile = function(savefileId) {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @param {String} json - The JSON data to save - 要保存的JSON数据
  */
-StorageManager.saveToWebStorage = function(savefileId, json) {
-    var key = this.webStorageKey(savefileId);
-    var data = LZString.compressToBase64(json);
-    localStorage.setItem(key, data);
+StorageManager.saveToWebStorage = function (savefileId, json) {
+	var key = this.webStorageKey(savefileId);
+	var data = LZString.compressToBase64(json);
+	localStorage.setItem(key, data);
 };
 
 /**
@@ -324,10 +324,10 @@ StorageManager.saveToWebStorage = function(savefileId, json) {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @returns {String} The loaded data - 加载的数据
  */
-StorageManager.loadFromWebStorage = function(savefileId) {
-    var key = this.webStorageKey(savefileId);
-    var data = localStorage.getItem(key);
-    return LZString.decompressFromBase64(data);
+StorageManager.loadFromWebStorage = function (savefileId) {
+	var key = this.webStorageKey(savefileId);
+	var data = localStorage.getItem(key);
+	return LZString.decompressFromBase64(data);
 };
 
 /**
@@ -339,10 +339,10 @@ StorageManager.loadFromWebStorage = function(savefileId) {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @returns {String} The loaded backup data - 加载的备份数据
  */
-StorageManager.loadFromWebStorageBackup = function(savefileId) {
-    var key = this.webStorageKey(savefileId) + "bak";
-    var data = localStorage.getItem(key);
-    return LZString.decompressFromBase64(data);
+StorageManager.loadFromWebStorageBackup = function (savefileId) {
+	var key = this.webStorageKey(savefileId) + "bak";
+	var data = localStorage.getItem(key);
+	return LZString.decompressFromBase64(data);
 };
 
 /**
@@ -354,9 +354,9 @@ StorageManager.loadFromWebStorageBackup = function(savefileId) {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @returns {Boolean} True if backup exists - 备份是否存在
  */
-StorageManager.webStorageBackupExists = function(savefileId) {
-    var key = this.webStorageKey(savefileId) + "bak";
-    return !!localStorage.getItem(key);
+StorageManager.webStorageBackupExists = function (savefileId) {
+	var key = this.webStorageKey(savefileId) + "bak";
+	return !!localStorage.getItem(key);
 };
 
 /**
@@ -368,9 +368,9 @@ StorageManager.webStorageBackupExists = function(savefileId) {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @returns {Boolean} True if storage exists - 存储是否存在
  */
-StorageManager.webStorageExists = function(savefileId) {
-    var key = this.webStorageKey(savefileId);
-    return !!localStorage.getItem(key);
+StorageManager.webStorageExists = function (savefileId) {
+	var key = this.webStorageKey(savefileId);
+	return !!localStorage.getItem(key);
 };
 
 /**
@@ -381,9 +381,9 @@ StorageManager.webStorageExists = function(savefileId) {
  * Remove web storage
  * @param {Number} savefileId - The save file ID - 存档文件ID
  */
-StorageManager.removeWebStorage = function(savefileId) {
-    var key = this.webStorageKey(savefileId);
-    localStorage.removeItem(key);
+StorageManager.removeWebStorage = function (savefileId) {
+	var key = this.webStorageKey(savefileId);
+	localStorage.removeItem(key);
 };
 
 /**
@@ -394,10 +394,10 @@ StorageManager.removeWebStorage = function(savefileId) {
  * Get local file directory path
  * @returns {String} The directory path - 目录路径
  */
-StorageManager.localFileDirectoryPath = function() {
-    var path = require('path');
-    var base = path.dirname(process.mainModule.filename);
-    return path.join(base, 'save/');
+StorageManager.localFileDirectoryPath = function () {
+	var path = require("path");
+	var base = path.dirname(process.mainModule.filename);
+	return path.join(base, "save/");
 };
 
 /**
@@ -409,16 +409,16 @@ StorageManager.localFileDirectoryPath = function() {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @returns {String} The file path - 文件路径
  */
-StorageManager.localFilePath = function(savefileId) {
-    var name;
-    if (savefileId < 0) {
-        name = 'config.rpgsave';
-    } else if (savefileId === 0) {
-        name = 'global.rpgsave';
-    } else {
-        name = 'file%1.rpgsave'.format(savefileId);
-    }
-    return this.localFileDirectoryPath() + name;
+StorageManager.localFilePath = function (savefileId) {
+	var name;
+	if (savefileId < 0) {
+		name = "config.rpgsave";
+	} else if (savefileId === 0) {
+		name = "global.rpgsave";
+	} else {
+		name = "file%1.rpgsave".format(savefileId);
+	}
+	return this.localFileDirectoryPath() + name;
 };
 
 /**
@@ -430,12 +430,12 @@ StorageManager.localFilePath = function(savefileId) {
  * @param {Number} savefileId - The save file ID - 存档文件ID
  * @returns {String} The storage key - 存储键名
  */
-StorageManager.webStorageKey = function(savefileId) {
-    if (savefileId < 0) {
-        return 'RPG Config';
-    } else if (savefileId === 0) {
-        return 'RPG Global';
-    } else {
-        return 'RPG File%1'.format(savefileId);
-    }
+StorageManager.webStorageKey = function (savefileId) {
+	if (savefileId < 0) {
+		return "RPG Config";
+	} else if (savefileId === 0) {
+		return "RPG Global";
+	} else {
+		return "RPG File%1".format(savefileId);
+	}
 };
