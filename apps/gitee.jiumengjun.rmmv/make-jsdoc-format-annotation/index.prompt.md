@@ -20,11 +20,19 @@
 - apps\gitee.jiumengjun.rmmv\rpg_sprites.js
 - apps\gitee.jiumengjun.rmmv\rpg_windows.js
 
+这些文件都是目标文件，被处理的文件。
+
 ## 模仿其他项目的格式做代码拆分
 
 请你先做代码拆分，再开始根据拆分后的代码，做 jsdoc 的格式转换和翻译工作。
 
+目录格式要求如下：
+
 请你模仿 `apps\rmmv-api\sourceCodeFile` 目录内的代码拆分方式，将 `apps\gitee.jiumengjun.rmmv` 目录内的代码拆分到 `apps\gitee.jiumengjun.rmmv\sourceCodeFile` 目录内。
+
+在你拆分代码时，请你直接地对被处理的目标文件做删除。比如你拆分出来一个模块了，就对应的删除对应的代码。以便逐步地减少目标文件的代码长度，避免你出现单文件 token 超限的情况。
+
+这些目标文件预期会被全部拆分完，被拆分完全部模块的代码文件，应该被直接删除。
 
 ## 逐步地完成格式转换
 
