@@ -3,16 +3,14 @@
   "stateHistory": [
     {
       "from": "initial",
-      "command": "action",
-      "timestamp": "2025-08-24T08:02:49.517Z",
-      "args": [
-        "luban"
-      ]
+      "command": "welcome",
+      "timestamp": "2025-08-24T09:06:43.507Z",
+      "args": []
     },
     {
-      "from": "role_activated_with_memory",
+      "from": "service_discovery",
       "command": "init",
-      "timestamp": "2025-08-24T08:02:56.670Z",
+      "timestamp": "2025-08-24T09:06:49.801Z",
       "args": [
         {
           "workingDirectory": "D:\\code\\github-desktop-store\\gh.ruancat.drill-up.v3.62"
@@ -21,26 +19,10 @@
     },
     {
       "from": "initialized",
-      "command": "action",
-      "timestamp": "2025-08-24T08:03:02.228Z",
-      "args": [
-        "luban"
-      ]
-    },
-    {
-      "from": "role_activated_with_memory",
-      "command": "learn",
-      "timestamp": "2025-08-24T08:03:06.367Z",
-      "args": [
-        "@manual://file-manager"
-      ]
-    },
-    {
-      "from": "learn_error",
       "command": "welcome",
-      "timestamp": "2025-08-24T08:03:10.657Z",
+      "timestamp": "2025-08-24T09:06:56.338Z",
       "args": []
     }
   ],
-  "lastUpdated": "2025-08-24T08:03:10.664Z"
+  "lastUpdated": "2025-08-24T09:06:56.340Z"
 }
