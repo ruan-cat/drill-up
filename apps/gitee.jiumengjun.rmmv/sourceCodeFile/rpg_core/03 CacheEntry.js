@@ -1,13 +1,13 @@
 //-----------------------------------------------------------------------------
 /**
- * The resource class. Allows to be collected as a garbage if not use for some time or ticks.
  * 资源类。如果在一段时间或滴答数内未使用，则允许被垃圾回收。
+ * The resource class. Allows to be collected as a garbage if not use for some time or ticks.
  *
  * @class CacheEntry
  * @constructor
- * @param {Object} cache - The cache manager
- * @param {String} key - URL of the resource
- * @param {Object} item - Bitmap, HTML5Audio, WebAudio - whatever you want to store in the cache
+ * @param {Object} cache 缓存管理器 The cache manager
+ * @param {String} key 资源的URL URL of the resource
+ * @param {Object} item 要存储在缓存中的项目 Bitmap, HTML5Audio, WebAudio - whatever you want to store in the cache
  */
 function CacheEntry(cache, key, item) {
     this.cache = cache;
@@ -22,11 +22,11 @@ function CacheEntry(cache, key, item) {
 }
 
 /**
- * Frees the resource from cache.
  * 从缓存中释放资源。
+ * Frees the resource from cache.
  *
  * @method free
- * @param {Boolean} byTTL - Whether the resource is freed by TTL
+ * @param {Boolean} byTTL 是否通过TTL释放资源 Whether the resource is freed by TTL
  */
 CacheEntry.prototype.free = function (byTTL) {
     this.freedByTTL = byTTL || false;
@@ -37,11 +37,11 @@ CacheEntry.prototype.free = function (byTTL) {
 };
 
 /**
- * Allocates the resource in cache.
  * 在缓存中分配资源。
+ * Allocates the resource in cache.
  *
  * @method allocate
- * @return {CacheEntry} Returns this cache entry
+ * @return {CacheEntry} 返回此缓存条目 Returns this cache entry
  */
 CacheEntry.prototype.allocate = function () {
     if (!this.cached) {
@@ -53,13 +53,13 @@ CacheEntry.prototype.allocate = function () {
 };
 
 /**
- * Sets the time to live for the cache entry.
  * 设置缓存条目的生存时间。
+ * Sets the time to live for the cache entry.
  *
  * @method setTimeToLive
- * @param {Number} ticks - TTL in ticks, 0 if not set
- * @param {Number} seconds - TTL in seconds, 0 if not set
- * @return {CacheEntry} Returns this cache entry
+ * @param {Number} ticks 滴答时间TTL，未设置时为0 TTL in ticks, 0 if not set
+ * @param {Number} seconds 秒数TTL，未设置时为0 TTL in seconds, 0 if not set
+ * @return {CacheEntry} 返回此缓存条目 Returns this cache entry
  */
 CacheEntry.prototype.setTimeToLive = function (ticks, seconds) {
     this.ttlTicks = ticks || 0;
@@ -68,11 +68,11 @@ CacheEntry.prototype.setTimeToLive = function (ticks, seconds) {
 };
 
 /**
- * Checks whether the cache entry is still alive (not expired).
  * 检查缓存条目是否仍然有效（未过期）。
+ * Checks whether the cache entry is still alive (not expired).
  *
  * @method isStillAlive
- * @return {Boolean} True if the cache entry is still alive
+ * @return {Boolean} 如果缓存条目仍然有效则返回true True if the cache entry is still alive
  */
 CacheEntry.prototype.isStillAlive = function () {
     var cache = this.cache;
@@ -81,9 +81,9 @@ CacheEntry.prototype.isStillAlive = function () {
 };
 
 /**
+ * 确保资源不会被生存时间释放。如果资源已经被TTL释放，则重新放入缓存。
  * Makes sure that resource won't be freed by Time To Live.
  * If resource was already freed by TTL, put it in cache again.
- * 确保资源不会被生存时间释放。如果资源已经被TTL释放，则重新放入缓存。
  *
  * @method touch
  */

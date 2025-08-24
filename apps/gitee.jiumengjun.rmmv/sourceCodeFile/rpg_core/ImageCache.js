@@ -1,6 +1,6 @@
 /**
- * Cache for storing image bitmaps.
  * 存储图像位图的缓存。
+ * Cache for storing image bitmaps.
  *
  * @class ImageCache
  * @constructor
@@ -10,8 +10,8 @@ function ImageCache(){
 }
 
 /**
- * The cache size limit in bytes.
  * 缓存大小限制（字节）。
+ * The cache size limit in bytes.
  *
  * @static
  * @property limit
@@ -21,8 +21,8 @@ function ImageCache(){
 ImageCache.limit = 10 * 1000 * 1000;
 
 /**
- * Initialize the image cache.
  * 初始化图像缓存。
+ * Initialize the image cache.
  *
  * @method initialize
  */
@@ -31,12 +31,12 @@ ImageCache.prototype.initialize = function(){
 };
 
 /**
- * Adds a bitmap to the image cache.
  * 向图像缓存中添加位图。
+ * Adds a bitmap to the image cache.
  *
  * @method add
- * @param {String} key - The cache key
- * @param {Bitmap} value - The bitmap to cache
+ * @param {String} key 缓存键 The cache key
+ * @param {Bitmap} value 要缓存的位图 The bitmap to cache
  */
 ImageCache.prototype.add = function(key, value){
     this._items[key] = {

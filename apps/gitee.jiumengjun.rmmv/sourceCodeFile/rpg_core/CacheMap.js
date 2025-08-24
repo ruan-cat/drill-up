@@ -1,10 +1,10 @@
 /**
- * Cache for images, audio, or any other kind of resource.
  * 图像、音频或任何其他类型资源的缓存。
+ * Cache for images, audio, or any other kind of resource.
  *
  * @class CacheMap
  * @constructor
- * @param {Object} manager - The cache manager
+ * @param {Object} manager 缓存管理器 The cache manager
  */
 function CacheMap(manager) {
     this.manager = manager;
@@ -17,8 +17,8 @@ function CacheMap(manager) {
 }
 
 /**
- * Checks TTL of all elements and removes dead ones.
  * 检查所有元素的TTL并移除失效的条目。
+ * Checks TTL of all elements and removes dead ones.
  *
  * @method checkTTL
  */
@@ -42,12 +42,12 @@ CacheMap.prototype.checkTTL = function () {
 };
 
 /**
- * Gets a cached item by key.
  * 通过键获取缓存项。
+ * Gets a cached item by key.
  *
  * @method getItem
- * @param {String} key - URL of cache element
- * @return {Object|null} The cached item or null if not found
+ * @param {String} key 缓存元素的URL URL of cache element
+ * @return {Object|null} 缓存项，如果未找到则返回null The cached item or null if not found
  */
 CacheMap.prototype.getItem = function (key) {
     var entry = this._inner[key];
