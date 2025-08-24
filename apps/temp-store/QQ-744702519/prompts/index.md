@@ -2,6 +2,11 @@
 
 请深度思考。
 
-请你将 `apps\temp-store\QQ-744702519\change\MKR_PlayerSensor.js` 文件中涉及到的全部日语，翻译成中文。
+请你将以下文件中涉及到的全部日语，翻译成中文。
+
+- apps\temp-store\QQ-744702519\change\doc.js
+- apps\temp-store\QQ-744702519\change\code.js
 
 1. 不需要保留原来的日语注释，直接翻译成中文，替换成中文。
+2. 先翻译 doc.js，再翻译 code.js。
+3. 翻译一小部分，就写入修改多少部分。不要一次性的修改整个文件。这样速度太慢，看不到效果。
