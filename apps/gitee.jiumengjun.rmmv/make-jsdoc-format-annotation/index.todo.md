@@ -141,23 +141,23 @@
 ### 已完成的模块拆分（JSDoc格式已完整）
 1. ✅ **01 JsExtensions.js** - JavaScript原生对象扩展
    - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\01 JsExtensions.js`
-   - 状态: 拆分完成，JSDoc格式标准
+   - 状态: ✅ **已完成JSDoc优化** - 已添加完整中英文双语注释
 
 2. ✅ **02 Utils.js** - 工具函数类
    - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\02 Utils.js`
-   - 状态: 拆分完成，JSDoc格式标准
+   - 状态: ✅ **已完成JSDoc优化** - 已添加完整中英文双语注释
 
 3. ✅ **03 CacheEntry.js** - 缓存条目类
    - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\03 CacheEntry.js`
-   - 状态: 拆分完成，JSDoc格式标准
+   - 状态: ✅ **已完成JSDoc优化** - 已有完整中英文双语注释
 
 4. ✅ **CacheMap.js** - 缓存映射类
    - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\CacheMap.js`
-   - 状态: 拆分完成，JSDoc格式标准
+   - 状态: ✅ **已完成JSDoc优化** - 已有完整中英文双语注释
 
 5. ✅ **ImageCache.js** - 图像缓存类  
    - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\ImageCache.js`
-   - 状态: 拆分完成，JSDoc格式标准
+   - 状态: ✅ **已完成JSDoc优化** - 已有完整中英文双语注释
 
 ### 正在处理中
 - 🔄 **RequestQueue.js** - 请求队列类（Gemini 处理中）
