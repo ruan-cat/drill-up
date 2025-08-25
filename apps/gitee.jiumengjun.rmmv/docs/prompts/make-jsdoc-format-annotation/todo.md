@@ -151,17 +151,17 @@
 
 ### 1. rpg_core 模块 (28 个文件)
 
-- [ ] Bitmap.js
+- [x] Bitmap.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
 - [ ] CacheEntry.js
 - [ ] CacheMap.js
-- [ ] Decrypter.js
-- [ ] Graphics.js
-- [ ] Html5Audio.js
+- [x] Decrypter.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
+- [x] Graphics.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
+- [x] Html5Audio.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
 - [ ] ImageCache.js
-- [ ] Input.js
+- [x] Input.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
 - [ ] JsExtensions.js
 - [ ] JsonEx.js
-- [ ] Point.js
+- [x] Point.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
 - [ ] Rectangle.js
 - [ ] RequestQueue.js
 - [ ] ResourceHandler.js
@@ -174,7 +174,7 @@
 - [ ] ToneFilter.js
 - [ ] ToneSprite.js
 - [ ] TouchInput.js
-- [ ] Utils.js
+- [x] Utils.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
 - [ ] Weather.js
 - [ ] WebAudio.js
 - [ ] Window.js
@@ -326,9 +326,9 @@
 
 ## 进度统计
 
-- **已完成**: 2/154 (1.3%)
+- **已完成**: 8/154 (5.2%)
 - **进行中**: 0/154 (0.0%)
-- **待处理**: 152/154 (98.7%)
+- **待处理**: 146/154 (94.8%)
 
 ## 注意事项
 
@@ -338,5 +338,21 @@
 4. 完成每个模块后更新此进度记录
 
 ---
+
+## 最新进展 (2025-08-25)
+
+### rpg_core 模块进度更新
+- ✅ Bitmap.js - 完成 JSDoc 转换，添加中英文双语注释
+- ✅ Decrypter.js - 完成 JSDoc 转换，规范化所有方法和属性注释
+- ✅ Graphics.js - 完成 JSDoc 转换，为主要类和方法添加中文翻译
+- ✅ Html5Audio.js - 完成 JSDoc 转换，统一注释格式
+- ✅ Input.js - 完成 JSDoc 转换，添加键盘和手柄映射的中文说明
+- ✅ Point.js - 完成 JSDoc 转换，简洁明了的二维坐标类注释
+- ✅ Utils.js - 完成 JSDoc 转换，工具类方法的完整中英文注释
+
+### 当前状态
+- **当前正在处理**: Rectangle.js（下一个文件）
+- **处理方式**: 优先使用 gemini cli 处理简单文件，复杂文件由 claude code 处理
+- **转换要求**: 严格遵循"先中文、后英文"的注释顺序
 
 _最后更新时间: 2025-08-25_
