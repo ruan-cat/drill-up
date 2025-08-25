@@ -13,7 +13,7 @@
 为了便于你找到目录，识别术语，这里专门罗列出来：
 
 - **拆分出来的文件目录**： `apps\gitee.jiumengjun.rmmv\sourceCodeFile`
-- **进度报告文件**： `apps\gitee.jiumengjun.rmmv\prompts\make-jsdoc-format-annotation\index.todo.md`
+- **进度报告文件**： `apps\gitee.jiumengjun.rmmv\docs\prompts\make-jsdoc-format-annotation\todo.md`
 
 ## 可以被修改的文件
 
