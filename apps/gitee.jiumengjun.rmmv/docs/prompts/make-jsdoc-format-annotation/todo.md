@@ -5,354 +5,257 @@
 - **总文件数量**: 154 个 JS 文件
 - **目标**: 将所有模块的注释转换为 jsdoc 格式
 - **开始时间**: 2025-08-25
-- **当前状态**: 代码拆分阶段已完成，开始 jsdoc 格式转换
+- **当前状态**: JSDoc 格式转换进行中
 
-## 阶段完成情况
+## 三个阶段的任务进度
 
-### ✅ 阶段一：代码拆分 (已完成)
+### ✅ 阶段一：代码拆分任务
 
-- **状态**: 已完成
-- **完成时间**: 2025-08-25
-- **成果**: 成功将所有原始 JS 文件拆分为 154 个独立模块文件
-- **拆分结果**:
-  - rpg_core.js → 28 个文件
-  - rpg_managers.js → 10 个文件
-  - rpg_objects.js → 30 个文件
-  - rpg_scenes.js → 21 个文件
-  - rpg_sprites.js → 18 个文件
-  - rpg_windows.js → 46 个文件
-  - main.js → 1 个文件
+| 文件名          | 代码拆分进度 |
+| --------------- | ------------ |
+| main.js         | 100%         |
+| rpg_core.js     | 100%         |
+| rpg_managers.js | 100%         |
+| rpg_objects.js  | 100%         |
+| rpg_scenes.js   | 100%         |
+| rpg_sprites.js  | 100%         |
+| rpg_windows.js  | 100%         |
 
-### 🔄 阶段二：注释翻译与补全 (跳过)
+**总体进度**: 100% (已完成)
 
-- **状态**: 跳过，直接进入阶段三
-- **原因**: 重点关注 jsdoc 格式转换
+### 🔄 阶段二：JSDoc 格式转换
 
-### 📝 阶段三：JSDoc 格式转换 (进行中)
+| 文件名                      | JSDoc 格式转换进度 | 注释翻译与补全进度 |
+| --------------------------- | ------------------ | ------------------ |
+| main.js (1 个文件)          | 0%                 | 0%                 |
+| rpg_core.js (28 个文件)     | 25%                | 0%                 |
+| rpg_managers.js (10 个文件) | 0%                 | 0%                 |
+| rpg_objects.js (30 个文件)  | 0%                 | 0%                 |
+| rpg_scenes.js (21 个文件)   | 0%                 | 0%                 |
+| rpg_sprites.js (18 个文件)  | 0%                 | 0%                 |
+| rpg_windows.js (46 个文件)  | 2%                 | 0%                 |
 
-- **状态**: 进行中
-- **开始时间**: 2025-08-25
+**总体进度**: 6% (进行中)
 
-## JSDoc 格式规范
+### ⏸️ 阶段三：注释翻译与补全
 
-为确保注释的一致性，我们将遵循以下 JSDoc 格式规范：
+| 文件名                      | 注释翻译与补全进度 |
+| --------------------------- | ------------------ |
+| main.js (1 个文件)          | 0%                 |
+| rpg_core.js (28 个文件)     | 0%                 |
+| rpg_managers.js (10 个文件) | 0%                 |
+| rpg_objects.js (30 个文件)  | 0%                 |
+| rpg_scenes.js (21 个文件)   | 0%                 |
+| rpg_sprites.js (18 个文件)  | 0%                 |
+| rpg_windows.js (46 个文件)  | 0%                 |
 
-### 类注释格式
+**总体进度**: 0% (等待开始)
 
-```javascript
-/**
- * @class 类名
- * @classdesc 类的详细描述
- * @extends 父类（如果有）
- */
-```
+## 详细文件转换进度
 
-### 方法注释格式
+### 1. rpg_core 模块 (28 个文件) - JSDoc 格式转换: 25%
 
-```javascript
-/**
- * @method 方法名
- * @description 方法的详细描述
- * @param {类型} 参数名 - 参数描述
- * @returns {类型} 返回值描述
- */
-```
+| 文件名             | JSDoc 格式转换 | 注释翻译与补全 |
+| ------------------ | -------------- | -------------- |
+| Bitmap.js          | ✅ 100%        | ❌ 0%          |
+| CacheEntry.js      | ❌ 0%          | ❌ 0%          |
+| CacheMap.js        | ❌ 0%          | ❌ 0%          |
+| Decrypter.js       | ✅ 100%        | ❌ 0%          |
+| Graphics.js        | ✅ 100%        | ❌ 0%          |
+| Html5Audio.js      | ✅ 100%        | ❌ 0%          |
+| ImageCache.js      | ❌ 0%          | ❌ 0%          |
+| Input.js           | ✅ 100%        | ❌ 0%          |
+| JsExtensions.js    | ❌ 0%          | ❌ 0%          |
+| JsonEx.js          | ❌ 0%          | ❌ 0%          |
+| Point.js           | ✅ 100%        | ❌ 0%          |
+| Rectangle.js       | ❌ 0%          | ❌ 0%          |
+| RequestQueue.js    | ❌ 0%          | ❌ 0%          |
+| ResourceHandler.js | ❌ 0%          | ❌ 0%          |
+| ScreenSprite.js    | ❌ 0%          | ❌ 0%          |
+| ShaderTilemap.js   | ❌ 0%          | ❌ 0%          |
+| Sprite.js          | ❌ 0%          | ❌ 0%          |
+| Stage.js           | ❌ 0%          | ❌ 0%          |
+| Tilemap.js         | ❌ 0%          | ❌ 0%          |
+| TilingSprite.js    | ❌ 0%          | ❌ 0%          |
+| ToneFilter.js      | ❌ 0%          | ❌ 0%          |
+| ToneSprite.js      | ❌ 0%          | ❌ 0%          |
+| TouchInput.js      | ❌ 0%          | ❌ 0%          |
+| Utils.js           | ✅ 100%        | ❌ 0%          |
+| Weather.js         | ❌ 0%          | ❌ 0%          |
+| WebAudio.js        | ❌ 0%          | ❌ 0%          |
+| Window.js          | ❌ 0%          | ❌ 0%          |
+| WindowLayer.js     | ❌ 0%          | ❌ 0%          |
 
-### 属性注释格式
+### 2. rpg_managers 模块 (10 个文件) - JSDoc 格式转换: 0%
 
-```javascript
-/**
- * @property {类型} 属性名 - 属性描述
- */
-```
+| 文件名            | JSDoc 格式转换 | 注释翻译与补全 |
+| ----------------- | -------------- | -------------- |
+| AudioManager.js   | ❌ 0%          | ❌ 0%          |
+| BattleManager.js  | ❌ 0%          | ❌ 0%          |
+| ConfigManager.js  | ❌ 0%          | ❌ 0%          |
+| DataManager.js    | ❌ 0%          | ❌ 0%          |
+| ImageManager.js   | ❌ 0%          | ❌ 0%          |
+| PluginManager.js  | ❌ 0%          | ❌ 0%          |
+| SceneManager.js   | ❌ 0%          | ❌ 0%          |
+| SoundManager.js   | ❌ 0%          | ❌ 0%          |
+| StorageManager.js | ❌ 0%          | ❌ 0%          |
+| TextManager.js    | ❌ 0%          | ❌ 0%          |
 
-## 转换策略和工作计划
+### 3. rpg_objects 模块 (30 个文件) - JSDoc 格式转换: 0%
 
-### 转换优先级
+| 文件名                | JSDoc 格式转换 | 注释翻译与补全 |
+| --------------------- | -------------- | -------------- |
+| Game_Action.js        | ❌ 0%          | ❌ 0%          |
+| Game_ActionResult.js  | ❌ 0%          | ❌ 0%          |
+| Game_Actor.js         | ❌ 0%          | ❌ 0%          |
+| Game_Actors.js        | ❌ 0%          | ❌ 0%          |
+| Game_Battler.js       | ❌ 0%          | ❌ 0%          |
+| Game_BattlerBase.js   | ❌ 0%          | ❌ 0%          |
+| Game_Character.js     | ❌ 0%          | ❌ 0%          |
+| Game_CharacterBase.js | ❌ 0%          | ❌ 0%          |
+| Game_CommonEvent.js   | ❌ 0%          | ❌ 0%          |
+| Game_Enemy.js         | ❌ 0%          | ❌ 0%          |
+| Game_Event.js         | ❌ 0%          | ❌ 0%          |
+| Game_Follower.js      | ❌ 0%          | ❌ 0%          |
+| Game_Followers.js     | ❌ 0%          | ❌ 0%          |
+| Game_Interpreter.js   | ❌ 0%          | ❌ 0%          |
+| Game_Item.js          | ❌ 0%          | ❌ 0%          |
+| Game_Map.js           | ❌ 0%          | ❌ 0%          |
+| Game_Message.js       | ❌ 0%          | ❌ 0%          |
+| Game_Party.js         | ❌ 0%          | ❌ 0%          |
+| Game_Picture.js       | ❌ 0%          | ❌ 0%          |
+| Game_Player.js        | ❌ 0%          | ❌ 0%          |
+| Game_Screen.js        | ❌ 0%          | ❌ 0%          |
+| Game_SelfSwitches.js  | ❌ 0%          | ❌ 0%          |
+| Game_Switches.js      | ❌ 0%          | ❌ 0%          |
+| Game_System.js        | ❌ 0%          | ❌ 0%          |
+| Game_Temp.js          | ❌ 0%          | ❌ 0%          |
+| Game_Timer.js         | ❌ 0%          | ❌ 0%          |
+| Game_Troop.js         | ❌ 0%          | ❌ 0%          |
+| Game_Unit.js          | ❌ 0%          | ❌ 0%          |
+| Game_Variables.js     | ❌ 0%          | ❌ 0%          |
+| Game_Vehicle.js       | ❌ 0%          | ❌ 0%          |
 
-1. **rpg_core.js** - 基础扩展，影响面广（第一优先级）
-2. **rpg_managers.js** - 核心管理器，重要性高
-3. **rpg_objects.js** - 游戏逻辑核心
-4. **rpg_scenes.js** - 场景管理
-5. **rpg_sprites.js** - 显示系统
-6. **rpg_windows.js** - UI 系统（文件最大，分批处理）
-7. **main.js** - 入口文件
+### 4. rpg_scenes 模块 (21 个文件) - JSDoc 格式转换: 0%
 
-### 转换方法
+| 文件名            | JSDoc 格式转换 | 注释翻译与补全 |
+| ----------------- | -------------- | -------------- |
+| Scene_Base.js     | ❌ 0%          | ❌ 0%          |
+| Scene_Battle.js   | ❌ 0%          | ❌ 0%          |
+| Scene_Boot.js     | ❌ 0%          | ❌ 0%          |
+| Scene_Debug.js    | ❌ 0%          | ❌ 0%          |
+| Scene_Equip.js    | ❌ 0%          | ❌ 0%          |
+| Scene_File.js     | ❌ 0%          | ❌ 0%          |
+| Scene_GameEnd.js  | ❌ 0%          | ❌ 0%          |
+| Scene_Gameover.js | ❌ 0%          | ❌ 0%          |
+| Scene_Item.js     | ❌ 0%          | ❌ 0%          |
+| Scene_ItemBase.js | ❌ 0%          | ❌ 0%          |
+| Scene_Load.js     | ❌ 0%          | ❌ 0%          |
+| Scene_Map.js      | ❌ 0%          | ❌ 0%          |
+| Scene_Menu.js     | ❌ 0%          | ❌ 0%          |
+| Scene_MenuBase.js | ❌ 0%          | ❌ 0%          |
+| Scene_Name.js     | ❌ 0%          | ❌ 0%          |
+| Scene_Options.js  | ❌ 0%          | ❌ 0%          |
+| Scene_Save.js     | ❌ 0%          | ❌ 0%          |
+| Scene_Shop.js     | ❌ 0%          | ❌ 0%          |
+| Scene_Skill.js    | ❌ 0%          | ❌ 0%          |
+| Scene_Status.js   | ❌ 0%          | ❌ 0%          |
+| Scene_Title.js    | ❌ 0%          | ❌ 0%          |
 
-- 保留中英文双语注释以维持国际化支持
-- 将现有 `/* 中文描述 */` 格式转换为标准 JSDoc 格式
-- 为缺少注释的函数/类添加完整的 JSDoc 文档
-- 统一参数类型标注和返回值说明
+### 5. rpg_sprites 模块 (18 个文件) - JSDoc 格式转换: 0%
 
-### 分模块转换策略
+| 文件名                 | JSDoc 格式转换 | 注释翻译与补全 |
+| ---------------------- | -------------- | -------------- |
+| Sprite_Actor.js        | ❌ 0%          | ❌ 0%          |
+| Sprite_Animation.js    | ❌ 0%          | ❌ 0%          |
+| Sprite_Balloon.js      | ❌ 0%          | ❌ 0%          |
+| Sprite_Base.js         | ❌ 0%          | ❌ 0%          |
+| Sprite_Battler.js      | ❌ 0%          | ❌ 0%          |
+| Sprite_Button.js       | ❌ 0%          | ❌ 0%          |
+| Sprite_Character.js    | ❌ 0%          | ❌ 0%          |
+| Sprite_Damage.js       | ❌ 0%          | ❌ 0%          |
+| Sprite_Destination.js  | ❌ 0%          | ❌ 0%          |
+| Sprite_Enemy.js        | ❌ 0%          | ❌ 0%          |
+| Sprite_Picture.js      | ❌ 0%          | ❌ 0%          |
+| Sprite_StateIcon.js    | ❌ 0%          | ❌ 0%          |
+| Sprite_StateOverlay.js | ❌ 0%          | ❌ 0%          |
+| Sprite_Timer.js        | ❌ 0%          | ❌ 0%          |
+| Sprite_Weapon.js       | ❌ 0%          | ❌ 0%          |
+| Spriteset_Base.js      | ❌ 0%          | ❌ 0%          |
+| Spriteset_Battle.js    | ❌ 0%          | ❌ 0%          |
+| Spriteset_Map.js       | ❌ 0%          | ❌ 0%          |
 
-- 按类/模块逐步转换，每完成一个模块停下来检查
-- 优先处理类构造函数和主要公共方法
-- 对于大文件（如 rpg_windows.js），按窗口类分批处理
+### 6. rpg_windows 模块 (46 个文件) - JSDoc 格式转换: 2%
 
-## 已知问题和注意事项
+| 文件名                 | JSDoc 格式转换 | 注释翻译与补全 |
+| ---------------------- | -------------- | -------------- |
+| Window_ActorCommand.js | ❌ 0%          | ❌ 0%          |
+| Window_Base.js         | ❌ 0%          | ❌ 0%          |
+| Window_BattleActor.js  | ❌ 0%          | ❌ 0%          |
+| Window_BattleEnemy.js  | ❌ 0%          | ❌ 0%          |
+| Window_BattleItem.js   | ❌ 0%          | ❌ 0%          |
+| Window_BattleLog.js    | ❌ 0%          | ❌ 0%          |
+| Window_BattleSkill.js  | ❌ 0%          | ❌ 0%          |
+| Window_BattleStatus.js | ❌ 0%          | ❌ 0%          |
+| Window_ChoiceList.js   | ❌ 0%          | ❌ 0%          |
+| Window_Command.js      | ✅ 100%        | ❌ 0%          |
+| Window_DebugEdit.js    | ❌ 0%          | ❌ 0%          |
+| Window_DebugRange.js   | ❌ 0%          | ❌ 0%          |
+| Window_EquipCommand.js | ❌ 0%          | ❌ 0%          |
+| Window_EquipItem.js    | ❌ 0%          | ❌ 0%          |
+| Window_EquipSlot.js    | ❌ 0%          | ❌ 0%          |
+| Window_EquipStatus.js  | ❌ 0%          | ❌ 0%          |
+| Window_EventItem.js    | ❌ 0%          | ❌ 0%          |
+| Window_GameEnd.js      | ❌ 0%          | ❌ 0%          |
+| Window_Gold.js         | ❌ 0%          | ❌ 0%          |
+| Window_Help.js         | ❌ 0%          | ❌ 0%          |
+| Window_HorzCommand.js  | ❌ 0%          | ❌ 0%          |
+| Window_ItemCategory.js | ❌ 0%          | ❌ 0%          |
+| Window_ItemList.js     | ❌ 0%          | ❌ 0%          |
+| Window_MapName.js      | ❌ 0%          | ❌ 0%          |
+| Window_MenuActor.js    | ❌ 0%          | ❌ 0%          |
+| Window_MenuCommand.js  | ❌ 0%          | ❌ 0%          |
+| Window_MenuStatus.js   | ❌ 0%          | ❌ 0%          |
+| Window_Message.js      | ❌ 0%          | ❌ 0%          |
+| Window_NameEdit.js     | ❌ 0%          | ❌ 0%          |
+| Window_NameInput.js    | ❌ 0%          | ❌ 0%          |
+| Window_NumberInput.js  | ❌ 0%          | ❌ 0%          |
+| Window_Options.js      | ❌ 0%          | ❌ 0%          |
+| Window_PartyCommand.js | ❌ 0%          | ❌ 0%          |
+| Window_SavefileList.js | ❌ 0%          | ❌ 0%          |
+| Window_ScrollText.js   | ❌ 0%          | ❌ 0%          |
+| Window_Selectable.js   | ❌ 0%          | ❌ 0%          |
+| Window_ShopBuy.js      | ❌ 0%          | ❌ 0%          |
+| Window_ShopCommand.js  | ❌ 0%          | ❌ 0%          |
+| Window_ShopNumber.js   | ❌ 0%          | ❌ 0%          |
+| Window_ShopSell.js     | ❌ 0%          | ❌ 0%          |
+| Window_ShopStatus.js   | ❌ 0%          | ❌ 0%          |
+| Window_SkillList.js    | ❌ 0%          | ❌ 0%          |
+| Window_SkillStatus.js  | ❌ 0%          | ❌ 0%          |
+| Window_SkillType.js    | ❌ 0%          | ❌ 0%          |
+| Window_Status.js       | ❌ 0%          | ❌ 0%          |
+| Window_TitleCommand.js | ❌ 0%          | ❌ 0%          |
 
-- 代码中混合了中英文注释，需要整合到 JSDoc 格式中
-- 有些类和方法缺少详细的说明文档，需要补充
-- 某些文件已部分采用 JSDoc 格式，需要标准化
-- 不处理 TypeScript 类型报错和 lint 错误
+### 7. main 模块 (1 个文件) - JSDoc 格式转换: 0%
 
----
+| 文件名  | JSDoc 格式转换 | 注释翻译与补全 |
+| ------- | -------------- | -------------- |
+| Main.js | ❌ 0%          | ❌ 0%          |
 
-## 【2024-08-24 实际进度更新】
+## 整体进度统计
 
-### 当前完成状态
+### 按阶段统计
 
-- **代码拆分进度**: 进行中
-- **rpg_core.js**: 已拆分 5 个模块，剩余约 8910 行代码待拆分
-- **其他文件**: 尚未开始拆分
+- **阶段一（代码拆分）**: 100% ✅
+- **阶段二（JSDoc 格式转换）**: 6% 🔄
+- **阶段三（注释翻译与补全）**: 0% ⏸️
 
-### 已完成的模块拆分（JSDoc 格式已完整）
+### 按文件数量统计
 
-1. ✅ **01 JsExtensions.js** - JavaScript 原生对象扩展
-   - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\01 JsExtensions.js`
-   - 状态: ✅ **已完成 JSDoc 优化** - 已添加完整中英文双语注释
-
-2. ✅ **02 Utils.js** - 工具函数类
-   - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\02 Utils.js`
-   - 状态: ✅ **已完成 JSDoc 优化** - 已添加完整中英文双语注释
-
-3. ✅ **03 CacheEntry.js** - 缓存条目类
-   - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\03 CacheEntry.js`
-   - 状态: ✅ **已完成 JSDoc 优化** - 已有完整中英文双语注释
-
-4. ✅ **CacheMap.js** - 缓存映射类
-   - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\CacheMap.js`
-   - 状态: ✅ **已完成 JSDoc 优化** - 已有完整中英文双语注释
-
-5. ✅ **ImageCache.js** - 图像缓存类
-   - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\ImageCache.js`
-   - 状态: ✅ **已完成 JSDoc 优化** - 已有完整中英文双语注释
-
-### 正在处理中
-
-- 🔄 **RequestQueue.js** - 请求队列类（Gemini 处理中）
-
-### 待拆分模块（预估）
-
-- Point.js、Rectangle.js、Bitmap.js、Graphics.js、Input.js、TouchInput.js
-- Sprite.js、Tilemap.js、Window.js、Weather.js、Stage.js
-- WebAudio.js、JsonEx.js、Decrypter.js 等
-
-### 后续计划
-
-1. 完成 rpg_core.js 的所有模块拆分
-2. 开始处理 rpg_managers.js、rpg_objects.js 等其他文件
-3. 对已拆分的模块进行 JSDoc 格式检查和优化
-4. 添加缺失的中文翻译
-
-## 模块转换详细进度
-
-### 1. rpg_core 模块 (28 个文件)
-
-- [x] Bitmap.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
-- [ ] CacheEntry.js
-- [ ] CacheMap.js
-- [x] Decrypter.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
-- [x] Graphics.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
-- [x] Html5Audio.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
-- [ ] ImageCache.js
-- [x] Input.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
-- [ ] JsExtensions.js
-- [ ] JsonEx.js
-- [x] Point.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
-- [ ] Rectangle.js
-- [ ] RequestQueue.js
-- [ ] ResourceHandler.js
-- [ ] ScreenSprite.js
-- [ ] Sprite.js
-- [ ] Stage.js
-- [ ] Tilemap.js
-- [ ] ShaderTilemap.js
-- [ ] TilingSprite.js
-- [ ] ToneFilter.js
-- [ ] ToneSprite.js
-- [ ] TouchInput.js
-- [x] Utils.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
-- [ ] Weather.js
-- [ ] WebAudio.js
-- [ ] Window.js
-- [ ] WindowLayer.js
-
-### 2. rpg_managers 模块 (10 个文件)
-
-- [ ] AudioManager.js
-- [ ] BattleManager.js
-- [ ] ConfigManager.js
-- [ ] DataManager.js
-- [ ] ImageManager.js
-- [ ] PluginManager.js
-- [ ] SceneManager.js
-- [ ] SoundManager.js
-- [ ] StorageManager.js
-- [ ] TextManager.js
-
-### 3. rpg_objects 模块 (30 个文件)
-
-- [ ] Game_Action.js
-- [ ] Game_ActionResult.js
-- [ ] Game_Actor.js
-- [ ] Game_Actors.js
-- [ ] Game_Battler.js
-- [ ] Game_BattlerBase.js
-- [ ] Game_Character.js
-- [ ] Game_CharacterBase.js
-- [ ] Game_CommonEvent.js
-- [ ] Game_Enemy.js
-- [ ] Game_Event.js
-- [ ] Game_Follower.js
-- [ ] Game_Followers.js
-- [ ] Game_Interpreter.js
-- [ ] Game_Item.js
-- [ ] Game_Map.js
-- [ ] Game_Message.js
-- [ ] Game_Party.js
-- [ ] Game_Picture.js
-- [ ] Game_Player.js
-- [ ] Game_Screen.js
-- [ ] Game_SelfSwitches.js
-- [ ] Game_Switches.js
-- [ ] Game_System.js
-- [ ] Game_Temp.js
-- [ ] Game_Timer.js
-- [ ] Game_Troop.js
-- [ ] Game_Unit.js
-- [ ] Game_Variables.js
-- [ ] Game_Vehicle.js
-
-### 4. rpg_scenes 模块 (21 个文件)
-
-- [x] Scene_Base.js - 已有较好的 jsdoc 格式注释
-- [ ] Scene_Battle.js
-- [ ] Scene_Boot.js
-- [ ] Scene_Debug.js
-- [ ] Scene_Equip.js
-- [ ] Scene_File.js
-- [ ] Scene_GameEnd.js
-- [ ] Scene_Gameover.js
-- [ ] Scene_Item.js
-- [ ] Scene_ItemBase.js
-- [ ] Scene_Load.js
-- [ ] Scene_Map.js
-- [ ] Scene_Menu.js
-- [ ] Scene_MenuBase.js
-- [ ] Scene_Name.js
-- [ ] Scene_Options.js
-- [ ] Scene_Save.js
-- [ ] Scene_Shop.js
-- [ ] Scene_Skill.js
-- [ ] Scene_Status.js
-- [ ] Scene_Title.js
-
-### 5. rpg_sprites 模块 (18 个文件)
-
-- [ ] Sprite_Actor.js
-- [ ] Sprite_Animation.js
-- [ ] Sprite_Balloon.js
-- [ ] Sprite_Base.js
-- [ ] Sprite_Battler.js
-- [ ] Sprite_Button.js
-- [ ] Sprite_Character.js
-- [ ] Sprite_Damage.js
-- [ ] Sprite_Destination.js
-- [ ] Sprite_Enemy.js
-- [ ] Sprite_Picture.js
-- [ ] Sprite_StateIcon.js
-- [ ] Sprite_StateOverlay.js
-- [ ] Sprite_Timer.js
-- [ ] Sprite_Weapon.js
-- [ ] Spriteset_Base.js
-- [ ] Spriteset_Battle.js
-- [ ] Spriteset_Map.js
-
-### 6. rpg_windows 模块 (46 个文件)
-
-- [ ] Window_ActorCommand.js
-- [ ] Window_Base.js
-- [ ] Window_BattleActor.js
-- [ ] Window_BattleEnemy.js
-- [ ] Window_BattleItem.js
-- [ ] Window_BattleLog.js
-- [ ] Window_BattleSkill.js
-- [ ] Window_BattleStatus.js
-- [ ] Window_ChoiceList.js
-- [x] Window_Command.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
-- [ ] Window_DebugEdit.js
-- [ ] Window_DebugRange.js
-- [ ] Window_EquipCommand.js
-- [ ] Window_EquipItem.js
-- [ ] Window_EquipSlot.js
-- [ ] Window_EquipStatus.js
-- [ ] Window_EventItem.js
-- [ ] Window_GameEnd.js
-- [ ] Window_Gold.js
-- [ ] Window_Help.js
-- [ ] Window_HorzCommand.js
-- [ ] Window_ItemCategory.js
-- [ ] Window_ItemList.js
-- [ ] Window_MapName.js
-- [ ] Window_MenuActor.js
-- [ ] Window_MenuCommand.js
-- [ ] Window_MenuStatus.js
-- [ ] Window_Message.js
-- [ ] Window_NameEdit.js
-- [ ] Window_NameInput.js
-- [ ] Window_NumberInput.js
-- [ ] Window_Options.js
-- [ ] Window_PartyCommand.js
-- [ ] Window_SavefileList.js
-- [ ] Window_ScrollText.js
-- [ ] Window_Selectable.js
-- [ ] Window_ShopBuy.js
-- [ ] Window_ShopCommand.js
-- [ ] Window_ShopNumber.js
-- [ ] Window_ShopSell.js
-- [ ] Window_ShopStatus.js
-- [ ] Window_SkillList.js
-- [ ] Window_SkillStatus.js
-- [ ] Window_SkillType.js
-- [ ] Window_Status.js
-- [ ] Window_TitleCommand.js
-
-### 7. main 模块 (1 个文件)
-
-- [ ] Main.js
-
-## 进度统计
-
-- **已完成**: 8/154 (5.2%)
+- **已完成 JSDoc 转换**: 8/154 (5.2%)
 - **进行中**: 0/154 (0.0%)
 - **待处理**: 146/154 (94.8%)
 
-## 注意事项
-
-1. 所有注释需要转换为标准的 jsdoc 格式
-2. 保持中文注释在前，英文注释在后的顺序
-3. 确保所有类、方法、参数都有完整的 jsdoc 标记
-4. 完成每个模块后更新此进度记录
-
 ---
-
-## 最新进展 (2025-08-25)
-
-### rpg_core 模块进度更新
-- ✅ Bitmap.js - 完成 JSDoc 转换，添加中英文双语注释
-- ✅ Decrypter.js - 完成 JSDoc 转换，规范化所有方法和属性注释
-- ✅ Graphics.js - 完成 JSDoc 转换，为主要类和方法添加中文翻译
-- ✅ Html5Audio.js - 完成 JSDoc 转换，统一注释格式
-- ✅ Input.js - 完成 JSDoc 转换，添加键盘和手柄映射的中文说明
-- ✅ Point.js - 完成 JSDoc 转换，简洁明了的二维坐标类注释
-- ✅ Utils.js - 完成 JSDoc 转换，工具类方法的完整中英文注释
-
-### 当前状态
-- **当前正在处理**: Rectangle.js（下一个文件）
-- **处理方式**: 优先使用 gemini cli 处理简单文件，复杂文件由 claude code 处理
-- **转换要求**: 严格遵循"先中文、后英文"的注释顺序
 
 _最后更新时间: 2025-08-25_
