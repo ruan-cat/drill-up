@@ -55,7 +55,10 @@ gemini cli 适合 token 量巨大，简单的任务。如果你在分析拆解�
 1. 请不要让 gemini 使用 mcp 工具，单纯的读写文件、拆分代码、删除代码的任务，是不需要借助 gemini cli 配置的任何 mcp 工具的。
 2. 请不要让 gemini 自己新建任何多余的 Python 脚本来完成任务。我们当前的运行环境下，不提供任何 Python 环境。
 3. 请不要让 gemini 自己新建任何其他语言的脚本。
-4. 每次 gemini cli 时，允许 gemini 单次运行 `15分钟` ，超时后就暂停。并优化对 gemini cli 的提示词。
+4. 认真优化传递给 gemini 的提示词，避免出现 gemini 无法修改文件的情况。
+5. 精简优化 gemini 对 claude code 的反馈输出，让 gemini 的反馈报告精简扼要，避免出现 claude code 阅读 gemini 反馈时出现大量消耗 token 的情况。
+6. 尽量避免出现过量阅读 gemini 日志导致消耗了太多 claude code 的 token 的情况。我不希望大量的消耗 claude code 的 token。
+7. 每次 gemini cli 时，允许 gemini 单次运行 `15分钟` ，超时后就暂停。并优化对 gemini cli 的提示词。
 
 ## 一阶段任务：代码拆分
 
