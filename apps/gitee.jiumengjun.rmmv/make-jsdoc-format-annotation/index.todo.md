@@ -138,6 +138,186 @@
 3. 对已拆分的模块进行 JSDoc 格式检查和优化
 4. 添加缺失的中文翻译
 
-## 最后更新时间
+## 模块转换详细进度
 
-2024 年 8 月 24 日 15:45 - 完成前5个模块拆分，开始批量处理
+### 1. rpg_core 模块 (28个文件)
+- [ ] Bitmap.js
+- [ ] CacheEntry.js  
+- [ ] CacheMap.js
+- [ ] Decrypter.js
+- [ ] Graphics.js
+- [ ] Html5Audio.js
+- [ ] ImageCache.js
+- [ ] Input.js
+- [ ] JsExtensions.js
+- [ ] JsonEx.js
+- [ ] Point.js
+- [ ] Rectangle.js
+- [ ] RequestQueue.js
+- [ ] ResourceHandler.js
+- [ ] ScreenSprite.js
+- [ ] Sprite.js
+- [ ] Stage.js
+- [ ] Tilemap.js
+- [ ] ShaderTilemap.js
+- [ ] TilingSprite.js
+- [ ] ToneFilter.js
+- [ ] ToneSprite.js
+- [ ] TouchInput.js
+- [ ] Utils.js
+- [ ] Weather.js
+- [ ] WebAudio.js
+- [ ] Window.js
+- [ ] WindowLayer.js
+
+### 2. rpg_managers 模块 (10个文件)
+- [ ] AudioManager.js
+- [ ] BattleManager.js
+- [ ] ConfigManager.js
+- [ ] DataManager.js
+- [ ] ImageManager.js
+- [ ] PluginManager.js
+- [ ] SceneManager.js
+- [ ] SoundManager.js
+- [ ] StorageManager.js
+- [ ] TextManager.js
+
+### 3. rpg_objects 模块 (30个文件)
+- [ ] Game_Action.js
+- [ ] Game_ActionResult.js
+- [ ] Game_Actor.js
+- [ ] Game_Actors.js
+- [ ] Game_Battler.js
+- [ ] Game_BattlerBase.js
+- [ ] Game_Character.js
+- [ ] Game_CharacterBase.js
+- [ ] Game_CommonEvent.js
+- [ ] Game_Enemy.js
+- [ ] Game_Event.js
+- [ ] Game_Follower.js
+- [ ] Game_Followers.js
+- [ ] Game_Interpreter.js
+- [ ] Game_Item.js
+- [ ] Game_Map.js
+- [ ] Game_Message.js
+- [ ] Game_Party.js
+- [ ] Game_Picture.js
+- [ ] Game_Player.js
+- [ ] Game_Screen.js
+- [ ] Game_SelfSwitches.js
+- [ ] Game_Switches.js
+- [ ] Game_System.js
+- [ ] Game_Temp.js
+- [ ] Game_Timer.js
+- [ ] Game_Troop.js
+- [ ] Game_Unit.js
+- [ ] Game_Variables.js
+- [ ] Game_Vehicle.js
+
+### 4. rpg_scenes 模块 (21个文件)
+- [x] Scene_Base.js - 已有较好的 jsdoc 格式注释
+- [ ] Scene_Battle.js
+- [ ] Scene_Boot.js
+- [ ] Scene_Debug.js
+- [ ] Scene_Equip.js
+- [ ] Scene_File.js
+- [ ] Scene_GameEnd.js
+- [ ] Scene_Gameover.js
+- [ ] Scene_Item.js
+- [ ] Scene_ItemBase.js
+- [ ] Scene_Load.js
+- [ ] Scene_Map.js
+- [ ] Scene_Menu.js
+- [ ] Scene_MenuBase.js
+- [ ] Scene_Name.js
+- [ ] Scene_Options.js
+- [ ] Scene_Save.js
+- [ ] Scene_Shop.js
+- [ ] Scene_Skill.js
+- [ ] Scene_Status.js
+- [ ] Scene_Title.js
+
+### 5. rpg_sprites 模块 (18个文件)
+- [ ] Sprite_Actor.js
+- [ ] Sprite_Animation.js
+- [ ] Sprite_Balloon.js
+- [ ] Sprite_Base.js
+- [ ] Sprite_Battler.js
+- [ ] Sprite_Button.js
+- [ ] Sprite_Character.js
+- [ ] Sprite_Damage.js
+- [ ] Sprite_Destination.js
+- [ ] Sprite_Enemy.js
+- [ ] Sprite_Picture.js
+- [ ] Sprite_StateIcon.js
+- [ ] Sprite_StateOverlay.js
+- [ ] Sprite_Timer.js
+- [ ] Sprite_Weapon.js
+- [ ] Spriteset_Base.js
+- [ ] Spriteset_Battle.js
+- [ ] Spriteset_Map.js
+
+### 6. rpg_windows 模块 (46个文件)
+- [ ] Window_ActorCommand.js
+- [ ] Window_Base.js
+- [ ] Window_BattleActor.js
+- [ ] Window_BattleEnemy.js
+- [ ] Window_BattleItem.js
+- [ ] Window_BattleLog.js
+- [ ] Window_BattleSkill.js
+- [ ] Window_BattleStatus.js
+- [ ] Window_ChoiceList.js
+- [ ] Window_Command.js
+- [ ] Window_DebugEdit.js
+- [ ] Window_DebugRange.js
+- [ ] Window_EquipCommand.js
+- [ ] Window_EquipItem.js
+- [ ] Window_EquipSlot.js
+- [ ] Window_EquipStatus.js
+- [ ] Window_EventItem.js
+- [ ] Window_GameEnd.js
+- [ ] Window_Gold.js
+- [ ] Window_Help.js
+- [ ] Window_HorzCommand.js
+- [ ] Window_ItemCategory.js
+- [ ] Window_ItemList.js
+- [ ] Window_MapName.js
+- [ ] Window_MenuActor.js
+- [ ] Window_MenuCommand.js
+- [ ] Window_MenuStatus.js
+- [ ] Window_Message.js
+- [ ] Window_NameEdit.js
+- [ ] Window_NameInput.js
+- [ ] Window_NumberInput.js
+- [ ] Window_Options.js
+- [ ] Window_PartyCommand.js
+- [ ] Window_SavefileList.js
+- [ ] Window_ScrollText.js
+- [ ] Window_Selectable.js
+- [ ] Window_ShopBuy.js
+- [ ] Window_ShopCommand.js
+- [ ] Window_ShopNumber.js
+- [ ] Window_ShopSell.js
+- [ ] Window_ShopStatus.js
+- [ ] Window_SkillList.js
+- [ ] Window_SkillStatus.js
+- [ ] Window_SkillType.js
+- [ ] Window_Status.js
+- [ ] Window_TitleCommand.js
+
+### 7. main 模块 (1个文件)
+- [ ] Main.js
+
+## 进度统计
+- **已完成**: 1/154 (0.6%)
+- **进行中**: 0/154 (0.0%)
+- **待处理**: 153/154 (99.4%)
+
+## 注意事项
+1. 所有注释需要转换为标准的 jsdoc 格式
+2. 保持中文注释在前，英文注释在后的顺序
+3. 确保所有类、方法、参数都有完整的 jsdoc 标记
+4. 完成每个模块后更新此进度记录
+
+---
+*最后更新时间: 2025-08-25*
