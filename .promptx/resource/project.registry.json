@@ -1,17 +1,17 @@
 {
-	"version": "2.0.0",
-	"source": "project",
-	"metadata": {
-		"version": "2.0.0",
-		"description": "project 级资源注册表",
-		"createdAt": "2025-08-24T09:06:49.817Z",
-		"updatedAt": "2025-08-24T09:06:49.817Z",
-		"resourceCount": 0
-	},
-	"resources": [],
-	"stats": {
-		"totalResources": 0,
-		"byProtocol": {},
-		"bySource": {}
-	}
+  "version": "2.0.0",
+  "source": "project",
+  "metadata": {
+    "version": "2.0.0",
+    "description": "project 级资源注册表",
+    "createdAt": "2025-08-25T11:45:55.433Z",
+    "updatedAt": "2025-08-25T11:45:55.434Z",
+    "resourceCount": 0
+  },
+  "resources": [],
+  "stats": {
+    "totalResources": 0,
+    "byProtocol": {},
+    "bySource": {}
+  }
 }
