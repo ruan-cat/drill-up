@@ -8,6 +8,13 @@
 
 其最终目的是为了使用 `jsdoc-to-markdown` 完成文件扫描与识别。
 
+## 目录与术语说明
+
+为了便于你找到目录，识别术语，这里专门罗列出来：
+
+- **拆分出来的文件目录**： `apps\gitee.jiumengjun.rmmv\sourceCodeFile`
+- **进度报告文件**： `apps\gitee.jiumengjun.rmmv\prompts\make-jsdoc-format-annotation\index.todo.md`
+
 ## 可以被修改的文件
 
 你只可以阅读并修改以下我提供的文件地址来读取：
@@ -64,8 +71,8 @@ gemini cli 适合 token 量巨大，简单的任务。如果你在分析拆解�
 
 模仿其他项目的格式做代码拆分。请你先做代码拆分，再开始根据拆分后的代码，做 jsdoc 的格式转换和翻译工作。
 
-1. 检查是否存在需要被拆分的文件？`apps\gitee.jiumengjun.rmmv\sourceCodeFile` 目录内是否有已经被拆分好的文件？`apps\gitee.jiumengjun.rmmv\make-jsdoc-format-annotation\index.todo.md` 进度报告文件是否已经说明了该阶段已经完成？如果已完成该阶段的代码拆分，那就跳过此部分。否则就继续。
-2. 请你模仿 `apps\rmmv-api\sourceCodeFile` 目录内的代码拆分方式，将 `apps\gitee.jiumengjun.rmmv` 目录内的代码拆分到 `apps\gitee.jiumengjun.rmmv\sourceCodeFile` 目录内。
+1. 检查是否存在需要被拆分的文件？检查 `拆分出来的文件目录`，是否有已经被拆分好的文件？`进度报告文件`是否已经说明了该阶段已经完成？如果已完成该阶段的代码拆分，那就跳过此部分。否则就继续。
+2. 请你模仿 `apps\rmmv-api\sourceCodeFile` 目录内的代码拆分方式，将 `apps\gitee.jiumengjun.rmmv` 目录内的代码拆分到 `拆分出来的文件目录` 内。
 3. 在你拆分代码时，请你直接地对被处理的目标文件做删除。比如你拆分出来一个模块了，就对应的删除对应的代码。以便逐步地减少目标文件的代码长度，避免你出现单文件 token 超限的情况。
 4. 这些目标文件预期会被全部拆分完，被拆分完全部模块的代码文件，应该被直接删除。
 5. 被拆分的文件名称。不应该包含任何数字前缀。比如 `02 Utils.js` 文件命名就是不合适的。应该命名为 `Utils.js` 。
@@ -76,14 +83,14 @@ gemini cli 适合 token 量巨大，简单的任务。如果你在分析拆解�
 
 请先完成文件拆分任务后，再开始 jsdoc 的格式转换。
 
-1. 首先请扫描 `apps\gitee.jiumengjun.rmmv\sourceCodeFile` 目录内全部的 .js 格式代码，这些代码是上一个阶段完成的代码拆分任务的成果。
+1. 首先请扫描 `拆分出来的文件目录` 内全部的 .js 格式代码，这些代码是上一个阶段完成的代码拆分任务的成果。
 2. 提出 jsdoc 格式转换计划，并执行你的计划。
 3. 归纳已经有的模块。
-4. 将全部的模块注释转换进度，写入到 `apps\gitee.jiumengjun.rmmv\make-jsdoc-format-annotation\index.todo.md` 文件内。这个文件将作为你的进度记录文件，当你每完成一个模块的注释格式转换后，就在此进度文档内记录进度。
+4. 将全部的模块注释转换进度，写入到 `进度报告文件` 内。这个文件将作为你的进度记录文件，当你每完成一个模块的注释格式转换后，就在此进度文档内记录进度。
 
 ## 三阶段任务：注释翻译与补全
 
-在该阶段，你只可以去读写 `apps\gitee.jiumengjun.rmmv\sourceCodeFile` 内已经拆分好的文件，更改这些文件的注释。
+在该阶段，你只可以去读写 `拆分出来的文件目录` 内已经拆分好的文件，更改这些文件的注释。
 
 1. 如果你看到一段注释，有英文，但是没有中文注释时，请补全注释。
 2. 在格式转换的时候，适当的对没有中文的注释，增加中文注释。实现英文翻译成中文注释。
