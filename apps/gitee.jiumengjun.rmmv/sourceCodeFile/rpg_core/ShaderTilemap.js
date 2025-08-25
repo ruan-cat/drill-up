@@ -3,9 +3,10 @@
 //=============================================================================
 
 /**
- * The tilemap which displays 2D tile-based game map using shaders
+ * 使用着色器显示2D基于瓦片游戏地图的瓦片地图。
+ * The tilemap which displays 2D tile-based game map using shaders.
  *
- * @class Tilemap
+ * @class ShaderTilemap
  * @constructor
  */
 function ShaderTilemap() {
@@ -16,6 +17,7 @@ function ShaderTilemap() {
 ShaderTilemap.prototype = Object.create(Tilemap.prototype);
 ShaderTilemap.prototype.constructor = ShaderTilemap;
 
+// 一些平台需要这个常量（Samsung S4, S5, Tab4, HTC One H8）
 // we need this constant for some platforms (Samsung S4, S5, Tab4, HTC One H8)
 PIXI.glCore.VertexArrayObject.FORCE_NATIVE = true;
 PIXI.settings.GC_MODE = PIXI.GC_MODES.AUTO;
@@ -23,9 +25,12 @@ PIXI.tilemap.TileRenderer.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 PIXI.tilemap.TileRenderer.DO_CLEAR = true;
 
 /**
- * Uploads animation state in renderer
+ * 在渲染器中上传动画状态。
+ * Uploads animation state in renderer.
  *
  * @method _hackRenderer
+ * @param {Object} renderer 渲染器 The renderer
+ * @return {Object} 修改后的渲染器 The modified renderer
  * @private
  */
 ShaderTilemap.prototype._hackRenderer = function (renderer) {
@@ -37,10 +42,11 @@ ShaderTilemap.prototype._hackRenderer = function (renderer) {
 };
 
 /**
- * PIXI render method
+ * PIXI Canvas渲染方法。
+ * PIXI render method.
  *
  * @method renderCanvas
- * @param {Object} pixi renderer
+ * @param {Object} renderer PIXI渲染器 PIXI renderer
  */
 ShaderTilemap.prototype.renderCanvas = function (renderer) {
 	this._hackRenderer(renderer);
@@ -48,10 +54,11 @@ ShaderTilemap.prototype.renderCanvas = function (renderer) {
 };
 
 /**
- * PIXI render method
+ * PIXI WebGL渲染方法。
+ * PIXI render method.
  *
  * @method renderWebGL
- * @param {Object} pixi renderer
+ * @param {Object} renderer PIXI渲染器 PIXI renderer
  */
 ShaderTilemap.prototype.renderWebGL = function (renderer) {
 	this._hackRenderer(renderer);
@@ -59,7 +66,8 @@ ShaderTilemap.prototype.renderWebGL = function (renderer) {
 };
 
 /**
- * Forces to repaint the entire tilemap AND update bitmaps list if needed
+ * 强制重绘整个瓦片地图并在需要时更新位图列表。
+ * Forces to repaint the entire tilemap AND update bitmaps list if needed.
  *
  * @method refresh
  */
@@ -72,9 +80,10 @@ ShaderTilemap.prototype.refresh = function () {
 };
 
 /**
- * Call after you update tileset
+ * 更新瓦片集后调用。
+ * Call after you update tileset.
  *
- * @method updateBitmaps
+ * @method refreshTileset
  */
 ShaderTilemap.prototype.refreshTileset = function () {
 	var bitmaps = this.bitmaps.map(function (x) {
@@ -85,6 +94,9 @@ ShaderTilemap.prototype.refreshTileset = function () {
 };
 
 /**
+ * 更新变换。
+ * Updates the transform.
+ *
  * @method updateTransform
  * @private
  */
@@ -110,6 +122,9 @@ ShaderTilemap.prototype.updateTransform = function () {
 };
 
 /**
+ * 创建图层。
+ * Creates the layers.
+ *
  * @method _createLayers
  * @private
  */
@@ -124,7 +139,8 @@ ShaderTilemap.prototype._createLayers = function () {
 	this._needsRepaint = true;
 
 	if (!this.lowerZLayer) {
-		//@hackerham: create layers only in initialization. Doesn't depend on width/height
+		// @hackerham: 仅在初始化时创建图层。不依赖于宽/高
+		// @hackerham: create layers only in initialization. Doesn't depend on width/height
 		this.addChild((this.lowerZLayer = new PIXI.tilemap.ZLayer(this, 0)));
 		this.addChild((this.upperZLayer = new PIXI.tilemap.ZLayer(this, 4)));
 
@@ -138,9 +154,12 @@ ShaderTilemap.prototype._createLayers = function () {
 };
 
 /**
+ * 更新图层位置。
+ * Updates layer positions.
+ *
  * @method _updateLayerPositions
- * @param {Number} startX
- * @param {Number} startY
+ * @param {Number} startX 起始 X 坐标 Starting X coordinate
+ * @param {Number} startY 起始 Y 坐标 Starting Y coordinate
  * @private
  */
 ShaderTilemap.prototype._updateLayerPositions = function (startX, startY) {
@@ -158,9 +177,12 @@ ShaderTilemap.prototype._updateLayerPositions = function (startX, startY) {
 };
 
 /**
+ * 绘制所有瓦片。
+ * Paints all tiles.
+ *
  * @method _paintAllTiles
- * @param {Number} startX
- * @param {Number} startY
+ * @param {Number} startX 起始 X 坐标 Starting X coordinate
+ * @param {Number} startY 起始 Y 坐标 Starting Y coordinate
  * @private
  */
 ShaderTilemap.prototype._paintAllTiles = function (startX, startY) {
@@ -176,11 +198,14 @@ ShaderTilemap.prototype._paintAllTiles = function (startX, startY) {
 };
 
 /**
+ * 绘制瓦片。
+ * Paints tiles.
+ *
  * @method _paintTiles
- * @param {Number} startX
- * @param {Number} startY
- * @param {Number} x
- * @param {Number} y
+ * @param {Number} startX 起始 X 坐标 Starting X coordinate
+ * @param {Number} startY 起始 Y 坐标 Starting Y coordinate
+ * @param {Number} x X 坐标 X coordinate
+ * @param {Number} y Y 坐标 Y coordinate
  * @private
  */
 ShaderTilemap.prototype._paintTiles = function (startX, startY, x, y) {
@@ -233,11 +258,14 @@ ShaderTilemap.prototype._paintTiles = function (startX, startY, x, y) {
 };
 
 /**
+ * 绘制瓦片。
+ * Draws a tile.
+ *
  * @method _drawTile
- * @param {Array} layers
- * @param {Number} tileId
- * @param {Number} dx
- * @param {Number} dy
+ * @param {Object} layer 图层 The layer
+ * @param {Number} tileId 瓦片ID Tile ID
+ * @param {Number} dx X偏移量 Delta X
+ * @param {Number} dy Y偏移量 Delta Y
  * @private
  */
 ShaderTilemap.prototype._drawTile = function (layer, tileId, dx, dy) {
@@ -251,11 +279,14 @@ ShaderTilemap.prototype._drawTile = function (layer, tileId, dx, dy) {
 };
 
 /**
+ * 绘制普通瓦片。
+ * Draws a normal tile.
+ *
  * @method _drawNormalTile
- * @param {Array} layers
- * @param {Number} tileId
- * @param {Number} dx
- * @param {Number} dy
+ * @param {Object} layer 图层 The layer
+ * @param {Number} tileId 瓦片ID Tile ID
+ * @param {Number} dx X偏移量 Delta X
+ * @param {Number} dy Y偏移量 Delta Y
  * @private
  */
 ShaderTilemap.prototype._drawNormalTile = function (layer, tileId, dx, dy) {
@@ -276,11 +307,14 @@ ShaderTilemap.prototype._drawNormalTile = function (layer, tileId, dx, dy) {
 };
 
 /**
+ * 绘制自动瓦片。
+ * Draws an autotile.
+ *
  * @method _drawAutotile
- * @param {Array} layers
- * @param {Number} tileId
- * @param {Number} dx
- * @param {Number} dy
+ * @param {Object} layer 图层 The layer
+ * @param {Number} tileId 瓦片ID Tile ID
+ * @param {Number} dx X偏移量 Delta X
+ * @param {Number} dy Y偏移量 Delta Y
  * @private
  */
 ShaderTilemap.prototype._drawAutotile = function (layer, tileId, dx, dy) {
@@ -354,7 +388,7 @@ ShaderTilemap.prototype._drawAutotile = function (layer, tileId, dx, dy) {
 			var qsx2 = qsx;
 			var qsy2 = 3;
 			if (qsy === 1) {
-				//qsx2 = [0, 3, 2, 1][qsx];
+				// qsx2 = [0, 3, 2, 1][qsx];
 				qsx2 = (4 - qsx) % 4;
 			}
 			var sx2 = (bx * 2 + qsx2) * w1;
@@ -368,11 +402,14 @@ ShaderTilemap.prototype._drawAutotile = function (layer, tileId, dx, dy) {
 };
 
 /**
+ * 绘制桌子边缘。
+ * Draws table edge.
+ *
  * @method _drawTableEdge
- * @param {Array} layers
- * @param {Number} tileId
- * @param {Number} dx
- * @param {Number} dy
+ * @param {Object} layer 图层 The layer
+ * @param {Number} tileId 瓦片ID Tile ID
+ * @param {Number} dx X偏移量 Delta X
+ * @param {Number} dy Y偏移量 Delta Y
  * @private
  */
 ShaderTilemap.prototype._drawTableEdge = function (layer, tileId, dx, dy) {
@@ -401,10 +438,14 @@ ShaderTilemap.prototype._drawTableEdge = function (layer, tileId, dx, dy) {
 };
 
 /**
+ * 绘制阴影。
+ * Draws shadows.
+ *
  * @method _drawShadow
- * @param {Number} shadowBits
- * @param {Number} dx
- * @param {Number} dy
+ * @param {Object} layer 图层 The layer
+ * @param {Number} shadowBits 阴影位 Shadow bits
+ * @param {Number} dx X偏移量 Delta X
+ * @param {Number} dy Y偏移量 Delta Y
  * @private
  */
 ShaderTilemap.prototype._drawShadow = function (layer, shadowBits, dx, dy) {
