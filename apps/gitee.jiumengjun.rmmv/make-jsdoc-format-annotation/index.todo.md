@@ -1,31 +1,35 @@
 # JSDoc 格式转换进度记录
 
 ## 项目概述
-- **总文件数量**: 154个 JS 文件
-- **目标**: 将所有模块的注释转换为 jsdoc 格式  
+
+- **总文件数量**: 154 个 JS 文件
+- **目标**: 将所有模块的注释转换为 jsdoc 格式
 - **开始时间**: 2025-08-25
 - **当前状态**: 代码拆分阶段已完成，开始 jsdoc 格式转换
 
 ## 阶段完成情况
 
 ### ✅ 阶段一：代码拆分 (已完成)
+
 - **状态**: 已完成
 - **完成时间**: 2025-08-25
 - **成果**: 成功将所有原始 JS 文件拆分为 154 个独立模块文件
 - **拆分结果**:
-  - rpg_core.js → 28个文件
-  - rpg_managers.js → 10个文件  
-  - rpg_objects.js → 30个文件
-  - rpg_scenes.js → 21个文件
-  - rpg_sprites.js → 18个文件
-  - rpg_windows.js → 46个文件
-  - main.js → 1个文件
+  - rpg_core.js → 28 个文件
+  - rpg_managers.js → 10 个文件
+  - rpg_objects.js → 30 个文件
+  - rpg_scenes.js → 21 个文件
+  - rpg_sprites.js → 18 个文件
+  - rpg_windows.js → 46 个文件
+  - main.js → 1 个文件
 
 ### 🔄 阶段二：注释翻译与补全 (跳过)
+
 - **状态**: 跳过，直接进入阶段三
 - **原因**: 重点关注 jsdoc 格式转换
 
 ### 📝 阶段三：JSDoc 格式转换 (进行中)
+
 - **状态**: 进行中
 - **开始时间**: 2025-08-25
 
@@ -99,40 +103,45 @@
 ## 【2024-08-24 实际进度更新】
 
 ### 当前完成状态
+
 - **代码拆分进度**: 进行中
 - **rpg_core.js**: 已拆分 5 个模块，剩余约 8910 行代码待拆分
 - **其他文件**: 尚未开始拆分
 
-### 已完成的模块拆分（JSDoc格式已完整）
-1. ✅ **01 JsExtensions.js** - JavaScript原生对象扩展
+### 已完成的模块拆分（JSDoc 格式已完整）
+
+1. ✅ **01 JsExtensions.js** - JavaScript 原生对象扩展
    - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\01 JsExtensions.js`
-   - 状态: ✅ **已完成JSDoc优化** - 已添加完整中英文双语注释
+   - 状态: ✅ **已完成 JSDoc 优化** - 已添加完整中英文双语注释
 
 2. ✅ **02 Utils.js** - 工具函数类
    - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\02 Utils.js`
-   - 状态: ✅ **已完成JSDoc优化** - 已添加完整中英文双语注释
+   - 状态: ✅ **已完成 JSDoc 优化** - 已添加完整中英文双语注释
 
 3. ✅ **03 CacheEntry.js** - 缓存条目类
    - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\03 CacheEntry.js`
-   - 状态: ✅ **已完成JSDoc优化** - 已有完整中英文双语注释
+   - 状态: ✅ **已完成 JSDoc 优化** - 已有完整中英文双语注释
 
 4. ✅ **CacheMap.js** - 缓存映射类
    - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\CacheMap.js`
-   - 状态: ✅ **已完成JSDoc优化** - 已有完整中英文双语注释
+   - 状态: ✅ **已完成 JSDoc 优化** - 已有完整中英文双语注释
 
-5. ✅ **ImageCache.js** - 图像缓存类  
+5. ✅ **ImageCache.js** - 图像缓存类
    - 位置: `apps\gitee.jiumengjun.rmmv\sourceCodeFile\rpg_core\ImageCache.js`
-   - 状态: ✅ **已完成JSDoc优化** - 已有完整中英文双语注释
+   - 状态: ✅ **已完成 JSDoc 优化** - 已有完整中英文双语注释
 
 ### 正在处理中
+
 - 🔄 **RequestQueue.js** - 请求队列类（Gemini 处理中）
 
 ### 待拆分模块（预估）
+
 - Point.js、Rectangle.js、Bitmap.js、Graphics.js、Input.js、TouchInput.js
 - Sprite.js、Tilemap.js、Window.js、Weather.js、Stage.js
 - WebAudio.js、JsonEx.js、Decrypter.js 等
 
 ### 后续计划
+
 1. 完成 rpg_core.js 的所有模块拆分
 2. 开始处理 rpg_managers.js、rpg_objects.js 等其他文件
 3. 对已拆分的模块进行 JSDoc 格式检查和优化
@@ -140,9 +149,10 @@
 
 ## 模块转换详细进度
 
-### 1. rpg_core 模块 (28个文件)
+### 1. rpg_core 模块 (28 个文件)
+
 - [ ] Bitmap.js
-- [ ] CacheEntry.js  
+- [ ] CacheEntry.js
 - [ ] CacheMap.js
 - [ ] Decrypter.js
 - [ ] Graphics.js
@@ -170,7 +180,8 @@
 - [ ] Window.js
 - [ ] WindowLayer.js
 
-### 2. rpg_managers 模块 (10个文件)
+### 2. rpg_managers 模块 (10 个文件)
+
 - [ ] AudioManager.js
 - [ ] BattleManager.js
 - [ ] ConfigManager.js
@@ -182,7 +193,8 @@
 - [ ] StorageManager.js
 - [ ] TextManager.js
 
-### 3. rpg_objects 模块 (30个文件)
+### 3. rpg_objects 模块 (30 个文件)
+
 - [ ] Game_Action.js
 - [ ] Game_ActionResult.js
 - [ ] Game_Actor.js
@@ -214,7 +226,8 @@
 - [ ] Game_Variables.js
 - [ ] Game_Vehicle.js
 
-### 4. rpg_scenes 模块 (21个文件)
+### 4. rpg_scenes 模块 (21 个文件)
+
 - [x] Scene_Base.js - 已有较好的 jsdoc 格式注释
 - [ ] Scene_Battle.js
 - [ ] Scene_Boot.js
@@ -237,7 +250,8 @@
 - [ ] Scene_Status.js
 - [ ] Scene_Title.js
 
-### 5. rpg_sprites 模块 (18个文件)
+### 5. rpg_sprites 模块 (18 个文件)
+
 - [ ] Sprite_Actor.js
 - [ ] Sprite_Animation.js
 - [ ] Sprite_Balloon.js
@@ -257,7 +271,8 @@
 - [ ] Spriteset_Battle.js
 - [ ] Spriteset_Map.js
 
-### 6. rpg_windows 模块 (46个文件)
+### 6. rpg_windows 模块 (46 个文件)
+
 - [ ] Window_ActorCommand.js
 - [ ] Window_Base.js
 - [ ] Window_BattleActor.js
@@ -267,7 +282,7 @@
 - [ ] Window_BattleSkill.js
 - [ ] Window_BattleStatus.js
 - [ ] Window_ChoiceList.js
-- [ ] Window_Command.js
+- [x] Window_Command.js - ✅ **已完成 JSDoc 格式转换** (2025-08-25)
 - [ ] Window_DebugEdit.js
 - [ ] Window_DebugRange.js
 - [ ] Window_EquipCommand.js
@@ -305,19 +320,23 @@
 - [ ] Window_Status.js
 - [ ] Window_TitleCommand.js
 
-### 7. main 模块 (1个文件)
+### 7. main 模块 (1 个文件)
+
 - [ ] Main.js
 
 ## 进度统计
-- **已完成**: 1/154 (0.6%)
+
+- **已完成**: 2/154 (1.3%)
 - **进行中**: 0/154 (0.0%)
-- **待处理**: 153/154 (99.4%)
+- **待处理**: 152/154 (98.7%)
 
 ## 注意事项
+
 1. 所有注释需要转换为标准的 jsdoc 格式
 2. 保持中文注释在前，英文注释在后的顺序
 3. 确保所有类、方法、参数都有完整的 jsdoc 标记
 4. 完成每个模块后更新此进度记录
 
 ---
-*最后更新时间: 2025-08-25*
+
+_最后更新时间: 2025-08-25_
