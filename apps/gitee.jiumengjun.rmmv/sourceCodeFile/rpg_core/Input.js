@@ -82,6 +82,7 @@ Input.keyMapper = {
 };
 
 /**
+ * 将手柄按钮转换为映射键名的哈希表
  * A hash table to convert from a gamepad button to a mapped key name.
  *
  * @static
