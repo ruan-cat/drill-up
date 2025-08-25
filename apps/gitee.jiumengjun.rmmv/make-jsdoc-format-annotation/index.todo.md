@@ -1,68 +1,33 @@
-# 生成 jsdoc 格式的注释 ，进度记录文档
+# JSDoc 格式转换进度记录
 
 ## 项目概述
+- **总文件数量**: 154个 JS 文件
+- **目标**: 将所有模块的注释转换为 jsdoc 格式  
+- **开始时间**: 2025-08-25
+- **当前状态**: 代码拆分阶段已完成，开始 jsdoc 格式转换
 
-本项目旨在为 RPG Maker MV 的核心脚本文件添加规范的 JSDoc 格式注释，使代码更易于理解和维护。JSDoc 格式的注释将帮助开发者更好地了解各个类和方法的功能、参数和返回值。
+## 阶段完成情况
 
-## 文件迁移进度
+### ✅ 阶段一：代码拆分 (已完成)
+- **状态**: 已完成
+- **完成时间**: 2025-08-25
+- **成果**: 成功将所有原始 JS 文件拆分为 154 个独立模块文件
+- **拆分结果**:
+  - rpg_core.js → 28个文件
+  - rpg_managers.js → 10个文件  
+  - rpg_objects.js → 30个文件
+  - rpg_scenes.js → 21个文件
+  - rpg_sprites.js → 18个文件
+  - rpg_windows.js → 46个文件
+  - main.js → 1个文件
 
-### 核心文件列表
+### 🔄 阶段二：注释翻译与补全 (跳过)
+- **状态**: 跳过，直接进入阶段三
+- **原因**: 重点关注 jsdoc 格式转换
 
-- [x] **项目分析阶段** - 已完成扫描和结构归纳
-  - 完成时间：2025-08-22
-  - 状态：已完成
-  - 完成度：100%
-
-#### 待转换文件详细信息
-
-- [x] **rpg_core.js** - JavaScript 扩展和基础功能 ✅ **已完成**
-  - 主要模块：JsExtensions, Utils 工具类, 缓存系统, 基础图形类, Bitmap 类, 解密系统, 资源处理器
-  - 当前状态：✅ **已完成** - 所有模块的 JSDoc 格式转换已完成
-  - 工作内容：
-    - ✅ **JavaScript 扩展模块**：Utils.generateRuntimeId 等核心方法的 JSDoc 注释
-    - ✅ **缓存系统模块**：CacheEntry, CacheMap, ImageCache, RequestQueue 类完整转换
-    - ✅ **基础图形类模块**：Point 和 Rectangle 类的完整注释
-    - ✅ **Bitmap 类模块**：\_createCanvas, \_createBaseTexture, \_clearImgInstance 等私有方法，initialize, touch 等公共方法的完整转换
-    - ✅ **解密系统模块**：Decrypter 类的 checkImgIgnore, decryptImg 等方法转换
-    - ✅ **资源处理器模块**：ResourceHandler 类的 createLoader, exists, retry 等方法转换
-  - 转换时间：2025-08-22
-  - 完成度：100% - **全文件转换完成，添加了中英文双语注释**
-
-- [ ] **rpg_managers.js** - 数据和游戏管理器
-  - 主要模块：DataManager, ConfigManager, ImageManager, AudioManager, TextManager, SceneManager, BattleManager, PluginManager
-  - 当前状态：主要使用 `/* 中文描述 */` 格式，需全面转换
-  - 预计工作量：重度转换
-  - 完成度：0%
-
-- [ ] **rpg_objects.js** - 游戏对象类
-  - 主要模块：Game_Temp, Game_System, Game_Timer, Game_Message, Game_Switches, Game_Variables, Game_SelfSwitches, Game_Screen, Game_Picture, Game_Item, Game_Action, Game_ActionResult, Game_BattlerBase, Game_Battler, Game_Actor, Game_Enemy, Game_Actors, Game_Unit, Game_Party, Game_Troop, Game_Map, Game_CommonEvent, Game_CharacterBase, Game_Character, Game_Player, Game_Follower, Game_Followers, Game_Vehicle, Game_Event, Game_Interpreter
-  - 当前状态：主要使用 `/* 中文描述 */` 格式，需全面转换
-  - 预计工作量：重度转换
-  - 完成度：0%
-
-- [ ] **rpg_scenes.js** - 游戏场景管理
-  - 主要模块：Scene_Base, Scene_Boot, Scene_Title, Scene_Map, Scene_MenuBase, Scene_Menu, Scene_ItemBase, Scene_Item, Scene_Skill, Scene_Equip, Scene_Status, Scene_Options, Scene_File, Scene_Save, Scene_Load, Scene_GameEnd, Scene_Shop, Scene_Name, Scene_Debug, Scene_Battle, Scene_Gameover
-  - 当前状态：部分已有 JSDoc 格式，需要补充和标准化
-  - 预计工作量：中度转换
-  - 完成度：0%
-
-- [ ] **rpg_sprites.js** - 精灵显示对象
-  - 主要模块：Sprite_Base, Sprite_Button, Sprite_Character, Sprite_Battler, Sprite_Actor, Sprite_Enemy, Sprite_Animation, Sprite_Damage, Sprite_StateIcon, Sprite_StateOverlay, Sprite_Weapon, Sprite_Balloon, Sprite_Picture, Sprite_Timer, Sprite_Destination, Spriteset_Base, Spriteset_Map, Spriteset_Battle
-  - 当前状态：主要使用 `/* 中文描述 */` 格式，需全面转换
-  - 预计工作量：重度转换
-  - 完成度：0%
-
-- [ ] **rpg_windows.js** - UI 窗口系统
-  - 主要模块：40+个窗口类（Window_Base, Window_Selectable, Window_Command, Window_Help, Window_Gold, Window_MenuCommand, Window_MenuStatus 等）
-  - 当前状态：主要使用 `/* 中文描述 */` 格式，需全面转换
-  - 预计工作量：重度转换（最大的文件）
-  - 完成度：0%
-
-- [ ] **main.js** - 应用入口点
-  - 主要内容：PluginManager.setup 调用和窗口加载事件
-  - 当前状态：几乎无注释
-  - 预计工作量：轻度转换
-  - 完成度：0%
+### 📝 阶段三：JSDoc 格式转换 (进行中)
+- **状态**: 进行中
+- **开始时间**: 2025-08-25
 
 ## JSDoc 格式规范
 
