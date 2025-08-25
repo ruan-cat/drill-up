@@ -58,8 +58,8 @@
 | 文件名             | JSDoc 格式转换 | 注释翻译与补全 |
 | ------------------ | -------------- | -------------- |
 | Bitmap.js          | ✅ 100%        | ❌ 0%          |
-| CacheEntry.js      | ❌ 0%          | ❌ 0%          |
-| CacheMap.js        | ❌ 0%          | ❌ 0%          |
+| CacheEntry.js      | ✅ 100%        | ❌ 0%          |
+| CacheMap.js        | ✅ 100%        | ❌ 0%          |
 | Decrypter.js       | ✅ 100%        | ❌ 0%          |
 | Graphics.js        | ✅ 100%        | ❌ 0%          |
 | Html5Audio.js      | ✅ 100%        | ❌ 0%          |

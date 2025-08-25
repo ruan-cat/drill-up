@@ -4,7 +4,7 @@
  *
  * @class CacheMap
  * @constructor
- * @param {Object} manager 缓存管理器 The cache manager
+ * @param {Object} manager 缓存管理器 - The cache manager
  */
 function CacheMap(manager) {
 	this.manager = manager;
@@ -46,8 +46,8 @@ CacheMap.prototype.checkTTL = function () {
  * Gets a cached item by key.
  *
  * @method getItem
- * @param {String} key 缓存元素的URL URL of cache element
- * @return {Object|null} 缓存项，如果未找到则返回null The cached item or null if not found
+ * @param {String} key 缓存元素的URL - URL of cache element
+ * @return {Object|null} 缓存项，如果未找到则返回null - The cached item or null if not found
  */
 CacheMap.prototype.getItem = function (key) {
 	var entry = this._inner[key];
@@ -57,6 +57,12 @@ CacheMap.prototype.getItem = function (key) {
 	return null;
 };
 
+/**
+ * 清除所有缓存条目
+ * Clears all cache entries.
+ *
+ * @method clear
+ */
 CacheMap.prototype.clear = function () {
 	var keys = Object.keys(this._inner);
 	for (var i = 0; i < keys.length; i++) {
@@ -64,10 +70,27 @@ CacheMap.prototype.clear = function () {
 	}
 };
 
+/**
+ * 设置缓存项
+ * Sets a cache item.
+ *
+ * @method setItem
+ * @param {String} key 缓存键 - Cache key
+ * @param {Object} item 要缓存的项目 - Item to cache
+ * @return {CacheEntry} 缓存条目 - Cache entry
+ */
 CacheMap.prototype.setItem = function (key, item) {
 	return new CacheEntry(this, key, item).allocate();
 };
 
+/**
+ * 更新缓存映射
+ * Updates the cache map.
+ *
+ * @method update
+ * @param {Number} ticks 滴答数 - Number of ticks
+ * @param {Number} delta 时间增量 - Time delta
+ */
 CacheMap.prototype.update = function (ticks, delta) {
 	this.updateTicks += ticks;
 	this.updateSeconds += delta;

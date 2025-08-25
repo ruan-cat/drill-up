@@ -41,7 +41,7 @@ CacheEntry.prototype.free = function (byTTL) {
  * Allocates the resource in cache.
  *
  * @method allocate
- * @return {CacheEntry} 返回此缓存条目 Returns this cache entry
+ * @return {CacheEntry} 返回此缓存条目 - Returns this cache entry
  */
 CacheEntry.prototype.allocate = function () {
 	if (!this.cached) {
@@ -57,9 +57,9 @@ CacheEntry.prototype.allocate = function () {
  * Sets the time to live for the cache entry.
  *
  * @method setTimeToLive
- * @param {Number} ticks 滴答时间TTL，未设置时为0 TTL in ticks, 0 if not set
- * @param {Number} seconds 秒数TTL，未设置时为0 TTL in seconds, 0 if not set
- * @return {CacheEntry} 返回此缓存条目 Returns this cache entry
+ * @param {Number} ticks 滴答时间TTL，未设置时为0 - TTL in ticks, 0 if not set
+ * @param {Number} seconds 秒数TTL，未设置时为0 - TTL in seconds, 0 if not set
+ * @return {CacheEntry} 返回此缓存条目 - Returns this cache entry
  */
 CacheEntry.prototype.setTimeToLive = function (ticks, seconds) {
 	this.ttlTicks = ticks || 0;
@@ -72,7 +72,7 @@ CacheEntry.prototype.setTimeToLive = function (ticks, seconds) {
  * Checks whether the cache entry is still alive (not expired).
  *
  * @method isStillAlive
- * @return {Boolean} 如果缓存条目仍然有效则返回true True if the cache entry is still alive
+ * @return {Boolean} 如果缓存条目仍然有效则返回true - True if the cache entry is still alive
  */
 CacheEntry.prototype.isStillAlive = function () {
 	var cache = this.cache;
