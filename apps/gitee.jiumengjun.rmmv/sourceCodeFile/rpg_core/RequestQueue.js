@@ -1,6 +1,6 @@
 /**
- * The request queue class for managing asynchronous requests.
  * 用于管理异步请求的请求队列类。
+ * The request queue class for managing asynchronous requests.
  *
  * @class RequestQueue
  * @constructor
@@ -10,8 +10,8 @@ function RequestQueue() {
 }
 
 /**
- * Initialize the request queue.
  * 初始化请求队列。
+ * Initialize the request queue.
  *
  * @method initialize
  */
@@ -20,12 +20,12 @@ RequestQueue.prototype.initialize = function () {
 };
 
 /**
- * Enqueues a request.
  * 将请求加入队列。
+ * Enqueues a request.
  *
  * @method enqueue
- * @param {String} key - The request key
- * @param {Object} value - The request value
+ * @param {String} key 请求键 The request key
+ * @param {Object} value 请求值 The request value
  */
 RequestQueue.prototype.enqueue = function (key, value) {
 	this._queue.push({
@@ -35,8 +35,8 @@ RequestQueue.prototype.enqueue = function (key, value) {
 };
 
 /**
- * Updates the request queue, processing requests sequentially.
  * 更新请求队列，顺序处理请求。
+ * Updates the request queue, processing requests sequentially.
  *
  * @method update
  */
@@ -55,11 +55,11 @@ RequestQueue.prototype.update = function () {
 };
 
 /**
- * Raises the priority of a request by moving it to the front of the queue.
  * 通过将请求移动到队列前端来提高其优先级。
+ * Raises the priority of a request by moving it to the front of the queue.
  *
  * @method raisePriority
- * @param {String} key - The request key to prioritize
+ * @param {String} key 要提高优先级的请求键 The request key to prioritize
  */
 RequestQueue.prototype.raisePriority = function (key) {
 	for (var n = 0; n < this._queue.length; n++) {
@@ -73,8 +73,8 @@ RequestQueue.prototype.raisePriority = function (key) {
 };
 
 /**
- * Clears all requests from the queue.
  * 清除队列中的所有请求。
+ * Clears all requests from the queue.
  *
  * @method clear
  */

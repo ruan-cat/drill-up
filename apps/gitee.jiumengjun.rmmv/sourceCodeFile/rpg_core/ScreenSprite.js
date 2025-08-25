@@ -3,6 +3,7 @@
 //=============================================================================
 
 /**
+ * 覆盖整个游戏屏幕的精灵。
  * The sprite which covers the entire game screen.
  *
  * @class ScreenSprite
@@ -15,6 +16,12 @@ function ScreenSprite() {
 ScreenSprite.prototype = Object.create(PIXI.Container.prototype);
 ScreenSprite.prototype.constructor = ScreenSprite;
 
+/**
+ * 初始化屏幕精灵。
+ * Initializes the screen sprite.
+ *
+ * @method initialize
+ */
 ScreenSprite.prototype.initialize = function () {
 	PIXI.Container.call(this);
 
@@ -30,6 +37,7 @@ ScreenSprite.prototype.initialize = function () {
 };
 
 /**
+ * 精灵的不透明度（0到255）。
  * The opacity of the sprite (0 to 255).
  *
  * @property opacity
@@ -45,7 +53,25 @@ Object.defineProperty(ScreenSprite.prototype, "opacity", {
 	configurable: true,
 });
 
+/**
+ * YEP警告标志。
+ * YEP warning flag.
+ *
+ * @static
+ * @property YEPWarned
+ * @type Boolean
+ * @private
+ */
 ScreenSprite.YEPWarned = false;
+
+/**
+ * 显示YEP弃用警告。
+ * Shows YEP deprecation warning.
+ *
+ * @static
+ * @method warnYep
+ * @private
+ */
 ScreenSprite.warnYep = function () {
 	if (!ScreenSprite.YEPWarned) {
 		console.log(
@@ -55,6 +81,13 @@ ScreenSprite.warnYep = function () {
 	}
 };
 
+/**
+ * 精灵的锚点（对YEP引擎兼容）。
+ * The anchor of the sprite (for YEP engine compatibility).
+ *
+ * @property anchor
+ * @type Object
+ */
 Object.defineProperty(ScreenSprite.prototype, "anchor", {
 	get: function () {
 		ScreenSprite.warnYep();
@@ -68,6 +101,13 @@ Object.defineProperty(ScreenSprite.prototype, "anchor", {
 	configurable: true,
 });
 
+/**
+ * 精灵的混合模式。
+ * The blend mode of the sprite.
+ *
+ * @property blendMode
+ * @type Number
+ */
 Object.defineProperty(ScreenSprite.prototype, "blendMode", {
 	get: function () {
 		return this._graphics.blendMode;
@@ -79,6 +119,7 @@ Object.defineProperty(ScreenSprite.prototype, "blendMode", {
 });
 
 /**
+ * 将屏幕精灵的颜色设置为黑色。
  * Sets black to the color of the screen sprite.
  *
  * @method setBlack
@@ -88,6 +129,7 @@ ScreenSprite.prototype.setBlack = function () {
 };
 
 /**
+ * 将屏幕精灵的颜色设置为白色。
  * Sets white to the color of the screen sprite.
  *
  * @method setWhite
@@ -97,12 +139,13 @@ ScreenSprite.prototype.setWhite = function () {
 };
 
 /**
+ * 通过数值设置屏幕精灵的颜色。
  * Sets the color of the screen sprite by values.
  *
  * @method setColor
- * @param {Number} r The red value in the range (0, 255)
- * @param {Number} g The green value in the range (0, 255)
- * @param {Number} b The blue value in the range (0, 255)
+ * @param {Number} r 红色值（范围0-255） The red value in the range (0, 255)
+ * @param {Number} g 绿色值（范围0-255） The green value in the range (0, 255)
+ * @param {Number} b 蓝色值（范围0-255） The blue value in the range (0, 255)
  */
 ScreenSprite.prototype.setColor = function (r, g, b) {
 	if (this._red !== r || this._green !== g || this._blue !== b) {
@@ -118,7 +161,8 @@ ScreenSprite.prototype.setColor = function (r, g, b) {
 		graphics.clear();
 		var intColor = (r << 16) | (g << 8) | b;
 		graphics.beginFill(intColor, 1);
-		//whole screen with zoom. BWAHAHAHAHA
+		// 带缩放的全屏幕
+		// whole screen with zoom. BWAHAHAHAHA
 		graphics.drawRect(-Graphics.width * 5, -Graphics.height * 5, Graphics.width * 10, Graphics.height * 10);
 	}
 };
