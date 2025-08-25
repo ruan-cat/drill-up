@@ -5,9 +5,9 @@
  *
  * @class CacheEntry
  * @constructor
- * @param {Object} cache 缓存管理器 The cache manager
- * @param {String} key 资源的URL URL of the resource
- * @param {Object} item 要存储在缓存中的项目 Bitmap, HTML5Audio, WebAudio - whatever you want to store in the cache
+ * @param {Object} cache 缓存管理器 - The cache manager
+ * @param {String} key 资源的URL - URL of the resource
+ * @param {Object} item 要存储在缓存中的项目 - Bitmap, HTML5Audio, WebAudio - whatever you want to store in the cache
  */
 function CacheEntry(cache, key, item) {
 	this.cache = cache;
@@ -26,7 +26,7 @@ function CacheEntry(cache, key, item) {
  * Frees the resource from cache.
  *
  * @method free
- * @param {Boolean} byTTL 是否通过TTL释放资源 Whether the resource is freed by TTL
+ * @param {Boolean} byTTL 是否通过TTL释放资源 - Whether the resource is freed by TTL
  */
 CacheEntry.prototype.free = function (byTTL) {
 	this.freedByTTL = byTTL || false;

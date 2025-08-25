@@ -68,7 +68,7 @@
 | JsExtensions.js    | ❌ 0%          | ❌ 0%          |
 | JsonEx.js          | ❌ 0%          | ❌ 0%          |
 | Point.js           | ✅ 100%        | ❌ 0%          |
-| Rectangle.js       | ❌ 0%          | ❌ 0%          |
+| Rectangle.js       | ✅ 100%        | ❌ 0%          |
 | RequestQueue.js    | ❌ 0%          | ❌ 0%          |
 | ResourceHandler.js | ❌ 0%          | ❌ 0%          |
 | ScreenSprite.js    | ❌ 0%          | ❌ 0%          |
