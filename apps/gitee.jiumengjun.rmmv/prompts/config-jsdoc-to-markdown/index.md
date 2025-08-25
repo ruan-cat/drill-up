@@ -54,3 +54,4 @@
 在 `目标项目` 的 package.json 内，增加合适的运行命令，完成文档生成和文档构建。
 
 1. 先运行基于 jsdoc-to-markdown 的文档生成脚本。用 `tsx` 来运行 typescript 文件。
+2. 然后再运行 vitepress 的 build 命令，实现文档构建。
