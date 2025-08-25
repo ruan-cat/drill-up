@@ -3,9 +3,11 @@
 //=============================================================================
 
 /**
+ * 执行图形处理的静态类
  * The static class that carries out graphics processing.
  *
  * @class Graphics
+ * @classdesc 负责游戏图形渲染、显示和相关处理的静态类
  */
 function Graphics() {
 	throw new Error("This is a static class");
@@ -16,13 +18,14 @@ Graphics._fontLoaded = null;
 Graphics._videoVolume = 1;
 
 /**
+ * 初始化图形系统
  * Initializes the graphics system.
  *
  * @static
  * @method initialize
- * @param {Number} width The width of the game screen
- * @param {Number} height The height of the game screen
- * @param {String} type The type of the renderer.
+ * @param {Number} width - 游戏屏幕宽度 The width of the game screen
+ * @param {Number} height - 游戏屏幕高度 The height of the game screen
+ * @param {String} type - 渲染器类型 The type of the renderer.
  *                 'canvas', 'webgl', or 'auto'.
  */
 Graphics.initialize = function (width, height, type) {
@@ -84,6 +87,7 @@ Graphics.canUseCssFontLoading = function () {
 };
 
 /**
+ * 游戏屏幕的总帧数
  * The total frame count of the game screen.
  *
  * @static
@@ -157,11 +161,12 @@ Graphics.tickEnd = function () {
 };
 
 /**
+ * 将舞台渲染到游戏屏幕
  * Renders the stage to the game screen.
  *
  * @static
  * @method render
- * @param {Stage} stage The stage object to be rendered
+ * @param {Stage} stage - 要渲染的舞台对象 The stage object to be rendered
  */
 Graphics.render = function (stage) {
 	if (this._skipCount === 0) {
@@ -531,6 +536,7 @@ Graphics.callGC = function () {
 };
 
 /**
+ * 游戏屏幕的宽度
  * The width of the game screen.
  *
  * @static
@@ -551,6 +557,7 @@ Object.defineProperty(Graphics, "width", {
 });
 
 /**
+ * 游戏屏幕的高度
  * The height of the game screen.
  *
  * @static
