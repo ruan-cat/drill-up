@@ -3,15 +3,18 @@
 //=============================================================================
 
 /**
+ * 处理键盘和手柄输入数据的静态类
  * The static class that handles input data from the keyboard and gamepads.
  *
  * @class Input
+ * @classdesc 负责处理键盘和手柄输入数据的静态类
  */
 function Input() {
 	throw new Error("This is a static class");
 }
 
 /**
+ * 初始化输入系统
  * Initializes the input system.
  *
  * @static
@@ -24,6 +27,7 @@ Input.initialize = function () {
 };
 
 /**
+ * 按键重复的等待时间（帧数）
  * The wait time of the key repeat in frames.
  *
  * @static
@@ -33,6 +37,7 @@ Input.initialize = function () {
 Input.keyRepeatWait = 24;
 
 /**
+ * 按键重复的间隔时间（帧数）
  * The interval of the key repeat in frames.
  *
  * @static
@@ -42,6 +47,7 @@ Input.keyRepeatWait = 24;
 Input.keyRepeatInterval = 6;
 
 /**
+ * 将虚拟键码转换为映射键名的哈希表
  * A hash table to convert from a virtual key code to a mapped key name.
  *
  * @static
