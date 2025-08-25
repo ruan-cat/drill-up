@@ -1,28 +1,28 @@
 {
-  "currentState": "service_discovery",
-  "stateHistory": [
-    {
-      "from": "initial",
-      "command": "welcome",
-      "timestamp": "2025-08-24T09:06:43.507Z",
-      "args": []
-    },
-    {
-      "from": "service_discovery",
-      "command": "init",
-      "timestamp": "2025-08-24T09:06:49.801Z",
-      "args": [
-        {
-          "workingDirectory": "D:\\code\\github-desktop-store\\gh.ruancat.drill-up.v3.62"
-        }
-      ]
-    },
-    {
-      "from": "initialized",
-      "command": "welcome",
-      "timestamp": "2025-08-24T09:06:56.338Z",
-      "args": []
-    }
-  ],
-  "lastUpdated": "2025-08-24T09:06:56.340Z"
+	"currentState": "service_discovery",
+	"stateHistory": [
+		{
+			"from": "initial",
+			"command": "welcome",
+			"timestamp": "2025-08-24T09:06:43.507Z",
+			"args": []
+		},
+		{
+			"from": "service_discovery",
+			"command": "init",
+			"timestamp": "2025-08-24T09:06:49.801Z",
+			"args": [
+				{
+					"workingDirectory": "D:\\code\\github-desktop-store\\gh.ruancat.drill-up.v3.62"
+				}
+			]
+		},
+		{
+			"from": "initialized",
+			"command": "welcome",
+			"timestamp": "2025-08-24T09:06:56.338Z",
+			"args": []
+		}
+	],
+	"lastUpdated": "2025-08-24T09:06:56.340Z"
 }

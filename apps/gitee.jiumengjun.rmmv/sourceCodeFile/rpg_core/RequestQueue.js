@@ -5,8 +5,8 @@
  * @class RequestQueue
  * @constructor
  */
-function RequestQueue(){
-    this.initialize.apply(this, arguments);
+function RequestQueue() {
+	this.initialize.apply(this, arguments);
 }
 
 /**
@@ -15,8 +15,8 @@ function RequestQueue(){
  *
  * @method initialize
  */
-RequestQueue.prototype.initialize = function(){
-    this._queue = [];
+RequestQueue.prototype.initialize = function () {
+	this._queue = [];
 };
 
 /**
@@ -27,11 +27,11 @@ RequestQueue.prototype.initialize = function(){
  * @param {String} key - The request key
  * @param {Object} value - The request value
  */
-RequestQueue.prototype.enqueue = function(key, value){
-    this._queue.push({
-        key: key,
-        value: value,
-    });
+RequestQueue.prototype.enqueue = function (key, value) {
+	this._queue.push({
+		key: key,
+		value: value,
+	});
 };
 
 /**
@@ -40,18 +40,18 @@ RequestQueue.prototype.enqueue = function(key, value){
  *
  * @method update
  */
-RequestQueue.prototype.update = function(){
-    if(this._queue.length === 0) return;
+RequestQueue.prototype.update = function () {
+	if (this._queue.length === 0) return;
 
-    var top = this._queue[0];
-    if(top.value.isRequestReady()){
-        this._queue.shift();
-        if(this._queue.length !== 0){
-            this._queue[0].value.startRequest();
-        }
-    }else{
-        top.value.startRequest();
-    }
+	var top = this._queue[0];
+	if (top.value.isRequestReady()) {
+		this._queue.shift();
+		if (this._queue.length !== 0) {
+			this._queue[0].value.startRequest();
+		}
+	} else {
+		top.value.startRequest();
+	}
 };
 
 /**
@@ -61,15 +61,15 @@ RequestQueue.prototype.update = function(){
  * @method raisePriority
  * @param {String} key - The request key to prioritize
  */
-RequestQueue.prototype.raisePriority = function(key){
-    for(var n = 0; n < this._queue.length; n++){
-        var item = this._queue[n];
-        if(item.key === key){
-            this._queue.splice(n, 1);
-            this._queue.unshift(item);
-            break;
-        }
-    }
+RequestQueue.prototype.raisePriority = function (key) {
+	for (var n = 0; n < this._queue.length; n++) {
+		var item = this._queue[n];
+		if (item.key === key) {
+			this._queue.splice(n, 1);
+			this._queue.unshift(item);
+			break;
+		}
+	}
 };
 
 /**
@@ -78,6 +78,6 @@ RequestQueue.prototype.raisePriority = function(key){
  *
  * @method clear
  */
-RequestQueue.prototype.clear = function(){
-    this._queue.splice(0);
+RequestQueue.prototype.clear = function () {
+	this._queue.splice(0);
 };

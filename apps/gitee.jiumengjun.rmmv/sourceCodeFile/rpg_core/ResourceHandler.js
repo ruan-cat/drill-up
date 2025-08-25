@@ -8,7 +8,7 @@
  * @class ResourceHandler
  */
 function ResourceHandler() {
-    throw new Error('This is a static class');
+	throw new Error("This is a static class");
 }
 
 ResourceHandler._reloaders = [];
@@ -26,30 +26,30 @@ ResourceHandler._defaultRetryInterval = [500, 1000, 3000];
  * @param {Array} retryInterval - Array of retry intervals in milliseconds
  * @return {Function} The loader function
  */
-ResourceHandler.createLoader = function(url, retryMethod, resignMethod, retryInterval) {
-    retryInterval = retryInterval || this._defaultRetryInterval;
-    var reloaders = this._reloaders;
-    var retryCount = 0;
-    return function() {
-        if (retryCount < retryInterval.length) {
-            setTimeout(retryMethod, retryInterval[retryCount]);
-            retryCount++;
-        } else {
-            if (resignMethod) {
-                resignMethod();
-            }
-            if (url) {
-                if (reloaders.length === 0) {
-                    Graphics.printLoadingError(url);
-                    SceneManager.stop();
-                }
-                reloaders.push(function() {
-                    retryCount = 0;
-                    retryMethod();
-                });
-            }
-        }
-    };
+ResourceHandler.createLoader = function (url, retryMethod, resignMethod, retryInterval) {
+	retryInterval = retryInterval || this._defaultRetryInterval;
+	var reloaders = this._reloaders;
+	var retryCount = 0;
+	return function () {
+		if (retryCount < retryInterval.length) {
+			setTimeout(retryMethod, retryInterval[retryCount]);
+			retryCount++;
+		} else {
+			if (resignMethod) {
+				resignMethod();
+			}
+			if (url) {
+				if (reloaders.length === 0) {
+					Graphics.printLoadingError(url);
+					SceneManager.stop();
+				}
+				reloaders.push(function () {
+					retryCount = 0;
+					retryMethod();
+				});
+			}
+		}
+	};
 };
 
 /**
@@ -60,8 +60,8 @@ ResourceHandler.createLoader = function(url, retryMethod, resignMethod, retryInt
  * @method exists
  * @return {Boolean} True if reloaders exist
  */
-ResourceHandler.exists = function() {
-    return this._reloaders.length > 0;
+ResourceHandler.exists = function () {
+	return this._reloaders.length > 0;
 };
 
 /**
@@ -71,13 +71,13 @@ ResourceHandler.exists = function() {
  * @static
  * @method retry
  */
-ResourceHandler.retry = function() {
-    if (this._reloaders.length > 0) {
-        Graphics.eraseLoadingError();
-        SceneManager.resume();
-        this._reloaders.forEach(function(reloader) {
-            reloader();
-        });
-        this._reloaders.length = 0;
-    }
+ResourceHandler.retry = function () {
+	if (this._reloaders.length > 0) {
+		Graphics.eraseLoadingError();
+		SceneManager.resume();
+		this._reloaders.forEach(function (reloader) {
+			reloader();
+		});
+		this._reloaders.length = 0;
+	}
 };

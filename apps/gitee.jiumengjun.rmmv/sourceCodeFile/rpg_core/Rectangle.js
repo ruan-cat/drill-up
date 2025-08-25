@@ -13,7 +13,7 @@
  * @param {Number} height The height of the rectangle
  */
 function Rectangle() {
-    this.initialize.apply(this, arguments);
+	this.initialize.apply(this, arguments);
 }
 
 Rectangle.prototype = Object.create(PIXI.Rectangle.prototype);
@@ -29,8 +29,8 @@ Rectangle.prototype.constructor = Rectangle;
  * @param {Number} width - The width of the rectangle
  * @param {Number} height - The height of the rectangle
  */
-Rectangle.prototype.initialize = function(x, y, width, height) {
-    PIXI.Rectangle.call(this, x, y, width, height);
+Rectangle.prototype.initialize = function (x, y, width, height) {
+	PIXI.Rectangle.call(this, x, y, width, height);
 };
 
 /**
@@ -68,7 +68,5 @@ Rectangle.emptyRectangle = new Rectangle(0, 0, 0, 0);
  * @property height
  * @type Number
  */
-
-
 
 //-----------------------------------------------------------------------------

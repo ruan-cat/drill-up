@@ -18,15 +18,15 @@
  * Game actors manager class that manages all actor instances
  */
 function Game_Actors() {
-    this.initialize.apply(this, arguments);
+	this.initialize.apply(this, arguments);
 }
 
 /**
  * 初始化角色管理器
  * Initialize actor manager
  */
-Game_Actors.prototype.initialize = function() {
-    this._data = [];
+Game_Actors.prototype.initialize = function () {
+	this._data = [];
 };
 
 /**
@@ -36,12 +36,12 @@ Game_Actors.prototype.initialize = function() {
  * @param {number} actorId - 角色ID / Actor ID
  * @returns {Game_Actor|null} 角色对象或null / Actor object or null
  */
-Game_Actors.prototype.actor = function(actorId) {
-    if ($dataActors[actorId]) {
-        if (!this._data[actorId]) {
-            this._data[actorId] = new Game_Actor(actorId);
-        }
-        return this._data[actorId];
-    }
-    return null;
+Game_Actors.prototype.actor = function (actorId) {
+	if ($dataActors[actorId]) {
+		if (!this._data[actorId]) {
+			this._data[actorId] = new Game_Actor(actorId);
+		}
+		return this._data[actorId];
+	}
+	return null;
 };

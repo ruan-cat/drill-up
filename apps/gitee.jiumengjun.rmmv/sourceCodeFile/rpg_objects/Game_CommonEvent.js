@@ -7,7 +7,7 @@
  * 游戏公共事件类
  * Game_CommonEvent
  *
- * 公共事件的游戏对象类。它包含运行并行处理事件的功能。 
+ * 公共事件的游戏对象类。它包含运行并行处理事件的功能。
  * The game object class for a common event. It contains functionality for
  * running parallel process events.
  */
@@ -19,7 +19,7 @@
  * Game common event class that manages the execution and state of common events
  */
 function Game_CommonEvent() {
-    this.initialize.apply(this, arguments);
+	this.initialize.apply(this, arguments);
 }
 
 /**
@@ -28,9 +28,9 @@ function Game_CommonEvent() {
  *
  * @param {number} commonEventId - 公共事件ID / Common event ID
  */
-Game_CommonEvent.prototype.initialize = function(commonEventId) {
-    this._commonEventId = commonEventId;
-    this.refresh();
+Game_CommonEvent.prototype.initialize = function (commonEventId) {
+	this._commonEventId = commonEventId;
+	this.refresh();
 };
 
 /**
@@ -39,8 +39,8 @@ Game_CommonEvent.prototype.initialize = function(commonEventId) {
  *
  * @returns {object} 事件数据 / Event data
  */
-Game_CommonEvent.prototype.event = function() {
-    return $dataCommonEvents[this._commonEventId];
+Game_CommonEvent.prototype.event = function () {
+	return $dataCommonEvents[this._commonEventId];
 };
 
 /**
@@ -49,22 +49,22 @@ Game_CommonEvent.prototype.event = function() {
  *
  * @returns {Array} 指令列表 / Command list
  */
-Game_CommonEvent.prototype.list = function() {
-    return this.event().list;
+Game_CommonEvent.prototype.list = function () {
+	return this.event().list;
 };
 
 /**
  * 刷新公共事件状态
  * Refresh common event state
  */
-Game_CommonEvent.prototype.refresh = function() {
-    if (this.isActive()) {
-        if (!this._interpreter) {
-            this._interpreter = new Game_Interpreter();
-        }
-    } else {
-        this._interpreter = null;
-    }
+Game_CommonEvent.prototype.refresh = function () {
+	if (this.isActive()) {
+		if (!this._interpreter) {
+			this._interpreter = new Game_Interpreter();
+		}
+	} else {
+		this._interpreter = null;
+	}
 };
 
 /**
@@ -73,20 +73,20 @@ Game_CommonEvent.prototype.refresh = function() {
  *
  * @returns {boolean} 是否激活 / Whether active
  */
-Game_CommonEvent.prototype.isActive = function() {
-    var event = this.event();
-    return event.trigger === 2 && $gameSwitches.value(event.switchId);
+Game_CommonEvent.prototype.isActive = function () {
+	var event = this.event();
+	return event.trigger === 2 && $gameSwitches.value(event.switchId);
 };
 
 /**
  * 更新公共事件
  * Update common event
  */
-Game_CommonEvent.prototype.update = function() {
-    if (this._interpreter) {
-        if (!this._interpreter.isRunning()) {
-            this._interpreter.setup(this.list());
-        }
-        this._interpreter.update();
-    }
+Game_CommonEvent.prototype.update = function () {
+	if (this._interpreter) {
+		if (!this._interpreter.isRunning()) {
+			this._interpreter.setup(this.list());
+		}
+		this._interpreter.update();
+	}
 };

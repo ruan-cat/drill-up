@@ -20,7 +20,7 @@
  * Game party class that manages actor party, item storage and gold
  */
 function Game_Party() {
-    this.initialize.apply(this, arguments);
+	this.initialize.apply(this, arguments);
 }
 
 Game_Party.prototype = Object.create(Game_Unit.prototype);
@@ -31,66 +31,66 @@ Game_Party.prototype.constructor = Game_Party;
  * Party ability constant - Encounter rate half
  * @type {number}
  */
-Game_Party.ABILITY_ENCOUNTER_HALF    = 0;
+Game_Party.ABILITY_ENCOUNTER_HALF = 0;
 
 /**
  * 队伍能力常量 - 无遇敌
  * Party ability constant - No encounter
  * @type {number}
  */
-Game_Party.ABILITY_ENCOUNTER_NONE    = 1;
+Game_Party.ABILITY_ENCOUNTER_NONE = 1;
 
 /**
  * 队伍能力常量 - 取消偷袭
  * Party ability constant - Cancel surprise
  * @type {number}
  */
-Game_Party.ABILITY_CANCEL_SURPRISE   = 2;
+Game_Party.ABILITY_CANCEL_SURPRISE = 2;
 
 /**
  * 队伍能力常量 - 增加先发制人率
  * Party ability constant - Raise preemptive rate
  * @type {number}
  */
-Game_Party.ABILITY_RAISE_PREEMPTIVE  = 3;
+Game_Party.ABILITY_RAISE_PREEMPTIVE = 3;
 
 /**
  * 队伍能力常量 - 双倍金钱
  * Party ability constant - Double gold
  * @type {number}
  */
-Game_Party.ABILITY_GOLD_DOUBLE       = 4;
+Game_Party.ABILITY_GOLD_DOUBLE = 4;
 
 /**
  * 队伍能力常量 - 双倍掉落物品
  * Party ability constant - Double drop items
  * @type {number}
  */
-Game_Party.ABILITY_DROP_ITEM_DOUBLE  = 5;
+Game_Party.ABILITY_DROP_ITEM_DOUBLE = 5;
 
 /**
  * 初始化队伍
  * Initialize party
  */
-Game_Party.prototype.initialize = function() {
-    Game_Unit.prototype.initialize.call(this);
-    this._gold = 0;
-    this._steps = 0;
-    this._lastItem = new Game_Item();
-    this._menuActorId = 0;
-    this._targetActorId = 0;
-    this._actors = [];
-    this.initAllItems();
+Game_Party.prototype.initialize = function () {
+	Game_Unit.prototype.initialize.call(this);
+	this._gold = 0;
+	this._steps = 0;
+	this._lastItem = new Game_Item();
+	this._menuActorId = 0;
+	this._targetActorId = 0;
+	this._actors = [];
+	this.initAllItems();
 };
 
 /**
  * 初始化所有物品
  * Initialize all items
  */
-Game_Party.prototype.initAllItems = function() {
-    this._items = {};
-    this._weapons = {};
-    this._armors = {};
+Game_Party.prototype.initAllItems = function () {
+	this._items = {};
+	this._weapons = {};
+	this._armors = {};
 };
 
 /**
@@ -99,8 +99,8 @@ Game_Party.prototype.initAllItems = function() {
  *
  * @returns {boolean} 是否存在角色 / Whether actors exist
  */
-Game_Party.prototype.exists = function() {
-    return this._actors.length > 0;
+Game_Party.prototype.exists = function () {
+	return this._actors.length > 0;
 };
 
 /**
@@ -109,8 +109,8 @@ Game_Party.prototype.exists = function() {
  *
  * @returns {number} 队伍大小 / Party size
  */
-Game_Party.prototype.size = function() {
-    return this.members().length;
+Game_Party.prototype.size = function () {
+	return this.members().length;
 };
 
 /**
@@ -119,8 +119,8 @@ Game_Party.prototype.size = function() {
  *
  * @returns {boolean} 队伍是否为空 / Whether party is empty
  */
-Game_Party.prototype.isEmpty = function() {
-    return this.size() === 0;
+Game_Party.prototype.isEmpty = function () {
+	return this.size() === 0;
 };
 
 /**
@@ -129,8 +129,8 @@ Game_Party.prototype.isEmpty = function() {
  *
  * @returns {Array} 成员数组 / Members array
  */
-Game_Party.prototype.members = function() {
-    return this.inBattle() ? this.battleMembers() : this.allMembers();
+Game_Party.prototype.members = function () {
+	return this.inBattle() ? this.battleMembers() : this.allMembers();
 };
 
 /**
@@ -139,10 +139,10 @@ Game_Party.prototype.members = function() {
  *
  * @returns {Array} 所有成员数组 / All members array
  */
-Game_Party.prototype.allMembers = function() {
-    return this._actors.map(function(id) {
-        return $gameActors.actor(id);
-    });
+Game_Party.prototype.allMembers = function () {
+	return this._actors.map(function (id) {
+		return $gameActors.actor(id);
+	});
 };
 
 /**
@@ -151,10 +151,12 @@ Game_Party.prototype.allMembers = function() {
  *
  * @returns {Array} 战斗成员数组 / Battle members array
  */
-Game_Party.prototype.battleMembers = function() {
-    return this.allMembers().slice(0, this.maxBattleMembers()).filter(function(actor) {
-        return actor.isAppeared();
-    });
+Game_Party.prototype.battleMembers = function () {
+	return this.allMembers()
+		.slice(0, this.maxBattleMembers())
+		.filter(function (actor) {
+			return actor.isAppeared();
+		});
 };
 
 /**
@@ -163,8 +165,8 @@ Game_Party.prototype.battleMembers = function() {
  *
  * @returns {number} 最大战斗成员数 / Max battle members count
  */
-Game_Party.prototype.maxBattleMembers = function() {
-    return 4;
+Game_Party.prototype.maxBattleMembers = function () {
+	return 4;
 };
 
 /**
@@ -173,8 +175,8 @@ Game_Party.prototype.maxBattleMembers = function() {
  *
  * @returns {Game_Actor|undefined} 队长角色 / Leader actor
  */
-Game_Party.prototype.leader = function() {
-    return this.battleMembers()[0];
+Game_Party.prototype.leader = function () {
+	return this.battleMembers()[0];
 };
 
 /**
@@ -183,12 +185,12 @@ Game_Party.prototype.leader = function() {
  * 允许战斗失败的情况下，战斗失败后全员复活且 1 血。
  * When battle defeat is allowed, all members revive with 1 HP after defeat.
  */
-Game_Party.prototype.reviveBattleMembers = function() {
-    this.battleMembers().forEach(function(actor) {
-        if (actor.isDead()) {
-            actor.setHp(1);
-        }
-    });
+Game_Party.prototype.reviveBattleMembers = function () {
+	this.battleMembers().forEach(function (actor) {
+		if (actor.isDead()) {
+			actor.setHp(1);
+		}
+	});
 };
 
 /**
@@ -197,12 +199,12 @@ Game_Party.prototype.reviveBattleMembers = function() {
  *
  * @returns {Array} 物品列表 / Items list
  */
-Game_Party.prototype.items = function() {
-    var list = [];
-    for (var id in this._items) {
-        list.push($dataItems[id]);
-    }
-    return list;
+Game_Party.prototype.items = function () {
+	var list = [];
+	for (var id in this._items) {
+		list.push($dataItems[id]);
+	}
+	return list;
 };
 
 /**
@@ -211,12 +213,12 @@ Game_Party.prototype.items = function() {
  *
  * @returns {Array} 武器列表 / Weapons list
  */
-Game_Party.prototype.weapons = function() {
-    var list = [];
-    for (var id in this._weapons) {
-        list.push($dataWeapons[id]);
-    }
-    return list;
+Game_Party.prototype.weapons = function () {
+	var list = [];
+	for (var id in this._weapons) {
+		list.push($dataWeapons[id]);
+	}
+	return list;
 };
 
 /**
@@ -225,12 +227,12 @@ Game_Party.prototype.weapons = function() {
  *
  * @returns {Array} 护甲列表 / Armors list
  */
-Game_Party.prototype.armors = function() {
-    var list = [];
-    for (var id in this._armors) {
-        list.push($dataArmors[id]);
-    }
-    return list;
+Game_Party.prototype.armors = function () {
+	var list = [];
+	for (var id in this._armors) {
+		list.push($dataArmors[id]);
+	}
+	return list;
 };
 
 /**
@@ -239,8 +241,8 @@ Game_Party.prototype.armors = function() {
  *
  * @returns {Array} 装备物品列表 / Equipment items list
  */
-Game_Party.prototype.equipItems = function() {
-    return this.weapons().concat(this.armors());
+Game_Party.prototype.equipItems = function () {
+	return this.weapons().concat(this.armors());
 };
 
 /**
@@ -249,8 +251,8 @@ Game_Party.prototype.equipItems = function() {
  *
  * @returns {Array} 所有物品列表 / All items list
  */
-Game_Party.prototype.allItems = function() {
-    return this.items().concat(this.equipItems());
+Game_Party.prototype.allItems = function () {
+	return this.items().concat(this.equipItems());
 };
 
 /**
@@ -260,31 +262,31 @@ Game_Party.prototype.allItems = function() {
  * @param {object} item - 物品对象 / Item object
  * @returns {object|null} 物品容器 / Item container
  */
-Game_Party.prototype.itemContainer = function(item) {
-    if (!item) {
-        return null;
-    } else if (DataManager.isItem(item)) {
-        return this._items;
-    } else if (DataManager.isWeapon(item)) {
-        return this._weapons;
-    } else if (DataManager.isArmor(item)) {
-        return this._armors;
-    } else {
-        return null;
-    }
+Game_Party.prototype.itemContainer = function (item) {
+	if (!item) {
+		return null;
+	} else if (DataManager.isItem(item)) {
+		return this._items;
+	} else if (DataManager.isWeapon(item)) {
+		return this._weapons;
+	} else if (DataManager.isArmor(item)) {
+		return this._armors;
+	} else {
+		return null;
+	}
 };
 
 /**
  * 设置初始成员
  * Setup starting members
  */
-Game_Party.prototype.setupStartingMembers = function() {
-    this._actors = [];
-    $dataSystem.partyMembers.forEach(function(actorId) {
-        if ($gameActors.actor(actorId)) {
-            this._actors.push(actorId);
-        }
-    }, this);
+Game_Party.prototype.setupStartingMembers = function () {
+	this._actors = [];
+	$dataSystem.partyMembers.forEach(function (actorId) {
+		if ($gameActors.actor(actorId)) {
+			this._actors.push(actorId);
+		}
+	}, this);
 };
 
 /**
@@ -293,52 +295,52 @@ Game_Party.prototype.setupStartingMembers = function() {
  *
  * @returns {string} 队伍名称 / Party name
  */
-Game_Party.prototype.name = function() {
-    var numBattleMembers = this.battleMembers().length;
-    if (numBattleMembers === 0) {
-        return '';
-    } else if (numBattleMembers === 1) {
-        return this.leader().name();
-    } else {
-        return TextManager.partyName.format(this.leader().name());
-    }
+Game_Party.prototype.name = function () {
+	var numBattleMembers = this.battleMembers().length;
+	if (numBattleMembers === 0) {
+		return "";
+	} else if (numBattleMembers === 1) {
+		return this.leader().name();
+	} else {
+		return TextManager.partyName.format(this.leader().name());
+	}
 };
 
 /**
  * 设置战斗测试
  * Setup battle test
  */
-Game_Party.prototype.setupBattleTest = function() {
-    this.setupBattleTestMembers();
-    this.setupBattleTestItems();
+Game_Party.prototype.setupBattleTest = function () {
+	this.setupBattleTestMembers();
+	this.setupBattleTestItems();
 };
 
 /**
  * 设置战斗测试成员
  * Setup battle test members
  */
-Game_Party.prototype.setupBattleTestMembers = function() {
-    $dataSystem.testBattlers.forEach(function(battler) {
-        var actor = $gameActors.actor(battler.actorId);
-        if (actor) {
-            actor.changeLevel(battler.level, false);
-            actor.initEquips(battler.equips);
-            actor.recoverAll();
-            this.addActor(battler.actorId);
-        }
-    }, this);
+Game_Party.prototype.setupBattleTestMembers = function () {
+	$dataSystem.testBattlers.forEach(function (battler) {
+		var actor = $gameActors.actor(battler.actorId);
+		if (actor) {
+			actor.changeLevel(battler.level, false);
+			actor.initEquips(battler.equips);
+			actor.recoverAll();
+			this.addActor(battler.actorId);
+		}
+	}, this);
 };
 
 /**
  * 设置战斗测试物品
  * Setup battle test items
  */
-Game_Party.prototype.setupBattleTestItems = function() {
-    $dataItems.forEach(function(item) {
-        if (item && item.name.length > 0) {
-            this.gainItem(item, this.maxItems(item));
-        }
-    }, this);
+Game_Party.prototype.setupBattleTestItems = function () {
+	$dataItems.forEach(function (item) {
+		if (item && item.name.length > 0) {
+			this.gainItem(item, this.maxItems(item));
+		}
+	}, this);
 };
 
 /**
@@ -349,10 +351,13 @@ Game_Party.prototype.setupBattleTestItems = function() {
  *
  * @returns {number} 最高等级 / Highest level
  */
-Game_Party.prototype.highestLevel = function() {
-    return Math.max.apply(null, this.members().map(function(actor) {
-        return actor.level;
-    }));
+Game_Party.prototype.highestLevel = function () {
+	return Math.max.apply(
+		null,
+		this.members().map(function (actor) {
+			return actor.level;
+		}),
+	);
 };
 
 /**
@@ -361,12 +366,12 @@ Game_Party.prototype.highestLevel = function() {
  *
  * @param {number} actorId - 角色ID / Actor ID
  */
-Game_Party.prototype.addActor = function(actorId) {
-    if (!this._actors.contains(actorId)) {
-        this._actors.push(actorId);
-        $gamePlayer.refresh();
-        $gameMap.requestRefresh();
-    }
+Game_Party.prototype.addActor = function (actorId) {
+	if (!this._actors.contains(actorId)) {
+		this._actors.push(actorId);
+		$gamePlayer.refresh();
+		$gameMap.requestRefresh();
+	}
 };
 
 /**
@@ -375,12 +380,12 @@ Game_Party.prototype.addActor = function(actorId) {
  *
  * @param {number} actorId - 角色ID / Actor ID
  */
-Game_Party.prototype.removeActor = function(actorId) {
-    if (this._actors.contains(actorId)) {
-        this._actors.splice(this._actors.indexOf(actorId), 1);
-        $gamePlayer.refresh();
-        $gameMap.requestRefresh();
-    }
+Game_Party.prototype.removeActor = function (actorId) {
+	if (this._actors.contains(actorId)) {
+		this._actors.splice(this._actors.indexOf(actorId), 1);
+		$gamePlayer.refresh();
+		$gameMap.requestRefresh();
+	}
 };
 
 /**
@@ -389,8 +394,8 @@ Game_Party.prototype.removeActor = function(actorId) {
  *
  * @returns {number} 金钱数量 / Gold amount
  */
-Game_Party.prototype.gold = function() {
-    return this._gold;
+Game_Party.prototype.gold = function () {
+	return this._gold;
 };
 
 /**
@@ -399,8 +404,8 @@ Game_Party.prototype.gold = function() {
  *
  * @param {number} amount - 金钱数量 / Gold amount
  */
-Game_Party.prototype.gainGold = function(amount) {
-    this._gold = (this._gold + amount).clamp(0, this.maxGold());
+Game_Party.prototype.gainGold = function (amount) {
+	this._gold = (this._gold + amount).clamp(0, this.maxGold());
 };
 
 /**
@@ -409,8 +414,8 @@ Game_Party.prototype.gainGold = function(amount) {
  *
  * @param {number} amount - 金钱数量 / Gold amount
  */
-Game_Party.prototype.loseGold = function(amount) {
-    this.gainGold(-amount);
+Game_Party.prototype.loseGold = function (amount) {
+	this.gainGold(-amount);
 };
 
 /**
@@ -419,8 +424,8 @@ Game_Party.prototype.loseGold = function(amount) {
  *
  * @returns {number} 金钱上限 / Max gold
  */
-Game_Party.prototype.maxGold = function() {
-    return 99999999;
+Game_Party.prototype.maxGold = function () {
+	return 99999999;
 };
 
 /**
@@ -429,16 +434,16 @@ Game_Party.prototype.maxGold = function() {
  *
  * @returns {number} 步数 / Steps count
  */
-Game_Party.prototype.steps = function() {
-    return this._steps;
+Game_Party.prototype.steps = function () {
+	return this._steps;
 };
 
 /**
  * 增加步数
  * Increase steps
  */
-Game_Party.prototype.increaseSteps = function() {
-    this._steps++;
+Game_Party.prototype.increaseSteps = function () {
+	this._steps++;
 };
 
 /**
@@ -448,9 +453,9 @@ Game_Party.prototype.increaseSteps = function() {
  * @param {object} item - 物品对象 / Item object
  * @returns {number} 物品数量 / Item amount
  */
-Game_Party.prototype.numItems = function(item) {
-    var container = this.itemContainer(item);
-    return container ? container[item.id] || 0 : 0;
+Game_Party.prototype.numItems = function (item) {
+	var container = this.itemContainer(item);
+	return container ? container[item.id] || 0 : 0;
 };
 
 /**
@@ -460,8 +465,8 @@ Game_Party.prototype.numItems = function(item) {
  * @param {object} item - 物品对象 / Item object
  * @returns {number} 物品上限 / Max items
  */
-Game_Party.prototype.maxItems = function(item) {
-    return 99;
+Game_Party.prototype.maxItems = function (item) {
+	return 99;
 };
 
 /**
@@ -471,8 +476,8 @@ Game_Party.prototype.maxItems = function(item) {
  * @param {object} item - 物品对象 / Item object
  * @returns {boolean} 是否已达上限 / Whether max is reached
  */
-Game_Party.prototype.hasMaxItems = function(item) {
-    return this.numItems(item) >= this.maxItems(item);
+Game_Party.prototype.hasMaxItems = function (item) {
+	return this.numItems(item) >= this.maxItems(item);
 };
 
 /**
@@ -483,17 +488,17 @@ Game_Party.prototype.hasMaxItems = function(item) {
  * @param {boolean} includeEquip - 是否包含装备 / Whether to include equipment
  * @returns {boolean} 是否拥有物品 / Whether has item
  */
-Game_Party.prototype.hasItem = function(item, includeEquip) {
-    if (includeEquip === undefined) {
-        includeEquip = false;
-    }
-    if (this.numItems(item) > 0) {
-        return true;
-    } else if (includeEquip && this.isAnyMemberEquipped(item)) {
-        return true;
-    } else {
-        return false;
-    }
+Game_Party.prototype.hasItem = function (item, includeEquip) {
+	if (includeEquip === undefined) {
+		includeEquip = false;
+	}
+	if (this.numItems(item) > 0) {
+		return true;
+	} else if (includeEquip && this.isAnyMemberEquipped(item)) {
+		return true;
+	} else {
+		return false;
+	}
 };
 
 /**
@@ -503,10 +508,10 @@ Game_Party.prototype.hasItem = function(item, includeEquip) {
  * @param {object} item - 物品对象 / Item object
  * @returns {boolean} 是否有成员装备 / Whether any member equipped
  */
-Game_Party.prototype.isAnyMemberEquipped = function(item) {
-    return this.members().some(function(actor) {
-        return actor.equips().contains(item);
-    });
+Game_Party.prototype.isAnyMemberEquipped = function (item) {
+	return this.members().some(function (actor) {
+		return actor.equips().contains(item);
+	});
 };
 
 /**
@@ -517,20 +522,20 @@ Game_Party.prototype.isAnyMemberEquipped = function(item) {
  * @param {number} amount - 数量 / Amount
  * @param {boolean} includeEquip - 是否包含装备 / Whether to include equipment
  */
-Game_Party.prototype.gainItem = function(item, amount, includeEquip) {
-    var container = this.itemContainer(item);
-    if (container) {
-        var lastNumber = this.numItems(item);
-        var newNumber = lastNumber + amount;
-        container[item.id] = newNumber.clamp(0, this.maxItems(item));
-        if (container[item.id] === 0) {
-            delete container[item.id];
-        }
-        if (includeEquip && newNumber < 0) {
-            this.discardMembersEquip(item, -newNumber);
-        }
-        $gameMap.requestRefresh();
-    }
+Game_Party.prototype.gainItem = function (item, amount, includeEquip) {
+	var container = this.itemContainer(item);
+	if (container) {
+		var lastNumber = this.numItems(item);
+		var newNumber = lastNumber + amount;
+		container[item.id] = newNumber.clamp(0, this.maxItems(item));
+		if (container[item.id] === 0) {
+			delete container[item.id];
+		}
+		if (includeEquip && newNumber < 0) {
+			this.discardMembersEquip(item, -newNumber);
+		}
+		$gameMap.requestRefresh();
+	}
 };
 
 /**
@@ -540,14 +545,14 @@ Game_Party.prototype.gainItem = function(item, amount, includeEquip) {
  * @param {object} item - 物品对象 / Item object
  * @param {number} amount - 数量 / Amount
  */
-Game_Party.prototype.discardMembersEquip = function(item, amount) {
-    var n = amount;
-    this.members().forEach(function(actor) {
-        while (n > 0 && actor.isEquipped(item)) {
-            actor.discardEquip(item);
-            n--;
-        }
-    });
+Game_Party.prototype.discardMembersEquip = function (item, amount) {
+	var n = amount;
+	this.members().forEach(function (actor) {
+		while (n > 0 && actor.isEquipped(item)) {
+			actor.discardEquip(item);
+			n--;
+		}
+	});
 };
 
 /**
@@ -558,8 +563,8 @@ Game_Party.prototype.discardMembersEquip = function(item, amount) {
  * @param {number} amount - 数量 / Amount
  * @param {boolean} includeEquip - 是否包含装备 / Whether to include equipment
  */
-Game_Party.prototype.loseItem = function(item, amount, includeEquip) {
-    this.gainItem(item, -amount, includeEquip);
+Game_Party.prototype.loseItem = function (item, amount, includeEquip) {
+	this.gainItem(item, -amount, includeEquip);
 };
 
 /**
@@ -568,10 +573,10 @@ Game_Party.prototype.loseItem = function(item, amount, includeEquip) {
  *
  * @param {object} item - 物品对象 / Item object
  */
-Game_Party.prototype.consumeItem = function(item) {
-    if (DataManager.isItem(item) && item.consumable) {
-        this.loseItem(item, 1);
-    }
+Game_Party.prototype.consumeItem = function (item) {
+	if (DataManager.isItem(item) && item.consumable) {
+		this.loseItem(item, 1);
+	}
 };
 
 /**
@@ -581,10 +586,10 @@ Game_Party.prototype.consumeItem = function(item) {
  * @param {object} item - 物品对象 / Item object
  * @returns {boolean} 是否可使用 / Whether can use
  */
-Game_Party.prototype.canUse = function(item) {
-    return this.members().some(function(actor) {
-        return actor.canUse(item);
-    });
+Game_Party.prototype.canUse = function (item) {
+	return this.members().some(function (actor) {
+		return actor.canUse(item);
+	});
 };
 
 /**
@@ -593,10 +598,10 @@ Game_Party.prototype.canUse = function(item) {
  *
  * @returns {boolean} 是否可输入 / Whether can input
  */
-Game_Party.prototype.canInput = function() {
-    return this.members().some(function(actor) {
-        return actor.canInput();
-    });
+Game_Party.prototype.canInput = function () {
+	return this.members().some(function (actor) {
+		return actor.canInput();
+	});
 };
 
 /**
@@ -605,22 +610,22 @@ Game_Party.prototype.canInput = function() {
  *
  * @returns {boolean} 是否全部死亡 / Whether all are dead
  */
-Game_Party.prototype.isAllDead = function() {
-    if (Game_Unit.prototype.isAllDead.call(this)) {
-        return this.inBattle() || !this.isEmpty();
-    } else {
-        return false;
-    }
+Game_Party.prototype.isAllDead = function () {
+	if (Game_Unit.prototype.isAllDead.call(this)) {
+		return this.inBattle() || !this.isEmpty();
+	} else {
+		return false;
+	}
 };
 
 /**
  * 当玩家行走时的处理
  * Processing when player walks
  */
-Game_Party.prototype.onPlayerWalk = function() {
-    this.members().forEach(function(actor) {
-        return actor.onPlayerWalk();
-    });
+Game_Party.prototype.onPlayerWalk = function () {
+	this.members().forEach(function (actor) {
+		return actor.onPlayerWalk();
+	});
 };
 
 /**
@@ -631,12 +636,12 @@ Game_Party.prototype.onPlayerWalk = function() {
  *
  * @returns {Game_Actor} 菜单角色 / Menu actor
  */
-Game_Party.prototype.menuActor = function() {
-    var actor = $gameActors.actor(this._menuActorId);
-    if (!this.members().contains(actor)) {
-        actor = this.members()[0];
-    }
-    return actor;
+Game_Party.prototype.menuActor = function () {
+	var actor = $gameActors.actor(this._menuActorId);
+	if (!this.members().contains(actor)) {
+		actor = this.members()[0];
+	}
+	return actor;
 };
 
 /**
@@ -647,8 +652,8 @@ Game_Party.prototype.menuActor = function() {
  *
  * @param {Game_Actor} actor - 角色对象 / Actor object
  */
-Game_Party.prototype.setMenuActor = function(actor) {
-    this._menuActorId = actor.actorId();
+Game_Party.prototype.setMenuActor = function (actor) {
+	this._menuActorId = actor.actorId();
 };
 
 /**
@@ -657,14 +662,14 @@ Game_Party.prototype.setMenuActor = function(actor) {
  * 技能、装备和状态界面按 PageDown 后切换下一个角色。
  * Switch to next actor when PageDown is pressed in skill, equip and status scenes.
  */
-Game_Party.prototype.makeMenuActorNext = function() {
-    var index = this.members().indexOf(this.menuActor());
-    if (index >= 0) {
-        index = (index + 1) % this.members().length;
-        this.setMenuActor(this.members()[index]);
-    } else {
-        this.setMenuActor(this.members()[0]);
-    }
+Game_Party.prototype.makeMenuActorNext = function () {
+	var index = this.members().indexOf(this.menuActor());
+	if (index >= 0) {
+		index = (index + 1) % this.members().length;
+		this.setMenuActor(this.members()[index]);
+	} else {
+		this.setMenuActor(this.members()[0]);
+	}
 };
 
 /**
@@ -673,14 +678,14 @@ Game_Party.prototype.makeMenuActorNext = function() {
  * 技能、装备和状态界面按 PageUp 后切换上一个角色。
  * Switch to previous actor when PageUp is pressed in skill, equip and status scenes.
  */
-Game_Party.prototype.makeMenuActorPrevious = function() {
-    var index = this.members().indexOf(this.menuActor());
-    if (index >= 0) {
-        index = (index + this.members().length - 1) % this.members().length;
-        this.setMenuActor(this.members()[index]);
-    } else {
-        this.setMenuActor(this.members()[0]);
-    }
+Game_Party.prototype.makeMenuActorPrevious = function () {
+	var index = this.members().indexOf(this.menuActor());
+	if (index >= 0) {
+		index = (index + this.members().length - 1) % this.members().length;
+		this.setMenuActor(this.members()[index]);
+	} else {
+		this.setMenuActor(this.members()[0]);
+	}
 };
 
 /**
@@ -689,12 +694,12 @@ Game_Party.prototype.makeMenuActorPrevious = function() {
  *
  * @returns {Game_Actor} 目标角色 / Target actor
  */
-Game_Party.prototype.targetActor = function() {
-    var actor = $gameActors.actor(this._targetActorId);
-    if (!this.members().contains(actor)) {
-        actor = this.members()[0];
-    }
-    return actor;
+Game_Party.prototype.targetActor = function () {
+	var actor = $gameActors.actor(this._targetActorId);
+	if (!this.members().contains(actor)) {
+		actor = this.members()[0];
+	}
+	return actor;
 };
 
 /**
@@ -703,8 +708,8 @@ Game_Party.prototype.targetActor = function() {
  *
  * @param {Game_Actor} actor - 角色对象 / Actor object
  */
-Game_Party.prototype.setTargetActor = function(actor) {
-    this._targetActorId = actor.actorId();
+Game_Party.prototype.setTargetActor = function (actor) {
+	this._targetActorId = actor.actorId();
 };
 
 /**
@@ -713,8 +718,8 @@ Game_Party.prototype.setTargetActor = function(actor) {
  *
  * @returns {object} 上次使用的物品 / Last item used
  */
-Game_Party.prototype.lastItem = function() {
-    return this._lastItem.object();
+Game_Party.prototype.lastItem = function () {
+	return this._lastItem.object();
 };
 
 /**
@@ -723,8 +728,8 @@ Game_Party.prototype.lastItem = function() {
  *
  * @param {object} item - 物品对象 / Item object
  */
-Game_Party.prototype.setLastItem = function(item) {
-    this._lastItem.setObject(item);
+Game_Party.prototype.setLastItem = function (item) {
+	this._lastItem.setObject(item);
 };
 
 /**
@@ -734,11 +739,11 @@ Game_Party.prototype.setLastItem = function(item) {
  * @param {number} index1 - 索引1 / Index 1
  * @param {number} index2 - 索引2 / Index 2
  */
-Game_Party.prototype.swapOrder = function(index1, index2) {
-    var temp = this._actors[index1];
-    this._actors[index1] = this._actors[index2];
-    this._actors[index2] = temp;
-    $gamePlayer.refresh();
+Game_Party.prototype.swapOrder = function (index1, index2) {
+	var temp = this._actors[index1];
+	this._actors[index1] = this._actors[index2];
+	this._actors[index2] = temp;
+	$gamePlayer.refresh();
 };
 
 /**
@@ -747,10 +752,10 @@ Game_Party.prototype.swapOrder = function(index1, index2) {
  *
  * @returns {Array} 角色行走图数组 / Characters array for save file
  */
-Game_Party.prototype.charactersForSavefile = function() {
-    return this.battleMembers().map(function(actor) {
-        return [actor.characterName(), actor.characterIndex()];
-    });
+Game_Party.prototype.charactersForSavefile = function () {
+	return this.battleMembers().map(function (actor) {
+		return [actor.characterName(), actor.characterIndex()];
+	});
 };
 
 /**
@@ -759,10 +764,10 @@ Game_Party.prototype.charactersForSavefile = function() {
  *
  * @returns {Array} 脸图数组 / Faces array for save file
  */
-Game_Party.prototype.facesForSavefile = function() {
-    return this.battleMembers().map(function(actor) {
-        return [actor.faceName(), actor.faceIndex()];
-    });
+Game_Party.prototype.facesForSavefile = function () {
+	return this.battleMembers().map(function (actor) {
+		return [actor.faceName(), actor.faceIndex()];
+	});
 };
 
 /**
@@ -772,10 +777,10 @@ Game_Party.prototype.facesForSavefile = function() {
  * @param {number} abilityId - 能力ID / Ability ID
  * @returns {boolean} 是否拥有该能力 / Whether has the ability
  */
-Game_Party.prototype.partyAbility = function(abilityId) {
-    return this.battleMembers().some(function(actor) {
-        return actor.partyAbility(abilityId);
-    });
+Game_Party.prototype.partyAbility = function (abilityId) {
+	return this.battleMembers().some(function (actor) {
+		return actor.partyAbility(abilityId);
+	});
 };
 
 /**
@@ -784,8 +789,8 @@ Game_Party.prototype.partyAbility = function(abilityId) {
  *
  * @returns {boolean} 是否遇敌减半 / Whether has encounter rate half
  */
-Game_Party.prototype.hasEncounterHalf = function() {
-    return this.partyAbility(Game_Party.ABILITY_ENCOUNTER_HALF);
+Game_Party.prototype.hasEncounterHalf = function () {
+	return this.partyAbility(Game_Party.ABILITY_ENCOUNTER_HALF);
 };
 
 /**
@@ -794,8 +799,8 @@ Game_Party.prototype.hasEncounterHalf = function() {
  *
  * @returns {boolean} 是否无遇敌 / Whether has no encounter
  */
-Game_Party.prototype.hasEncounterNone = function() {
-    return this.partyAbility(Game_Party.ABILITY_ENCOUNTER_NONE);
+Game_Party.prototype.hasEncounterNone = function () {
+	return this.partyAbility(Game_Party.ABILITY_ENCOUNTER_NONE);
 };
 
 /**
@@ -804,8 +809,8 @@ Game_Party.prototype.hasEncounterNone = function() {
  *
  * @returns {boolean} 是否取消偷袭 / Whether can cancel surprise
  */
-Game_Party.prototype.hasCancelSurprise = function() {
-    return this.partyAbility(Game_Party.ABILITY_CANCEL_SURPRISE);
+Game_Party.prototype.hasCancelSurprise = function () {
+	return this.partyAbility(Game_Party.ABILITY_CANCEL_SURPRISE);
 };
 
 /**
@@ -814,8 +819,8 @@ Game_Party.prototype.hasCancelSurprise = function() {
  *
  * @returns {boolean} 是否增加先发制人率 / Whether can raise preemptive rate
  */
-Game_Party.prototype.hasRaisePreemptive = function() {
-    return this.partyAbility(Game_Party.ABILITY_RAISE_PREEMPTIVE);
+Game_Party.prototype.hasRaisePreemptive = function () {
+	return this.partyAbility(Game_Party.ABILITY_RAISE_PREEMPTIVE);
 };
 
 /**
@@ -824,8 +829,8 @@ Game_Party.prototype.hasRaisePreemptive = function() {
  *
  * @returns {boolean} 是否双倍金钱 / Whether has double gold
  */
-Game_Party.prototype.hasGoldDouble = function() {
-    return this.partyAbility(Game_Party.ABILITY_GOLD_DOUBLE);
+Game_Party.prototype.hasGoldDouble = function () {
+	return this.partyAbility(Game_Party.ABILITY_GOLD_DOUBLE);
 };
 
 /**
@@ -834,8 +839,8 @@ Game_Party.prototype.hasGoldDouble = function() {
  *
  * @returns {boolean} 是否双倍掉落物品 / Whether has double drop items
  */
-Game_Party.prototype.hasDropItemDouble = function() {
-    return this.partyAbility(Game_Party.ABILITY_DROP_ITEM_DOUBLE);
+Game_Party.prototype.hasDropItemDouble = function () {
+	return this.partyAbility(Game_Party.ABILITY_DROP_ITEM_DOUBLE);
 };
 
 /**
@@ -845,12 +850,12 @@ Game_Party.prototype.hasDropItemDouble = function() {
  * @param {number} troopAgi - 敌群敏捷度 / Troop agility
  * @returns {number} 先发制人概率 / Preemptive rate
  */
-Game_Party.prototype.ratePreemptive = function(troopAgi) {
-    var rate = this.agility() >= troopAgi ? 0.05 : 0.03;
-    if (this.hasRaisePreemptive()) {
-        rate *= 4;
-    }
-    return rate;
+Game_Party.prototype.ratePreemptive = function (troopAgi) {
+	var rate = this.agility() >= troopAgi ? 0.05 : 0.03;
+	if (this.hasRaisePreemptive()) {
+		rate *= 4;
+	}
+	return rate;
 };
 
 /**
@@ -860,50 +865,50 @@ Game_Party.prototype.ratePreemptive = function(troopAgi) {
  * @param {number} troopAgi - 敌群敏捷度 / Troop agility
  * @returns {number} 偷袭概率 / Surprise rate
  */
-Game_Party.prototype.rateSurprise = function(troopAgi) {
-    var rate = this.agility() >= troopAgi ? 0.03 : 0.05;
-    if (this.hasCancelSurprise()) {
-        rate = 0;
-    }
-    return rate;
+Game_Party.prototype.rateSurprise = function (troopAgi) {
+	var rate = this.agility() >= troopAgi ? 0.03 : 0.05;
+	if (this.hasCancelSurprise()) {
+		rate = 0;
+	}
+	return rate;
 };
 
 /**
  * 表现胜利
  * Perform victory
  */
-Game_Party.prototype.performVictory = function() {
-    this.members().forEach(function(actor) {
-        actor.performVictory();
-    });
+Game_Party.prototype.performVictory = function () {
+	this.members().forEach(function (actor) {
+		actor.performVictory();
+	});
 };
 
 /**
  * 表现逃跑
  * Perform escape
  */
-Game_Party.prototype.performEscape = function() {
-    this.members().forEach(function(actor) {
-        actor.performEscape();
-    });
+Game_Party.prototype.performEscape = function () {
+	this.members().forEach(function (actor) {
+		actor.performEscape();
+	});
 };
 
 /**
  * 移除战斗状态
  * Remove battle states
  */
-Game_Party.prototype.removeBattleStates = function() {
-    this.members().forEach(function(actor) {
-        actor.removeBattleStates();
-    });
+Game_Party.prototype.removeBattleStates = function () {
+	this.members().forEach(function (actor) {
+		actor.removeBattleStates();
+	});
 };
 
 /**
  * 请求动作刷新
  * Request motion refresh
  */
-Game_Party.prototype.requestMotionRefresh = function() {
-    this.members().forEach(function(actor) {
-        actor.requestMotionRefresh();
-    });
+Game_Party.prototype.requestMotionRefresh = function () {
+	this.members().forEach(function (actor) {
+		actor.requestMotionRefresh();
+	});
 };

@@ -9,36 +9,36 @@
  * @constructor
  */
 function WindowLayer() {
-    this.initialize.apply(this, arguments);
+	this.initialize.apply(this, arguments);
 }
 
 WindowLayer.prototype = Object.create(PIXI.Container.prototype);
 WindowLayer.prototype.constructor = WindowLayer;
 
-WindowLayer.prototype.initialize = function() {
-    PIXI.Container.call(this);
-    this._width = 0;
-    this._height = 0;
-    this._tempCanvas = null;
-    this._translationMatrix = [1, 0, 0, 0, 1, 0, 0, 0, 1];
+WindowLayer.prototype.initialize = function () {
+	PIXI.Container.call(this);
+	this._width = 0;
+	this._height = 0;
+	this._tempCanvas = null;
+	this._translationMatrix = [1, 0, 0, 0, 1, 0, 0, 0, 1];
 
-    this._windowMask = new PIXI.Graphics();
-    this._windowMask.beginFill(0xffffff, 1);
-    this._windowMask.drawRect(0, 0, 0, 0);
-    this._windowMask.endFill();
-    this._windowRect = this._windowMask.graphicsData[0].shape;
+	this._windowMask = new PIXI.Graphics();
+	this._windowMask.beginFill(0xffffff, 1);
+	this._windowMask.drawRect(0, 0, 0, 0);
+	this._windowMask.endFill();
+	this._windowRect = this._windowMask.graphicsData[0].shape;
 
-    this._renderSprite = null;
-    this.filterArea = new PIXI.Rectangle();
-    this.filters = [WindowLayer.voidFilter];
+	this._renderSprite = null;
+	this.filterArea = new PIXI.Rectangle();
+	this.filters = [WindowLayer.voidFilter];
 
-    //temporary fix for memory leak bug
-    this.on('removed', this.onRemoveAsAChild);
+	//temporary fix for memory leak bug
+	this.on("removed", this.onRemoveAsAChild);
 };
 
-WindowLayer.prototype.onRemoveAsAChild = function() {
-    this.removeChildren();
-}
+WindowLayer.prototype.onRemoveAsAChild = function () {
+	this.removeChildren();
+};
 
 WindowLayer.voidFilter = new PIXI.filters.VoidFilter();
 
@@ -48,14 +48,14 @@ WindowLayer.voidFilter = new PIXI.filters.VoidFilter();
  * @property width
  * @type Number
  */
-Object.defineProperty(WindowLayer.prototype, 'width', {
-    get: function() {
-        return this._width;
-    },
-    set: function(value) {
-        this._width = value;
-    },
-    configurable: true
+Object.defineProperty(WindowLayer.prototype, "width", {
+	get: function () {
+		return this._width;
+	},
+	set: function (value) {
+		this._width = value;
+	},
+	configurable: true,
 });
 
 /**
@@ -64,14 +64,14 @@ Object.defineProperty(WindowLayer.prototype, 'width', {
  * @property height
  * @type Number
  */
-Object.defineProperty(WindowLayer.prototype, 'height', {
-    get: function() {
-        return this._height;
-    },
-    set: function(value) {
-        this._height = value;
-    },
-    configurable: true
+Object.defineProperty(WindowLayer.prototype, "height", {
+	get: function () {
+		return this._height;
+	},
+	set: function (value) {
+		this._height = value;
+	},
+	configurable: true,
 });
 
 /**
@@ -83,11 +83,11 @@ Object.defineProperty(WindowLayer.prototype, 'height', {
  * @param {Number} width The width of the window layer
  * @param {Number} height The height of the window layer
  */
-WindowLayer.prototype.move = function(x, y, width, height) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
+WindowLayer.prototype.move = function (x, y, width, height) {
+	this.x = x;
+	this.y = y;
+	this.width = width;
+	this.height = height;
 };
 
 /**
@@ -95,12 +95,12 @@ WindowLayer.prototype.move = function(x, y, width, height) {
  *
  * @method update
  */
-WindowLayer.prototype.update = function() {
-    this.children.forEach(function(child) {
-        if (child.update) {
-            child.update();
-        }
-    });
+WindowLayer.prototype.update = function () {
+	this.children.forEach(function (child) {
+		if (child.update) {
+			child.update();
+		}
+	});
 };
 
 /**
@@ -108,53 +108,53 @@ WindowLayer.prototype.update = function() {
  * @param {Object} renderSession
  * @private
  */
-WindowLayer.prototype.renderCanvas = function(renderer) {
-    if (!this.visible || !this.renderable) {
-        return;
-    }
+WindowLayer.prototype.renderCanvas = function (renderer) {
+	if (!this.visible || !this.renderable) {
+		return;
+	}
 
-    if (!this._tempCanvas) {
-        this._tempCanvas = document.createElement('canvas');
-    }
+	if (!this._tempCanvas) {
+		this._tempCanvas = document.createElement("canvas");
+	}
 
-    this._tempCanvas.width = Graphics.width;
-    this._tempCanvas.height = Graphics.height;
+	this._tempCanvas.width = Graphics.width;
+	this._tempCanvas.height = Graphics.height;
 
-    var realCanvasContext = renderer.context;
-    var context = this._tempCanvas.getContext('2d');
+	var realCanvasContext = renderer.context;
+	var context = this._tempCanvas.getContext("2d");
 
-    context.save();
-    context.clearRect(0, 0, Graphics.width, Graphics.height);
-    context.beginPath();
-    context.rect(this.x, this.y, this.width, this.height);
-    context.closePath();
-    context.clip();
+	context.save();
+	context.clearRect(0, 0, Graphics.width, Graphics.height);
+	context.beginPath();
+	context.rect(this.x, this.y, this.width, this.height);
+	context.closePath();
+	context.clip();
 
-    renderer.context = context;
+	renderer.context = context;
 
-    for (var i = 0; i < this.children.length; i++) {
-        var child = this.children[i];
-        if (child._isWindow && child.visible && child.openness > 0) {
-            this._canvasClearWindowRect(renderer, child);
-            context.save();
-            child.renderCanvas(renderer);
-            context.restore();
-        }
-    }
+	for (var i = 0; i < this.children.length; i++) {
+		var child = this.children[i];
+		if (child._isWindow && child.visible && child.openness > 0) {
+			this._canvasClearWindowRect(renderer, child);
+			context.save();
+			child.renderCanvas(renderer);
+			context.restore();
+		}
+	}
 
-    context.restore();
+	context.restore();
 
-    renderer.context = realCanvasContext;
-    renderer.context.setTransform(1, 0, 0, 1, 0, 0);
-    renderer.context.globalCompositeOperation = 'source-over';
-    renderer.context.globalAlpha = 1;
-    renderer.context.drawImage(this._tempCanvas, 0, 0);
+	renderer.context = realCanvasContext;
+	renderer.context.setTransform(1, 0, 0, 1, 0, 0);
+	renderer.context.globalCompositeOperation = "source-over";
+	renderer.context.globalAlpha = 1;
+	renderer.context.drawImage(this._tempCanvas, 0, 0);
 
-    for (var j = 0; j < this.children.length; j++) {
-        if (!this.children[j]._isWindow) {
-            this.children[j].renderCanvas(renderer);
-        }
-    }
+	for (var j = 0; j < this.children.length; j++) {
+		if (!this.children[j]._isWindow) {
+			this.children[j].renderCanvas(renderer);
+		}
+	}
 };
 
 /**
@@ -163,12 +163,12 @@ WindowLayer.prototype.renderCanvas = function(renderer) {
  * @param {Window} window
  * @private
  */
-WindowLayer.prototype._canvasClearWindowRect = function(renderSession, window) {
-    var rx = this.x + window.x;
-    var ry = this.y + window.y + window.height / 2 * (1 - window._openness / 255);
-    var rw = window.width;
-    var rh = window.height * window._openness / 255;
-    renderSession.context.clearRect(rx, ry, rw, rh);
+WindowLayer.prototype._canvasClearWindowRect = function (renderSession, window) {
+	var rx = this.x + window.x;
+	var ry = this.y + window.y + (window.height / 2) * (1 - window._openness / 255);
+	var rw = window.width;
+	var rh = (window.height * window._openness) / 255;
+	renderSession.context.clearRect(rx, ry, rw, rh);
 };
 
 /**
@@ -176,48 +176,48 @@ WindowLayer.prototype._canvasClearWindowRect = function(renderSession, window) {
  * @param {Object} renderSession
  * @private
  */
-WindowLayer.prototype.renderWebGL = function(renderer) {
-    if (!this.visible || !this.renderable) {
-        return;
-    }
+WindowLayer.prototype.renderWebGL = function (renderer) {
+	if (!this.visible || !this.renderable) {
+		return;
+	}
 
-    if (this.children.length==0) {
-        return;
-    }
+	if (this.children.length == 0) {
+		return;
+	}
 
-    renderer.flush();
-    this.filterArea.copy(this);
-    renderer.filterManager.pushFilter(this, this.filters);
-    renderer.currentRenderer.start();
+	renderer.flush();
+	this.filterArea.copy(this);
+	renderer.filterManager.pushFilter(this, this.filters);
+	renderer.currentRenderer.start();
 
-    var shift = new PIXI.Point();
-    var rt = renderer._activeRenderTarget;
-    var projectionMatrix = rt.projectionMatrix;
-    shift.x = Math.round((projectionMatrix.tx + 1) / 2 * rt.sourceFrame.width);
-    shift.y = Math.round((projectionMatrix.ty + 1) / 2 * rt.sourceFrame.height);
+	var shift = new PIXI.Point();
+	var rt = renderer._activeRenderTarget;
+	var projectionMatrix = rt.projectionMatrix;
+	shift.x = Math.round(((projectionMatrix.tx + 1) / 2) * rt.sourceFrame.width);
+	shift.y = Math.round(((projectionMatrix.ty + 1) / 2) * rt.sourceFrame.height);
 
-    for (var i = 0; i < this.children.length; i++) {
-        var child = this.children[i];
-        if (child._isWindow && child.visible && child.openness > 0) {
-            this._maskWindow(child, shift);
-            renderer.maskManager.pushScissorMask(this, this._windowMask);
-            renderer.clear();
-            renderer.maskManager.popScissorMask();
-            renderer.currentRenderer.start();
-            child.renderWebGL(renderer);
-            renderer.currentRenderer.flush();
-        }
-    }
+	for (var i = 0; i < this.children.length; i++) {
+		var child = this.children[i];
+		if (child._isWindow && child.visible && child.openness > 0) {
+			this._maskWindow(child, shift);
+			renderer.maskManager.pushScissorMask(this, this._windowMask);
+			renderer.clear();
+			renderer.maskManager.popScissorMask();
+			renderer.currentRenderer.start();
+			child.renderWebGL(renderer);
+			renderer.currentRenderer.flush();
+		}
+	}
 
-    renderer.flush();
-    renderer.filterManager.popFilter();
-    renderer.maskManager.popScissorMask();
+	renderer.flush();
+	renderer.filterManager.popFilter();
+	renderer.maskManager.popScissorMask();
 
-    for (var j = 0; j < this.children.length; j++) {
-        if (!this.children[j]._isWindow) {
-            this.children[j].renderWebGL(renderer);
-        }
-    }
+	for (var j = 0; j < this.children.length; j++) {
+		if (!this.children[j]._isWindow) {
+			this.children[j].renderWebGL(renderer);
+		}
+	}
 };
 
 /**
@@ -225,14 +225,14 @@ WindowLayer.prototype.renderWebGL = function(renderer) {
  * @param {Window} window
  * @private
  */
-WindowLayer.prototype._maskWindow = function(window, shift) {
-    this._windowMask._currentBounds = null;
-    this._windowMask.boundsDirty = true;
-    var rect = this._windowRect;
-    rect.x = this.x + shift.x + window.x;
-    rect.y = this.x + shift.y + window.y + window.height / 2 * (1 - window._openness / 255);
-    rect.width = window.width;
-    rect.height = window.height * window._openness / 255;
+WindowLayer.prototype._maskWindow = function (window, shift) {
+	this._windowMask._currentBounds = null;
+	this._windowMask.boundsDirty = true;
+	var rect = this._windowRect;
+	rect.x = this.x + shift.x + window.x;
+	rect.y = this.x + shift.y + window.y + (window.height / 2) * (1 - window._openness / 255);
+	rect.width = window.width;
+	rect.height = (window.height * window._openness) / 255;
 };
 
 // The important members from Pixi.js
