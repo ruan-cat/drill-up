@@ -3,11 +3,12 @@
 //=============================================================================
 
 /**
+ * 渲染到游戏屏幕的基本对象。
  * The basic object that is rendered to the game screen.
  *
  * @class Sprite
  * @constructor
- * @param {Bitmap} bitmap The image for the sprite
+ * @param {Bitmap} bitmap 精灵的图像 The image for the sprite
  */
 function Sprite() {
 	this.initialize.apply(this, arguments);
@@ -33,7 +34,8 @@ Sprite.prototype.initialize = function (bitmap) {
 	this._tintTexture = null;
 
 	/**
-	 * use heavy renderer that will reduce border artifacts and apply advanced blendModes
+	 * 使用重量渲染器，减少边界伪影并应用高级混合模式。
+	 * Use heavy renderer that will reduce border artifacts and apply advanced blendModes.
 	 * @type {boolean}
 	 * @private
 	 */
@@ -45,10 +47,19 @@ Sprite.prototype.initialize = function (bitmap) {
 	this.bitmap = bitmap;
 };
 
-// Number of the created objects.
+/**
+ * 已创建对象的数量。
+ * Number of the created objects.
+ *
+ * @static
+ * @property _counter
+ * @type Number
+ * @private
+ */
 Sprite._counter = 0;
 
 /**
+ * 精灵的图像。
  * The image for the sprite.
  *
  * @property bitmap
@@ -75,6 +86,7 @@ Object.defineProperty(Sprite.prototype, "bitmap", {
 });
 
 /**
+ * 精灵不含缩放的宽度。
  * The width of the sprite without the scale.
  *
  * @property width
@@ -92,6 +104,7 @@ Object.defineProperty(Sprite.prototype, "width", {
 });
 
 /**
+ * 精灵不含缩放的高度。
  * The height of the sprite without the scale.
  *
  * @property height
@@ -109,6 +122,7 @@ Object.defineProperty(Sprite.prototype, "height", {
 });
 
 /**
+ * 精灵的不透明度（0到255）。
  * The opacity of the sprite (0 to 255).
  *
  * @property opacity
@@ -125,6 +139,7 @@ Object.defineProperty(Sprite.prototype, "opacity", {
 });
 
 /**
+ * 为每一帧更新精灵。
  * Updates the sprite for each frame.
  *
  * @method update
@@ -138,11 +153,12 @@ Sprite.prototype.update = function () {
 };
 
 /**
+ * 一次设置x和y坐标。
  * Sets the x and y at once.
  *
  * @method move
- * @param {Number} x The x coordinate of the sprite
- * @param {Number} y The y coordinate of the sprite
+ * @param {Number} x 精灵的x坐标 The x coordinate of the sprite
+ * @param {Number} y 精灵的y坐标 The y coordinate of the sprite
  */
 Sprite.prototype.move = function (x, y) {
 	this.x = x;
@@ -150,13 +166,14 @@ Sprite.prototype.move = function (x, y) {
 };
 
 /**
- * Sets the rectagle of the bitmap that the sprite displays.
+ * 设置精灵显示的位图矩形。
+ * Sets the rectangle of the bitmap that the sprite displays.
  *
  * @method setFrame
- * @param {Number} x The x coordinate of the frame
- * @param {Number} y The y coordinate of the frame
- * @param {Number} width The width of the frame
- * @param {Number} height The height of the frame
+ * @param {Number} x 帧的x坐标 The x coordinate of the frame
+ * @param {Number} y 帧的y坐标 The y coordinate of the frame
+ * @param {Number} width 帧的宽度 The width of the frame
+ * @param {Number} height 帧的高度 The height of the frame
  */
 Sprite.prototype.setFrame = function (x, y, width, height) {
 	this._refreshFrame = false;
@@ -171,20 +188,22 @@ Sprite.prototype.setFrame = function (x, y, width, height) {
 };
 
 /**
+ * 获取精灵的混合颜色。
  * Gets the blend color for the sprite.
  *
  * @method getBlendColor
- * @return {Array} The blend color [r, g, b, a]
+ * @return {Array} 混合颜色 [r, g, b, a] The blend color [r, g, b, a]
  */
 Sprite.prototype.getBlendColor = function () {
 	return this._blendColor.clone();
 };
 
 /**
+ * 设置精灵的混合颜色。
  * Sets the blend color for the sprite.
  *
  * @method setBlendColor
- * @param {Array} color The blend color [r, g, b, a]
+ * @param {Array} color 混合颜色 [r, g, b, a] The blend color [r, g, b, a]
  */
 Sprite.prototype.setBlendColor = function (color) {
 	if (!(color instanceof Array)) {
@@ -197,20 +216,22 @@ Sprite.prototype.setBlendColor = function (color) {
 };
 
 /**
+ * 获取精灵的颜色色调。
  * Gets the color tone for the sprite.
  *
  * @method getColorTone
- * @return {Array} The color tone [r, g, b, gray]
+ * @return {Array} 颜色色调 [r, g, b, gray] The color tone [r, g, b, gray]
  */
 Sprite.prototype.getColorTone = function () {
 	return this._colorTone.clone();
 };
 
 /**
+ * 设置精灵的颜色色调。
  * Sets the color tone for the sprite.
  *
  * @method setColorTone
- * @param {Array} tone The color tone [r, g, b, gray]
+ * @param {Array} tone 颜色色调 [r, g, b, gray] The color tone [r, g, b, gray]
  */
 Sprite.prototype.setColorTone = function (tone) {
 	if (!(tone instanceof Array)) {
