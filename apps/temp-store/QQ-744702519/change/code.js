@@ -1126,29 +1126,29 @@
 						this.setSensorRangeC(value);
 					}
 					if (match[4]) {
-						// オプション
+						// 选项
 						options = match[4].trim().split(" ");
 						options.forEach(function (op) {
 							op = op.replace(/\\/g, "\x1b");
 							op = op.replace(/\x1b\x1b/g, "\\");
 							if (op.match(/^sw([a-d]|\d+)$/)) {
-								// スイッチ指定
+								// 开关指定
 								m = op.match(/^sw([a-d]|\d+)$/);
 								this.setSensorSwitch(m[1]);
 							} else if (op.match(/^lsw([a-d]|\d+)$/)) {
-								// ロストスイッチ指定
+								// 丢失开关指定
 								m = op.match(/^lsw([a-d]|\d+)$/);
 								this.setLostSensorSwitch(m[1]);
 							} else if (op.match(/^bo([0-1]|\x1bs\[(\d+|[a-d])\])$/)) {
-								// 両隣探索指定
+								// 两侧探索指定
 								m = op.match(/^bo([0-1]|\x1bs\[(\d+|[a-d])\])$/);
 								this.setBothSensor(m[1]);
 							} else if (op.match(/^rv([0-1]|\x1bs\[(\d+|[a-d])\])$/)) {
-								// 描画指定
+								// 绘制指定
 								m = op.match(/^rv([0-1]|\x1bs\[(\d+|[a-d])\])$/);
 								this.setRangeVisible(m[1]);
 							} else if (op.match(/^td([0-1]|\x1bs\[(\d+|[a-d])\])$/)) {
-								// 地形考慮指定
+								// 地形考虑指定
 								m = op.match(/^td([0-1]|\x1bs\[(\d+|[a-d])\])$/);
 								this.setTerrainDecision(m[1]);
 							} else if (op.match(/^di([urld])$/)) {
@@ -1156,44 +1156,44 @@
 								m = op.match(/^di([urld])$/);
 								this.setDirectionFixed(m[1]);
 							} else if (op.match(/^ev([0-1]|\x1bs\[(\d+|[a-d])\])$/)) {
-								// イベント考慮指定
+								// 事件考虑指定
 								m = op.match(/^ev([0-1]|\x1bs\[(\d+|[a-d])\])$/);
 								this.setEventDecision(m[1]);
 							} else if (op.match(/^rg(\d+|\x1bv\[(\d+)\])$/)) {
-								// リージョン考慮指定
+								// 区域考虑指定
 								m = op.match(/^rg(\d+|\x1bv\[(\d+)\])$/);
 								this.setRegionDecision(m[1]);
 							} else if (op.match(/^fb(\d+|\x1bv\[(\d+)\])$/)) {
-								// 発見フキダシ指定
+								// 发现气泡指定
 								m = op.match(/^fb(\d+|\x1bv\[(\d+)\])$/);
 								this.setFoundBallon(m[1]);
 							} else if (op.match(/^fc(\d+|\x1bv\[(\d+)\])$/)) {
-								// 発見コモン指定
+								// 发现公共事件指定
 								m = op.match(/^fc(\d+|\x1bv\[(\d+)\])$/);
 								this.setFoundCommon(m[1]);
 							} else if (op.match(/^fd(\d+|\x1bv\[(\d+)\])$/)) {
-								// 発見遅延指定
+								// 发现延迟指定
 								m = op.match(/^fd(\d+|\x1bv\[(\d+)\])$/);
 								this.setFoundMaxDelay(m[1]);
 								this.setFoundDelay(m[1]);
 							} else if (op.match(/^lb(\d+|\x1bv\[(\d+)\])$/)) {
-								// ロストフキダシ指定
+								// 丢失气泡指定
 								m = op.match(/^lb(\d+|\x1bv\[(\d+)\])$/);
 								this.setLostBallon(m[1]);
 							} else if (op.match(/^lc(\d+|\x1bv\[(\d+)\])$/)) {
-								// ロストコモン指定
+								// 丢失公共事件指定
 								m = op.match(/^lc(\d+|\x1bv\[(\d+)\])$/);
 								this.setLostCommon(m[1]);
 							} else if (op.match(/^ld(\d+|\x1bv\[(\d+)\])$/)) {
-								// ロスト遅延指定
+								// 丢失延迟指定
 								m = op.match(/^ld(\d+|\x1bv\[(\d+)\])$/);
 								this.setLostMaxDelay(m[1]);
 								this.setLostDelay(m[1]);
 							} else if (op.match(/^li$/)) {
-								// ロスト状態移行無効
+								// 丢失状态转移无效
 								this.setLostInvalid(true);
 							} else if (op.match(/^am([0-1]|\x1bs\[(\d+|[a-d])\])$/)) {
-								// 探索続行指定
+								// 探索继续指定
 								m = op.match(/^am([0-1]|\x1bs\[(\d+|[a-d])\])$/);
 								this.setActiveMode(m[1]);
 							}
@@ -1214,26 +1214,26 @@
 	};
 
 	Game_Event.prototype.sensorUpdate = function () {
-		// 探索中のイベントであること
-		// マップイベント実行中でないこと or 探索続行オプションが付与されている
+		// 探索中的事件
+		// 地图事件未执行中 或 具有探索继续选项
 		if (this.getSensorStatus() == 1 && (!this.isStarting() || this.getActiveMode() == 1)) {
-			// プレイヤーを発見して、かつ強制ロストが無効
+			// 发现玩家且强制丢失无效
 			if (this.isFoundPlayer() && this.getForceLost() == 0) {
 				if (this.getFoundStatus() == 0) {
 					this.foundPlayer();
 				}
 				if (this.getLostDelay() < this.getLostMaxDelay()) this.resetLostDelay();
-				// 強制ロストが有効
+				// 强制丢失有效
 			} else if (this.getForceLost() > 0) {
 				this.lostPlayer(true);
-				// プレイヤー発見状態
+				// 玩家发现状态
 			} else if (this.getFoundStatus() == 1) {
 				this.lostPlayer();
 				if (this.getFoundDelay() < this.getFoundMaxDelay()) {
 					this.resetFoundDelay();
 					this.setForceLost(0);
 				}
-				// 強制発見が有効
+				// 强制发现有效
 			} else if (this.getForceFound() > 0) {
 				this.foundPlayer(true);
 			} else {
