@@ -3,10 +3,11 @@
 //=============================================================================
 
 /**
+ * 包含游戏窗口的层。
  * The layer which contains game windows.
  *
  * @class WindowLayer
- * @constructor
+ * @extends PIXI.Container
  */
 function WindowLayer() {
 	this.initialize.apply(this, arguments);
@@ -43,10 +44,10 @@ WindowLayer.prototype.onRemoveAsAChild = function () {
 WindowLayer.voidFilter = new PIXI.filters.VoidFilter();
 
 /**
+ * 窗口层的宽度（像素）。
  * The width of the window layer in pixels.
  *
- * @property width
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(WindowLayer.prototype, "width", {
 	get: function () {
@@ -59,10 +60,10 @@ Object.defineProperty(WindowLayer.prototype, "width", {
 });
 
 /**
+ * 窗口层的高度（像素）。
  * The height of the window layer in pixels.
  *
- * @property height
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(WindowLayer.prototype, "height", {
 	get: function () {
@@ -75,13 +76,14 @@ Object.defineProperty(WindowLayer.prototype, "height", {
 });
 
 /**
+ * 同时设置 x、y、宽度和高度。
  * Sets the x, y, width, and height all at once.
  *
  * @method move
- * @param {Number} x The x coordinate of the window layer
- * @param {Number} y The y coordinate of the window layer
- * @param {Number} width The width of the window layer
- * @param {Number} height The height of the window layer
+ * @param {Number} x 窗口层的x坐标 The x coordinate of the window layer
+ * @param {Number} y 窗口层的y坐标 The y coordinate of the window layer
+ * @param {Number} width 窗口层的宽度 The width of the window layer
+ * @param {Number} height 窗口层的高度 The height of the window layer
  */
 WindowLayer.prototype.move = function (x, y, width, height) {
 	this.x = x;
@@ -91,6 +93,7 @@ WindowLayer.prototype.move = function (x, y, width, height) {
 };
 
 /**
+ * 每帧更新窗口层。
  * Updates the window layer for each frame.
  *
  * @method update
@@ -104,8 +107,11 @@ WindowLayer.prototype.update = function () {
 };
 
 /**
- * @method _renderCanvas
- * @param {Object} renderSession
+ * Canvas渲染。
+ * Renders with Canvas.
+ *
+ * @method renderCanvas
+ * @param {Object} renderer 渲染器 The renderer
  * @private
  */
 WindowLayer.prototype.renderCanvas = function (renderer) {
@@ -158,9 +164,12 @@ WindowLayer.prototype.renderCanvas = function (renderer) {
 };
 
 /**
+ * Canvas清除窗口矩形。
+ * Clears window rectangle on Canvas.
+ *
  * @method _canvasClearWindowRect
- * @param {Object} renderSession
- * @param {Window} window
+ * @param {Object} renderSession 渲染会话 The render session
+ * @param {Window} window 窗口 The window
  * @private
  */
 WindowLayer.prototype._canvasClearWindowRect = function (renderSession, window) {
@@ -172,8 +181,11 @@ WindowLayer.prototype._canvasClearWindowRect = function (renderSession, window) 
 };
 
 /**
- * @method _renderWebGL
- * @param {Object} renderSession
+ * WebGL渲染。
+ * Renders with WebGL.
+ *
+ * @method renderWebGL
+ * @param {Object} renderer 渲染器 The renderer
  * @private
  */
 WindowLayer.prototype.renderWebGL = function (renderer) {
@@ -221,8 +233,12 @@ WindowLayer.prototype.renderWebGL = function (renderer) {
 };
 
 /**
+ * 窗口遮罩。
+ * Masks the window.
+ *
  * @method _maskWindow
- * @param {Window} window
+ * @param {Window} window 窗口 The window
+ * @param {PIXI.Point} shift 偏移 The shift
  * @private
  */
 WindowLayer.prototype._maskWindow = function (window, shift) {
@@ -238,64 +254,68 @@ WindowLayer.prototype._maskWindow = function (window, shift) {
 // The important members from Pixi.js
 
 /**
+ * 窗口层的x坐标。
  * The x coordinate of the window layer.
  *
- * @property x
- * @type Number
+ * @type {Number}
  */
 
 /**
+ * 窗口层的y坐标。
  * The y coordinate of the window layer.
  *
- * @property y
- * @type Number
+ * @type {Number}
  */
 
 /**
+ * [只读] 窗口层的子对象数组。
  * [read-only] The array of children of the window layer.
  *
- * @property children
- * @type Array
+ * @type {Array}
  */
 
 /**
+ * [只读] 包含窗口层的对象。
  * [read-only] The object that contains the window layer.
  *
- * @property parent
- * @type Object
+ * @type {Object}
  */
 
 /**
+ * 向容器中添加子对象。
  * Adds a child to the container.
  *
  * @method addChild
- * @param {Object} child The child to add
- * @return {Object} The child that was added
+ * @param {Object} child 要添加的子对象 The child to add
+ * @return {Object} 被添加的子对象 The child that was added
  */
 
 /**
+ * 在指定索引处向容器中添加子对象。
  * Adds a child to the container at a specified index.
  *
  * @method addChildAt
- * @param {Object} child The child to add
- * @param {Number} index The index to place the child in
- * @return {Object} The child that was added
+ * @param {Object} child 要添加的子对象 The child to add
+ * @param {Number} index 放置子对象的索引 The index to place the child in
+ * @return {Object} 被添加的子对象 The child that was added
  */
 
 /**
+ * 从容器中移除子对象。
  * Removes a child from the container.
  *
  * @method removeChild
- * @param {Object} child The child to remove
- * @return {Object} The child that was removed
+ * @param {Object} child 要移除的子对象 The child to remove
+ * @return {Object} 被移除的子对象 The child that was removed
  */
 
 /**
+ * 从指定索引位置移除子对象。
  * Removes a child from the specified index position.
  *
  * @method removeChildAt
- * @param {Number} index The index to get the child from
- * @return {Object} The child that was removed
+ * @param {Number} index 获取子对象的索引 The index to get the child from
+ * @return {Object} 被移除的子对象 The child that was removed
  */
 
 //-----------------------------------------------------------------------------

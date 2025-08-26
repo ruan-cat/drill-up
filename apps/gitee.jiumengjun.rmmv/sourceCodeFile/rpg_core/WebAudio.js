@@ -3,11 +3,11 @@
 //=============================================================================
 
 /**
+ * Web Audio API的音频对象。
  * The audio object of Web Audio API.
  *
  * @class WebAudio
- * @constructor
- * @param {String} url The url of the audio file
+ * @param {String} url 音频文件的URL The url of the audio file
  */
 function WebAudio() {
 	this.initialize.apply(this, arguments);
@@ -43,12 +43,13 @@ WebAudio._initialized = false;
 WebAudio._unlocked = false;
 
 /**
+ * 初始化音频系统。
  * Initializes the audio system.
  *
  * @static
  * @method initialize
- * @param {Boolean} noAudio Flag for the no-audio mode
- * @return {Boolean} True if the audio system is available
+ * @param {Boolean} noAudio 无音频模式的标志 Flag for the no-audio mode
+ * @return {Boolean} 如果音频系统可用则返回true True if the audio system is available
  */
 WebAudio.initialize = function (noAudio) {
 	if (!this._initialized) {
@@ -64,11 +65,12 @@ WebAudio.initialize = function (noAudio) {
 };
 
 /**
+ * 检查浏览器是否可以播放ogg文件。
  * Checks whether the browser can play ogg files.
  *
  * @static
  * @method canPlayOgg
- * @return {Boolean} True if the browser can play ogg files
+ * @return {Boolean} 如果浏览器可以播放ogg文件则返回true True if the browser can play ogg files
  */
 WebAudio.canPlayOgg = function () {
 	if (!this._initialized) {
@@ -78,11 +80,12 @@ WebAudio.canPlayOgg = function () {
 };
 
 /**
+ * 检查浏览器是否可以播放m4a文件。
  * Checks whether the browser can play m4a files.
  *
  * @static
  * @method canPlayM4a
- * @return {Boolean} True if the browser can play m4a files
+ * @return {Boolean} 如果浏览器可以播放m4a文件则返回true True if the browser can play m4a files
  */
 WebAudio.canPlayM4a = function () {
 	if (!this._initialized) {
@@ -92,11 +95,12 @@ WebAudio.canPlayM4a = function () {
 };
 
 /**
+ * 设置所有音频的主音量。
  * Sets the master volume of the all audio.
  *
  * @static
  * @method setMasterVolume
- * @param {Number} value Master volume (min: 0, max: 1)
+ * @param {Number} value 主音量 (最小值: 0, 最大值: 1) Master volume (min: 0, max: 1)
  */
 WebAudio.setMasterVolume = function (value) {
 	this._masterVolume = value;
@@ -106,6 +110,9 @@ WebAudio.setMasterVolume = function (value) {
 };
 
 /**
+ * 创建音频上下文。
+ * Creates the audio context.
+ *
  * @static
  * @method _createContext
  * @private
@@ -123,6 +130,9 @@ WebAudio._createContext = function () {
 };
 
 /**
+ * 检测音频编解码器。
+ * Detects audio codecs.
+ *
  * @static
  * @method _detectCodecs
  * @private
@@ -136,6 +146,9 @@ WebAudio._detectCodecs = function () {
 };
 
 /**
+ * 创建主音量增益节点。
+ * Creates the master gain node.
+ *
  * @static
  * @method _createMasterGainNode
  * @private
@@ -150,6 +163,9 @@ WebAudio._createMasterGainNode = function () {
 };
 
 /**
+ * 设置事件处理程序。
+ * Sets up event handlers.
+ *
  * @static
  * @method _setupEventHandlers
  * @private
@@ -173,6 +189,9 @@ WebAudio._setupEventHandlers = function () {
 };
 
 /**
+ * 触摸开始事件处理。
+ * Handles touch start event.
+ *
  * @static
  * @method _onTouchStart
  * @private
@@ -188,6 +207,9 @@ WebAudio._onTouchStart = function () {
 };
 
 /**
+ * 可见性变化事件处理。
+ * Handles visibility change event.
+ *
  * @static
  * @method _onVisibilityChange
  * @private
@@ -201,6 +223,9 @@ WebAudio._onVisibilityChange = function () {
 };
 
 /**
+ * 隐藏事件处理。
+ * Handles hide event.
+ *
  * @static
  * @method _onHide
  * @private
@@ -212,6 +237,9 @@ WebAudio._onHide = function () {
 };
 
 /**
+ * 显示事件处理。
+ * Handles show event.
+ *
  * @static
  * @method _onShow
  * @private
@@ -223,6 +251,9 @@ WebAudio._onShow = function () {
 };
 
 /**
+ * 检查是否应在隐藏时静音。
+ * Checks whether should mute on hide.
+ *
  * @static
  * @method _shouldMuteOnHide
  * @private
@@ -232,9 +263,12 @@ WebAudio._shouldMuteOnHide = function () {
 };
 
 /**
+ * 淡入效果。
+ * Performs fade-in effect.
+ *
  * @static
  * @method _fadeIn
- * @param {Number} duration
+ * @param {Number} duration 持续时间 The duration
  * @private
  */
 WebAudio._fadeIn = function (duration) {
@@ -247,9 +281,12 @@ WebAudio._fadeIn = function (duration) {
 };
 
 /**
+ * 淡出效果。
+ * Performs fade-out effect.
+ *
  * @static
  * @method _fadeOut
- * @param {Number} duration
+ * @param {Number} duration 持续时间 The duration
  * @private
  */
 WebAudio._fadeOut = function (duration) {
@@ -262,6 +299,7 @@ WebAudio._fadeOut = function (duration) {
 };
 
 /**
+ * 清除音频数据。
  * Clears the audio data.
  *
  * @method clear
@@ -288,10 +326,10 @@ WebAudio.prototype.clear = function () {
 };
 
 /**
+ * [只读] 音频文件的URL。
  * [read-only] The url of the audio file.
  *
- * @property url
- * @type String
+ * @type {String}
  */
 Object.defineProperty(WebAudio.prototype, "url", {
 	get: function () {
@@ -301,10 +339,10 @@ Object.defineProperty(WebAudio.prototype, "url", {
 });
 
 /**
+ * 音频的音量。
  * The volume of the audio.
  *
- * @property volume
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(WebAudio.prototype, "volume", {
 	get: function () {
@@ -320,10 +358,10 @@ Object.defineProperty(WebAudio.prototype, "volume", {
 });
 
 /**
+ * 音频的音调。
  * The pitch of the audio.
  *
- * @property pitch
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(WebAudio.prototype, "pitch", {
 	get: function () {
@@ -341,10 +379,10 @@ Object.defineProperty(WebAudio.prototype, "pitch", {
 });
 
 /**
+ * 音频的声像。
  * The pan of the audio.
  *
- * @property pan
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(WebAudio.prototype, "pan", {
 	get: function () {
@@ -358,41 +396,45 @@ Object.defineProperty(WebAudio.prototype, "pan", {
 });
 
 /**
+ * 检查音频数据是否准备好播放。
  * Checks whether the audio data is ready to play.
  *
  * @method isReady
- * @return {Boolean} True if the audio data is ready to play
+ * @return {Boolean} 如果音频数据准备好播放则返回true True if the audio data is ready to play
  */
 WebAudio.prototype.isReady = function () {
 	return !!this._buffer;
 };
 
 /**
+ * 检查是否发生了加载错误。
  * Checks whether a loading error has occurred.
  *
  * @method isError
- * @return {Boolean} True if a loading error has occurred
+ * @return {Boolean} 如果发生了加载错误则返回true True if a loading error has occurred
  */
 WebAudio.prototype.isError = function () {
 	return this._hasError;
 };
 
 /**
+ * 检查音频是否正在播放。
  * Checks whether the audio is playing.
  *
  * @method isPlaying
- * @return {Boolean} True if the audio is playing
+ * @return {Boolean} 如果音频正在播放则返回true True if the audio is playing
  */
 WebAudio.prototype.isPlaying = function () {
 	return !!this._sourceNode;
 };
 
 /**
+ * 播放音频。
  * Plays the audio.
  *
  * @method play
- * @param {Boolean} loop Whether the audio data play in a loop
- * @param {Number} offset The start position to play in seconds
+ * @param {Boolean} loop 音频数据是否循环播放 Whether the audio data play in a loop
+ * @param {Number} offset 播放的起始位置（秒） The start position to play in seconds
  */
 WebAudio.prototype.play = function (loop, offset) {
 	if (this.isReady()) {
@@ -411,6 +453,7 @@ WebAudio.prototype.play = function (loop, offset) {
 };
 
 /**
+ * 停止音频。
  * Stops the audio.
  *
  * @method stop
@@ -428,10 +471,11 @@ WebAudio.prototype.stop = function () {
 };
 
 /**
+ * 执行音频淡入。
  * Performs the audio fade-in.
  *
  * @method fadeIn
- * @param {Number} duration Fade-in time in seconds
+ * @param {Number} duration 淡入时间（秒） Fade-in time in seconds
  */
 WebAudio.prototype.fadeIn = function (duration) {
 	if (this.isReady()) {
@@ -451,10 +495,11 @@ WebAudio.prototype.fadeIn = function (duration) {
 };
 
 /**
+ * 执行音频淡出。
  * Performs the audio fade-out.
  *
  * @method fadeOut
- * @param {Number} duration Fade-out time in seconds
+ * @param {Number} duration 淡出时间（秒） Fade-out time in seconds
  */
 WebAudio.prototype.fadeOut = function (duration) {
 	if (this._gainNode) {
@@ -467,6 +512,7 @@ WebAudio.prototype.fadeOut = function (duration) {
 };
 
 /**
+ * 获取音频的搜索位置。
  * Gets the seek position of the audio.
  *
  * @method seek
@@ -486,28 +532,33 @@ WebAudio.prototype.seek = function () {
 };
 
 /**
+ * 添加音频数据加载时调用的回调函数。
  * Add a callback function that will be called when the audio data is loaded.
  *
  * @method addLoadListener
- * @param {Function} listner The callback function
+ * @param {Function} listner 回调函数 The callback function
  */
 WebAudio.prototype.addLoadListener = function (listner) {
 	this._loadListeners.push(listner);
 };
 
 /**
+ * 添加播放停止时调用的回调函数。
  * Add a callback function that will be called when the playback is stopped.
  *
  * @method addStopListener
- * @param {Function} listner The callback function
+ * @param {Function} listner 回调函数 The callback function
  */
 WebAudio.prototype.addStopListener = function (listner) {
 	this._stopListeners.push(listner);
 };
 
 /**
+ * 加载音频文件。
+ * Loads the audio file.
+ *
  * @method _load
- * @param {String} url
+ * @param {String} url 音频文件URL The audio file URL
  * @private
  */
 WebAudio.prototype._load = function (url) {
@@ -531,8 +582,11 @@ WebAudio.prototype._load = function (url) {
 };
 
 /**
+ * XHR加载完成事件处理。
+ * Handles XHR load completion event.
+ *
  * @method _onXhrLoad
- * @param {XMLHttpRequest} xhr
+ * @param {XMLHttpRequest} xhr XMLHttpRequest对象 The XMLHttpRequest object
  * @private
  */
 WebAudio.prototype._onXhrLoad = function (xhr) {
@@ -557,9 +611,12 @@ WebAudio.prototype._onXhrLoad = function (xhr) {
 };
 
 /**
+ * 开始播放音频。
+ * Starts playing the audio.
+ *
  * @method _startPlaying
- * @param {Boolean} loop
- * @param {Number} offset
+ * @param {Boolean} loop 是否循环 Whether to loop
+ * @param {Number} offset 偏移量 The offset
  * @private
  */
 WebAudio.prototype._startPlaying = function (loop, offset) {
@@ -579,6 +636,9 @@ WebAudio.prototype._startPlaying = function (loop, offset) {
 };
 
 /**
+ * 创建音频节点。
+ * Creates audio nodes.
+ *
  * @method _createNodes
  * @private
  */
@@ -597,6 +657,9 @@ WebAudio.prototype._createNodes = function () {
 };
 
 /**
+ * 连接音频节点。
+ * Connects audio nodes.
+ *
  * @method _connectNodes
  * @private
  */
@@ -607,6 +670,9 @@ WebAudio.prototype._connectNodes = function () {
 };
 
 /**
+ * 移除音频节点。
+ * Removes audio nodes.
+ *
  * @method _removeNodes
  * @private
  */
@@ -620,6 +686,9 @@ WebAudio.prototype._removeNodes = function () {
 };
 
 /**
+ * 创建结束定时器。
+ * Creates end timer.
+ *
  * @method _createEndTimer
  * @private
  */
@@ -637,6 +706,9 @@ WebAudio.prototype._createEndTimer = function () {
 };
 
 /**
+ * 移除结束定时器。
+ * Removes end timer.
+ *
  * @method _removeEndTimer
  * @private
  */
@@ -648,6 +720,9 @@ WebAudio.prototype._removeEndTimer = function () {
 };
 
 /**
+ * 更新声像器。
+ * Updates the panner.
+ *
  * @method _updatePanner
  * @private
  */
@@ -660,6 +735,9 @@ WebAudio.prototype._updatePanner = function () {
 };
 
 /**
+ * 加载完成事件处理。
+ * Handles load completion event.
+ *
  * @method _onLoad
  * @private
  */
@@ -671,8 +749,11 @@ WebAudio.prototype._onLoad = function () {
 };
 
 /**
+ * 读取循环注释。
+ * Reads loop comments.
+ *
  * @method _readLoopComments
- * @param {Uint8Array} array
+ * @param {Uint8Array} array 字节数组 The byte array
  * @private
  */
 WebAudio.prototype._readLoopComments = function (array) {
@@ -681,8 +762,11 @@ WebAudio.prototype._readLoopComments = function (array) {
 };
 
 /**
+ * 读取Ogg文件。
+ * Reads Ogg file.
+ *
  * @method _readOgg
- * @param {Uint8Array} array
+ * @param {Uint8Array} array 字节数组 The byte array
  * @private
  */
 WebAudio.prototype._readOgg = function (array) {
@@ -718,8 +802,11 @@ WebAudio.prototype._readOgg = function (array) {
 };
 
 /**
+ * 读取MP4文件。
+ * Reads MP4 file.
+ *
  * @method _readMp4
- * @param {Uint8Array} array
+ * @param {Uint8Array} array 字节数组 The byte array
  * @private
  */
 WebAudio.prototype._readMp4 = function (array) {
@@ -747,10 +834,13 @@ WebAudio.prototype._readMp4 = function (array) {
 };
 
 /**
+ * 读取元数据。
+ * Reads metadata.
+ *
  * @method _readMetaData
- * @param {Uint8Array} array
- * @param {Number} index
- * @param {Number} size
+ * @param {Uint8Array} array 字节数组 The byte array
+ * @param {Number} index 索引 The index
+ * @param {Number} size 大小 The size
  * @private
  */
 WebAudio.prototype._readMetaData = function (array, index, size) {
@@ -783,9 +873,12 @@ WebAudio.prototype._readMetaData = function (array, index, size) {
 };
 
 /**
+ * 读取小端字节序。
+ * Reads little endian.
+ *
  * @method _readLittleEndian
- * @param {Uint8Array} array
- * @param {Number} index
+ * @param {Uint8Array} array 字节数组 The byte array
+ * @param {Number} index 索引 The index
  * @private
  */
 WebAudio.prototype._readLittleEndian = function (array, index) {
@@ -793,9 +886,12 @@ WebAudio.prototype._readLittleEndian = function (array, index) {
 };
 
 /**
+ * 读取大端字节序。
+ * Reads big endian.
+ *
  * @method _readBigEndian
- * @param {Uint8Array} array
- * @param {Number} index
+ * @param {Uint8Array} array 字节数组 The byte array
+ * @param {Number} index 索引 The index
  * @private
  */
 WebAudio.prototype._readBigEndian = function (array, index) {
@@ -803,9 +899,12 @@ WebAudio.prototype._readBigEndian = function (array, index) {
 };
 
 /**
+ * 读取四个字符。
+ * Reads four characters.
+ *
  * @method _readFourCharacters
- * @param {Uint8Array} array
- * @param {Number} index
+ * @param {Uint8Array} array 字节数组 The byte array
+ * @param {Number} index 索引 The index
  * @private
  */
 WebAudio.prototype._readFourCharacters = function (array, index) {

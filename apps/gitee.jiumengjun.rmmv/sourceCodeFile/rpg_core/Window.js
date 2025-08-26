@@ -3,10 +3,11 @@
 //=============================================================================
 
 /**
+ * 游戏中的窗口。
  * The window in the game.
  *
  * @class Window
- * @constructor
+ * @extends PIXI.Container
  */
 function Window() {
 	this.initialize.apply(this, arguments);
@@ -41,51 +42,51 @@ Window.prototype.initialize = function () {
 	this._createAllParts();
 
 	/**
+	 * 窗口滚动的原点。
 	 * The origin point of the window for scrolling.
 	 *
-	 * @property origin
-	 * @type Point
+	 * @type {Point}
 	 */
 	this.origin = new Point();
 
 	/**
+	 * 窗口的激活状态。
 	 * The active state for the window.
 	 *
-	 * @property active
-	 * @type Boolean
+	 * @type {Boolean}
 	 */
 	this.active = true;
 
 	/**
+	 * 下滚动箭头的可见性。
 	 * The visibility of the down scroll arrow.
 	 *
-	 * @property downArrowVisible
-	 * @type Boolean
+	 * @type {Boolean}
 	 */
 	this.downArrowVisible = false;
 
 	/**
+	 * 上滚动箭头的可见性。
 	 * The visibility of the up scroll arrow.
 	 *
-	 * @property upArrowVisible
-	 * @type Boolean
+	 * @type {Boolean}
 	 */
 	this.upArrowVisible = false;
 
 	/**
+	 * 暂停标志的可见性。
 	 * The visibility of the pause sign.
 	 *
-	 * @property pause
-	 * @type Boolean
+	 * @type {Boolean}
 	 */
 	this.pause = false;
 };
 
 /**
+ * 作为窗口皮肤的图像。
  * The image used as a window skin.
  *
- * @property windowskin
- * @type Bitmap
+ * @type {Bitmap}
  */
 Object.defineProperty(Window.prototype, "windowskin", {
 	get: function () {
@@ -101,10 +102,10 @@ Object.defineProperty(Window.prototype, "windowskin", {
 });
 
 /**
+ * 用于窗口内容的位图。
  * The bitmap used for the window contents.
  *
- * @property contents
- * @type Bitmap
+ * @type {Bitmap}
  */
 Object.defineProperty(Window.prototype, "contents", {
 	get: function () {
@@ -117,10 +118,10 @@ Object.defineProperty(Window.prototype, "contents", {
 });
 
 /**
+ * 窗口的宽度（像素）。
  * The width of the window in pixels.
  *
- * @property width
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Window.prototype, "width", {
 	get: function () {
@@ -134,10 +135,10 @@ Object.defineProperty(Window.prototype, "width", {
 });
 
 /**
+ * 窗口的高度（像素）。
  * The height of the window in pixels.
  *
- * @property height
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Window.prototype, "height", {
 	get: function () {
@@ -151,10 +152,10 @@ Object.defineProperty(Window.prototype, "height", {
 });
 
 /**
+ * 框架和内容之间的填充大小。
  * The size of the padding between the frame and contents.
  *
- * @property padding
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Window.prototype, "padding", {
 	get: function () {
@@ -168,10 +169,10 @@ Object.defineProperty(Window.prototype, "padding", {
 });
 
 /**
+ * 窗口背景的边距大小。
  * The size of the margin for the window background.
  *
- * @property margin
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Window.prototype, "margin", {
 	get: function () {
@@ -185,10 +186,10 @@ Object.defineProperty(Window.prototype, "margin", {
 });
 
 /**
+ * 窗口不包括内容的不透明度 (0 到 255)。
  * The opacity of the window without contents (0 to 255).
  *
- * @property opacity
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Window.prototype, "opacity", {
 	get: function () {
@@ -201,10 +202,10 @@ Object.defineProperty(Window.prototype, "opacity", {
 });
 
 /**
+ * 窗口背景的不透明度 (0 到 255)。
  * The opacity of the window background (0 to 255).
  *
- * @property backOpacity
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Window.prototype, "backOpacity", {
 	get: function () {
@@ -217,10 +218,10 @@ Object.defineProperty(Window.prototype, "backOpacity", {
 });
 
 /**
+ * 窗口内容的不透明度 (0 到 255)。
  * The opacity of the window contents (0 to 255).
  *
- * @property contentsOpacity
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Window.prototype, "contentsOpacity", {
 	get: function () {
@@ -233,10 +234,10 @@ Object.defineProperty(Window.prototype, "contentsOpacity", {
 });
 
 /**
+ * 窗口的开启度 (0 到 255)。
  * The openness of the window (0 to 255).
  *
- * @property openness
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Window.prototype, "openness", {
 	get: function () {
@@ -253,6 +254,7 @@ Object.defineProperty(Window.prototype, "openness", {
 });
 
 /**
+ * 每帧更新窗口。
  * Updates the window for each frame.
  *
  * @method update
@@ -269,13 +271,14 @@ Window.prototype.update = function () {
 };
 
 /**
+ * 同时设置 x、y、宽度和高度。
  * Sets the x, y, width, and height all at once.
  *
  * @method move
- * @param {Number} x The x coordinate of the window
- * @param {Number} y The y coordinate of the window
- * @param {Number} width The width of the window
- * @param {Number} height The height of the window
+ * @param {Number} x 窗口的x坐标 The x coordinate of the window
+ * @param {Number} y 窗口的y坐标 The y coordinate of the window
+ * @param {Number} width 窗口的宽度 The width of the window
+ * @param {Number} height 窗口的高度 The height of the window
  */
 Window.prototype.move = function (x, y, width, height) {
 	this.x = x || 0;
@@ -288,6 +291,7 @@ Window.prototype.move = function (x, y, width, height) {
 };
 
 /**
+ * 如果窗口完全打开则返回true (openness == 255)。
  * Returns true if the window is completely open (openness == 255).
  *
  * @method isOpen
@@ -297,6 +301,7 @@ Window.prototype.isOpen = function () {
 };
 
 /**
+ * 如果窗口完全关闭则返回true (openness == 0)。
  * Returns true if the window is completely closed (openness == 0).
  *
  * @method isClosed
@@ -306,13 +311,14 @@ Window.prototype.isClosed = function () {
 };
 
 /**
+ * 设置命令光标的位置。
  * Sets the position of the command cursor.
  *
  * @method setCursorRect
- * @param {Number} x The x coordinate of the cursor
- * @param {Number} y The y coordinate of the cursor
- * @param {Number} width The width of the cursor
- * @param {Number} height The height of the cursor
+ * @param {Number} x 光标的x坐标 The x coordinate of the cursor
+ * @param {Number} y 光标的y坐标 The y coordinate of the cursor
+ * @param {Number} width 光标的宽度 The width of the cursor
+ * @param {Number} height 光标的高度 The height of the cursor
  */
 Window.prototype.setCursorRect = function (x, y, width, height) {
 	var cx = Math.floor(x || 0);
@@ -330,12 +336,13 @@ Window.prototype.setCursorRect = function (x, y, width, height) {
 };
 
 /**
+ * 改变背景的颜色。
  * Changes the color of the background.
  *
  * @method setTone
- * @param {Number} r The red value in the range (-255, 255)
- * @param {Number} g The green value in the range (-255, 255)
- * @param {Number} b The blue value in the range (-255, 255)
+ * @param {Number} r 红色值，范围 (-255, 255) The red value in the range (-255, 255)
+ * @param {Number} g 绿色值，范围 (-255, 255) The green value in the range (-255, 255)
+ * @param {Number} b 蓝色值，范围 (-255, 255) The blue value in the range (-255, 255)
  */
 Window.prototype.setTone = function (r, g, b) {
 	var tone = this._colorTone;
@@ -346,11 +353,12 @@ Window.prototype.setTone = function (r, g, b) {
 };
 
 /**
+ * 在背景和内容之间添加子对象。
  * Adds a child between the background and contents.
  *
  * @method addChildToBack
- * @param {Object} child The child to add
- * @return {Object} The child that was added
+ * @param {Object} child 要添加的子对象 The child to add
+ * @return {Object} 被添加的子对象 The child that was added
  */
 Window.prototype.addChildToBack = function (child) {
 	var containerIndex = this.children.indexOf(this._windowSpriteContainer);
@@ -358,6 +366,9 @@ Window.prototype.addChildToBack = function (child) {
 };
 
 /**
+ * 更新变换。
+ * Updates the transform.
+ *
  * @method updateTransform
  * @private
  */
@@ -370,6 +381,9 @@ Window.prototype.updateTransform = function () {
 };
 
 /**
+ * 创建所有部件。
+ * Creates all parts.
+ *
  * @method _createAllParts
  * @private
  */
@@ -395,6 +409,9 @@ Window.prototype._createAllParts = function () {
 };
 
 /**
+ * 窗口皮肤加载事件处理。
+ * Handles windowskin load event.
+ *
  * @method _onWindowskinLoad
  * @private
  */
@@ -403,6 +420,9 @@ Window.prototype._onWindowskinLoad = function () {
 };
 
 /**
+ * 刷新所有部件。
+ * Refreshes all parts.
+ *
  * @method _refreshAllParts
  * @private
  */
@@ -416,6 +436,9 @@ Window.prototype._refreshAllParts = function () {
 };
 
 /**
+ * 刷新背景。
+ * Refreshes the background.
+ *
  * @method _refreshBack
  * @private
  */
@@ -443,6 +466,9 @@ Window.prototype._refreshBack = function () {
 };
 
 /**
+ * 刷新框架。
+ * Refreshes the frame.
+ *
  * @method _refreshFrame
  * @private
  */
@@ -471,6 +497,9 @@ Window.prototype._refreshFrame = function () {
 };
 
 /**
+ * 刷新光标。
+ * Refreshes the cursor.
+ *
  * @method _refreshCursor
  * @private
  */
@@ -510,6 +539,9 @@ Window.prototype._refreshCursor = function () {
 };
 
 /**
+ * 刷新内容。
+ * Refreshes the contents.
+ *
  * @method _refreshContents
  * @private
  */
@@ -518,6 +550,9 @@ Window.prototype._refreshContents = function () {
 };
 
 /**
+ * 刷新箭头。
+ * Refreshes the arrows.
+ *
  * @method _refreshArrows
  * @private
  */
@@ -541,6 +576,9 @@ Window.prototype._refreshArrows = function () {
 };
 
 /**
+ * 刷新暂停标志。
+ * Refreshes the pause sign.
+ *
  * @method _refreshPauseSign
  * @private
  */
@@ -557,6 +595,9 @@ Window.prototype._refreshPauseSign = function () {
 };
 
 /**
+ * 更新光标。
+ * Updates the cursor.
+ *
  * @method _updateCursor
  * @private
  */
@@ -575,6 +616,9 @@ Window.prototype._updateCursor = function () {
 };
 
 /**
+ * 更新内容。
+ * Updates the contents.
+ *
  * @method _updateContents
  * @private
  */
@@ -590,6 +634,9 @@ Window.prototype._updateContents = function () {
 };
 
 /**
+ * 更新箭头。
+ * Updates the arrows.
+ *
  * @method _updateArrows
  * @private
  */
@@ -599,6 +646,9 @@ Window.prototype._updateArrows = function () {
 };
 
 /**
+ * 更新暂停标志。
+ * Updates the pause sign.
+ *
  * @method _updatePauseSign
  * @private
  */
@@ -621,71 +671,75 @@ Window.prototype._updatePauseSign = function () {
 // The important members from Pixi.js
 
 /**
+ * 窗口的可见性。
  * The visibility of the window.
  *
- * @property visible
- * @type Boolean
+ * @type {Boolean}
  */
 
 /**
+ * 窗口的x坐标。
  * The x coordinate of the window.
  *
- * @property x
- * @type Number
+ * @type {Number}
  */
 
 /**
+ * 窗口的y坐标。
  * The y coordinate of the window.
  *
- * @property y
- * @type Number
+ * @type {Number}
  */
 
 /**
+ * [只读] 窗口的子对象数组。
  * [read-only] The array of children of the window.
  *
- * @property children
- * @type Array
+ * @type {Array}
  */
 
 /**
+ * [只读] 包含窗口的对象。
  * [read-only] The object that contains the window.
  *
- * @property parent
- * @type Object
+ * @type {Object}
  */
 
 /**
+ * 向容器中添加子对象。
  * Adds a child to the container.
  *
  * @method addChild
- * @param {Object} child The child to add
- * @return {Object} The child that was added
+ * @param {Object} child 要添加的子对象 The child to add
+ * @return {Object} 被添加的子对象 The child that was added
  */
 
 /**
+ * 在指定索引处向容器中添加子对象。
  * Adds a child to the container at a specified index.
  *
  * @method addChildAt
- * @param {Object} child The child to add
- * @param {Number} index The index to place the child in
- * @return {Object} The child that was added
+ * @param {Object} child 要添加的子对象 The child to add
+ * @param {Number} index 放置子对象的索引 The index to place the child in
+ * @return {Object} 被添加的子对象 The child that was added
  */
 
 /**
+ * 从容器中移除子对象。
  * Removes a child from the container.
  *
  * @method removeChild
- * @param {Object} child The child to remove
- * @return {Object} The child that was removed
+ * @param {Object} child 要移除的子对象 The child to remove
+ * @return {Object} 被移除的子对象 The child that was removed
  */
 
 /**
+ * 从指定索引位置移除子对象。
  * Removes a child from the specified index position.
  *
  * @method removeChildAt
- * @param {Number} index The index to get the child from
- * @return {Object} The child that was removed
+ * @param {Number} index 获取子对象的索引 The index to get the child from
+ * @return {Object} 被移除的子对象 The child that was removed
  */
 
 //-----------------------------------------------------------------------------
