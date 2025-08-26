@@ -289,9 +289,9 @@
 
 	//=========================================================================
 	// Game_Interpreter
-	//  ・プレイヤー探索制御プラグインコマンド
-	//  ・イベントをプレイヤー近くまで移動させるコマンド
-	//  を定義
+	//  ・玩家探索控制插件命令
+	//  ・将事件移动到玩家附近的命令
+	//  定义
 	//=========================================================================
 	const _Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
 	Game_Interpreter.prototype.pluginCommand = function (command, args) {
@@ -349,19 +349,19 @@
 		list = [];
 
 		if (event) {
-			// 移動スピード設定
+			// 移动速度设置
 			if (speed && isFinite(speed) && speed > 0) {
 				newSpeed = parseInt(speed, 10);
 			}
 
-			// 移動ルート設定
+			// 移动路线设置
 			list.push({ code: 29, parameters: [newSpeed] }, { code: 25 });
 			for (i = 1; i < sx + sy; i++) {
 				list.push({ code: 10 });
 			}
 			list.push({ code: 25 }, { code: 29, parameters: [oldSpeed] }, { code: 0 });
 
-			// 移動開始
+			// 开始移动
 			event.forceMoveRoute({
 				list: list,
 				repeat: false,
@@ -383,7 +383,7 @@
 
 	//=========================================================================
 	// Game_System
-	//  プレイヤー探索制御を定義
+	//  定义玩家探索控制
 	//=========================================================================
 	const _Game_System_initialize = Game_System.prototype.initialize;
 	Game_System.prototype.initialize = function () {
@@ -629,7 +629,7 @@
 
 	//=========================================================================
 	// Game_Player
-	//  場所移動を行った際に追跡状態をリセットする処理を定義します。
+	//  定义进行场所移动时重置追踪状态的处理。
 	//
 	//=========================================================================
 	const _Game_Player_reserveTransfer = Game_Player.prototype.reserveTransfer;
@@ -642,25 +642,25 @@
 
 	//=========================================================================
 	// Game_CharacterBase
-	//  プレイヤー探索制御用メンバーを追加定義し、
-	//  センサー状態を変更する処理を再定義します。
+	//  追加定义玩家探索控制用成员，
+	//  重新定义改变传感器状态的处理。
 	//
-	//  センサー状態：
-	//   -2 = センサー初期化前
-	//   -1 = 探索一時停止
+	//  传感器状态：
+	//   -2 = 传感器初始化前
+	//   -1 = 探索临时停止
 	//    0 = 探索停止
 	//    1 = 探索中
-	//  視界描画状態：
-	//    0 = 描画停止
-	//    1 = 描画更新
-	//    2 = 描画新規
-	//  発見状態：
-	//    0 = 未発見
-	//    1 = 発見済み
-	//  強制ロスト：
-	//    0 = 無効
-	//    1 = 設定反映ロスト
-	//    2 = 即ロスト
+	//  视野绘制状态：
+	//    0 = 绘制停止
+	//    1 = 绘制更新
+	//    2 = 绘制新建
+	//  发现状态：
+	//    0 = 未发现
+	//    1 = 已发现
+	//  强制丢失：
+	//    0 = 无效
+	//    1 = 设置反映丢失
+	//    2 = 即时丢失
 	//=========================================================================
 	const _Game_CharacterBaseInitMembers = Game_CharacterBase.prototype.initMembers;
 	Game_CharacterBase.prototype.initMembers = function () {
@@ -1056,7 +1056,7 @@
 
 	//=========================================================================
 	// Game_Map
-	//  探索開始処理の自動実行を定義します。
+	//  定义探索开始处理的自动执行。
 	//=========================================================================
 	if (DefAutoSensor[0]) {
 		const _Game_Map_setupEvents = Game_Map.prototype.setupEvents;
@@ -1068,8 +1068,8 @@
 
 	//=========================================================================
 	// Game_Event
-	//  プレイヤーとの距離を測り
-	//  指定範囲内にプレイヤーがいる場合に指定されたスイッチをONにします。
+	//  测量与玩家的距离
+	//  当玩家在指定范围内时将指定的开关设为ON。
 	//=========================================================================
 	const _Game_EventSetupPageSettings = Game_Event.prototype.setupPageSettings;
 	Game_Event.prototype.setupPageSettings = function () {
@@ -1098,11 +1098,11 @@
 				if (n.match(pattern)) {
 					match = n.match(pattern);
 					if (match[1] && match[1] == "!") {
-						// 探索一時無効
+						// 探索临时无效
 						this.setSensorStatus(-1);
 					}
 					switch (
-						match[2] // 探索種別
+						match[2] // 探索类型
 					) {
 						case "l":
 						case "f":
@@ -1115,7 +1115,7 @@
 							break;
 					}
 					if (match[3]) {
-						// 探索対象マス数
+						// 探索目标格数
 						value = String(match[3]);
 						value = value.replace(/\\/g, "\x1b");
 						value = value.replace(/\x1b\x1b/g, "\\");
