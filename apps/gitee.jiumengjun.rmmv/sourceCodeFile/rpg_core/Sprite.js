@@ -7,7 +7,7 @@
  * The basic object that is rendered to the game screen.
  *
  * @class Sprite
- * @constructor
+ * @extends PIXI.Sprite
  * @param {Bitmap} bitmap 精灵的图像 The image for the sprite
  */
 function Sprite() {
@@ -17,8 +17,22 @@ function Sprite() {
 Sprite.prototype = Object.create(PIXI.Sprite.prototype);
 Sprite.prototype.constructor = Sprite;
 
+/**
+ * 空滤镜实例。
+ * Void filter instance.
+ *
+ * @static
+ * @type {PIXI.filters.VoidFilter}
+ */
 Sprite.voidFilter = new PIXI.filters.VoidFilter();
 
+/**
+ * 初始化精灵。
+ * Initializes the sprite.
+ *
+ * @method initialize
+ * @param {Bitmap} bitmap 精灵的图像 The image for the sprite
+ */
 Sprite.prototype.initialize = function (bitmap) {
 	var texture = new PIXI.Texture(new PIXI.BaseTexture());
 
@@ -52,8 +66,7 @@ Sprite.prototype.initialize = function (bitmap) {
  * Number of the created objects.
  *
  * @static
- * @property _counter
- * @type Number
+ * @type {Number}
  * @private
  */
 Sprite._counter = 0;
@@ -62,8 +75,7 @@ Sprite._counter = 0;
  * 精灵的图像。
  * The image for the sprite.
  *
- * @property bitmap
- * @type Bitmap
+ * @type {Bitmap}
  */
 Object.defineProperty(Sprite.prototype, "bitmap", {
 	get: function () {
@@ -89,8 +101,7 @@ Object.defineProperty(Sprite.prototype, "bitmap", {
  * 精灵不含缩放的宽度。
  * The width of the sprite without the scale.
  *
- * @property width
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Sprite.prototype, "width", {
 	get: function () {
@@ -107,8 +118,7 @@ Object.defineProperty(Sprite.prototype, "width", {
  * 精灵不含缩放的高度。
  * The height of the sprite without the scale.
  *
- * @property height
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Sprite.prototype, "height", {
 	get: function () {
@@ -125,8 +135,7 @@ Object.defineProperty(Sprite.prototype, "height", {
  * 精灵的不透明度（0到255）。
  * The opacity of the sprite (0 to 255).
  *
- * @property opacity
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Sprite.prototype, "opacity", {
 	get: function () {
@@ -244,7 +253,11 @@ Sprite.prototype.setColorTone = function (tone) {
 };
 
 /**
+ * 位图加载完成时的回调。
+ * Callback when bitmap loading is completed.
+ * 
  * @method _onBitmapLoad
+ * @param {Bitmap} bitmapLoaded 已加载的位图 The loaded bitmap
  * @private
  */
 Sprite.prototype._onBitmapLoad = function (bitmapLoaded) {
@@ -260,6 +273,9 @@ Sprite.prototype._onBitmapLoad = function (bitmapLoaded) {
 };
 
 /**
+ * 刷新精灵显示。
+ * Refreshes the sprite display.
+ * 
  * @method _refresh
  * @private
  */
@@ -306,12 +322,15 @@ Sprite.prototype._refresh = function () {
 };
 
 /**
+ * 检查指定矩形是否在位图范围内。
+ * Checks whether the specified rectangle is within the bitmap bounds.
+ * 
  * @method _isInBitmapRect
- * @param {Number} x
- * @param {Number} y
- * @param {Number} w
- * @param {Number} h
- * @return {Boolean}
+ * @param {Number} x x坐标 The x coordinate
+ * @param {Number} y y坐标 The y coordinate  
+ * @param {Number} w 宽度 The width
+ * @param {Number} h 高度 The height
+ * @return {Boolean} 是否在位图范围内 Whether within bitmap bounds
  * @private
  */
 Sprite.prototype._isInBitmapRect = function (x, y, w, h) {
@@ -319,8 +338,11 @@ Sprite.prototype._isInBitmapRect = function (x, y, w, h) {
 };
 
 /**
+ * 检查是否需要色调处理。
+ * Checks whether tinting is needed.
+ * 
  * @method _needsTint
- * @return {Boolean}
+ * @return {Boolean} 是否需要色调处理 Whether tinting is needed
  * @private
  */
 Sprite.prototype._needsTint = function () {
@@ -329,9 +351,12 @@ Sprite.prototype._needsTint = function () {
 };
 
 /**
+ * 创建色调处理器。
+ * Creates a tinter.
+ * 
  * @method _createTinter
- * @param {Number} w
- * @param {Number} h
+ * @param {Number} w 宽度 The width
+ * @param {Number} h 高度 The height
  * @private
  */
 Sprite.prototype._createTinter = function (w, h) {
@@ -353,11 +378,14 @@ Sprite.prototype._createTinter = function (w, h) {
 };
 
 /**
+ * 执行色调处理。
+ * Executes tinting.
+ * 
  * @method _executeTint
- * @param {Number} x
- * @param {Number} y
- * @param {Number} w
- * @param {Number} h
+ * @param {Number} x x坐标 The x coordinate
+ * @param {Number} y y坐标 The y coordinate
+ * @param {Number} w 宽度 The width
+ * @param {Number} h 高度 The height
  * @private
  */
 Sprite.prototype._executeTint = function (x, y, w, h) {
@@ -417,8 +445,11 @@ Sprite.prototype._renderCanvas_PIXI = PIXI.Sprite.prototype._renderCanvas;
 Sprite.prototype._renderWebGL_PIXI = PIXI.Sprite.prototype._renderWebGL;
 
 /**
+ * Canvas渲染精灵。
+ * Renders the sprite with Canvas.
+ * 
  * @method _renderCanvas
- * @param {Object} renderer
+ * @param {Object} renderer 渲染器 The renderer
  * @private
  */
 Sprite.prototype._renderCanvas = function (renderer) {
@@ -435,8 +466,11 @@ Sprite.prototype._renderCanvas = function (renderer) {
 };
 
 /**
- * checks if we need to speed up custom blendmodes
- * @param renderer
+ * 检查是否需要加速自定义混合模式。
+ * Checks if we need to speed up custom blendmodes.
+ * 
+ * @method _speedUpCustomBlendModes
+ * @param {Object} renderer 渲染器 The renderer
  * @private
  */
 Sprite.prototype._speedUpCustomBlendModes = function (renderer) {
@@ -460,8 +494,11 @@ Sprite.prototype._speedUpCustomBlendModes = function (renderer) {
 };
 
 /**
+ * WebGL渲染精灵。
+ * Renders the sprite with WebGL.
+ * 
  * @method _renderWebGL
- * @param {Object} renderer
+ * @param {Object} renderer 渲染器 The renderer
  * @private
  */
 Sprite.prototype._renderWebGL = function (renderer) {
@@ -496,106 +533,110 @@ Sprite.prototype._renderWebGL = function (renderer) {
 // The important members from Pixi.js
 
 /**
+ * 精灵的可见性。
  * The visibility of the sprite.
  *
- * @property visible
- * @type Boolean
+ * @type {Boolean}
  */
 
 /**
+ * 精灵的x坐标。
  * The x coordinate of the sprite.
  *
- * @property x
- * @type Number
+ * @type {Number}
  */
 
 /**
+ * 精灵的y坐标。
  * The y coordinate of the sprite.
  *
- * @property y
- * @type Number
+ * @type {Number}
  */
 
 /**
+ * 精灵的锚点，范围(0,0)到(1,1)。
  * The origin point of the sprite. (0,0) to (1,1).
  *
- * @property anchor
- * @type Point
+ * @type {Point}
  */
 
 /**
+ * 精灵的缩放因子。
  * The scale factor of the sprite.
  *
- * @property scale
- * @type Point
+ * @type {Point}
  */
 
 /**
+ * 精灵的旋转角度（弧度）。
  * The rotation of the sprite in radians.
  *
- * @property rotation
- * @type Number
+ * @type {Number}
  */
 
 /**
+ * 应用于精灵的混合模式。
  * The blend mode to be applied to the sprite.
  *
- * @property blendMode
- * @type Number
+ * @type {Number}
  */
 
 /**
+ * 精灵的滤镜设置。
  * Sets the filters for the sprite.
  *
- * @property filters
- * @type Array
+ * @type {Array}
  */
 
 /**
+ * [只读] 精灵的子对象数组。
  * [read-only] The array of children of the sprite.
  *
- * @property children
- * @type Array
+ * @type {Array}
  */
 
 /**
+ * [只读] 包含该精灵的对象。
  * [read-only] The object that contains the sprite.
  *
- * @property parent
- * @type Object
+ * @type {Object}
  */
 
 /**
+ * 向容器添加子对象。
  * Adds a child to the container.
  *
  * @method addChild
- * @param {Object} child The child to add
- * @return {Object} The child that was added
+ * @param {Object} child 要添加的子对象 The child to add
+ * @return {Object} 添加的子对象 The child that was added
  */
 
 /**
+ * 在指定索引位置向容器添加子对象。
  * Adds a child to the container at a specified index.
  *
  * @method addChildAt
- * @param {Object} child The child to add
- * @param {Number} index The index to place the child in
- * @return {Object} The child that was added
+ * @param {Object} child 要添加的子对象 The child to add
+ * @param {Number} index 放置子对象的索引 The index to place the child in
+ * @return {Object} 添加的子对象 The child that was added
  */
 
 /**
+ * 从容器中移除子对象。
  * Removes a child from the container.
  *
  * @method removeChild
- * @param {Object} child The child to remove
- * @return {Object} The child that was removed
+ * @param {Object} child 要移除的子对象 The child to remove
+ * @return {Object} 被移除的子对象 The child that was removed
  */
 
 /**
+ * 从指定索引位置移除子对象。
  * Removes a child from the specified index position.
  *
  * @method removeChildAt
- * @param {Number} index The index to get the child from
- * @return {Object} The child that was removed
+ * @param {Number} index 获取子对象的索引 The index to get the child from
+ * @return {Object} 被移除的子对象 The child that was removed
  */
 
 //-----------------------------------------------------------------------------

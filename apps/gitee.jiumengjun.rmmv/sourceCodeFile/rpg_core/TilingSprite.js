@@ -3,11 +3,12 @@
 //=============================================================================
 
 /**
+ * 平铺图像的精灵对象。
  * The sprite object for a tiling image.
  *
  * @class TilingSprite
- * @constructor
- * @param {Bitmap} bitmap The image for the tiling sprite
+ * @extends PIXI.extras.PictureTilingSprite
+ * @param {Bitmap} bitmap 平铺精灵的图像 The image for the tiling sprite
  */
 function TilingSprite() {
 	this.initialize.apply(this, arguments);
@@ -16,6 +17,13 @@ function TilingSprite() {
 TilingSprite.prototype = Object.create(PIXI.extras.PictureTilingSprite.prototype);
 TilingSprite.prototype.constructor = TilingSprite;
 
+/**
+ * 初始化平铺精灵。
+ * Initializes the tiling sprite.
+ *
+ * @method initialize
+ * @param {Bitmap} bitmap 平铺精灵的图像 The image for the tiling sprite
+ */
 TilingSprite.prototype.initialize = function (bitmap) {
 	var texture = new PIXI.Texture(new PIXI.BaseTexture());
 
@@ -27,10 +35,10 @@ TilingSprite.prototype.initialize = function (bitmap) {
 	this._frame = new Rectangle();
 	this.spriteId = Sprite._counter++;
 	/**
+	 * 用于滚动的平铺精灵原点。
 	 * The origin point of the tiling sprite for scrolling.
 	 *
-	 * @property origin
-	 * @type Point
+	 * @type {Point}
 	 */
 	this.origin = new Point();
 
@@ -41,8 +49,11 @@ TilingSprite.prototype._renderCanvas_PIXI = PIXI.extras.PictureTilingSprite.prot
 TilingSprite.prototype._renderWebGL_PIXI = PIXI.extras.PictureTilingSprite.prototype._renderWebGL;
 
 /**
+ * Canvas渲染平铺精灵。
+ * Renders the tiling sprite with Canvas.
+ * 
  * @method _renderCanvas
- * @param {Object} renderer
+ * @param {Object} renderer 渲染器 The renderer
  * @private
  */
 TilingSprite.prototype._renderCanvas = function (renderer) {
@@ -55,8 +66,11 @@ TilingSprite.prototype._renderCanvas = function (renderer) {
 };
 
 /**
+ * WebGL渲染平铺精灵。
+ * Renders the tiling sprite with WebGL.
+ * 
  * @method _renderWebGL
- * @param {Object} renderer
+ * @param {Object} renderer 渲染器 The renderer
  * @private
  */
 TilingSprite.prototype._renderWebGL = function (renderer) {
@@ -72,10 +86,10 @@ TilingSprite.prototype._renderWebGL = function (renderer) {
 };
 
 /**
+ * 平铺精灵的图像。
  * The image for the tiling sprite.
  *
- * @property bitmap
- * @type Bitmap
+ * @type {Bitmap}
  */
 Object.defineProperty(TilingSprite.prototype, "bitmap", {
 	get: function () {
@@ -95,10 +109,10 @@ Object.defineProperty(TilingSprite.prototype, "bitmap", {
 });
 
 /**
+ * 平铺精灵的不透明度（0到255）。
  * The opacity of the tiling sprite (0 to 255).
  *
- * @property opacity
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(TilingSprite.prototype, "opacity", {
 	get: function () {
@@ -111,6 +125,7 @@ Object.defineProperty(TilingSprite.prototype, "opacity", {
 });
 
 /**
+ * 为每一帧更新平铺精灵。
  * Updates the tiling sprite for each frame.
  *
  * @method update
@@ -124,13 +139,14 @@ TilingSprite.prototype.update = function () {
 };
 
 /**
+ * 一次性设置x、y、宽度和高度。
  * Sets the x, y, width, and height all at once.
  *
  * @method move
- * @param {Number} x The x coordinate of the tiling sprite
- * @param {Number} y The y coordinate of the tiling sprite
- * @param {Number} width The width of the tiling sprite
- * @param {Number} height The height of the tiling sprite
+ * @param {Number} x 平铺精灵的x坐标 The x coordinate of the tiling sprite
+ * @param {Number} y 平铺精灵的y坐标 The y coordinate of the tiling sprite
+ * @param {Number} width 平铺精灵的宽度 The width of the tiling sprite
+ * @param {Number} height 平铺精灵的高度 The height of the tiling sprite
  */
 TilingSprite.prototype.move = function (x, y, width, height) {
 	this.x = x || 0;
@@ -140,13 +156,14 @@ TilingSprite.prototype.move = function (x, y, width, height) {
 };
 
 /**
+ * 指定平铺精灵将使用的图像区域。
  * Specifies the region of the image that the tiling sprite will use.
  *
  * @method setFrame
- * @param {Number} x The x coordinate of the frame
- * @param {Number} y The y coordinate of the frame
- * @param {Number} width The width of the frame
- * @param {Number} height The height of the frame
+ * @param {Number} x 帧的x坐标 The x coordinate of the frame
+ * @param {Number} y 帧的y坐标 The y coordinate of the frame
+ * @param {Number} width 帧的宽度 The width of the frame
+ * @param {Number} height 帧的高度 The height of the frame
  */
 TilingSprite.prototype.setFrame = function (x, y, width, height) {
 	this._frame.x = x;
@@ -157,6 +174,9 @@ TilingSprite.prototype.setFrame = function (x, y, width, height) {
 };
 
 /**
+ * 更新变换。
+ * Updates transform.
+ * 
  * @method updateTransform
  * @private
  */
@@ -169,6 +189,9 @@ TilingSprite.prototype.updateTransform = function () {
 TilingSprite.prototype.updateTransformTS = PIXI.extras.TilingSprite.prototype.updateTransform;
 
 /**
+ * 位图加载完成时的回调。
+ * Callback when bitmap loading is completed.
+ * 
  * @method _onBitmapLoad
  * @private
  */
@@ -178,6 +201,9 @@ TilingSprite.prototype._onBitmapLoad = function () {
 };
 
 /**
+ * 刷新平铺精灵显示。
+ * Refreshes the tiling sprite display.
+ * 
  * @method _refresh
  * @private
  */
@@ -195,8 +221,11 @@ TilingSprite.prototype._refresh = function () {
 TilingSprite.prototype._speedUpCustomBlendModes = Sprite.prototype._speedUpCustomBlendModes;
 
 /**
+ * WebGL渲染平铺精灵（优化版本）。
+ * Renders the tiling sprite with WebGL (optimized version).
+ * 
  * @method _renderWebGL
- * @param {Object} renderer
+ * @param {Object} renderer 渲染器 The renderer
  * @private
  */
 TilingSprite.prototype._renderWebGL = function (renderer) {
@@ -213,24 +242,24 @@ TilingSprite.prototype._renderWebGL = function (renderer) {
 // The important members from Pixi.js
 
 /**
+ * 平铺精灵的可见性。
  * The visibility of the tiling sprite.
  *
- * @property visible
- * @type Boolean
+ * @type {Boolean}
  */
 
 /**
+ * 平铺精灵的x坐标。
  * The x coordinate of the tiling sprite.
  *
- * @property x
- * @type Number
+ * @type {Number}
  */
 
 /**
+ * 平铺精灵的y坐标。
  * The y coordinate of the tiling sprite.
  *
- * @property y
- * @type Number
+ * @type {Number}
  */
 
 //-----------------------------------------------------------------------------

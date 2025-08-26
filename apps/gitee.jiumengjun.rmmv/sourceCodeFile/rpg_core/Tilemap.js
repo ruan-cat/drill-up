@@ -3,10 +3,11 @@
 //=============================================================================
 
 /**
+ * 显示2D瓦片游戏地图的瓦片地图。
  * The tilemap which displays 2D tile-based game map.
  *
  * @class Tilemap
- * @constructor
+ * @extends PIXI.Container
  */
 function Tilemap() {
 	this.initialize.apply(this, arguments);
@@ -15,6 +16,12 @@ function Tilemap() {
 Tilemap.prototype = Object.create(PIXI.Container.prototype);
 Tilemap.prototype.constructor = Tilemap;
 
+/**
+ * 初始化瓦片地图。
+ * Initializes the tilemap.
+ *
+ * @method initialize
+ */
 Tilemap.prototype.initialize = function () {
 	PIXI.Container.call(this);
 
@@ -31,50 +38,50 @@ Tilemap.prototype.initialize = function () {
 	this._lastTiles = [];
 
 	/**
+	 * 用作瓦片集的位图。
 	 * The bitmaps used as a tileset.
 	 *
-	 * @property bitmaps
-	 * @type Array
+	 * @type {Array}
 	 */
 	this.bitmaps = [];
 
 	/**
+	 * 用于滚动的瓦片地图原点。
 	 * The origin point of the tilemap for scrolling.
 	 *
-	 * @property origin
-	 * @type Point
+	 * @type {Point}
 	 */
 	this.origin = new Point();
 
 	/**
+	 * 瓦片集标志。
 	 * The tileset flags.
 	 *
-	 * @property flags
-	 * @type Array
+	 * @type {Array}
 	 */
 	this.flags = [];
 
 	/**
+	 * 自动瓦片的动画计数。
 	 * The animation count for autotiles.
 	 *
-	 * @property animationCount
-	 * @type Number
+	 * @type {Number}
 	 */
 	this.animationCount = 0;
 
 	/**
+	 * 瓦片地图是否水平循环。
 	 * Whether the tilemap loops horizontal.
 	 *
-	 * @property horizontalWrap
-	 * @type Boolean
+	 * @type {Boolean}
 	 */
 	this.horizontalWrap = false;
 
 	/**
+	 * 瓦片地图是否垂直循环。
 	 * Whether the tilemap loops vertical.
 	 *
-	 * @property verticalWrap
-	 * @type Boolean
+	 * @type {Boolean}
 	 */
 	this.verticalWrap = false;
 
@@ -83,10 +90,10 @@ Tilemap.prototype.initialize = function () {
 };
 
 /**
+ * 屏幕宽度（像素）。
  * The width of the screen in pixels.
  *
- * @property width
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Tilemap.prototype, "width", {
 	get: function () {
@@ -101,10 +108,10 @@ Object.defineProperty(Tilemap.prototype, "width", {
 });
 
 /**
+ * 屏幕高度（像素）。
  * The height of the screen in pixels.
  *
- * @property height
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Tilemap.prototype, "height", {
 	get: function () {
@@ -119,10 +126,10 @@ Object.defineProperty(Tilemap.prototype, "height", {
 });
 
 /**
+ * 瓦片宽度（像素）。
  * The width of a tile in pixels.
  *
- * @property tileWidth
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Tilemap.prototype, "tileWidth", {
 	get: function () {
@@ -137,10 +144,10 @@ Object.defineProperty(Tilemap.prototype, "tileWidth", {
 });
 
 /**
+ * 瓦片高度（像素）。
  * The height of a tile in pixels.
  *
- * @property tileHeight
- * @type Number
+ * @type {Number}
  */
 Object.defineProperty(Tilemap.prototype, "tileHeight", {
 	get: function () {
@@ -155,12 +162,13 @@ Object.defineProperty(Tilemap.prototype, "tileHeight", {
 });
 
 /**
+ * 设置瓦片地图数据。
  * Sets the tilemap data.
  *
  * @method setData
- * @param {Number} width The width of the map in number of tiles
- * @param {Number} height The height of the map in number of tiles
- * @param {Array} data The one dimensional array for the map data
+ * @param {Number} width 地图宽度（瓦片数量） The width of the map in number of tiles
+ * @param {Number} height 地图高度（瓦片数量） The height of the map in number of tiles
+ * @param {Array} data 地图数据的一维数组 The one dimensional array for the map data
  */
 Tilemap.prototype.setData = function (width, height, data) {
 	this._mapWidth = width;
@@ -169,11 +177,11 @@ Tilemap.prototype.setData = function (width, height, data) {
 };
 
 /**
+ * 检查瓦片集是否已准备好渲染。
  * Checks whether the tileset is ready to render.
  *
  * @method isReady
- * @type Boolean
- * @return {Boolean} True if the tilemap is ready
+ * @return {Boolean} 如果瓦片地图准备就绪则为true True if the tilemap is ready
  */
 Tilemap.prototype.isReady = function () {
 	for (var i = 0; i < this.bitmaps.length; i++) {
@@ -185,6 +193,7 @@ Tilemap.prototype.isReady = function () {
 };
 
 /**
+ * 为每一帧更新瓦片地图。
  * Updates the tilemap for each frame.
  *
  * @method update
@@ -205,6 +214,7 @@ Tilemap.prototype.update = function () {
 };
 
 /**
+ * 强制重绘整个瓦片地图。
  * Forces to repaint the entire tilemap.
  *
  * @method refresh
@@ -214,13 +224,17 @@ Tilemap.prototype.refresh = function () {
 };
 
 /**
- * Forces to refresh the tileset
+ * 强制刷新瓦片集。
+ * Forces to refresh the tileset.
  *
- * @method refresh
+ * @method refreshTileset
  */
 Tilemap.prototype.refreshTileset = function () {};
 
 /**
+ * 更新变换。
+ * Updates transform.
+ * 
  * @method updateTransform
  * @private
  */
@@ -248,6 +262,9 @@ Tilemap.prototype.updateTransform = function () {
 };
 
 /**
+ * 创建图层。
+ * Creates layers.
+ * 
  * @method _createLayers
  * @private
  */
@@ -296,9 +313,12 @@ Tilemap.prototype._createLayers = function () {
 };
 
 /**
+ * 更新图层位置。
+ * Updates layer positions.
+ * 
  * @method _updateLayerPositions
- * @param {Number} startX
- * @param {Number} startY
+ * @param {Number} startX 开始x坐标 Start X coordinate
+ * @param {Number} startY 开始y坐标 Start Y coordinate
  * @private
  */
 Tilemap.prototype._updateLayerPositions = function (startX, startY) {
@@ -331,9 +351,12 @@ Tilemap.prototype._updateLayerPositions = function (startX, startY) {
 };
 
 /**
+ * 绘制所有瓦片。
+ * Paints all tiles.
+ * 
  * @method _paintAllTiles
- * @param {Number} startX
- * @param {Number} startY
+ * @param {Number} startX 开始x坐标 Start X coordinate
+ * @param {Number} startY 开始y坐标 Start Y coordinate
  * @private
  */
 Tilemap.prototype._paintAllTiles = function (startX, startY) {
@@ -347,11 +370,14 @@ Tilemap.prototype._paintAllTiles = function (startX, startY) {
 };
 
 /**
+ * 绘制瓦片。
+ * Paints tiles.
+ * 
  * @method _paintTiles
- * @param {Number} startX
- * @param {Number} startY
- * @param {Number} x
- * @param {Number} y
+ * @param {Number} startX 开始x坐标 Start X coordinate
+ * @param {Number} startY 开始y坐标 Start Y coordinate
+ * @param {Number} x x坐标 X coordinate
+ * @param {Number} y y坐标 Y coordinate
  * @private
  */
 Tilemap.prototype._paintTiles = function (startX, startY, x, y) {
@@ -433,10 +459,13 @@ Tilemap.prototype._paintTiles = function (startX, startY, x, y) {
 };
 
 /**
+ * 读取上次瓦片。
+ * Reads last tiles.
+ * 
  * @method _readLastTiles
- * @param {Number} i
- * @param {Number} x
- * @param {Number} y
+ * @param {Number} i 索引 Index
+ * @param {Number} x x坐标 X coordinate
+ * @param {Number} y y坐标 Y coordinate
  * @private
  */
 Tilemap.prototype._readLastTiles = function (i, x, y) {
@@ -454,11 +483,14 @@ Tilemap.prototype._readLastTiles = function (i, x, y) {
 };
 
 /**
+ * 写入上次瓦片。
+ * Writes last tiles.
+ * 
  * @method _writeLastTiles
- * @param {Number} i
- * @param {Number} x
- * @param {Number} y
- * @param {Array} tiles
+ * @param {Number} i 索引 Index
+ * @param {Number} x x坐标 X coordinate
+ * @param {Number} y y坐标 Y coordinate
+ * @param {Array} tiles 瓦片数组 Tiles array
  * @private
  */
 Tilemap.prototype._writeLastTiles = function (i, x, y, tiles) {
@@ -474,11 +506,14 @@ Tilemap.prototype._writeLastTiles = function (i, x, y, tiles) {
 };
 
 /**
+ * 绘制瓦片。
+ * Draws a tile.
+ * 
  * @method _drawTile
- * @param {Bitmap} bitmap
- * @param {Number} tileId
- * @param {Number} dx
- * @param {Number} dy
+ * @param {Bitmap} bitmap 位图 Bitmap
+ * @param {Number} tileId 瓦片ID Tile ID
+ * @param {Number} dx 目标x坐标 Destination X coordinate
+ * @param {Number} dy 目标y坐标 Destination Y coordinate
  * @private
  */
 Tilemap.prototype._drawTile = function (bitmap, tileId, dx, dy) {
@@ -675,11 +710,14 @@ Tilemap.prototype._drawShadow = function (bitmap, shadowBits, dx, dy) {
 };
 
 /**
+ * 读取地图数据。
+ * Reads map data.
+ * 
  * @method _readMapData
- * @param {Number} x
- * @param {Number} y
- * @param {Number} z
- * @return {Number}
+ * @param {Number} x x坐标 X coordinate
+ * @param {Number} y y坐标 Y coordinate
+ * @param {Number} z z坐标 Z coordinate
+ * @return {Number} 瓦片ID Tile ID
  * @private
  */
 Tilemap.prototype._readMapData = function (x, y, z) {
@@ -1294,50 +1332,54 @@ Tilemap.WATERFALL_AUTOTILE_TABLE = [
 // The important members from Pixi.js
 
 /**
+ * [只读] 瓦片地图的子对象数组。
  * [read-only] The array of children of the tilemap.
  *
- * @property children
- * @type Array
+ * @type {Array}
  */
 
 /**
+ * [只读] 包含该瓦片地图的对象。
  * [read-only] The object that contains the tilemap.
  *
- * @property parent
- * @type Object
+ * @type {Object}
  */
 
 /**
+ * 向容器添加子对象。
  * Adds a child to the container.
  *
  * @method addChild
- * @param {Object} child The child to add
- * @return {Object} The child that was added
+ * @param {Object} child 要添加的子对象 The child to add
+ * @return {Object} 添加的子对象 The child that was added
  */
 
 /**
+ * 在指定索引位置向容器添加子对象。
  * Adds a child to the container at a specified index.
  *
  * @method addChildAt
- * @param {Object} child The child to add
- * @param {Number} index The index to place the child in
- * @return {Object} The child that was added
+ * @param {Object} child 要添加的子对象 The child to add
+ * @param {Number} index 放置子对象的索引 The index to place the child in
+ * @return {Object} 添加的子对象 The child that was added
  */
 
 /**
+ * 从容器中移除子对象。
  * Removes a child from the container.
  *
  * @method removeChild
- * @param {Object} child The child to remove
- * @return {Object} The child that was removed
+ * @param {Object} child 要移除的子对象 The child to remove
+ * @return {Object} 被移除的子对象 The child that was removed
  */
 
 /**
+ * 从指定索引位置移除子对象。
  * Removes a child from the specified index position.
  *
  * @method removeChildAt
- * @param {Number} index The index to get the child from
- * @return {Object} The child that was removed
+ * @param {Number} index 获取子对象的索引 The index to get the child from
+ * @return {Object} 被移除的子对象 The child that was removed
  */
 
 //-----------------------------------------------------------------------------
