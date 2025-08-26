@@ -1,47 +1,63 @@
 //-----------------------------------------------------------------------------
 /**
+ * 表示图像的基本对象
  * The basic object that represents an image.
  *
  * @class Bitmap
  * @constructor
- * @param {Number} width The width of the bitmap
- * @param {Number} height The height of the bitmap
+ * @param {Number} width - 位图宽度 / The width of the bitmap
+ * @param {Number} height - 位图高度 / The height of the bitmap
  */
 function Bitmap() {
 	this.initialize.apply(this, arguments);
 }
 
-//for iOS. img consumes memory. so reuse it.
+/**
+ * iOS平台的图片重用数组，避免内存消耗
+ * Image reuse array for iOS platform to avoid memory consumption
+ * @static
+ * @private
+ */
 Bitmap._reuseImages = [];
 
 /**
- * Bitmap states(Bitmap._loadingState):
+ * 位图状态说明 (Bitmap._loadingState):
+ * Bitmap states (Bitmap._loadingState):
  *
- * none:
+ * none - 无状态:
+ * 空位图
  * Empty Bitmap
  *
- * pending:
+ * pending - 等待中:
+ * 已请求URL，但等待调用startRequest才开始加载
  * Url requested, but pending to load until startRequest called
  *
- * purged:
+ * purged - 已清除:
+ * URL请求完成并已清除
  * Url request completed and purged.
  *
- * requesting:
+ * requesting - 请求中:
+ * 正在请求指定的URI
  * Requesting supplied URI now.
  *
- * requestCompleted:
+ * requestCompleted - 请求完成:
+ * 请求完成
  * Request completed
  *
- * decrypting:
+ * decrypting - 解密中:
+ * 从指定URI请求加密数据或正在解密
  * requesting encrypted data from supplied URI or decrypting it.
  *
- * decryptCompleted:
+ * decryptCompleted - 解密完成:
+ * 解密完成
  * Decrypt completed
  *
- * loaded:
+ * loaded - 已加载:
+ * 加载完成。isReady() === true，可以使用
  * loaded. isReady() === true, so It's usable.
  *
- * error:
+ * error - 错误:
+ * 发生错误
  * error occurred
  *
  */
@@ -81,7 +97,7 @@ Bitmap.prototype._createCanvas = function (width, height) {
  *
  * @private
  * @method _createBaseTexture
- * @param {Object} source - The source for the texture (canvas or image)
+ * @param {Object} source - 纹理源对象（画布或图片） / The source for the texture (canvas or image)
  */
 Bitmap.prototype._createBaseTexture = function (source) {
 	this.__baseTexture = new PIXI.BaseTexture(source);
@@ -114,16 +130,25 @@ Bitmap.prototype._clearImgInstance = function () {
 	this._image = null;
 };
 
-//
-//We don't want to waste memory, so creating canvas is deferred.
-//
+/**
+ * 为了避免内存浪费，画布创建被延迟执行
+ * We don't want to waste memory, so creating canvas is deferred.
+ */
 Object.defineProperties(Bitmap.prototype, {
+	/**
+	 * 画布属性
+	 * Canvas property
+	 */
 	_canvas: {
 		get: function () {
 			if (!this.__canvas) this._createCanvas();
 			return this.__canvas;
 		},
 	},
+	/**
+	 * 2D上下文属性
+	 * 2D context property
+	 */
 	_context: {
 		get: function () {
 			if (!this.__context) this._createCanvas();

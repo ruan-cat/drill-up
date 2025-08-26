@@ -1,10 +1,24 @@
-//=============================================================================
-// 场景_战斗
-// Scene_Battle
-//
-// 战斗画面的场景类。
-// The scene class of the battle screen.
+/**
+ * @fileoverview Scene_Battle - 战斗场景类
+ * @description 战斗画面的场景类，处理战斗中的所有界面和交互
+ * The scene class of the battle screen, handles all UI and interactions during battle
+ * @author RPG Maker MV
+ * @version 1.0.0
+ */
 
+//-----------------------------------------------------------------------------
+/**
+ * Scene_Battle - 战斗场景类
+ *
+ * 战斗画面的场景类。
+ * 负责战斗中的用户界面、输入处理、窗口管理和战斗流程控制。
+ *
+ * The scene class of the battle screen.
+ * Responsible for battle UI, input handling, window management and battle flow control.
+ *
+ * @class Scene_Battle
+ * @extends Scene_Base
+ */
 function Scene_Battle() {
 	this.initialize.apply(this, arguments);
 }
@@ -12,18 +26,27 @@ function Scene_Battle() {
 Scene_Battle.prototype = Object.create(Scene_Base.prototype);
 Scene_Battle.prototype.constructor = Scene_Battle;
 
-/* 初始化 */
+/**
+ * 初始化战斗场景
+ * Initialize battle scene
+ */
 Scene_Battle.prototype.initialize = function () {
 	Scene_Base.prototype.initialize.call(this);
 };
 
-/* 创建 */
+/**
+ * 创建场景
+ * Create scene
+ */
 Scene_Battle.prototype.create = function () {
 	Scene_Base.prototype.create.call(this);
 	this.createDisplayObjects();
 };
 
-/* 开始 */
+/**
+ * 开始场景
+ * Start scene
+ */
 Scene_Battle.prototype.start = function () {
 	Scene_Base.prototype.start.call(this);
 	this.startFadeIn(this.fadeSpeed(), false);
@@ -31,7 +54,10 @@ Scene_Battle.prototype.start = function () {
 	BattleManager.startBattle();
 };
 
-/* 更新 */
+/**
+ * 更新场景
+ * Update scene
+ */
 Scene_Battle.prototype.update = function () {
 	var active = this.isActive();
 	$gameTimer.update(active);
@@ -44,7 +70,10 @@ Scene_Battle.prototype.update = function () {
 	Scene_Base.prototype.update.call(this);
 };
 
-/* 更新战斗流程 */
+/**
+ * 更新战斗流程
+ * Update battle process
+ */
 Scene_Battle.prototype.updateBattleProcess = function () {
 	if (!this.isAnyInputWindowActive() || BattleManager.isAborting() || BattleManager.isBattleEnd()) {
 		BattleManager.update();
@@ -52,7 +81,12 @@ Scene_Battle.prototype.updateBattleProcess = function () {
 	}
 };
 
-/* 是否有任何输入窗口处于活动状态 */
+/**
+ * 是否有任何输入窗口处于活动状态
+ * Check if any input window is active
+ *
+ * @returns {boolean} 是否有活动的输入窗口 / Whether any input window is active
+ */
 Scene_Battle.prototype.isAnyInputWindowActive = function () {
 	return (
 		this._partyCommandWindow.active ||
@@ -64,7 +98,10 @@ Scene_Battle.prototype.isAnyInputWindowActive = function () {
 	);
 };
 
-/* 改变输入窗口 */
+/**
+ * 改变输入窗口
+ * Change input window
+ */
 Scene_Battle.prototype.changeInputWindow = function () {
 	if (BattleManager.isInputting()) {
 		if (BattleManager.actor()) {
@@ -77,7 +114,10 @@ Scene_Battle.prototype.changeInputWindow = function () {
 	}
 };
 
-/* 停止 */
+/**
+ * 停止场景
+ * Stop scene
+ */
 Scene_Battle.prototype.stop = function () {
 	Scene_Base.prototype.stop.call(this);
 	if (this.needsSlowFadeOut()) {
@@ -90,7 +130,10 @@ Scene_Battle.prototype.stop = function () {
 	this._actorCommandWindow.close();
 };
 
-/* 结束 */
+/**
+ * 结束场景
+ * Terminate scene
+ */
 Scene_Battle.prototype.terminate = function () {
 	Scene_Base.prototype.terminate.call(this);
 	$gameParty.onBattleEnd();
@@ -100,12 +143,20 @@ Scene_Battle.prototype.terminate = function () {
 	ImageManager.clearRequest();
 };
 
-/* 是否需要缓慢淡出 */
+/**
+ * 是否需要缓慢淡出
+ * Check if needs slow fade out
+ *
+ * @returns {boolean} 是否需要缓慢淡出 / Whether needs slow fade out
+ */
 Scene_Battle.prototype.needsSlowFadeOut = function () {
 	return SceneManager.isNextScene(Scene_Title) || SceneManager.isNextScene(Scene_Gameover);
 };
 
-/* 更新状态窗口 */
+/**
+ * 更新状态窗口
+ * Update status window
+ */
 Scene_Battle.prototype.updateStatusWindow = function () {
 	if ($gameMessage.isBusy()) {
 		this._statusWindow.close();
@@ -116,7 +167,10 @@ Scene_Battle.prototype.updateStatusWindow = function () {
 	}
 };
 
-/* 更新窗口位置 */
+/**
+ * 更新窗口位置
+ * Update window positions
+ */
 Scene_Battle.prototype.updateWindowPositions = function () {
 	var statusX = 0;
 	if (BattleManager.isInputting()) {
@@ -138,7 +192,10 @@ Scene_Battle.prototype.updateWindowPositions = function () {
 	}
 };
 
-/* 创建显示对象 */
+/**
+ * 创建显示对象
+ * Create display objects
+ */
 Scene_Battle.prototype.createDisplayObjects = function () {
 	this.createSpriteset();
 	this.createWindowLayer();
@@ -149,13 +206,19 @@ Scene_Battle.prototype.createDisplayObjects = function () {
 	this._logWindow.setSpriteset(this._spriteset);
 };
 
-/* 创建精灵组 */
+/**
+ * 创建精灵组
+ * Create spriteset
+ */
 Scene_Battle.prototype.createSpriteset = function () {
 	this._spriteset = new Spriteset_Battle();
 	this.addChild(this._spriteset);
 };
 
-/* 创建所有窗口 */
+/**
+ * 创建所有窗口
+ * Create all windows
+ */
 Scene_Battle.prototype.createAllWindows = function () {
 	this.createLogWindow();
 	this.createStatusWindow();
