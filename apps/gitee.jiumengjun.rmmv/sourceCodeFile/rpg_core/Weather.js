@@ -3,10 +3,11 @@
 //=============================================================================
 
 /**
+ * 显示雨、暴风雨或雪的天气效果。
  * The weather effect which displays rain, storm, or snow.
  *
  * @class Weather
- * @constructor
+ * @extends PIXI.Container
  */
 function Weather() {
 	this.initialize.apply(this, arguments);
@@ -26,31 +27,32 @@ Weather.prototype.initialize = function () {
 	this._createDimmer();
 
 	/**
+	 * 天气类型，可选值为 ['none', 'rain', 'storm', 'snow']。
 	 * The type of the weather in ['none', 'rain', 'storm', 'snow'].
 	 *
-	 * @property type
-	 * @type String
+	 * @type {String}
 	 */
 	this.type = "none";
 
 	/**
+	 * 天气强度，范围为 (0, 9)。
 	 * The power of the weather in the range (0, 9).
 	 *
-	 * @property power
-	 * @type Number
+	 * @type {Number}
 	 */
 	this.power = 0;
 
 	/**
+	 * 天气滚动的原点。
 	 * The origin point of the weather for scrolling.
 	 *
-	 * @property origin
-	 * @type Point
+	 * @type {Point}
 	 */
 	this.origin = new Point();
 };
 
 /**
+ * 每帧更新天气。
  * Updates the weather for each frame.
  *
  * @method update
@@ -61,6 +63,9 @@ Weather.prototype.update = function () {
 };
 
 /**
+ * 创建位图。
+ * Creates the bitmaps.
+ *
  * @method _createBitmaps
  * @private
  */
@@ -74,6 +79,9 @@ Weather.prototype._createBitmaps = function () {
 };
 
 /**
+ * 创建调光精灵。
+ * Creates the dimmer sprite.
+ *
  * @method _createDimmer
  * @private
  */
@@ -84,6 +92,9 @@ Weather.prototype._createDimmer = function () {
 };
 
 /**
+ * 更新调光精灵。
+ * Updates the dimmer sprite.
+ *
  * @method _updateDimmer
  * @private
  */
@@ -92,6 +103,9 @@ Weather.prototype._updateDimmer = function () {
 };
 
 /**
+ * 更新所有精灵。
+ * Updates all sprites.
+ *
  * @method _updateAllSprites
  * @private
  */
@@ -111,6 +125,9 @@ Weather.prototype._updateAllSprites = function () {
 };
 
 /**
+ * 添加精灵。
+ * Adds a sprite.
+ *
  * @method _addSprite
  * @private
  */
@@ -122,6 +139,9 @@ Weather.prototype._addSprite = function () {
 };
 
 /**
+ * 移除精灵。
+ * Removes a sprite.
+ *
  * @method _removeSprite
  * @private
  */
@@ -130,8 +150,11 @@ Weather.prototype._removeSprite = function () {
 };
 
 /**
+ * 更新精灵。
+ * Updates a sprite.
+ *
  * @method _updateSprite
- * @param {Sprite} sprite
+ * @param {Sprite} sprite 精灵 The sprite
  * @private
  */
 Weather.prototype._updateSprite = function (sprite) {
@@ -152,8 +175,11 @@ Weather.prototype._updateSprite = function (sprite) {
 };
 
 /**
+ * 更新雨精灵。
+ * Updates a rain sprite.
+ *
  * @method _updateRainSprite
- * @param {Sprite} sprite
+ * @param {Sprite} sprite 精灵 The sprite
  * @private
  */
 Weather.prototype._updateRainSprite = function (sprite) {
@@ -165,8 +191,11 @@ Weather.prototype._updateRainSprite = function (sprite) {
 };
 
 /**
+ * 更新暴风雨精灵。
+ * Updates a storm sprite.
+ *
  * @method _updateStormSprite
- * @param {Sprite} sprite
+ * @param {Sprite} sprite 精灵 The sprite
  * @private
  */
 Weather.prototype._updateStormSprite = function (sprite) {
@@ -178,8 +207,11 @@ Weather.prototype._updateStormSprite = function (sprite) {
 };
 
 /**
+ * 更新雪精灵。
+ * Updates a snow sprite.
+ *
  * @method _updateSnowSprite
- * @param {Sprite} sprite
+ * @param {Sprite} sprite 精灵 The sprite
  * @private
  */
 Weather.prototype._updateSnowSprite = function (sprite) {
@@ -191,8 +223,11 @@ Weather.prototype._updateSnowSprite = function (sprite) {
 };
 
 /**
+ * 重生精灵。
+ * Rebirths a sprite.
+ *
  * @method _rebornSprite
- * @param {Sprite} sprite
+ * @param {Sprite} sprite 精灵 The sprite
  * @private
  */
 Weather.prototype._rebornSprite = function (sprite) {
