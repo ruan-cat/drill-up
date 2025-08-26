@@ -579,14 +579,14 @@
  * @parent 視界設定
  *
  * @param Player_Found
- * @text プレイヤー発見設定
- * @desc 探索者のプレイヤー発見に関する設定です。
+ * @text 玩家发现设置
+ * @desc 探索者发现玩家相关的设置。
  * @type struct<AlertFound>
  * @default {"Ballon":"0","Se":"{\"Name\":\"\",\"Volume\":\"90\",\"Pitch\":\"100\",\"Pan\":\"0\"}","Common_Event":"0","Delay":"0"}
  *
  * @param Player_Lost
- * @text プレイヤーロスト設定
- * @desc 探索者のプレイヤーロストに関する設定です。
+ * @text 玩家丢失设置
+ * @desc 探索者丢失玩家相关的设置。
  * @type struct<AlertLost>
  * @default {"Ballon":"0","Se":"{\"Name\":\"\",\"Volume\":\"90\",\"Pitch\":\"100\",\"Pan\":\"0\"}","Common_Event":"0","Delay":"0","Invalid":"false"}
  *
@@ -594,29 +594,29 @@
  * @default ====================================
  *
  * @param Tracking_Priority
- * @text 追跡優先度
- * @desc プレイヤー発見状態のイベントが他イベントの上または下を通行可能にするか設定します。(デフォルト:通行不可)
+ * @text 追踪优先度
+ * @desc 设置玩家发现状态的事件是否可通行其他事件的上方或下方。(默认:不可通行)
  * @type boolean
- * @on 通行可能
- * @off 通行不可
+ * @on 可通行
+ * @off 不可通行
  * @default false
  * @parent マップ設定
  *
  * @param Follower_Through
- * @text フォロワー無視
- * @desc プレイヤー発見状態のイベントがプレイヤーのフォロワー(隊列)をすり抜けるか設定します。(デフォルト:すり抜け不可)
+ * @text 跟随者无视
+ * @desc 设置玩家发现状态的事件是否穿透玩家的跟随者(队列)。(默认:不可穿透)
  * @type boolean
- * @on すり抜け可
- * @off すり抜け不可
+ * @on 可穿透
+ * @off 不可穿透
  * @default false
  * @parent マップ設定
  *
  * @param Location_Reset
- * @text マップ移動時リセット
- * @desc 場所移動コマンド使用時、元のマップに配置された探索者の追跡状態をリセットするか設定します。(デフォルト:リセットしない)
+ * @text 地图移动时重置
+ * @desc 使用场所移动命令时，是否重置原地图配置的探索者追踪状态。(默认:不重置)
  * @type boolean
- * @on リセットする
- * @off リセットしない
+ * @on 重置
+ * @off 不重置
  * @default false
  * @parent マップ設定
  *
