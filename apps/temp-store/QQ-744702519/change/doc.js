@@ -624,58 +624,58 @@
 /*~struct~AlertFound:
  *
  * @param Ballon
- * @text [初期値] フキダシ表示
- * @desc 探索者にフキダシを表示させる場合はアイコン番号を指定します。デフォルト:表示しない
+ * @text [初始值] 气泡显示
+ * @desc 在探索者上显示气泡时指定图标编号。默认:不显示
  * @type select
- * @option 表示しない
+ * @option 不显示
  * @value 0
- * @option びっくり
+ * @option 惊讶
  * @value 1
- * @option はてな
+ * @option 疑问
  * @value 2
  * @option 音符
  * @value 3
- * @option ハート
+ * @option 心形
  * @value 4
- * @option 怒り
+ * @option 愤怒
  * @value 5
- * @option 汗
+ * @option 汗水
  * @value 6
- * @option くしゃくしゃ
+ * @option 烦恼
  * @value 7
- * @option 沈黙
+ * @option 沉默
  * @value 8
- * @option 電球
+ * @option 灯泡
  * @value 9
  * @option Zzz
  * @value 10
- * @option ユーザー定義1
+ * @option 用户定义1
  * @value 11
- * @option ユーザー定義2
+ * @option 用户定义2
  * @value 12
- * @option ユーザー定義3
+ * @option 用户定义3
  * @value 13
- * @option ユーザー定義4
+ * @option 用户定义4
  * @value 14
- * @option ユーザー定義5
+ * @option 用户定义5
  * @value 15
  * @default 0
  *
  * @param Se
- * @text SE設定
- * @desc Seに関する設定です。
+ * @text SE设置
+ * @desc SE相关的设置。
  * @type struct<Se>
  *
  * @param Common_Event
- * @text [初期値] コモン実行
- * @desc コモンイベントを実行させる場合は指定します。デフォルト:0(なし)
+ * @text [初始值] 公共事件执行
+ * @desc 要执行公共事件时请指定。默认:0(无)
  * @type common_event
  * @default 0
  *
  * @param Delay
- * @text [初期値] 状態移行遅延
- * @desc プレイヤー発見状態に移行するタイミングを指定した
- * フレーム分遅らせます(60フレーム=1秒)。デフォルト:0
+ * @text [初始值] 状态转移延迟
+ * @desc 将转移到玩家发现状态的时机
+ * 延迟指定的帧数(60帧=1秒)。默认:0
  * @type number
  * @min 0
  * @default 0
@@ -684,69 +684,69 @@
 /*~struct~AlertLost:
  *
  * @param Ballon
- * @text [初期値] フキダシ表示
- * @desc 探索者にフキダシを表示させる場合はアイコン番号を指定します。デフォルト:表示しない
+ * @text [初始值] 气泡显示
+ * @desc 在探索者上显示气泡时指定图标编号。默认:不显示
  * @type select
- * @option 表示しない
+ * @option 不显示
  * @value 0
- * @option びっくり
+ * @option 惊讶
  * @value 1
- * @option はてな
+ * @option 疑问
  * @value 2
  * @option 音符
  * @value 3
- * @option ハート
+ * @option 心形
  * @value 4
- * @option 怒り
+ * @option 愤怒
  * @value 5
- * @option 汗
+ * @option 汗水
  * @value 6
- * @option くしゃくしゃ
+ * @option 烦恼
  * @value 7
- * @option 沈黙
+ * @option 沉默
  * @value 8
- * @option 電球
+ * @option 灯泡
  * @value 9
  * @option Zzz
  * @value 10
- * @option ユーザー定義1
+ * @option 用户定义1
  * @value 11
- * @option ユーザー定義2
+ * @option 用户定义2
  * @value 12
- * @option ユーザー定義3
+ * @option 用户定义3
  * @value 13
- * @option ユーザー定義4
+ * @option 用户定义4
  * @value 14
- * @option ユーザー定義5
+ * @option 用户定义5
  * @value 15
  * @default 0
  *
  * @param Se
- * @text SE設定
- * @desc Seに関する設定です。
+ * @text SE设置
+ * @desc SE相关的设置。
  * @type struct<Se>
  *
  * @param Common_Event
- * @text [初期値] コモン実行
- * @desc コモンイベントを実行させる場合は指定します。デフォルト:0(なし)
+ * @text [初始值] 公共事件执行
+ * @desc 要执行公共事件时请指定。默认:0(无)
  * @type common_event
  * @default 0
  *
  * @param Delay
- * @text [初期値] 状態移行遅延
- * @desc プレイヤーロスト状態に移行するタイミングを指定した
- * フレーム分遅らせます(60フレーム=1秒)。デフォルト:0
+ * @text [初始值] 状态转移延迟
+ * @desc 将转移到玩家丢失状态的时机
+ * 延迟指定的帧数(60帧=1秒)。默认:0
  * @type number
  * @min 0
  * @default 0
  *
  * @param Invalid
- * @text [初期値] 状態移行無効機能
- * @desc プレイヤーをロストした場合に状態を移行させません
- * (スクリプト等による手動移行は可能)。デフォルト:無効
+ * @text [初始值] 状态转移无效功能
+ * @desc 玩家丢失时不转移状态
+ * (可通过脚本等手动转移)。默认:无效
  * @type boolean
- * @on 有効
- * @off 無効
+ * @on 有效
+ * @off 无效
  * @default false
  *
  */
