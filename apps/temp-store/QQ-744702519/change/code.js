@@ -1436,7 +1436,7 @@
 		return result;
 	};
 
-	// 直線の探索
+	// 直线探索
 	Game_Event.prototype.sensorLine = function () {
 		let sensorRange, sensorRangeC, strDir, diagoDir, dir, dirFixed, ex, ey, i, coordinates, px, py, cnt, realX, realY;
 		sensorRange = this.getSensorRange();
@@ -1578,7 +1578,7 @@
 		return false;
 	};
 
-	// 扇範囲の探索
+	// 扇形范围探索
 	Game_Event.prototype.sensorFan = function () {
 		let sensorRange,
 			sensorRangeC,
@@ -1925,7 +1925,7 @@
 		return false;
 	};
 
-	// 菱形範囲の探索(地形考慮完全無視)
+	// 菱形范围探索(完全忽略地形考虑)
 	Game_Event.prototype.sensorDiamond = function () {
 		let sensorRange, sx, sy, realX, realY;
 		sensorRange = this.getSensorRange();
@@ -1952,7 +1952,7 @@
 		}
 	};
 
-	// 四角範囲の探索(地形考慮完全無視)
+	// 四角形范围探索(完全忽略地形考虑)
 	Game_Event.prototype.sensorSquare = function () {
 		let sensorRange, sx, sy, realX, realY;
 		sensorRange = this.getSensorRange();
@@ -2059,7 +2059,7 @@
 		if (this.getSensorStatus() != 1) {
 			_GameEvent_lock.call(this);
 		} else {
-			// 話しかけられた場合振り向かない(探索者が探索中に限る)
+			// 被搭话时不转向(仅限探索者探索中)
 			if (!this._locked) {
 				this._prelockDirection = this.direction();
 				// this.turnTowardPlayer();
@@ -2069,7 +2069,7 @@
 	};
 
 	Game_Event.prototype.addCoordinate = function (length) {
-		// 左右の配列要素数を指定数に合わせる
+		// 将左右的数组元素数调整为指定数
 		let coordinates, cnt, j;
 		coordinates = this.getCoordinate();
 		cnt = coordinates.length;
@@ -2109,7 +2109,7 @@
 
 	//=========================================================================
 	// Game_Followers
-	//  フォロワーを返す処理を追加定義します。
+	//  追加定义返回跟随者的处理。
 	//=========================================================================
 	// Game_Followers.prototype.member = function() {
 	//     return this._data;
@@ -2117,7 +2117,7 @@
 
 	//=========================================================================
 	// Spriteset_Map
-	//  探索者の視界範囲を表す図形を描画させる処理を追加定義します。
+	//  追加定义绘制表示探索者视野范围图形的处理。
 	//=========================================================================
 	const _Spriteset_Map_createLowerLayer = Spriteset_Map.prototype.createLowerLayer;
 	Spriteset_Map.prototype.createLowerLayer = function () {
@@ -2168,7 +2168,7 @@
 
 	//=========================================================================
 	// Sprite_ViewRange
-	//  探索者の視界範囲を表す図形を描画させる処理を定義します。
+	//  定义绘制表示探索者视野范围图形的处理。
 	//=========================================================================
 	function Sprite_ViewRange() {
 		this.initialize.apply(this, arguments);
@@ -2548,7 +2548,7 @@
 
 	//=========================================================================
 	// Bitmap
-	//  探索者の視界範囲を表す図形を描画させる処理を追加定義します。
+	//  追加定义绘制表示探索者视野范围图形的处理。
 	//=========================================================================
 	Bitmap.prototype.fillViewRangeLine = function (color, character) {
 		let context,
