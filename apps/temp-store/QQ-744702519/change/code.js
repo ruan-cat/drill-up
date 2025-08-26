@@ -1306,7 +1306,7 @@
 			this.resetFoundDelay();
 			this.resetLostDelay();
 
-			// 発見後スイッチON
+			// 发现后开关ON
 			sw = this.getSensorSwitch() != null ? this.getSensorSwitch() : sensorSwitch;
 			if (isFinite(sw)) {
 				if (!$gameSwitches.value(sw)) {
@@ -1320,7 +1320,7 @@
 				}
 			}
 
-			// ロスト後スイッチOFF
+			// 丢失后开关OFF
 			sw = this.getLostSensorSwitch() != null ? this.getLostSensorSwitch() : lostSensorSwitch;
 			if (sw != "") {
 				if (isFinite(sw)) {
@@ -1367,7 +1367,7 @@
 			this.resetLostDelay();
 			this.resetFoundDelay();
 
-			// 発見後スイッチOFF
+			// 发现后开关OFF
 			sw = this.getSensorSwitch() != null ? this.getSensorSwitch() : sensorSwitch;
 			if (isFinite(sw)) {
 				// if($gameSwitches.value(sw) && !$gameSystem.isSwitchStatuses(sw)) {
@@ -1382,7 +1382,7 @@
 				}
 			}
 
-			// ロスト後スイッチON
+			// 丢失后开关ON
 			sw = this.getLostSensorSwitch() != null ? this.getLostSensorSwitch() : lostSensorSwitch;
 			if (sw != "") {
 				if (isFinite(sw)) {
@@ -1417,16 +1417,16 @@
 	Game_Event.prototype.isFoundPlayer = function () {
 		let result = false;
 		switch (this.getSensorType()) {
-			case "l": // 直線の探索
+			case "l": // 直线探索
 				result = this.sensorLine();
 				break;
-			case "f": // 扇範囲の探索
+			case "f": // 扇形范围探索
 				result = this.sensorFan();
 				break;
-			case "s": // 四角範囲の探索
+			case "s": // 四角形范围探索
 				result = this.sensorSquare();
 				break;
-			case "d": // 菱形範囲の探索
+			case "d": // 菱形范围探索
 				result = this.sensorDiamond();
 				break;
 		}
