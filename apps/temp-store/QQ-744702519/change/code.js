@@ -63,7 +63,7 @@
 					}
 					break;
 				default:
-					throw new Error("[CheckParam] " + name + "のタイプが不正です: " + type);
+					throw new Error("[CheckParam] " + name + "的类型不正确: " + type);
 					break;
 			}
 		}

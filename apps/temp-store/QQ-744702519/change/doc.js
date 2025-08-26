@@ -753,31 +753,31 @@
 /*~struct~Se:
  *
  * @param Name
- * @text ファイル名
- * @desc 再生するファイルを指定します。デフォルト:空(再生しない)
+ * @text 文件名
+ * @desc 指定要播放的文件。默认:空(不播放)
  * @type file
  * @require 1
  * @dir audio/se
  *
  * @param Volume
- * @text 再生時音量
- * @desc ファイルを再生するときの音量を指定します(0から100までの数値)。デフォルト:90
+ * @text 播放时音量
+ * @desc 指定播放文件时的音量(0到100的数值)。默认:90
  * @type number
  * @max 100
  * @min 0
  * @default 90
  *
  * @param Pitch
- * @text 再生時ピッチ
- * @desc ファイルを再生するときのピッチを指定します(50から150までの数値)。デフォルト:100
+ * @text 播放时音调
+ * @desc 指定播放文件时的音调(50到150的数值)。默认:100
  * @type number
  * @max 150
  * @min 50
  * @default 100
  *
  * @param Pan
- * @text 再生時位相
- * @desc ファイルを再生するときの位相を指定します(-100から100までの数値)。デフォルト:0
+ * @text 播放时相位
+ * @desc 指定播放文件时的相位(-100到100的数值)。默认:0
  * @type number
  * @max 100
  * @min -100
