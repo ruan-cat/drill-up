@@ -14,9 +14,8 @@ function Utils() {
  * The name of the RPG Maker. 'MV' in the current version.
  *
  * @static
- * @property RPGMAKER_NAME
- * @type String
- * @final
+ * @type {String}
+ * @readonly
  */
 Utils.RPGMAKER_NAME = "MV";
 
@@ -25,9 +24,8 @@ Utils.RPGMAKER_NAME = "MV";
  * The version of the RPG Maker.
  *
  * @static
- * @property RPGMAKER_VERSION
- * @type String
- * @final
+ * @type {String}
+ * @readonly
  */
 Utils.RPGMAKER_VERSION = "1.6.1";
 

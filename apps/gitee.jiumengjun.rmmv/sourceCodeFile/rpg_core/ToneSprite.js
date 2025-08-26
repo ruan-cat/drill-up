@@ -3,10 +3,11 @@
 //=============================================================================
 
 /**
+ * 在2D canvas模式下改变屏幕颜色的精灵。
  * The sprite which changes the screen color in 2D canvas mode.
  *
  * @class ToneSprite
- * @constructor
+ * @extends PIXI.Container
  */
 function ToneSprite() {
 	this.initialize.apply(this, arguments);
@@ -15,15 +16,22 @@ function ToneSprite() {
 ToneSprite.prototype = Object.create(PIXI.Container.prototype);
 ToneSprite.prototype.constructor = ToneSprite;
 
+/**
+ * 初始化色调精灵。
+ * Initializes the tone sprite.
+ *
+ * @method initialize
+ */
 ToneSprite.prototype.initialize = function () {
 	PIXI.Container.call(this);
 	this.clear();
 };
 
 /**
+ * 清除色调。
  * Clears the tone.
  *
- * @method reset
+ * @method clear
  */
 ToneSprite.prototype.clear = function () {
 	this._red = 0;
@@ -33,13 +41,14 @@ ToneSprite.prototype.clear = function () {
 };
 
 /**
+ * 设置色调。
  * Sets the tone.
  *
  * @method setTone
- * @param {Number} r The red strength in the range (-255, 255)
- * @param {Number} g The green strength in the range (-255, 255)
- * @param {Number} b The blue strength in the range (-255, 255)
- * @param {Number} gray The grayscale level in the range (0, 255)
+ * @param {Number} r 红色强度，范围(-255, 255) The red strength in the range (-255, 255)
+ * @param {Number} g 绿色强度，范围(-255, 255) The green strength in the range (-255, 255)
+ * @param {Number} b 蓝色强度，范围(-255, 255) The blue strength in the range (-255, 255)
+ * @param {Number} gray 灰度级别，范围(0, 255) The grayscale level in the range (0, 255)
  */
 ToneSprite.prototype.setTone = function (r, g, b, gray) {
 	this._red = Math.round(r || 0).clamp(-255, 255);
@@ -49,8 +58,11 @@ ToneSprite.prototype.setTone = function (r, g, b, gray) {
 };
 
 /**
+ * Canvas渲染色调精灵。
+ * Renders the tone sprite with Canvas.
+ *
  * @method _renderCanvas
- * @param {Object} renderSession
+ * @param {Object} renderer 渲染器 The renderer
  * @private
  */
 ToneSprite.prototype._renderCanvas = function (renderer) {
@@ -98,8 +110,11 @@ ToneSprite.prototype._renderCanvas = function (renderer) {
 };
 
 /**
+ * WebGL渲染色调精灵（不支持）。
+ * Renders the tone sprite with WebGL (not supported).
+ *
  * @method _renderWebGL
- * @param {Object} renderSession
+ * @param {Object} renderer 渲染器 The renderer
  * @private
  */
 ToneSprite.prototype._renderWebGL = function (renderer) {
