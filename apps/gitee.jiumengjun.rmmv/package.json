@@ -1,6 +1,6 @@
 {
 	"name": "@ruan-cat/mv-docs",
-	"version": "1.0.0",
+	"version": "0.0.1",
 	"description": "gitee.jiumengjun.rmmv 来自于别人提供的rmmv翻译源码",
 	"main": "main.js",
 	"type": "module",
@@ -12,10 +12,10 @@
 		"legacy:make": "typedoc",
 		"jsdoc:generate": "tsx scripts/index.ts",
 		"docs:dev": "vitepress dev docs",
-		"docs:build": "npm run jsdoc:generate && vitepress build docs",
+		"docs:build": "pnpm jsdoc:generate && vitepress build docs",
 		"docs:preview": "vitepress preview docs",
 		"docs:clean": "rimraf docs/jsdoc && rimraf docs/.vitepress/dist && rimraf docs/.vitepress/cache",
-		"build": "npm run docs:build"
+		"build": "pnpm docs:build"
 	},
 	"keywords": [],
 	"author": "阮喵喵",
