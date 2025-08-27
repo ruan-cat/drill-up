@@ -1,15 +1,22 @@
-//=============================================================================
-// Game_Player.js
-//=============================================================================
+/**
+ * @fileoverview Game_Player - 游戏玩家类
+ *
+ * 玩家的游戏对象类。它包含事件开始判定和地图滚动功能。
+ * The game object class for the player. It contains event starting
+ * determinants and map scrolling functions.
+ *
+ * @author 作者名
+ * @since 1.0.0
+ */
 
-//-----------------------------------------------------------------------------
-// 游戏_玩家
-// Game_Player
-//
-// 玩家的游戏对象类。它包含事件开始判定和地图滚动功能。
-// The game object class for the player. It contains event starting
-// determinants and map scrolling functions.
-
+/**
+ * 游戏玩家类
+ * Game player class
+ *
+ * @class Game_Player
+ * @constructor
+ * @extends Game_Character
+ */
 function Game_Player() {
 	this.initialize.apply(this, arguments);
 }
@@ -17,13 +24,25 @@ function Game_Player() {
 Game_Player.prototype = Object.create(Game_Character.prototype);
 Game_Player.prototype.constructor = Game_Player;
 
-/* 初始化 */
+/**
+ * 初始化玩家对象
+ * Initialize player object
+ *
+ * @memberof Game_Player
+ * @method initialize
+ */
 Game_Player.prototype.initialize = function () {
 	Game_Character.prototype.initialize.call(this);
 	this.setTransparent($dataSystem.optTransparent);
 };
 
-/* 初始化成员 */
+/**
+ * 初始化成员变量
+ * Initialize member variables
+ *
+ * @memberof Game_Player
+ * @method initMembers
+ */
 Game_Player.prototype.initMembers = function () {
 	Game_Character.prototype.initMembers.call(this);
 	this._vehicleType = "walk";
@@ -41,7 +60,13 @@ Game_Player.prototype.initMembers = function () {
 	this._encounterCount = 0;
 };
 
-/* 清除场所移动信息 */
+/**
+ * 清除场所移动信息
+ * Clear transfer info
+ *
+ * @memberof Game_Player
+ * @method clearTransferInfo
+ */
 Game_Player.prototype.clearTransferInfo = function () {
 	this._transferring = false;
 	this._newMapId = 0;
@@ -50,12 +75,25 @@ Game_Player.prototype.clearTransferInfo = function () {
 	this._newDirection = 0;
 };
 
-/* 跟随者 */
+/**
+ * 获取跟随者
+ * Get followers
+ *
+ * @memberof Game_Player
+ * @method followers
+ * @returns {Game_Followers} 跟随者对象 - Followers object
+ */
 Game_Player.prototype.followers = function () {
 	return this._followers;
 };
 
-/* 刷新 */
+/**
+ * 刷新
+ * Refresh
+ *
+ * @memberof Game_Player
+ * @method refresh
+ */
 Game_Player.prototype.refresh = function () {
 	var actor = $gameParty.leader();
 	var characterName = actor ? actor.characterName() : "";
@@ -64,7 +102,14 @@ Game_Player.prototype.refresh = function () {
 	this._followers.refresh();
 };
 
-/* 是否停止中 */
+/**
+ * 检查是否停止中
+ * Check if stopping
+ *
+ * @memberof Game_Player
+ * @method isStopping
+ * @returns {Boolean} 是否停止中 - Whether stopping
+ */
 Game_Player.prototype.isStopping = function () {
 	if (this._vehicleGettingOn || this._vehicleGettingOff) {
 		return false;
@@ -72,7 +117,18 @@ Game_Player.prototype.isStopping = function () {
 	return Game_Character.prototype.isStopping.call(this);
 };
 
-/* 储存场所移动 */
+/**
+ * 储存场所移动
+ * Reserve transfer
+ *
+ * @memberof Game_Player
+ * @method reserveTransfer
+ * @param {Number} mapId - 地图ID - Map ID
+ * @param {Number} x - X坐标 - X coordinate
+ * @param {Number} y - Y坐标 - Y coordinate
+ * @param {Number} d - 方向 - Direction
+ * @param {Number} fadeType - 渐变类型 - Fade type
+ */
 Game_Player.prototype.reserveTransfer = function (mapId, x, y, d, fadeType) {
 	this._transferring = true;
 	this._newMapId = mapId;

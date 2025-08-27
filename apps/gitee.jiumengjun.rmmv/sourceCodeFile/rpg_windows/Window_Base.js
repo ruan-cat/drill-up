@@ -1,14 +1,21 @@
-//=============================================================================
-// Window_Base.js
-//=============================================================================
+/**
+ * @fileoverview Window_Base - 窗口基类
+ *
+ * 游戏中所有窗口的父类。
+ * The superclass of all windows within the game.
+ *
+ * @author 作者名
+ * @since 1.0.0
+ */
 
-//-----------------------------------------------------------------------------
-// 窗口_基础
-// Window_Base
-//
-// 游戏中所有窗口的父类。
-// The superclass of all windows within the game.
-
+/**
+ * 窗口基类
+ * Window base class
+ *
+ * @class Window_Base
+ * @constructor
+ * @extends Window
+ */
 function Window_Base() {
 	this.initialize.apply(this, arguments);
 }
