@@ -1,19 +1,19 @@
-//=============================================================================
-// Game_Character.js
-//=============================================================================
-
-//-----------------------------------------------------------------------------
 /**
- * 游戏人物类
- * Game_Character
+ * @fileoverview Game_Character - 游戏人物类
  *
  * Game_Player、Game_Follower、GameVehicle 和 Game_Event 的父类。
  * The superclass of Game_Player, Game_Follower, GameVehicle, and Game_Event.
+ *
+ * @author 作者名
+ * @since 1.0.0
  */
-//-----------------------------------------------------------------------------
 
 /**
+ * 游戏人物类
+ * Game character class
+ *
  * @class Game_Character
+ * @constructor
  * @extends Game_CharacterBase
  * @description 游戏人物类，是Game_Player、Game_Follower、GameVehicle和Game_Event的父类
  * Game character class, the superclass of Game_Player, Game_Follower, GameVehicle, and Game_Event
@@ -25,7 +25,15 @@ function Game_Character() {
 Game_Character.prototype = Object.create(Game_CharacterBase.prototype);
 Game_Character.prototype.constructor = Game_Character;
 
-Game_Character.ROUTE_END = 0; // 移动路线-结束 / Route end
+/**
+ * 移动路线常量 - 结束
+ * Route constant - End
+ *
+ * @static
+ * @memberof Game_Character
+ * @type {Number}
+ */
+Game_Character.ROUTE_END = 0;
 Game_Character.ROUTE_MOVE_DOWN = 1; // 移动路线-向下移动 / Route move down
 Game_Character.ROUTE_MOVE_LEFT = 2; // 移动路线-向左移动 / Route move left
 Game_Character.ROUTE_MOVE_RIGHT = 3; // 移动路线-向右移动 / Route move right
@@ -75,6 +83,9 @@ Game_Character.ROUTE_SCRIPT = 45; // 移动路线-脚本 / Route script
 /**
  * 初始化
  * Initialize
+ *
+ * @memberof Game_Character
+ * @method initialize
  */
 Game_Character.prototype.initialize = function () {
 	Game_CharacterBase.prototype.initialize.call(this);
@@ -83,6 +94,9 @@ Game_Character.prototype.initialize = function () {
 /**
  * 初始化成员
  * Initialize members
+ *
+ * @memberof Game_Character
+ * @method initMembers
  */
 Game_Character.prototype.initMembers = function () {
 	Game_CharacterBase.prototype.initMembers.call(this);
@@ -97,6 +111,9 @@ Game_Character.prototype.initMembers = function () {
 /**
  * 记录移动路线
  * Memorize move route
+ *
+ * @memberof Game_Character
+ * @method memorizeMoveRoute
  */
 Game_Character.prototype.memorizeMoveRoute = function () {
 	this._originalMoveRoute = this._moveRoute;
@@ -106,6 +123,9 @@ Game_Character.prototype.memorizeMoveRoute = function () {
 /**
  * 恢复移动路线
  * Restore move route
+ *
+ * @memberof Game_Character
+ * @method restoreMoveRoute
  */
 Game_Character.prototype.restoreMoveRoute = function () {
 	this._moveRoute = this._originalMoveRoute;
