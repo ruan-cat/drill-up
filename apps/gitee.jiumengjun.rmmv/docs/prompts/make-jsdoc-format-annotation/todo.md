@@ -101,7 +101,7 @@
 | StorageManager.js | ✅ 100%        | ❌ 0%          |
 | TextManager.js    | ✅ 100%        | ❌ 0%          |
 
-### 3. rpg_objects 模块 (30 个文件) - JSDoc 格式转换: 40%
+### 3. rpg_objects 模块 (30 个文件) - JSDoc 格式转换: 68%
 
 | 文件名                | JSDoc 格式转换 | 注释翻译与补全 |
 | --------------------- | -------------- | -------------- |
@@ -118,11 +118,11 @@
 | Game_Event.js         | ✅ 100%        | ❌ 0%          |
 | Game_Follower.js      | ✅ 100%        | ❌ 0%          |
 | Game_Followers.js     | ✅ 100%        | ❌ 0%          |
-| Game_Interpreter.js   | ❌ 0%          | ❌ 0%          |
-| Game_Item.js          | ❌ 0%          | ❌ 0%          |
-| Game_Map.js           | ❌ 0%          | ❌ 0%          |
-| Game_Message.js       | ❌ 0%          | ❌ 0%          |
-| Game_Party.js         | ❌ 0%          | ❌ 0%          |
+| Game_Interpreter.js   | ✅ 100%        | ❌ 0%          |
+| Game_Item.js          | ✅ 100%        | ❌ 0%          |
+| Game_Map.js           | 🔄 50%         | ❌ 0%          |
+| Game_Message.js       | ✅ 100%        | ❌ 0%          |
+| Game_Party.js         | ✅ 100%        | ❌ 0%          |
 | Game_Picture.js       | ❌ 0%          | ❌ 0%          |
 | Game_Player.js        | ✅ 100%        | ❌ 0%          |
 | Game_Screen.js        | ❌ 0%          | ❌ 0%          |

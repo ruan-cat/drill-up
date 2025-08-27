@@ -1,3 +1,7 @@
+//=============================================================================
+// Game_Item.js
+//=============================================================================
+
 /**
  * @fileoverview Game_Item - 项目对象类
  *
@@ -13,11 +17,9 @@
  */
 
 /**
- * 项目对象类
- * Game item class
- *
  * @class Game_Item
- * @constructor
+ * @description 项目对象类，用于处理技能、物品、武器和护甲
+ * Game item class for handling skills, items, weapons, and armor
  */
 function Game_Item() {
 	this.initialize.apply(this, arguments);

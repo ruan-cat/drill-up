@@ -28,6 +28,9 @@ function Game_Map() {
 /**
  * 初始化地图
  * Initialize map
+ *
+ * @memberof Game_Map
+ * @method initialize
  */
 Game_Map.prototype.initialize = function () {
 	this._interpreter = new Game_Interpreter();
@@ -59,6 +62,8 @@ Game_Map.prototype.initialize = function () {
  * 设置地图
  * Setup map
  *
+ * @memberof Game_Map
+ * @method setup
  * @param {number} mapId - 地图ID / Map ID
  */
 Game_Map.prototype.setup = function (mapId) {

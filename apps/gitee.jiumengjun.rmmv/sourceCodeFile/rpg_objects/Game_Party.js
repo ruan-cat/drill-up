@@ -71,6 +71,9 @@ Game_Party.ABILITY_DROP_ITEM_DOUBLE = 5;
 /**
  * 初始化队伍
  * Initialize party
+ *
+ * @memberof Game_Party
+ * @method initialize
  */
 Game_Party.prototype.initialize = function () {
 	Game_Unit.prototype.initialize.call(this);
@@ -86,6 +89,9 @@ Game_Party.prototype.initialize = function () {
 /**
  * 初始化所有物品
  * Initialize all items
+ *
+ * @memberof Game_Party
+ * @method initAllItems
  */
 Game_Party.prototype.initAllItems = function () {
 	this._items = {};

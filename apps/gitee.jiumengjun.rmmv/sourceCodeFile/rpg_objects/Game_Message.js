@@ -1,20 +1,22 @@
-/**
- * @fileoverview Game_Message - 游戏信息对象类
- * @description 负责管理游戏中的信息窗口状态，包括文本显示、选项、数值输入等
- * @author 原作者未知
- * @since 1.0.0
- */
+//=============================================================================
+// Game_Message.js
+//=============================================================================
 
 /**
- * 游戏_信息
- * Game_Message
+ * @fileoverview Game_Message - 游戏信息对象类
  *
  * 显示文本或选项等的信息窗口的情况的游戏对象类。
  * The game object class for the state of the message window that displays text
  * or selections, etc.
  *
+ * @author 作者名
+ * @since 1.0.0
+ */
+
+/**
  * @class Game_Message
- * @description 管理信息窗口的各种状态，包括文本内容、脸图、背景、位置、选项、数值输入等功能
+ * @description 游戏信息类，管理信息窗口的各种状态，包括文本内容、脸图、背景、位置、选项、数值输入等功能
+ * Game message class that manages the state of the message window with text content, face graphics, background, position, choices, and number input
  */
 function Game_Message() {
 	this.initialize.apply(this, arguments);
@@ -25,7 +27,7 @@ function Game_Message() {
  * Initialize the Game_Message object
  *
  * @memberof Game_Message
- * @description 初始化信息对象并清空所有数据
+ * @method initialize
  */
 Game_Message.prototype.initialize = function () {
 	this.clear();
@@ -36,7 +38,7 @@ Game_Message.prototype.initialize = function () {
  * Clear all message data
  *
  * @memberof Game_Message
- * @description 重置所有信息窗口相关的属性为默认值
+ * @method clear
  */
 Game_Message.prototype.clear = function () {
 	this._texts = []; // 文本 - Text lines
