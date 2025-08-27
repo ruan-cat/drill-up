@@ -120,7 +120,7 @@
 | Game_Followers.js     | ✅ 100%        | ❌ 0%          |
 | Game_Interpreter.js   | ✅ 100%        | ❌ 0%          |
 | Game_Item.js          | ✅ 100%        | ❌ 0%          |
-| Game_Map.js           | 🔄 50%         | ❌ 0%          |
+| Game_Map.js           | 🔄 10%         | ❌ 0%          |
 | Game_Message.js       | ✅ 100%        | ❌ 0%          |
 | Game_Party.js         | ✅ 100%        | ❌ 0%          |
 | Game_Picture.js       | ❌ 0%          | ❌ 0%          |
@@ -255,6 +255,25 @@
 - **已完成 JSDoc 转换**: 48/154 (31.2%)
 - **进行中**: 0/154 (0.0%)
 - **待处理**: 106/154 (68.8%)
+
+---
+
+## Game_Map.js 详细处理进度
+
+**文件状态**: 🔄 进行中 (10% 完成)
+
+**已处理的方法**:
+- ✅ initialize - 已添加 @memberof 和 @method 标签
+- ✅ setup - 已添加 @memberof 和 @method 标签  
+- ✅ isEventRunning - 已添加 @memberof 和 @method 标签
+- ✅ tileWidth - 已添加 @memberof 和 @method 标签
+- ✅ tileHeight - 已添加 @memberof 和 @method 标签
+- ✅ mapId - 已添加 @memberof 和 @method 标签
+- ✅ tilesetId - 已添加 @memberof 和 @method 标签
+
+**待处理**: 约 100+ 个方法需要批量添加 @memberof Game_Map 和 @method 标签
+
+**处理方式**: 大部分方法已有基础的中英文注释和参数文档，只需要补充 JSDoc 标签
 
 ---
 

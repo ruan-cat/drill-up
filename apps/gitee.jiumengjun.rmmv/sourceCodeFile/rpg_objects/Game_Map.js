@@ -86,6 +86,8 @@ Game_Map.prototype.setup = function (mapId) {
  * 检查事件是否运行中
  * Check if event is running
  *
+ * @memberof Game_Map
+ * @method isEventRunning
  * @returns {boolean} 事件是否运行中 / Whether event is running
  */
 Game_Map.prototype.isEventRunning = function () {
@@ -96,6 +98,8 @@ Game_Map.prototype.isEventRunning = function () {
  * 获取图块宽度
  * Get tile width
  *
+ * @memberof Game_Map
+ * @method tileWidth
  * @returns {number} 图块宽度 / Tile width
  */
 Game_Map.prototype.tileWidth = function () {
@@ -106,6 +110,8 @@ Game_Map.prototype.tileWidth = function () {
  * 获取图块高度
  * Get tile height
  *
+ * @memberof Game_Map
+ * @method tileHeight
  * @returns {number} 图块高度 / Tile height
  */
 Game_Map.prototype.tileHeight = function () {
@@ -116,6 +122,8 @@ Game_Map.prototype.tileHeight = function () {
  * 获取地图ID
  * Get map ID
  *
+ * @memberof Game_Map
+ * @method mapId
  * @returns {number} 地图ID / Map ID
  */
 Game_Map.prototype.mapId = function () {
@@ -126,6 +134,8 @@ Game_Map.prototype.mapId = function () {
  * 获取图块组ID
  * Get tileset ID
  *
+ * @memberof Game_Map
+ * @method tilesetId
  * @returns {number} 图块组ID / Tileset ID
  */
 Game_Map.prototype.tilesetId = function () {
@@ -136,6 +146,8 @@ Game_Map.prototype.tilesetId = function () {
  * 获取显示的X位置
  * Get display X position
  *
+ * @memberof Game_Map
+ * @method displayX
  * @returns {number} 显示的X位置 / Display X position
  */
 Game_Map.prototype.displayX = function () {
@@ -146,6 +158,8 @@ Game_Map.prototype.displayX = function () {
  * 获取显示的Y位置
  * Get display Y position
  *
+ * @memberof Game_Map
+ * @method displayY
  * @returns {number} 显示的Y位置 / Display Y position
  */
 Game_Map.prototype.displayY = function () {
@@ -156,6 +170,8 @@ Game_Map.prototype.displayY = function () {
  * 获取远景名称
  * Get parallax name
  *
+ * @memberof Game_Map
+ * @method parallaxName
  * @returns {string} 远景名称 / Parallax name
  */
 Game_Map.prototype.parallaxName = function () {
@@ -166,6 +182,8 @@ Game_Map.prototype.parallaxName = function () {
  * 获取战斗背景1名称
  * Get battleback1 name
  *
+ * @memberof Game_Map
+ * @method battleback1Name
  * @returns {string} 战斗背景1名称 / Battleback1 name
  */
 Game_Map.prototype.battleback1Name = function () {
@@ -176,6 +194,8 @@ Game_Map.prototype.battleback1Name = function () {
  * 获取战斗背景2名称
  * Get battleback2 name
  *
+ * @memberof Game_Map
+ * @method battleback2Name
  * @returns {string} 战斗背景2名称 / Battleback2 name
  */
 Game_Map.prototype.battleback2Name = function () {
@@ -186,6 +206,8 @@ Game_Map.prototype.battleback2Name = function () {
  * 请求刷新
  * Request refresh
  *
+ * @memberof Game_Map
+ * @method requestRefresh
  * @param {number} mapId - 地图ID / Map ID
  */
 Game_Map.prototype.requestRefresh = function (mapId) {
@@ -196,6 +218,8 @@ Game_Map.prototype.requestRefresh = function (mapId) {
  * 检查名称显示是否启用
  * Check if name display is enabled
  *
+ * @memberof Game_Map
+ * @method isNameDisplayEnabled
  * @returns {boolean} 名称显示是否启用 / Whether name display is enabled
  */
 Game_Map.prototype.isNameDisplayEnabled = function () {
@@ -205,6 +229,9 @@ Game_Map.prototype.isNameDisplayEnabled = function () {
 /**
  * 禁用名称显示
  * Disable name display
+ *
+ * @memberof Game_Map
+ * @method disableNameDisplay
  */
 Game_Map.prototype.disableNameDisplay = function () {
 	this._nameDisplay = false;
@@ -213,6 +240,9 @@ Game_Map.prototype.disableNameDisplay = function () {
 /**
  * 启用名称显示
  * Enable name display
+ *
+ * @memberof Game_Map
+ * @method enableNameDisplay
  */
 Game_Map.prototype.enableNameDisplay = function () {
 	this._nameDisplay = true;
@@ -221,6 +251,9 @@ Game_Map.prototype.enableNameDisplay = function () {
 /**
  * 创建载具
  * Create vehicles
+ *
+ * @memberof Game_Map
+ * @method createVehicles
  */
 Game_Map.prototype.createVehicles = function () {
 	this._vehicles = [];
@@ -232,6 +265,9 @@ Game_Map.prototype.createVehicles = function () {
 /**
  * 刷新载具
  * Refresh vehicles
+ *
+ * @memberof Game_Map
+ * @method refereshVehicles
  */
 Game_Map.prototype.refereshVehicles = function () {
 	this._vehicles.forEach(function (vehicle) {
@@ -245,6 +281,8 @@ Game_Map.prototype.refereshVehicles = function () {
  * 返回载具的数组。
  * Returns the array of vehicles.
  *
+ * @memberof Game_Map
+ * @method vehicles
  * @returns {Array} 载具数组 / Vehicles array
  */
 Game_Map.prototype.vehicles = function () {
@@ -257,6 +295,8 @@ Game_Map.prototype.vehicles = function () {
  * 返回该类型对应的载具的对象。
  * Returns the vehicle object corresponding to the type.
  *
+ * @memberof Game_Map
+ * @method vehicle
  * @param {number|string} type - 载具类型 / Vehicle type
  * @returns {Game_Vehicle|null} 载具对象 / Vehicle object
  */
@@ -276,6 +316,8 @@ Game_Map.prototype.vehicle = function (type) {
  * 获取小舟
  * Get boat
  *
+ * @memberof Game_Map
+ * @method boat
  * @returns {Game_Vehicle} 小舟对象 / Boat object
  */
 Game_Map.prototype.boat = function () {
@@ -286,6 +328,8 @@ Game_Map.prototype.boat = function () {
  * 获取大船
  * Get ship
  *
+ * @memberof Game_Map
+ * @method ship
  * @returns {Game_Vehicle} 大船对象 / Ship object
  */
 Game_Map.prototype.ship = function () {
@@ -296,6 +340,8 @@ Game_Map.prototype.ship = function () {
  * 获取飞艇
  * Get airship
  *
+ * @memberof Game_Map
+ * @method airship
  * @returns {Game_Vehicle} 飞艇对象 / Airship object
  */
 Game_Map.prototype.airship = function () {
@@ -305,6 +351,9 @@ Game_Map.prototype.airship = function () {
 /**
  * 设置事件
  * Setup events
+ *
+ * @memberof Game_Map
+ * @method setupEvents
  */
 Game_Map.prototype.setupEvents = function () {
 	this._events = [];
@@ -325,6 +374,8 @@ Game_Map.prototype.setupEvents = function () {
  * 返回数组元素对象非空的事件数组。
  * Returns array of events with non-null elements.
  *
+ * @memberof Game_Map
+ * @method events
  * @returns {Array} 事件数组 / Events array
  */
 Game_Map.prototype.events = function () {
@@ -339,6 +390,8 @@ Game_Map.prototype.events = function () {
  * 返回事件ID所对应的事件对象。
  * Returns the event object corresponding to the event ID.
  *
+ * @memberof Game_Map
+ * @method event
  * @param {number} eventId - 事件ID / Event ID
  * @returns {Game_Event} 事件对象 / Event object
  */
@@ -350,6 +403,8 @@ Game_Map.prototype.event = function (eventId) {
  * 消除事件
  * Erase event
  *
+ * @memberof Game_Map
+ * @method eraseEvent
  * @param {number} eventId - 事件ID / Event ID
  */
 Game_Map.prototype.eraseEvent = function (eventId) {
@@ -360,6 +415,8 @@ Game_Map.prototype.eraseEvent = function (eventId) {
  * 获取并行处理的公共事件
  * Get parallel common events
  *
+ * @memberof Game_Map
+ * @method parallelCommonEvents
  * @returns {Array} 并行处理的公共事件数组 / Parallel common events array
  */
 Game_Map.prototype.parallelCommonEvents = function () {
@@ -371,6 +428,9 @@ Game_Map.prototype.parallelCommonEvents = function () {
 /**
  * 设置滚动
  * Setup scroll
+ *
+ * @memberof Game_Map
+ * @method setupScroll
  */
 Game_Map.prototype.setupScroll = function () {
 	this._scrollDirection = 2;
@@ -381,6 +441,9 @@ Game_Map.prototype.setupScroll = function () {
 /**
  * 设置远景
  * Setup parallax
+ *
+ * @memberof Game_Map
+ * @method setupParallax
  */
 Game_Map.prototype.setupParallax = function () {
 	this._parallaxName = $dataMap.parallaxName || "";
@@ -396,6 +459,9 @@ Game_Map.prototype.setupParallax = function () {
 /**
  * 设置战斗背景
  * Setup battleback
+ *
+ * @memberof Game_Map
+ * @method setupBattleback
  */
 Game_Map.prototype.setupBattleback = function () {
 	if ($dataMap.specifyBattleback) {
@@ -411,6 +477,8 @@ Game_Map.prototype.setupBattleback = function () {
  * 设置显示位置
  * Set display position
  *
+ * @memberof Game_Map
+ * @method setDisplayPos
  * @param {number} x - X位置 / X position
  * @param {number} y - Y位置 / Y position
  */
@@ -437,6 +505,8 @@ Game_Map.prototype.setDisplayPos = function (x, y) {
  * 获取远景原点X坐标
  * Get parallax origin X coordinate
  *
+ * @memberof Game_Map
+ * @method parallaxOx
  * @returns {number} 远景原点X坐标 / Parallax origin X coordinate
  */
 Game_Map.prototype.parallaxOx = function () {
@@ -453,6 +523,8 @@ Game_Map.prototype.parallaxOx = function () {
  * 获取远景原点Y坐标
  * Get parallax origin Y coordinate
  *
+ * @memberof Game_Map
+ * @method parallaxOy
  * @returns {number} 远景原点Y坐标 / Parallax origin Y coordinate
  */
 Game_Map.prototype.parallaxOy = function () {
@@ -469,6 +541,8 @@ Game_Map.prototype.parallaxOy = function () {
  * 获取图块组
  * Get tileset
  *
+ * @memberof Game_Map
+ * @method tileset
  * @returns {object} 图块组对象 / Tileset object
  */
 Game_Map.prototype.tileset = function () {
@@ -479,6 +553,8 @@ Game_Map.prototype.tileset = function () {
  * 获取图块组标志
  * Get tileset flags
  *
+ * @memberof Game_Map
+ * @method tilesetFlags
  * @returns {Array} 图块组标志数组 / Tileset flags array
  */
 Game_Map.prototype.tilesetFlags = function () {
@@ -494,6 +570,8 @@ Game_Map.prototype.tilesetFlags = function () {
  * 获取显示名称
  * Get display name
  *
+ * @memberof Game_Map
+ * @method displayName
  * @returns {string} 显示名称 / Display name
  */
 Game_Map.prototype.displayName = function () {
@@ -504,6 +582,8 @@ Game_Map.prototype.displayName = function () {
  * 获取地图宽度
  * Get map width
  *
+ * @memberof Game_Map
+ * @method width
  * @returns {number} 地图宽度 / Map width
  */
 Game_Map.prototype.width = function () {
@@ -514,6 +594,8 @@ Game_Map.prototype.width = function () {
  * 获取地图高度
  * Get map height
  *
+ * @memberof Game_Map
+ * @method height
  * @returns {number} 地图高度 / Map height
  */
 Game_Map.prototype.height = function () {
@@ -524,6 +606,8 @@ Game_Map.prototype.height = function () {
  * 获取地图数据
  * Get map data
  *
+ * @memberof Game_Map
+ * @method data
  * @returns {Array} 地图数据数组 / Map data array
  */
 Game_Map.prototype.data = function () {
@@ -534,6 +618,8 @@ Game_Map.prototype.data = function () {
  * 检查是否横向循环
  * Check if loop horizontal
  *
+ * @memberof Game_Map
+ * @method isLoopHorizontal
  * @returns {boolean} 是否横向循环 / Whether loop horizontal
  */
 Game_Map.prototype.isLoopHorizontal = function () {
@@ -544,6 +630,8 @@ Game_Map.prototype.isLoopHorizontal = function () {
  * 检查是否纵向循环
  * Check if loop vertical
  *
+ * @memberof Game_Map
+ * @method isLoopVertical
  * @returns {boolean} 是否纵向循环 / Whether loop vertical
  */
 Game_Map.prototype.isLoopVertical = function () {
@@ -554,6 +642,8 @@ Game_Map.prototype.isLoopVertical = function () {
  * 检查是否禁止奔跑
  * Check if dash is disabled
  *
+ * @memberof Game_Map
+ * @method isDashDisabled
  * @returns {boolean} 是否禁止奔跑 / Whether dash is disabled
  */
 Game_Map.prototype.isDashDisabled = function () {
@@ -564,6 +654,8 @@ Game_Map.prototype.isDashDisabled = function () {
  * 获取遇敌列表
  * Get encounter list
  *
+ * @memberof Game_Map
+ * @method encounterList
  * @returns {Array} 遇敌列表 / Encounter list
  */
 Game_Map.prototype.encounterList = function () {
@@ -574,6 +666,8 @@ Game_Map.prototype.encounterList = function () {
  * 获取遇敌步数
  * Get encounter step
  *
+ * @memberof Game_Map
+ * @method encounterStep
  * @returns {number} 遇敌步数 / Encounter step
  */
 Game_Map.prototype.encounterStep = function () {
@@ -586,6 +680,8 @@ Game_Map.prototype.encounterStep = function () {
  * 数据库-图块-基本设置-模式是否为世界类型。
  * Whether the mode in Database-Tileset-Basic Settings is world type.
  *
+ * @memberof Game_Map
+ * @method isOverworld
  * @returns {boolean} 是否为主世界 / Whether is overworld
  */
 Game_Map.prototype.isOverworld = function () {
@@ -596,6 +692,8 @@ Game_Map.prototype.isOverworld = function () {
  * 获取画面X轴方向图块数
  * Get screen tile X count
  *
+ * @memberof Game_Map
+ * @method screenTileX
  * @returns {number} 画面X轴方向图块数 / Screen tile X count
  */
 Game_Map.prototype.screenTileX = function () {
@@ -606,6 +704,8 @@ Game_Map.prototype.screenTileX = function () {
  * 获取画面Y轴方向图块数
  * Get screen tile Y count
  *
+ * @memberof Game_Map
+ * @method screenTileY
  * @returns {number} 画面Y轴方向图块数 / Screen tile Y count
  */
 Game_Map.prototype.screenTileY = function () {
@@ -616,6 +716,8 @@ Game_Map.prototype.screenTileY = function () {
  * 自适应X坐标
  * Adjust X coordinate
  *
+ * @memberof Game_Map
+ * @method adjustX
  * @param {number} x - X坐标 / X coordinate
  * @returns {number} 自适应X坐标 / Adjusted X coordinate
  */
@@ -631,6 +733,8 @@ Game_Map.prototype.adjustX = function (x) {
  * 自适应Y坐标
  * Adjust Y coordinate
  *
+ * @memberof Game_Map
+ * @method adjustY
  * @param {number} y - Y坐标 / Y coordinate
  * @returns {number} 自适应Y坐标 / Adjusted Y coordinate
  */
@@ -648,6 +752,8 @@ Game_Map.prototype.adjustY = function (y) {
  * 当横向循环时将位置转换为原地图位置。假设地图宽为17图块时，-1则为16，17则为0。
  * When looping horizontally, converts position to original map position. Assuming map width is 17 tiles, -1 becomes 16, 17 becomes 0.
  *
+ * @memberof Game_Map
+ * @method roundX
  * @param {number} x - X位置 / X position
  * @returns {number} 环形X位置 / Round X position
  */
@@ -661,6 +767,8 @@ Game_Map.prototype.roundX = function (x) {
  * 当纵向循环时将位置转换为原地图位置。假设地图高为13图块时，-1则为12，13则为0。
  * When looping vertically, converts position to original map position. Assuming map height is 13 tiles, -1 becomes 12, 13 becomes 0.
  *
+ * @memberof Game_Map
+ * @method roundY
  * @param {number} y - Y位置 / Y position
  * @returns {number} 环形Y位置 / Round Y position
  */
@@ -672,6 +780,8 @@ Game_Map.prototype.roundY = function (y) {
  * 该方向的X位置
  * Get X position with direction
  *
+ * @memberof Game_Map
+ * @method xWithDirection
  * @param {number} x - 在地图上的X位置 / X position on map
  * @param {number} d - 移动的方向（4：向左，6：向右） / Movement direction (4: left, 6: right)
  * @returns {number} 该方向的X位置 / X position with direction
@@ -684,6 +794,8 @@ Game_Map.prototype.xWithDirection = function (x, d) {
  * 该方向的Y位置
  * Get Y position with direction
  *
+ * @memberof Game_Map
+ * @method yWithDirection
  * @param {number} y - 在地图上的Y位置 / Y position on map
  * @param {number} d - 移动的方向（2：向下，8：向上） / Movement direction (2: down, 8: up)
  * @returns {number} 该方向的Y位置 / Y position with direction
@@ -696,6 +808,8 @@ Game_Map.prototype.yWithDirection = function (y, d) {
  * 该方向的环形X位置
  * Get round X position with direction
  *
+ * @memberof Game_Map
+ * @method roundXWithDirection
  * @param {number} x - X位置 / X position
  * @param {number} d - 方向 / Direction
  * @returns {number} 该方向的环形X位置 / Round X position with direction
@@ -708,6 +822,8 @@ Game_Map.prototype.roundXWithDirection = function (x, d) {
  * 该方向的环形Y位置
  * Get round Y position with direction
  *
+ * @memberof Game_Map
+ * @method roundYWithDirection
  * @param {number} y - Y位置 / Y position
  * @param {number} d - 方向 / Direction
  * @returns {number} 该方向的环形Y位置 / Round Y position with direction
@@ -720,6 +836,8 @@ Game_Map.prototype.roundYWithDirection = function (y, d) {
  * 计算X位置差值
  * Calculate X position delta
  *
+ * @memberof Game_Map
+ * @method deltaX
  * @param {number} x1 - X位置1 / X position 1
  * @param {number} x2 - X位置2 / X position 2
  * @returns {number} X位置差值 / X position delta
@@ -740,6 +858,8 @@ Game_Map.prototype.deltaX = function (x1, x2) {
  * 计算Y位置差值
  * Calculate Y position delta
  *
+ * @memberof Game_Map
+ * @method deltaY
  * @param {number} y1 - Y位置1 / Y position 1
  * @param {number} y2 - Y位置2 / Y position 2
  * @returns {number} Y位置差值 / Y position delta
@@ -762,6 +882,8 @@ Game_Map.prototype.deltaY = function (y1, y2) {
  * (x1,y1) 和 (x2,y2) 两点之间的距离。
  * Distance between two points (x1,y1) and (x2,y2).
  *
+ * @memberof Game_Map
+ * @method distance
  * @param {number} x1 - X位置1 / X position 1
  * @param {number} y1 - Y位置1 / Y position 1
  * @param {number} x2 - X位置2 / X position 2
@@ -776,6 +898,8 @@ Game_Map.prototype.distance = function (x1, y1, x2, y2) {
  * 画布X坐标转换到地图X位置
  * Convert canvas X coordinate to map X position
  *
+ * @memberof Game_Map
+ * @method canvasToMapX
  * @param {number} x - 画布X坐标 / Canvas X coordinate
  * @returns {number} 地图X位置 / Map X position
  */
@@ -790,6 +914,8 @@ Game_Map.prototype.canvasToMapX = function (x) {
  * 画布Y坐标转换到地图Y位置
  * Convert canvas Y coordinate to map Y position
  *
+ * @memberof Game_Map
+ * @method canvasToMapY
  * @param {number} y - 画布Y坐标 / Canvas Y coordinate
  * @returns {number} 地图Y位置 / Map Y position
  */
@@ -803,6 +929,9 @@ Game_Map.prototype.canvasToMapY = function (y) {
 /**
  * 自动播放音频
  * Autoplay audio
+ *
+ * @memberof Game_Map
+ * @method autoplay
  */
 Game_Map.prototype.autoplay = function () {
 	if ($dataMap.autoplayBgm) {
@@ -820,6 +949,9 @@ Game_Map.prototype.autoplay = function () {
 /**
  * 如果需要就刷新
  * Refresh if needed
+ *
+ * @memberof Game_Map
+ * @method refreshIfNeeded
  */
 Game_Map.prototype.refreshIfNeeded = function () {
 	if (this._needsRefresh) {
@@ -830,6 +962,9 @@ Game_Map.prototype.refreshIfNeeded = function () {
 /**
  * 刷新地图
  * Refresh map
+ *
+ * @memberof Game_Map
+ * @method refresh
  */
 Game_Map.prototype.refresh = function () {
 	this.events().forEach(function (event) {
@@ -845,6 +980,9 @@ Game_Map.prototype.refresh = function () {
 /**
  * 刷新图块事件
  * Refresh tile events
+ *
+ * @memberof Game_Map
+ * @method refreshTileEvents
  */
 Game_Map.prototype.refreshTileEvents = function () {
 	this.tileEvents = this.events().filter(function (event) {
@@ -856,6 +994,8 @@ Game_Map.prototype.refreshTileEvents = function () {
  * 获取位置X,Y的事件
  * Get events at position X,Y
  *
+ * @memberof Game_Map
+ * @method eventsXy
  * @param {number} x - X位置 / X position
  * @param {number} y - Y位置 / Y position
  * @returns {Array} 事件数组 / Events array
@@ -870,6 +1010,8 @@ Game_Map.prototype.eventsXy = function (x, y) {
  * 获取位置X,Y不可穿透的事件
  * Get non-through events at position X,Y
  *
+ * @memberof Game_Map
+ * @method eventsXyNt
  * @param {number} x - X位置 / X position
  * @param {number} y - Y位置 / Y position
  * @returns {Array} 不可穿透的事件数组 / Non-through events array
@@ -884,6 +1026,8 @@ Game_Map.prototype.eventsXyNt = function (x, y) {
  * 获取位置X,Y不可穿透的图块事件
  * Get non-through tile events at position X,Y
  *
+ * @memberof Game_Map
+ * @method tileEventsXy
  * @param {number} x - X位置 / X position
  * @param {number} y - Y位置 / Y position
  * @returns {Array} 不可穿透的图块事件数组 / Non-through tile events array
@@ -898,6 +1042,8 @@ Game_Map.prototype.tileEventsXy = function (x, y) {
  * 获取位置X,Y的事件ID
  * Get event ID at position X,Y
  *
+ * @memberof Game_Map
+ * @method eventIdXy
  * @param {number} x - X位置 / X position
  * @param {number} y - Y位置 / Y position
  * @returns {number} 事件ID / Event ID
@@ -911,6 +1057,8 @@ Game_Map.prototype.eventIdXy = function (x, y) {
  * 向下滚动
  * Scroll down
  *
+ * @memberof Game_Map
+ * @method scrollDown
  * @param {number} distance - 滚动距离 / Scroll distance
  */
 Game_Map.prototype.scrollDown = function (distance) {
@@ -931,6 +1079,8 @@ Game_Map.prototype.scrollDown = function (distance) {
  * 向左滚动
  * Scroll left
  *
+ * @memberof Game_Map
+ * @method scrollLeft
  * @param {number} distance - 滚动距离 / Scroll distance
  */
 Game_Map.prototype.scrollLeft = function (distance) {
@@ -951,6 +1101,8 @@ Game_Map.prototype.scrollLeft = function (distance) {
  * 向右滚动
  * Scroll right
  *
+ * @memberof Game_Map
+ * @method scrollRight
  * @param {number} distance - 滚动距离 / Scroll distance
  */
 Game_Map.prototype.scrollRight = function (distance) {
@@ -971,6 +1123,8 @@ Game_Map.prototype.scrollRight = function (distance) {
  * 向上滚动
  * Scroll up
  *
+ * @memberof Game_Map
+ * @method scrollUp
  * @param {number} distance - 滚动距离 / Scroll distance
  */
 Game_Map.prototype.scrollUp = function (distance) {
@@ -991,6 +1145,8 @@ Game_Map.prototype.scrollUp = function (distance) {
  * 检查坐标是否有效
  * Check if coordinates are valid
  *
+ * @memberof Game_Map
+ * @method isValid
  * @param {number} x - X位置 / X position
  * @param {number} y - Y位置 / Y position
  * @returns {boolean} 坐标是否有效 / Whether coordinates are valid
@@ -1003,6 +1159,8 @@ Game_Map.prototype.isValid = function (x, y) {
  * 检测通行
  * Check passage
  *
+ * @memberof Game_Map
+ * @method checkPassage
  * @param {number} x - X位置 / X position
  * @param {number} y - Y位置 / Y position
  * @param {number} bit - 检测位 / Check bit
@@ -1030,6 +1188,8 @@ Game_Map.prototype.checkPassage = function (x, y, bit) {
  * 获取图块ID
  * Get tile ID
  *
+ * @memberof Game_Map
+ * @method tileId
  * @param {number} x - X位置 / X position
  * @param {number} y - Y位置 / Y position
  * @param {number} z - Z层级 / Z level
