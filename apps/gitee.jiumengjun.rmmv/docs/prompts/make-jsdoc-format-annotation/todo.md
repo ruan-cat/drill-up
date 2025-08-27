@@ -118,7 +118,7 @@
 | Game_Event.js         | ✅ 100%        | ❌ 0%          |
 | Game_Follower.js      | ✅ 100%        | ❌ 0%          |
 | Game_Followers.js     | ✅ 100%        | ❌ 0%          |
-| Game_Interpreter.js   | ✅ 100%        | ❌ 0%          |
+| Game_Interpreter.js   | ❌ 0%          | ❌ 0%          |
 | Game_Item.js          | ❌ 0%          | ❌ 0%          |
 | Game_Map.js           | ❌ 0%          | ❌ 0%          |
 | Game_Message.js       | ❌ 0%          | ❌ 0%          |

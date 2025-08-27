@@ -89,17 +89,38 @@ Game_Interpreter.prototype.setup = function (list, eventId) {
 	Game_Interpreter.requestImages(list);
 };
 
-/* 事件 ID */
+/**
+ * 获取事件ID
+ * Get event ID
+ *
+ * @memberof Game_Interpreter
+ * @method eventId
+ * @returns {number} 事件ID / Event ID
+ */
 Game_Interpreter.prototype.eventId = function () {
 	return this._eventId;
 };
 
-/* 是否在当前地图 */
+/**
+ * 检查是否在当前地图
+ * Check if on current map
+ *
+ * @memberof Game_Interpreter
+ * @method isOnCurrentMap
+ * @returns {boolean} 是否在当前地图 / Whether on current map
+ */
 Game_Interpreter.prototype.isOnCurrentMap = function () {
 	return this._mapId === $gameMap.mapId();
 };
 
-/* 设置储存的公共事件 */
+/**
+ * 设置储存的公共事件
+ * Setup reserved common event
+ *
+ * @memberof Game_Interpreter
+ * @method setupReservedCommonEvent
+ * @returns {boolean} 是否设置成功 / Whether setup successful
+ */
 Game_Interpreter.prototype.setupReservedCommonEvent = function () {
 	if ($gameTemp.isCommonEventReserved()) {
 		this.setup($gameTemp.reservedCommonEvent().list);
@@ -110,12 +131,25 @@ Game_Interpreter.prototype.setupReservedCommonEvent = function () {
 	}
 };
 
-/* 是否运行 */
+/**
+ * 检查是否正在运行
+ * Check if running
+ *
+ * @memberof Game_Interpreter
+ * @method isRunning
+ * @returns {boolean} 是否运行 / Whether running
+ */
 Game_Interpreter.prototype.isRunning = function () {
 	return !!this._list;
 };
 
-/* 更新 */
+/**
+ * 更新解释器
+ * Update interpreter
+ *
+ * @memberof Game_Interpreter
+ * @method update
+ */
 Game_Interpreter.prototype.update = function () {
 	while (this.isRunning()) {
 		if (this.updateChild() || this.updateWait()) {
@@ -133,7 +167,14 @@ Game_Interpreter.prototype.update = function () {
 	}
 };
 
-/* 更新子解释器 */
+/**
+ * 更新子解释器
+ * Update child interpreter
+ *
+ * @memberof Game_Interpreter
+ * @method updateChild
+ * @returns {boolean} 是否更新中 / Whether updating
+ */
 Game_Interpreter.prototype.updateChild = function () {
 	if (this._childInterpreter) {
 		this._childInterpreter.update();
@@ -146,12 +187,26 @@ Game_Interpreter.prototype.updateChild = function () {
 	return false;
 };
 
-/* 更新等待 */
+/**
+ * 更新等待状态
+ * Update wait state
+ *
+ * @memberof Game_Interpreter
+ * @method updateWait
+ * @returns {boolean} 是否等待中 / Whether waiting
+ */
 Game_Interpreter.prototype.updateWait = function () {
 	return this.updateWaitCount() || this.updateWaitMode();
 };
 
-/* 更新等待计数 */
+/**
+ * 更新等待计数
+ * Update wait count
+ *
+ * @memberof Game_Interpreter
+ * @method updateWaitCount
+ * @returns {boolean} 是否等待中 / Whether waiting
+ */
 Game_Interpreter.prototype.updateWaitCount = function () {
 	if (this._waitCount > 0) {
 		this._waitCount--;
@@ -160,7 +215,14 @@ Game_Interpreter.prototype.updateWaitCount = function () {
 	return false;
 };
 
-/* 更新等待模式 */
+/**
+ * 更新等待模式
+ * Update wait mode
+ *
+ * @memberof Game_Interpreter
+ * @method updateWaitMode
+ * @returns {boolean} 是否等待中 / Whether waiting
+ */
 Game_Interpreter.prototype.updateWaitMode = function () {
 	var waiting = false;
 	switch (this._waitMode) {
@@ -201,22 +263,50 @@ Game_Interpreter.prototype.updateWaitMode = function () {
 	return waiting;
 };
 
-/* 设置等待模式 */
+/**
+ * 设置等待模式
+ * Set wait mode
+ *
+ * @memberof Game_Interpreter
+ * @method setWaitMode
+ * @param {string} waitMode - 等待模式 / Wait mode
+ */
 Game_Interpreter.prototype.setWaitMode = function (waitMode) {
 	this._waitMode = waitMode;
 };
 
-/* 等待 */
+/**
+ * 等待指定时间
+ * Wait for specified time
+ *
+ * @memberof Game_Interpreter
+ * @method wait
+ * @param {number} duration - 等待时间 / Wait duration
+ */
 Game_Interpreter.prototype.wait = function (duration) {
 	this._waitCount = duration;
 };
 
-/* 渐变速度 */
+/**
+ * 获取渐变速度
+ * Get fade speed
+ *
+ * @memberof Game_Interpreter
+ * @method fadeSpeed
+ * @returns {number} 渐变速度 / Fade speed
+ */
 Game_Interpreter.prototype.fadeSpeed = function () {
 	return 24;
 };
 
-/* 执行指令 */
+/**
+ * 执行指令
+ * Execute command
+ *
+ * @memberof Game_Interpreter
+ * @method executeCommand
+ * @returns {boolean} 是否继续执行 / Whether to continue
+ */
 Game_Interpreter.prototype.executeCommand = function () {
 	var command = this.currentCommand();
 	if (command) {
@@ -235,7 +325,14 @@ Game_Interpreter.prototype.executeCommand = function () {
 	return true;
 };
 
-/* 检测冻结 */
+/**
+ * 检测冻结状态
+ * Check freeze state
+ *
+ * @memberof Game_Interpreter
+ * @method checkFreeze
+ * @returns {boolean} 是否冻结 / Whether frozen
+ */
 Game_Interpreter.prototype.checkFreeze = function () {
 	if (this._frameCount !== Graphics.frameCount) {
 		this._frameCount = Graphics.frameCount;
@@ -248,25 +345,51 @@ Game_Interpreter.prototype.checkFreeze = function () {
 	}
 };
 
-/* 结束 */
+/**
+ * 结束解释器
+ * Terminate interpreter
+ *
+ * @memberof Game_Interpreter
+ * @method terminate
+ */
 Game_Interpreter.prototype.terminate = function () {
 	this._list = null;
 	this._comments = "";
 };
 
-/* 跳出分支 */
+/**
+ * 跳出分支
+ * Skip branch
+ *
+ * @memberof Game_Interpreter
+ * @method skipBranch
+ */
 Game_Interpreter.prototype.skipBranch = function () {
 	while (this._list[this._index + 1].indent > this._indent) {
 		this._index++;
 	}
 };
 
-/* 当前指令 */
+/**
+ * 获取当前指令
+ * Get current command
+ *
+ * @memberof Game_Interpreter
+ * @method currentCommand
+ * @returns {object} 当前指令 / Current command
+ */
 Game_Interpreter.prototype.currentCommand = function () {
 	return this._list[this._index];
 };
 
-/* 下一个事件码 */
+/**
+ * 获取下一个事件码
+ * Get next event code
+ *
+ * @memberof Game_Interpreter
+ * @method nextEventCode
+ * @returns {number} 下一个事件码 / Next event code
+ */
 Game_Interpreter.prototype.nextEventCode = function () {
 	var command = this._list[this._index + 1];
 	if (command) {
@@ -276,7 +399,15 @@ Game_Interpreter.prototype.nextEventCode = function () {
 	}
 };
 
-/* 循环遍历角色 ID */
+/**
+ * 循环遍历角色ID
+ * Iterate through actor IDs
+ *
+ * @memberof Game_Interpreter
+ * @method iterateActorId
+ * @param {number} param - 参数 / Parameter
+ * @param {Function} callback - 回调函数 / Callback function
+ */
 Game_Interpreter.prototype.iterateActorId = function (param, callback) {
 	if (param === 0) {
 		$gameParty.members().forEach(callback);
@@ -296,7 +427,15 @@ Game_Interpreter.prototype.iterateActorEx = function (param1, param2, callback) 
 	}
 };
 
-/* 循环遍历角色索引 */
+/**
+ * 循环遍历角色索引
+ * Iterate through actor index
+ *
+ * @memberof Game_Interpreter
+ * @method iterateActorIndex
+ * @param {number} param - 参数 / Parameter
+ * @param {Function} callback - 回调函数 / Callback function
+ */
 Game_Interpreter.prototype.iterateActorIndex = function (param, callback) {
 	if (param < 0) {
 		$gameParty.members().forEach(callback);
