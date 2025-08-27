@@ -24,8 +24,6 @@
 		"build": "pnpm run build:qj-en",
 		"postbuild": "tsx ./scripts/uglify.ts",
 		"preview": "vite preview",
-		"clear": "rimraf .vercel dist",
-		"rm:node_modules": "rimraf node_modules",
 		"lint:eslint": "eslint . --fix",
 		"format:prettier": "prettier --write . >logs/prettier-format-logs.md"
 	},

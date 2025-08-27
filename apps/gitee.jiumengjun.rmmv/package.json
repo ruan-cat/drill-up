@@ -6,8 +6,6 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"rm:node_modules": "rimraf node_modules",
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"legacy:make-doc": "jsdoc2md --files ./rpg_*.js > ./dist/jsdoc2md-res.md",
 		"legacy:make": "typedoc",
 		"jsdoc:generate": "tsx scripts/index.ts",
