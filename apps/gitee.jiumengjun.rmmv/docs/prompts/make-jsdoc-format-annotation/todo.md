@@ -101,7 +101,7 @@
 | StorageManager.js | ✅ 100%        | ❌ 0%          |
 | TextManager.js    | ✅ 100%        | ❌ 0%          |
 
-### 3. rpg_objects 模块 (30 个文件) - JSDoc 格式转换: 37%
+### 3. rpg_objects 模块 (30 个文件) - JSDoc 格式转换: 40%
 
 | 文件名                | JSDoc 格式转换 | 注释翻译与补全 |
 | --------------------- | -------------- | -------------- |
@@ -115,7 +115,7 @@
 | Game_CharacterBase.js | ✅ 100%        | ❌ 0%          |
 | Game_CommonEvent.js   | ✅ 100%        | ❌ 0%          |
 | Game_Enemy.js         | ✅ 100%        | ❌ 0%          |
-| Game_Event.js         | ❌ 0%          | ❌ 0%          |
+| Game_Event.js         | ✅ 100%        | ❌ 0%          |
 | Game_Follower.js      | ❌ 0%          | ❌ 0%          |
 | Game_Followers.js     | ❌ 0%          | ❌ 0%          |
 | Game_Interpreter.js   | ❌ 0%          | ❌ 0%          |
