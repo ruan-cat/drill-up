@@ -30,12 +30,12 @@
 | main.js (1 个文件)          | 0%                 | 0%                 |
 | rpg_core.js (28 个文件)     | 100%               | 0%                 |
 | rpg_managers.js (10 个文件) | 100%               | 0%                 |
-| rpg_objects.js (30 个文件)  | 0%                 | 0%                 |
+| rpg_objects.js (30 个文件)  | 3%                 | 0%                 |
 | rpg_scenes.js (21 个文件)   | 10%                | 0%                 |
 | rpg_sprites.js (18 个文件)  | 11%                | 0%                 |
 | rpg_windows.js (46 个文件)  | 2%                 | 0%                 |
 
-**总体进度**: 32% (进行中)
+**总体进度**: 33% (进行中)
 
 ### ⏸️ 阶段三：注释翻译与补全
 
@@ -101,7 +101,7 @@
 | StorageManager.js | ✅ 100%        | ❌ 0%          |
 | TextManager.js    | ✅ 100%        | ❌ 0%          |
 
-### 3. rpg_objects 模块 (30 个文件) - JSDoc 格式转换: 0%
+### 3. rpg_objects 模块 (30 个文件) - JSDoc 格式转换: 3%
 
 | 文件名                | JSDoc 格式转换 | 注释翻译与补全 |
 | --------------------- | -------------- | -------------- |
@@ -124,7 +124,7 @@
 | Game_Message.js       | ❌ 0%          | ❌ 0%          |
 | Game_Party.js         | ❌ 0%          | ❌ 0%          |
 | Game_Picture.js       | ❌ 0%          | ❌ 0%          |
-| Game_Player.js        | ❌ 0%          | ❌ 0%          |
+| Game_Player.js        | ✅ 100%        | ❌ 0%          |
 | Game_Screen.js        | ❌ 0%          | ❌ 0%          |
 | Game_SelfSwitches.js  | ❌ 0%          | ❌ 0%          |
 | Game_Switches.js      | ❌ 0%          | ❌ 0%          |
