@@ -31,8 +31,8 @@
 | rpg_core.js (28 个文件)     | 100%               | 0%                 |
 | rpg_managers.js (10 个文件) | 100%               | 0%                 |
 | rpg_objects.js (30 个文件)  | 0%                 | 0%                 |
-| rpg_scenes.js (21 个文件)   | 0%                 | 0%                 |
-| rpg_sprites.js (18 个文件)  | 0%                 | 0%                 |
+| rpg_scenes.js (21 个文件)   | 5%                 | 0%                 |
+| rpg_sprites.js (18 个文件)  | 6%                 | 0%                 |
 | rpg_windows.js (46 个文件)  | 2%                 | 0%                 |
 
 **总体进度**: 32% (进行中)
@@ -136,11 +136,11 @@
 | Game_Variables.js     | ❌ 0%          | ❌ 0%          |
 | Game_Vehicle.js       | ❌ 0%          | ❌ 0%          |
 
-### 4. rpg_scenes 模块 (21 个文件) - JSDoc 格式转换: 0%
+### 4. rpg_scenes 模块 (21 个文件) - JSDoc 格式转换: 5%
 
 | 文件名            | JSDoc 格式转换 | 注释翻译与补全 |
 | ----------------- | -------------- | -------------- |
-| Scene_Base.js     | ❌ 0%          | ❌ 0%          |
+| Scene_Base.js     | ✅ 100%        | ❌ 0%          |
 | Scene_Battle.js   | ❌ 0%          | ❌ 0%          |
 | Scene_Boot.js     | ❌ 0%          | ❌ 0%          |
 | Scene_Debug.js    | ❌ 0%          | ❌ 0%          |
@@ -162,14 +162,14 @@
 | Scene_Status.js   | ❌ 0%          | ❌ 0%          |
 | Scene_Title.js    | ❌ 0%          | ❌ 0%          |
 
-### 5. rpg_sprites 模块 (18 个文件) - JSDoc 格式转换: 0%
+### 5. rpg_sprites 模块 (18 个文件) - JSDoc 格式转换: 6%
 
 | 文件名                 | JSDoc 格式转换 | 注释翻译与补全 |
 | ---------------------- | -------------- | -------------- |
 | Sprite_Actor.js        | ❌ 0%          | ❌ 0%          |
 | Sprite_Animation.js    | ❌ 0%          | ❌ 0%          |
 | Sprite_Balloon.js      | ❌ 0%          | ❌ 0%          |
-| Sprite_Base.js         | ❌ 0%          | ❌ 0%          |
+| Sprite_Base.js         | ✅ 100%        | ❌ 0%          |
 | Sprite_Battler.js      | ❌ 0%          | ❌ 0%          |
 | Sprite_Button.js       | ❌ 0%          | ❌ 0%          |
 | Sprite_Character.js    | ❌ 0%          | ❌ 0%          |
