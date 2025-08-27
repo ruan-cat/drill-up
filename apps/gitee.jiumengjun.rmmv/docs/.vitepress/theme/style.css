@@ -1,0 +1,54 @@
+/* 自定义样式 */
+
+/* 代码块样式优化 */
+.vp-code-group .tabs label {
+  font-size: 14px;
+}
+
+/* 侧边栏样式调整 */
+.VPSidebarItem .text {
+  line-height: 1.5;
+}
+
+/* 表格样式优化 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+table th,
+table td {
+  border: 1px solid var(--vp-c-divider);
+  padding: 8px 16px;
+  text-align: left;
+}
+
+table th {
+  background-color: var(--vp-c-bg-soft);
+  font-weight: 600;
+}
+
+/* 代码块参数表格样式 */
+.markdown-body table {
+  margin: 1em 0;
+}
+
+.markdown-body table th {
+  background-color: var(--vp-c-bg-alt);
+}
+
+/* 标题链接样式 */
+.header-anchor {
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+h1:hover .header-anchor,
+h2:hover .header-anchor,
+h3:hover .header-anchor,
+h4:hover .header-anchor,
+h5:hover .header-anchor,
+h6:hover .header-anchor {
+  opacity: 1;
+}
