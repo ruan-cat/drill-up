@@ -139,6 +139,8 @@ Game_Enemy.prototype.isBattleMember = function () {
  * 获取敌人ID
  * Get enemy ID
  *
+ * @memberof Game_Enemy
+ * @method enemyId
  * @returns {number} 敌人ID / Enemy ID
  */
 Game_Enemy.prototype.enemyId = function () {
@@ -149,6 +151,8 @@ Game_Enemy.prototype.enemyId = function () {
  * 获取敌人数据对象
  * Get enemy data object
  *
+ * @memberof Game_Enemy
+ * @method enemy
  * @returns {object} 敌人数据 / Enemy data
  */
 Game_Enemy.prototype.enemy = function () {
@@ -159,6 +163,8 @@ Game_Enemy.prototype.enemy = function () {
  * 获取特征对象数组
  * Get trait objects array
  *
+ * @memberof Game_Enemy
+ * @method traitObjects
  * @returns {Array} 特征对象数组 / Array of trait objects
  */
 Game_Enemy.prototype.traitObjects = function () {
@@ -169,6 +175,8 @@ Game_Enemy.prototype.traitObjects = function () {
  * 获取基础能力值
  * Get base parameter value
  *
+ * @memberof Game_Enemy
+ * @method paramBase
  * @param {number} paramId - 参数ID / Parameter ID
  * @returns {number} 基础能力值 / Base parameter value
  */
@@ -180,6 +188,8 @@ Game_Enemy.prototype.paramBase = function (paramId) {
  * 获取经验值
  * Get experience points
  *
+ * @memberof Game_Enemy
+ * @method exp
  * @returns {number} 经验值 / Experience points
  */
 Game_Enemy.prototype.exp = function () {
@@ -190,6 +200,8 @@ Game_Enemy.prototype.exp = function () {
  * 获取金币数量
  * Get gold amount
  *
+ * @memberof Game_Enemy
+ * @method gold
  * @returns {number} 金币数量 / Gold amount
  */
 Game_Enemy.prototype.gold = function () {
@@ -200,6 +212,8 @@ Game_Enemy.prototype.gold = function () {
  * 制作掉落物品
  * Make drop items
  *
+ * @memberof Game_Enemy
+ * @method makeDropItems
  * @returns {Array} 掉落物品数组 / Array of drop items
  */
 Game_Enemy.prototype.makeDropItems = function () {
@@ -219,6 +233,8 @@ Game_Enemy.prototype.makeDropItems = function () {
  * 获取掉落物品倍率
  * Get drop item rate
  *
+ * @memberof Game_Enemy
+ * @method dropItemRate
  * @returns {number} 掉落物品倍率 / Drop item rate
  */
 Game_Enemy.prototype.dropItemRate = function () {
@@ -229,6 +245,8 @@ Game_Enemy.prototype.dropItemRate = function () {
  * 获取物品对象
  * Get item object
  *
+ * @memberof Game_Enemy
+ * @method itemObject
  * @param {number} kind - 物品种类 / Item kind
  * @param {number} dataId - 数据ID / Data ID
  * @returns {object|null} 物品对象 / Item object
@@ -249,6 +267,8 @@ Game_Enemy.prototype.itemObject = function (kind, dataId) {
  * 检查精灵是否可见
  * Check if sprite is visible
  *
+ * @memberof Game_Enemy
+ * @method isSpriteVisible
  * @returns {boolean} 始终返回true / Always returns true
  */
 Game_Enemy.prototype.isSpriteVisible = function () {
@@ -259,6 +279,8 @@ Game_Enemy.prototype.isSpriteVisible = function () {
  * 获取屏幕X坐标
  * Get screen X coordinate
  *
+ * @memberof Game_Enemy
+ * @method screenX
  * @returns {number} 屏幕X坐标 / Screen X coordinate
  */
 Game_Enemy.prototype.screenX = function () {
@@ -269,6 +291,8 @@ Game_Enemy.prototype.screenX = function () {
  * 获取屏幕Y坐标
  * Get screen Y coordinate
  *
+ * @memberof Game_Enemy
+ * @method screenY
  * @returns {number} 屏幕Y坐标 / Screen Y coordinate
  */
 Game_Enemy.prototype.screenY = function () {
@@ -279,6 +303,8 @@ Game_Enemy.prototype.screenY = function () {
  * 获取战斗图名称
  * Get battler name
  *
+ * @memberof Game_Enemy
+ * @method battlerName
  * @returns {string} 战斗图名称 / Battler name
  */
 Game_Enemy.prototype.battlerName = function () {
@@ -289,6 +315,8 @@ Game_Enemy.prototype.battlerName = function () {
  * 获取战斗图色相
  * Get battler hue
  *
+ * @memberof Game_Enemy
+ * @method battlerHue
  * @returns {number} 战斗图色相 / Battler hue
  */
 Game_Enemy.prototype.battlerHue = function () {
@@ -299,6 +327,8 @@ Game_Enemy.prototype.battlerHue = function () {
  * 获取原始名称
  * Get original name
  *
+ * @memberof Game_Enemy
+ * @method originalName
  * @returns {string} 原始名称 / Original name
  */
 Game_Enemy.prototype.originalName = function () {
@@ -311,6 +341,8 @@ Game_Enemy.prototype.originalName = function () {
  * 多只同样的敌人时，会在敌人原名后面加字母来区分。
  * When there are multiple same enemies, letters are added after the original name to distinguish them.
  *
+ * @memberof Game_Enemy
+ * @method name
  * @returns {string} 敌人名称 / Enemy name
  */
 Game_Enemy.prototype.name = function () {
@@ -321,6 +353,8 @@ Game_Enemy.prototype.name = function () {
  * 检查字母是否为空
  * Check if letter is empty
  *
+ * @memberof Game_Enemy
+ * @method isLetterEmpty
  * @returns {boolean} 字母是否为空 / Whether letter is empty
  */
 Game_Enemy.prototype.isLetterEmpty = function () {
@@ -331,6 +365,8 @@ Game_Enemy.prototype.isLetterEmpty = function () {
  * 设置字母后缀
  * Set letter suffix
  *
+ * @memberof Game_Enemy
+ * @method setLetter
  * @param {string} letter - 字母后缀 / Letter suffix
  */
 Game_Enemy.prototype.setLetter = function (letter) {
@@ -341,6 +377,8 @@ Game_Enemy.prototype.setLetter = function (letter) {
  * 设置是否为复数
  * Set whether is plural
  *
+ * @memberof Game_Enemy
+ * @method setPlural
  * @param {boolean} plural - 是否为复数 / Whether is plural
  */
 Game_Enemy.prototype.setPlural = function (plural) {
@@ -351,6 +389,8 @@ Game_Enemy.prototype.setPlural = function (plural) {
  * 表现行动开始
  * Perform action start
  *
+ * @memberof Game_Enemy
+ * @method performActionStart
  * @param {Game_Action} action - 行动对象 / Action object
  */
 Game_Enemy.prototype.performActionStart = function (action) {
@@ -362,6 +402,8 @@ Game_Enemy.prototype.performActionStart = function (action) {
  * 表现行动
  * Perform action
  *
+ * @memberof Game_Enemy
+ * @method performAction
  * @param {Game_Action} action - 行动对象 / Action object
  */
 Game_Enemy.prototype.performAction = function (action) {
@@ -371,6 +413,9 @@ Game_Enemy.prototype.performAction = function (action) {
 /**
  * 表现行动结束
  * Perform action end
+ *
+ * @memberof Game_Enemy
+ * @method performActionEnd
  */
 Game_Enemy.prototype.performActionEnd = function () {
 	Game_Battler.prototype.performActionEnd.call(this);
@@ -379,6 +424,9 @@ Game_Enemy.prototype.performActionEnd = function () {
 /**
  * 表现伤害
  * Perform damage
+ *
+ * @memberof Game_Enemy
+ * @method performDamage
  */
 Game_Enemy.prototype.performDamage = function () {
 	Game_Battler.prototype.performDamage.call(this);
@@ -389,6 +437,9 @@ Game_Enemy.prototype.performDamage = function () {
 /**
  * 表现倒下（死亡后的消失效果）
  * Perform collapse (disappearing effect after death)
+ *
+ * @memberof Game_Enemy
+ * @method performCollapse
  */
 Game_Enemy.prototype.performCollapse = function () {
 	Game_Battler.prototype.performCollapse.call(this);
@@ -411,6 +462,8 @@ Game_Enemy.prototype.performCollapse = function () {
  * 变身为另一种敌人
  * Transform to another enemy
  *
+ * @memberof Game_Enemy
+ * @method transform
  * @param {number} enemyId - 新的敌人ID / New enemy ID
  */
 Game_Enemy.prototype.transform = function (enemyId) {
@@ -430,6 +483,8 @@ Game_Enemy.prototype.transform = function (enemyId) {
  * 检查是否符合行动条件
  * Check if meets action condition
  *
+ * @memberof Game_Enemy
+ * @method meetsCondition
  * @param {object} action - 行动数据 / Action data
  * @returns {boolean} 是否符合条件 / Whether meets condition
  */
@@ -458,6 +513,8 @@ Game_Enemy.prototype.meetsCondition = function (action) {
  * 检查是否符合回合条件
  * Check if meets turn condition
  *
+ * @memberof Game_Enemy
+ * @method meetsTurnCondition
  * @param {number} param1 - 参数1 / Parameter 1
  * @param {number} param2 - 参数2 / Parameter 2
  * @returns {boolean} 是否符合条件 / Whether meets condition
@@ -475,6 +532,8 @@ Game_Enemy.prototype.meetsTurnCondition = function (param1, param2) {
  * 检查是否符合HP条件
  * Check if meets HP condition
  *
+ * @memberof Game_Enemy
+ * @method meetsHpCondition
  * @param {number} param1 - HP最小值 / HP minimum value
  * @param {number} param2 - HP最大值 / HP maximum value
  * @returns {boolean} 是否符合条件 / Whether meets condition
@@ -487,6 +546,8 @@ Game_Enemy.prototype.meetsHpCondition = function (param1, param2) {
  * 检查是否符合MP条件
  * Check if meets MP condition
  *
+ * @memberof Game_Enemy
+ * @method meetsMpCondition
  * @param {number} param1 - MP最小值 / MP minimum value
  * @param {number} param2 - MP最大值 / MP maximum value
  * @returns {boolean} 是否符合条件 / Whether meets condition
@@ -499,6 +560,8 @@ Game_Enemy.prototype.meetsMpCondition = function (param1, param2) {
  * 检查是否符合状态条件
  * Check if meets state condition
  *
+ * @memberof Game_Enemy
+ * @method meetsStateCondition
  * @param {number} param - 状态ID / State ID
  * @returns {boolean} 是否符合条件 / Whether meets condition
  */
@@ -510,6 +573,8 @@ Game_Enemy.prototype.meetsStateCondition = function (param) {
  * 检查是否符合队伍等级条件
  * Check if meets party level condition
  *
+ * @memberof Game_Enemy
+ * @method meetsPartyLevelCondition
  * @param {number} param - 最小等级 / Minimum level
  * @returns {boolean} 是否符合条件 / Whether meets condition
  */
@@ -521,6 +586,8 @@ Game_Enemy.prototype.meetsPartyLevelCondition = function (param) {
  * 检查是否符合开关条件
  * Check if meets switch condition
  *
+ * @memberof Game_Enemy
+ * @method meetsSwitchCondition
  * @param {number} param - 开关ID / Switch ID
  * @returns {boolean} 是否符合条件 / Whether meets condition
  */
@@ -532,6 +599,8 @@ Game_Enemy.prototype.meetsSwitchCondition = function (param) {
  * 检查行动是否有效
  * Check if action is valid
  *
+ * @memberof Game_Enemy
+ * @method isActionValid
  * @param {object} action - 行动数据 / Action data
  * @returns {boolean} 行动是否有效 / Whether action is valid
  */
@@ -543,6 +612,8 @@ Game_Enemy.prototype.isActionValid = function (action) {
  * 选择行动
  * Select action
  *
+ * @memberof Game_Enemy
+ * @method selectAction
  * @param {Array} actionList - 行动列表 / Action list
  * @param {number} ratingZero - 基准评级 / Base rating
  * @returns {object|null} 选中的行动 / Selected action
@@ -569,6 +640,8 @@ Game_Enemy.prototype.selectAction = function (actionList, ratingZero) {
  * 选择所有行动
  * Select all actions
  *
+ * @memberof Game_Enemy
+ * @method selectAllActions
  * @param {Array} actionList - 行动列表 / Action list
  */
 Game_Enemy.prototype.selectAllActions = function (actionList) {
@@ -590,6 +663,9 @@ Game_Enemy.prototype.selectAllActions = function (actionList) {
 /**
  * 制作行动
  * Make actions
+ *
+ * @memberof Game_Enemy
+ * @method makeActions
  */
 Game_Enemy.prototype.makeActions = function () {
 	Game_Battler.prototype.makeActions.call(this);
