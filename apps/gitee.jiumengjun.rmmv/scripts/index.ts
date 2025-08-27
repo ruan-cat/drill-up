@@ -31,7 +31,7 @@ async function main(): Promise<void> {
 				"member-index-format": "grouped",
 				"module-index-format": "table",
 				"global-index-format": "table",
-				"heading-depth": 1,
+				"heading-depth": 2,
 				"no-gfm": false,
 				separators: true,
 				"clever-links": true,
