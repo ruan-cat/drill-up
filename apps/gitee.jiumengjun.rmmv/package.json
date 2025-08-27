@@ -6,14 +6,13 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"legacy:make-doc": "jsdoc2md --files ./rpg_*.js > ./dist/jsdoc2md-res.md",
-		"legacy:make": "typedoc",
-		"jsdoc:generate": "tsx scripts/index.ts",
 		"docs:dev": "vitepress dev docs",
 		"docs:build": "pnpm jsdoc:generate && vitepress build docs",
 		"docs:preview": "vitepress preview docs",
-		"docs:clean": "rimraf docs/jsdoc && rimraf docs/.vitepress/dist && rimraf docs/.vitepress/cache",
-		"build": "pnpm docs:build"
+		"build": "pnpm docs:build",
+		"jsdoc:generate": "tsx scripts/index.ts",
+		"legacy:make-doc": "jsdoc2md --files ./rpg_*.js > ./dist/jsdoc2md-res.md",
+		"legacy:make": "typedoc"
 	},
 	"keywords": [],
 	"author": "阮喵喵",
