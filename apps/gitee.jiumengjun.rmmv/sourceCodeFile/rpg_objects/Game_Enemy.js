@@ -2,14 +2,16 @@
 // Game_Enemy.js
 //=============================================================================
 
-//-----------------------------------------------------------------------------
 /**
- * 游戏敌人类
- * Game_Enemy
+ * @fileoverview Game_Enemy - 游戏敌人类
  *
  * 敌人的游戏对象类。
  * The game object class for an enemy.
+ *
+ * @author 作者名
+ * @since 1.0.0
  */
+
 //-----------------------------------------------------------------------------
 
 /**
@@ -29,6 +31,8 @@ Game_Enemy.prototype.constructor = Game_Enemy;
  * 初始化敌人
  * Initialize enemy
  *
+ * @memberof Game_Enemy
+ * @method initialize
  * @param {number} enemyId - 敌人ID / Enemy ID
  * @param {number} x - X坐标 / X coordinate
  * @param {number} y - Y坐标 / Y coordinate
@@ -41,6 +45,9 @@ Game_Enemy.prototype.initialize = function (enemyId, x, y) {
 /**
  * 初始化成员变量
  * Initialize member variables
+ *
+ * @memberof Game_Enemy
+ * @method initMembers
  */
 Game_Enemy.prototype.initMembers = function () {
 	Game_Battler.prototype.initMembers.call(this);
@@ -55,6 +62,8 @@ Game_Enemy.prototype.initMembers = function () {
  * 设置敌人属性
  * Setup enemy properties
  *
+ * @memberof Game_Enemy
+ * @method setup
  * @param {number} enemyId - 敌人ID / Enemy ID
  * @param {number} x - X坐标 / X coordinate
  * @param {number} y - Y坐标 / Y coordinate
@@ -70,6 +79,8 @@ Game_Enemy.prototype.setup = function (enemyId, x, y) {
  * 检查是否为敌人
  * Check if this is an enemy
  *
+ * @memberof Game_Enemy
+ * @method isEnemy
  * @returns {boolean} 始终返回true / Always returns true
  */
 Game_Enemy.prototype.isEnemy = function () {
@@ -80,6 +91,8 @@ Game_Enemy.prototype.isEnemy = function () {
  * 获取友方单位组
  * Get friends unit group
  *
+ * @memberof Game_Enemy
+ * @method friendsUnit
  * @returns {Game_Troop} 敌群对象 / Troop object
  */
 Game_Enemy.prototype.friendsUnit = function () {
@@ -90,6 +103,8 @@ Game_Enemy.prototype.friendsUnit = function () {
  * 获取敌方单位组
  * Get opponents unit group
  *
+ * @memberof Game_Enemy
+ * @method opponentsUnit
  * @returns {Game_Party} 队伍对象 / Party object
  */
 Game_Enemy.prototype.opponentsUnit = function () {
@@ -100,6 +115,8 @@ Game_Enemy.prototype.opponentsUnit = function () {
  * 获取在敌群中的索引
  * Get index in the troop
  *
+ * @memberof Game_Enemy
+ * @method index
  * @returns {number} 索引位置 / Index position
  */
 Game_Enemy.prototype.index = function () {
@@ -110,6 +127,8 @@ Game_Enemy.prototype.index = function () {
  * 检查是否为战斗成员
  * Check if this is a battle member
  *
+ * @memberof Game_Enemy
+ * @method isBattleMember
  * @returns {boolean} 是否为战斗成员 / Whether is a battle member
  */
 Game_Enemy.prototype.isBattleMember = function () {

@@ -2,15 +2,17 @@
 // Game_CommonEvent.js
 //=============================================================================
 
-//-----------------------------------------------------------------------------
 /**
- * 游戏公共事件类
- * Game_CommonEvent
+ * @fileoverview Game_CommonEvent - 游戏公共事件类
  *
  * 公共事件的游戏对象类。它包含运行并行处理事件的功能。
  * The game object class for a common event. It contains functionality for
  * running parallel process events.
+ *
+ * @author 作者名
+ * @since 1.0.0
  */
+
 //-----------------------------------------------------------------------------
 
 /**
@@ -26,6 +28,8 @@ function Game_CommonEvent() {
  * 初始化公共事件
  * Initialize common event
  *
+ * @memberof Game_CommonEvent
+ * @method initialize
  * @param {number} commonEventId - 公共事件ID / Common event ID
  */
 Game_CommonEvent.prototype.initialize = function (commonEventId) {
@@ -37,6 +41,8 @@ Game_CommonEvent.prototype.initialize = function (commonEventId) {
  * 获取事件数据
  * Get event data
  *
+ * @memberof Game_CommonEvent
+ * @method event
  * @returns {object} 事件数据 / Event data
  */
 Game_CommonEvent.prototype.event = function () {
@@ -47,6 +53,8 @@ Game_CommonEvent.prototype.event = function () {
  * 获取事件指令列表
  * Get event command list
  *
+ * @memberof Game_CommonEvent
+ * @method list
  * @returns {Array} 指令列表 / Command list
  */
 Game_CommonEvent.prototype.list = function () {
@@ -56,6 +64,9 @@ Game_CommonEvent.prototype.list = function () {
 /**
  * 刷新公共事件状态
  * Refresh common event state
+ *
+ * @memberof Game_CommonEvent
+ * @method refresh
  */
 Game_CommonEvent.prototype.refresh = function () {
 	if (this.isActive()) {
@@ -71,6 +82,8 @@ Game_CommonEvent.prototype.refresh = function () {
  * 检查公共事件是否激活
  * Check if common event is active
  *
+ * @memberof Game_CommonEvent
+ * @method isActive
  * @returns {boolean} 是否激活 / Whether active
  */
 Game_CommonEvent.prototype.isActive = function () {
@@ -81,6 +94,9 @@ Game_CommonEvent.prototype.isActive = function () {
 /**
  * 更新公共事件
  * Update common event
+ *
+ * @memberof Game_CommonEvent
+ * @method update
  */
 Game_CommonEvent.prototype.update = function () {
 	if (this._interpreter) {
