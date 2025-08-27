@@ -1,19 +1,19 @@
-//=============================================================================
-// Game_Actors.js
-//=============================================================================
-
-//-----------------------------------------------------------------------------
 /**
- * 游戏角色们类
- * Game_Actors
+ * @fileoverview Game_Actors - 游戏角色管理器类
  *
  * 角色数组的封装类。
  * The wrapper class for an actor array.
+ *
+ * @author 作者名
+ * @since 1.0.0
  */
-//-----------------------------------------------------------------------------
 
 /**
+ * 游戏角色管理器类
+ * Game actors manager class
+ *
  * @class Game_Actors
+ * @constructor
  * @description 游戏角色管理器类，管理所有角色实例
  * Game actors manager class that manages all actor instances
  */
@@ -24,6 +24,9 @@ function Game_Actors() {
 /**
  * 初始化角色管理器
  * Initialize actor manager
+ *
+ * @memberof Game_Actors
+ * @method initialize
  */
 Game_Actors.prototype.initialize = function () {
 	this._data = [];
@@ -33,8 +36,10 @@ Game_Actors.prototype.initialize = function () {
  * 获取指定ID的角色
  * Get actor by ID
  *
- * @param {number} actorId - 角色ID / Actor ID
- * @returns {Game_Actor|null} 角色对象或null / Actor object or null
+ * @memberof Game_Actors
+ * @method actor
+ * @param {Number} actorId - 角色ID - Actor ID
+ * @returns {Game_Actor|null} 角色对象或null - Actor object or null
  */
 Game_Actors.prototype.actor = function (actorId) {
 	if ($dataActors[actorId]) {
