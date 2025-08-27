@@ -1,11 +1,19 @@
 {
 	"compilerOptions": {
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
 		"declaration": true,
 		"emitDeclarationOnly": true,
 		"outDir": "types",
 		"allowJs": true,
 		"checkJs": true
 	},
-	"include": ["./*.js"],
-	"exclude": ["./libs/**/*", "./plugins/**/*"]
+	"include": [
+		"./*.js",
+		"./scripts/**/*"
+	],
+	"exclude": [
+		"./libs/**/*",
+		"./plugins/**/*"
+	]
 }
