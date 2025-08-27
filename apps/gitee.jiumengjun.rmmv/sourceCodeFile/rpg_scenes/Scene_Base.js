@@ -1,8 +1,16 @@
-//=============================================================================
+/**
+ * @fileoverview Scene_Base - 场景基类
+ *
+ * 游戏中所有场景的父类。
+ * The superclass of all scenes within the game.
+ *
+ * @author 作者名
+ * @since 1.0.0
+ */
 
 /**
- * 游戏中所有场景的父类。
- * The Superclass of all scene within the game.
+ * 场景基类
+ * Scene base class
  *
  * @class Scene_Base
  * @constructor
@@ -16,11 +24,11 @@ Scene_Base.prototype = Object.create(Stage.prototype);
 Scene_Base.prototype.constructor = Scene_Base;
 
 /**
- * 创建一个 Scene_Base 的实例。
- * Create a instance of Scene_Base.
+ * 初始化场景基类
+ * Initialize scene base
  *
- * @instance
  * @memberof Scene_Base
+ * @method initialize
  */
 Scene_Base.prototype.initialize = function () {
 	Stage.prototype.initialize.call(this);
@@ -32,84 +40,77 @@ Scene_Base.prototype.initialize = function () {
 };
 
 /**
- * 附加一个预留到预留队列。
- * Attach a reservation to the reserve queue.
+ * 附加预留到预留队列
+ * Attach reservation to reserve queue
  *
- * @method attachReservation
- * @instance
  * @memberof Scene_Base
+ * @method attachReservation
  */
 Scene_Base.prototype.attachReservation = function () {
 	ImageManager.setDefaultReservationId(this._imageReservationId);
 };
 
 /**
- * 从预留队列移除一个预留。
- * Remove the reservation from the Reserve queue.
+ * 从预留队列移除预留
+ * Remove reservation from reserve queue
  *
- * @method detachReservation
- * @instance
  * @memberof Scene_Base
+ * @method detachReservation
  */
 Scene_Base.prototype.detachReservation = function () {
 	ImageManager.releaseReservation(this._imageReservationId);
 };
 
 /**
- * 创建组件并将其添加到渲染流程中。
- * Create the components and add them to the rendering process.
+ * 创建组件并添加到渲染流程
+ * Create components and add to rendering process
  *
- * @method create
- * @instance
  * @memberof Scene_Base
+ * @method create
  */
 Scene_Base.prototype.create = function () {};
 
 /**
- * 返回场景是否处于活动状态。
- * Returns whether the scene is active or not.
+ * 检查场景是否活动
+ * Check if scene is active
  *
- * @method isActive
- * @instance
  * @memberof Scene_Base
- * @return {Boolean} return true if the scene is active
+ * @method isActive
+ * @returns {Boolean} 如果场景活动则返回true - Returns true if scene is active
  */
 Scene_Base.prototype.isActive = function () {
 	return this._active;
 };
 
 /**
- * 返回场景是否准备好开始。
- * Return whether the scene is ready to start or not.
+ * 检查场景是否准备就绪
+ * Check if scene is ready to start
  *
- * @method isReady
- * @instance
  * @memberof Scene_Base
- * @return {Boolean} 如果场景准备好开始则返回 true（Return true if the scene is ready to start）
+ * @method isReady
+ * @returns {Boolean} 如果场景准备就绪则返回true - Returns true if scene is ready to start
  */
 Scene_Base.prototype.isReady = function () {
 	return ImageManager.isReady();
 };
 
 /**
- * 开始场景流程。
- * Start the scene processing.
+ * 开始场景处理
+ * Start scene processing
  *
- * @method start
- * @instance
  * @memberof Scene_Base
+ * @method start
  */
 Scene_Base.prototype.start = function () {
 	this._active = true;
 };
 
 /**
- * 每个新帧更新场景流程。
- * Update the scene processing each new frame.
+ * 更新场景处理
+ * Update scene processing
  *
- * @method update
- * @instance
  * @memberof Scene_Base
+ * @method update
  */
 Scene_Base.prototype.update = function () {
 	this.updateFade();
@@ -117,48 +118,43 @@ Scene_Base.prototype.update = function () {
 };
 
 /**
- * 停止场景流程。
- * Stop the scene processing.
+ * 停止场景处理
+ * Stop scene processing
  *
- * @method stop
- * @instance
  * @memberof Scene_Base
+ * @method stop
  */
 Scene_Base.prototype.stop = function () {
 	this._active = false;
 };
 
 /**
- * 返回场景是否繁忙。
- * Return whether the scene is busy or not.
+ * 检查场景是否繁忙
+ * Check if scene is busy
  *
- * @method isBusy
- * @instance
  * @memberof Scene_Base
- * @return {Boolean} 如果场景当前正繁忙则返回 true（Return true if the scene is currently busy）
+ * @method isBusy
+ * @returns {Boolean} 如果场景繁忙则返回true - Returns true if scene is busy
  */
 Scene_Base.prototype.isBusy = function () {
 	return this._fadeDuration > 0;
 };
 
 /**
- * 在切换到另一个场景之前结束场景。
- * Terminate the scene before switching to a another scene.
+ * 终止场景处理
+ * Terminate scene processing
  *
- * @method terminate
- * @instance
  * @memberof Scene_Base
+ * @method terminate
  */
 Scene_Base.prototype.terminate = function () {};
 
 /**
- * 创建子窗口图层并将其添加到渲染流程里。
- * Create the layer for the windows children
- * and add it to the rendering process.
+ * 创建窗口图层
+ * Create window layer
  *
- * @method createWindowLayer
- * @instance
  * @memberof Scene_Base
+ * @method createWindowLayer
  */
 Scene_Base.prototype.createWindowLayer = function () {
 	var width = Graphics.boxWidth;
@@ -171,27 +167,25 @@ Scene_Base.prototype.createWindowLayer = function () {
 };
 
 /**
- * 将子窗口添加到 WindowLayer 流程。
- * Add the children window to the windowLayer processing.
+ * 添加窗口到窗口图层
+ * Add window to window layer
  *
- * @method addWindow
- * @instance
  * @memberof Scene_Base
+ * @method addWindow
+ * @param {Window} window - 窗口对象 - Window object
  */
 Scene_Base.prototype.addWindow = function (window) {
 	this._windowLayer.addChild(window);
 };
 
 /**
- * 请求淡入画面流程。
- * Request a fadeIn screen process.
+ * 开始淡入效果
+ * Start fade in effect
  *
- * @method startFadeIn
- * @param {Number} [duration=30] 在画面上进行淡入处理所需的时间（TThe time the process will take for fadeIn the screen）
- * @param {Boolean} [white=false] 如果为真，淡入将用白色处理，否则将是黑色（If true the fadein will be process with a white color else it's will be black）
- *
- * @instance
  * @memberof Scene_Base
+ * @method startFadeIn
+ * @param {Number} [duration=30] - 淡入时间 - Fade in duration
+ * @param {Boolean} [white=false] - 是否使用白色 - Whether to use white color
  */
 Scene_Base.prototype.startFadeIn = function (duration, white) {
 	this.createFadeSprite(white);
@@ -201,15 +195,13 @@ Scene_Base.prototype.startFadeIn = function (duration, white) {
 };
 
 /**
- * 请求淡出画面流程。
- * Request a fadeOut screen process.
+ * 开始淡出效果
+ * Start fade out effect
  *
- * @method startFadeOut
- * @param {Number} [duration=30] 在画面上进行淡出处理所需的时间（The time the process will take for fadeOut the screen）
- * @param {Boolean} [white=false] 如果为真，淡出将用白色处理，否则将是黑色（If true the fadeOut will be process with a white color else it's will be black）
- *
- * @instance
  * @memberof Scene_Base
+ * @method startFadeOut
+ * @param {Number} [duration=30] - 淡出时间 - Fade out duration
+ * @param {Boolean} [white=false] - 是否使用白色 - Whether to use white color
  */
 Scene_Base.prototype.startFadeOut = function (duration, white) {
 	this.createFadeSprite(white);
@@ -219,13 +211,12 @@ Scene_Base.prototype.startFadeOut = function (duration, white) {
 };
 
 /**
- * 为淡入和淡出创建一个画面精灵，并将其添加到渲染流程中。
- * Create a Screen sprite for the fadein and fadeOut purpose and
- * add it to the rendering process.
+ * 创建淡化精灵
+ * Create fade sprite
  *
- * @method createFadeSprite
- * @instance
  * @memberof Scene_Base
+ * @method createFadeSprite
+ * @param {Boolean} white - 是否使用白色 - Whether to use white color
  */
 Scene_Base.prototype.createFadeSprite = function (white) {
 	if (!this._fadeSprite) {
@@ -240,12 +231,11 @@ Scene_Base.prototype.createFadeSprite = function (white) {
 };
 
 /**
- * 更新画面渐变流程。
- * Update the screen fade processing.
+ * 更新淡化效果
+ * Update fade effect
  *
- * @method updateFade
- * @instance
  * @memberof Scene_Base
+ * @method updateFade
  */
 Scene_Base.prototype.updateFade = function () {
 	if (this._fadeDuration > 0) {
@@ -260,12 +250,11 @@ Scene_Base.prototype.updateFade = function () {
 };
 
 /**
- * 每帧更新场景的子元素。
- * Update the children of the scene EACH frame.
+ * 更新子元素
+ * Update children elements
  *
- * @method updateChildren
- * @instance
  * @memberof Scene_Base
+ * @method updateChildren
  */
 Scene_Base.prototype.updateChildren = function () {
 	this.children.forEach(function (child) {
@@ -276,25 +265,22 @@ Scene_Base.prototype.updateChildren = function () {
 };
 
 /**
- * 从堆栈数组中弹出场景并切换到上一个场景。
- * Pop the scene from the stack array and switch to the
- * previous scene.
+ * 弹出场景
+ * Pop scene
  *
- * @method popScene
- * @instance
  * @memberof Scene_Base
+ * @method popScene
  */
 Scene_Base.prototype.popScene = function () {
 	SceneManager.pop();
 };
 
 /**
- * 检查游戏是否应该触发游戏结束。
- * Check whether the game should be triggering a gameover.
+ * 检查游戏结束
+ * Check game over
  *
- * @method checkGameover
- * @instance
  * @memberof Scene_Base
+ * @method checkGameover
  */
 Scene_Base.prototype.checkGameover = function () {
 	if ($gameParty.isAllDead()) {
@@ -303,12 +289,11 @@ Scene_Base.prototype.checkGameover = function () {
 };
 
 /**
- * 缓慢地淡出场景的所有视觉和音频。
- * Slowly fade out all the visual and audio of the scene.
+ * 淡出所有内容
+ * Fade out all content
  *
- * @method fadeOutAll
- * @instance
  * @memberof Scene_Base
+ * @method fadeOutAll
  */
 Scene_Base.prototype.fadeOutAll = function () {
 	var time = this.slowFadeSpeed() / 60;
@@ -319,26 +304,24 @@ Scene_Base.prototype.fadeOutAll = function () {
 };
 
 /**
- * 返回画面渐变速度值。
- * Return the screen fade speed value.
+ * 获取淡化速度
+ * Get fade speed
  *
- * @method fadeSpeed
- * @instance
  * @memberof Scene_Base
- * @return {Number} 返回渐变速度（Return the fade speed）
+ * @method fadeSpeed
+ * @returns {Number} 淡化速度 - Fade speed value
  */
 Scene_Base.prototype.fadeSpeed = function () {
 	return 24;
 };
 
 /**
- * 返回一个缓慢的画面渐变速度值。
- * Return a slow screen fade speed value.
+ * 获取慢速淡化速度
+ * Get slow fade speed
  *
- * @method slowFadeSpeed
- * @instance
  * @memberof Scene_Base
- * @return {Number} 返回渐变速度（Return the fade speed）
+ * @method slowFadeSpeed
+ * @returns {Number} 慢速淡化速度 - Slow fade speed value
  */
 Scene_Base.prototype.slowFadeSpeed = function () {
 	return this.fadeSpeed() * 2;
