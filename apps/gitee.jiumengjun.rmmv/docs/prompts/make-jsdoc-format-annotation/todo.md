@@ -30,12 +30,12 @@
 | main.js (1 个文件)          | 0%                 | 0%                 |
 | rpg_core.js (28 个文件)     | 100%               | 0%                 |
 | rpg_managers.js (10 个文件) | 100%               | 0%                 |
-| rpg_objects.js (30 个文件)  | 27%                | 0%                 |
+| rpg_objects.js (30 个文件)  | 30%                | 0%                 |
 | rpg_scenes.js (21 个文件)   | 10%                | 0%                 |
 | rpg_sprites.js (18 个文件)  | 11%                | 0%                 |
 | rpg_windows.js (46 个文件)  | 2%                 | 0%                 |
 
-**总体进度**: 40% (进行中)
+**总体进度**: 41% (进行中)
 
 ### ⏸️ 阶段三：注释翻译与补全
 
@@ -101,7 +101,7 @@
 | StorageManager.js | ✅ 100%        | ❌ 0%          |
 | TextManager.js    | ✅ 100%        | ❌ 0%          |
 
-### 3. rpg_objects 模块 (30 个文件) - JSDoc 格式转换: 27%
+### 3. rpg_objects 模块 (30 个文件) - JSDoc 格式转换: 30%
 
 | 文件名                | JSDoc 格式转换 | 注释翻译与补全 |
 | --------------------- | -------------- | -------------- |
@@ -112,7 +112,7 @@
 | Game_Battler.js       | ✅ 100%        | ❌ 0%          |
 | Game_BattlerBase.js   | ✅ 100%        | ❌ 0%          |
 | Game_Character.js     | ✅ 100%        | ❌ 0%          |
-| Game_CharacterBase.js | ❌ 0%          | ❌ 0%          |
+| Game_CharacterBase.js | ✅ 100%        | ❌ 0%          |
 | Game_CommonEvent.js   | ❌ 0%          | ❌ 0%          |
 | Game_Enemy.js         | ❌ 0%          | ❌ 0%          |
 | Game_Event.js         | ❌ 0%          | ❌ 0%          |
@@ -252,9 +252,9 @@
 
 ### 按文件数量统计
 
-- **已完成 JSDoc 转换**: 47/154 (30.5%)
+- **已完成 JSDoc 转换**: 48/154 (31.2%)
 - **进行中**: 0/154 (0.0%)
-- **待处理**: 107/154 (69.5%)
+- **待处理**: 106/154 (68.8%)
 
 ---
 

@@ -1,20 +1,20 @@
-//=============================================================================
-// Game_CharacterBase.js
-//=============================================================================
-
-//-----------------------------------------------------------------------------
 /**
- * 游戏人物基础类
- * Game_CharacterBase
+ * @fileoverview Game_CharacterBase - 游戏人物基础类
  *
  * Game_Character 的父类。它处理所有人物共享的基本信息，如坐标和图像。
  * The superclass of Game_Character. It handles basic information, such as
  * coordinates and images, shared by all characters.
+ *
+ * @author 作者名
+ * @since 1.0.0
  */
-//-----------------------------------------------------------------------------
 
 /**
+ * 游戏人物基础类
+ * Game character base class
+ *
  * @class Game_CharacterBase
+ * @constructor
  * @description 游戏人物基础类，处理所有人物共享的基本信息，如坐标和图像
  * Game character base class that handles basic information shared by all characters, such as coordinates and images
  */
