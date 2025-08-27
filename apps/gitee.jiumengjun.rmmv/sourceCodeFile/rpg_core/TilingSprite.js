@@ -51,7 +51,7 @@ TilingSprite.prototype._renderWebGL_PIXI = PIXI.extras.PictureTilingSprite.proto
 /**
  * Canvas渲染平铺精灵。
  * Renders the tiling sprite with Canvas.
- * 
+ *
  * @method _renderCanvas
  * @param {Object} renderer 渲染器 The renderer
  * @private
@@ -68,7 +68,7 @@ TilingSprite.prototype._renderCanvas = function (renderer) {
 /**
  * WebGL渲染平铺精灵。
  * Renders the tiling sprite with WebGL.
- * 
+ *
  * @method _renderWebGL
  * @param {Object} renderer 渲染器 The renderer
  * @private
@@ -176,7 +176,7 @@ TilingSprite.prototype.setFrame = function (x, y, width, height) {
 /**
  * 更新变换。
  * Updates transform.
- * 
+ *
  * @method updateTransform
  * @private
  */
@@ -191,7 +191,7 @@ TilingSprite.prototype.updateTransformTS = PIXI.extras.TilingSprite.prototype.up
 /**
  * 位图加载完成时的回调。
  * Callback when bitmap loading is completed.
- * 
+ *
  * @method _onBitmapLoad
  * @private
  */
@@ -203,7 +203,7 @@ TilingSprite.prototype._onBitmapLoad = function () {
 /**
  * 刷新平铺精灵显示。
  * Refreshes the tiling sprite display.
- * 
+ *
  * @method _refresh
  * @private
  */
@@ -223,7 +223,7 @@ TilingSprite.prototype._speedUpCustomBlendModes = Sprite.prototype._speedUpCusto
 /**
  * WebGL渲染平铺精灵（优化版本）。
  * Renders the tiling sprite with WebGL (optimized version).
- * 
+ *
  * @method _renderWebGL
  * @param {Object} renderer 渲染器 The renderer
  * @private

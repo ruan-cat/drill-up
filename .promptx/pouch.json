@@ -1,36 +1,36 @@
 {
-  "currentState": "service_discovery",
-  "stateHistory": [
-    {
-      "from": "initial",
-      "command": "tool",
-      "timestamp": "2025-08-25T12:20:24.975Z",
-      "args": [
-        "@tool://file-writer",
-        {
-          "content": "/**\n * 点类\n * The point class.\n *\n * @class Point\n * @classdesc 表示二维坐标点的类\n * @constructor\n * @param {Number} x - X坐标 The x coordinate\n * @param {Number} y - Y坐标 The y coordinate\n */\nfunction Point() {\n    this.initialize.apply(this, arguments);\n}\n\nPoint.prototype = Object.create(PIXI.Point.prototype);\nPoint.prototype.constructor = Point;\n\n/**\n * 初始化点对象\n * Initializes the point object.\n *\n * @method initialize\n * @param {Number} x - X坐标 The x coordinate\n * @param {Number} y - Y坐标 The y coordinate\n */\nPoint.prototype.initialize = function (x, y) {\n    PIXI.Point.call(this, x, y);\n};\n\n/**\n * X坐标\n * The x coordinate.\n *\n * @property x\n * @type {Number}\n */\n\n/**\n * Y坐标\n * The y coordinate.\n *\n * @property y\n * @type {Number}\n */\n",
-          "path": "D:\\code\\github-desktop-store\\gh.ruancat.drill-up.v3.62\\apps\\gitee.jiumengjun.rmmv\\sourceCodeFile\\rpg_core\\Point.js"
-        },
-        "--timeout",
-        30000
-      ]
-    },
-    {
-      "from": "tool_executed",
-      "command": "init",
-      "timestamp": "2025-08-25T12:20:30.270Z",
-      "args": [
-        {
-          "workingDirectory": "D:\\code\\github-desktop-store\\gh.ruancat.drill-up.v3.62"
-        }
-      ]
-    },
-    {
-      "from": "initialized",
-      "command": "welcome",
-      "timestamp": "2025-08-25T12:20:34.233Z",
-      "args": []
-    }
-  ],
-  "lastUpdated": "2025-08-25T12:20:34.242Z"
+	"currentState": "service_discovery",
+	"stateHistory": [
+		{
+			"from": "initial",
+			"command": "tool",
+			"timestamp": "2025-08-25T12:20:24.975Z",
+			"args": [
+				"@tool://file-writer",
+				{
+					"content": "/**\n * 点类\n * The point class.\n *\n * @class Point\n * @classdesc 表示二维坐标点的类\n * @constructor\n * @param {Number} x - X坐标 The x coordinate\n * @param {Number} y - Y坐标 The y coordinate\n */\nfunction Point() {\n    this.initialize.apply(this, arguments);\n}\n\nPoint.prototype = Object.create(PIXI.Point.prototype);\nPoint.prototype.constructor = Point;\n\n/**\n * 初始化点对象\n * Initializes the point object.\n *\n * @method initialize\n * @param {Number} x - X坐标 The x coordinate\n * @param {Number} y - Y坐标 The y coordinate\n */\nPoint.prototype.initialize = function (x, y) {\n    PIXI.Point.call(this, x, y);\n};\n\n/**\n * X坐标\n * The x coordinate.\n *\n * @property x\n * @type {Number}\n */\n\n/**\n * Y坐标\n * The y coordinate.\n *\n * @property y\n * @type {Number}\n */\n",
+					"path": "D:\\code\\github-desktop-store\\gh.ruancat.drill-up.v3.62\\apps\\gitee.jiumengjun.rmmv\\sourceCodeFile\\rpg_core\\Point.js"
+				},
+				"--timeout",
+				30000
+			]
+		},
+		{
+			"from": "tool_executed",
+			"command": "init",
+			"timestamp": "2025-08-25T12:20:30.270Z",
+			"args": [
+				{
+					"workingDirectory": "D:\\code\\github-desktop-store\\gh.ruancat.drill-up.v3.62"
+				}
+			]
+		},
+		{
+			"from": "initialized",
+			"command": "welcome",
+			"timestamp": "2025-08-25T12:20:34.233Z",
+			"args": []
+		}
+	],
+	"lastUpdated": "2025-08-25T12:20:34.242Z"
 }

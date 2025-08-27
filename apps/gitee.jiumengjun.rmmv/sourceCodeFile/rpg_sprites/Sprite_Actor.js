@@ -29,7 +29,7 @@ Sprite_Actor.prototype.constructor = Sprite_Actor;
  * @memberof Sprite_Actor
  * @type {Object}
  * @property {Object} walk - 行走动作 Walk motion
- * @property {Object} wait - 待机动作 Wait motion  
+ * @property {Object} wait - 待机动作 Wait motion
  * @property {Object} chant - 吟唱动作 Chant motion
  * @property {Object} guard - 防御动作 Guard motion
  * @property {Object} damage - 受伤动作 Damage motion

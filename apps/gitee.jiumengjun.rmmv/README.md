@@ -38,17 +38,17 @@ npm run build
 
 ## 可用命令
 
-| 命令 | 描述 |
-|------|------|
+| 命令                     | 描述                       |
+| ------------------------ | -------------------------- |
 | `npm run jsdoc:generate` | 仅生成 JSDoc markdown 文档 |
-| `npm run docs:dev` | 启动开发服务器 |
-| `npm run docs:build` | 构建静态文档站点 |
-| `npm run docs:preview` | 预览构建后的站点 |
-| `npm run docs:clean` | 清理生成的文档和缓存 |
+| `npm run docs:dev`       | 启动开发服务器             |
+| `npm run docs:build`     | 构建静态文档站点           |
+| `npm run docs:preview`   | 预览构建后的站点           |
+| `npm run docs:clean`     | 清理生成的文档和缓存       |
 
 ## 项目结构
 
-```
+```plain
 ├── sourceCodeFile/          # JavaScript 源文件
 ├── scripts/                 # 文档生成脚本（TypeScript）
 ├── docs/                   # 文档目录

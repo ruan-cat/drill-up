@@ -1,53 +1,53 @@
-import * as jsdoc2md from 'jsdoc-to-markdown';
-import * as fs from 'fs/promises';
-import * as path from 'path';
-import { ensureDirectoryExists, FileInfo, logProgress } from './utils.js';
+import * as jsdoc2md from "jsdoc-to-markdown";
+import * as fs from "fs/promises";
+import * as path from "path";
+import { ensureDirectoryExists, FileInfo, logProgress } from "./utils.js";
 
 export class MarkdownGenerator {
-  private readonly options: jsdoc2md.RenderOptions;
+	private readonly options: jsdoc2md.RenderOptions;
 
-  constructor(options: Partial<jsdoc2md.RenderOptions> = {}) {
-    this.options = {
-      'example-lang': 'js',
-      'param-list-format': 'table',
-      'property-list-format': 'table',
-      'member-index-format': 'grouped',
-      'module-index-format': 'table',
-      'global-index-format': 'table',
-      'heading-depth': 1,
-      'no-gfm': false,
-      separators: true,
-      ...options
-    };
-  }
+	constructor(options: Partial<jsdoc2md.RenderOptions> = {}) {
+		this.options = {
+			"example-lang": "js",
+			"param-list-format": "table",
+			"property-list-format": "table",
+			"member-index-format": "grouped",
+			"module-index-format": "table",
+			"global-index-format": "table",
+			"heading-depth": 1,
+			"no-gfm": false,
+			separators: true,
+			...options,
+		};
+	}
 
-  async generateMarkdown(filePath: string): Promise<string> {
-    try {
-      const markdown = await jsdoc2md.render({
-        ...this.options,
-        files: [filePath]
-      });
+	async generateMarkdown(filePath: string): Promise<string> {
+		try {
+			const markdown = await jsdoc2md.render({
+				...this.options,
+				files: [filePath],
+			});
 
-      if (!markdown.trim()) {
-        return this.createEmptyDocumentation(filePath);
-      }
+			if (!markdown.trim()) {
+				return this.createEmptyDocumentation(filePath);
+			}
 
-      return markdown;
-    } catch (error) {
-      console.warn(`Warning: Failed to generate JSDoc for ${filePath}:`, error);
-      return this.createErrorDocumentation(filePath, error);
-    }
-  }
+			return markdown;
+		} catch (error) {
+			console.warn(`Warning: Failed to generate JSDoc for ${filePath}:`, error);
+			return this.createErrorDocumentation(filePath, error);
+		}
+	}
 
-  async saveMarkdown(fileInfo: FileInfo, content: string): Promise<void> {
-    const outputDir = path.dirname(fileInfo.outputPath);
-    await ensureDirectoryExists(outputDir);
-    await fs.writeFile(fileInfo.outputPath, content, 'utf-8');
-  }
+	async saveMarkdown(fileInfo: FileInfo, content: string): Promise<void> {
+		const outputDir = path.dirname(fileInfo.outputPath);
+		await ensureDirectoryExists(outputDir);
+		await fs.writeFile(fileInfo.outputPath, content, "utf-8");
+	}
 
-  private createEmptyDocumentation(filePath: string): string {
-    const fileName = path.basename(filePath);
-    return `# ${fileName}
+	private createEmptyDocumentation(filePath: string): string {
+		const fileName = path.basename(filePath);
+		return `# ${fileName}
 
 > This file currently has no JSDoc documentation.
 
@@ -72,11 +72,11 @@ function exampleFunction(paramName) {
 }
 \`\`\`
 `;
-  }
+	}
 
-  private createErrorDocumentation(filePath: string, error: any): string {
-    const fileName = path.basename(filePath);
-    return `# ${fileName}
+	private createErrorDocumentation(filePath: string, error: any): string {
+		const fileName = path.basename(filePath);
+		return `# ${fileName}
 
 > Documentation generation failed for this file.
 
@@ -87,7 +87,7 @@ function exampleFunction(paramName) {
 An error occurred while trying to generate documentation for this file:
 
 \`\`\`
-${error.message || 'Unknown error'}
+${error.message || "Unknown error"}
 \`\`\`
 
 ## Suggestions
@@ -98,5 +98,5 @@ ${error.message || 'Unknown error'}
 
 Please review the source file and try again.
 `;
-  }
+	}
 }

@@ -256,7 +256,7 @@ Object.defineProperty(TouchInput, "date", {
 /**
  * 设置事件处理程序。
  * Sets up event handlers.
- * 
+ *
  * @static
  * @method _setupEventHandlers
  * @private
@@ -277,7 +277,7 @@ TouchInput._setupEventHandlers = function () {
 /**
  * 鼠标按下事件处理。
  * Handles mouse down event.
- * 
+ *
  * @static
  * @method _onMouseDown
  * @param {MouseEvent} event 鼠标事件 The mouse event
@@ -296,7 +296,7 @@ TouchInput._onMouseDown = function (event) {
 /**
  * 左鼠标按钮按下事件处理。
  * Handles left mouse button down event.
- * 
+ *
  * @static
  * @method _onLeftButtonDown
  * @param {MouseEvent} event 鼠标事件 The mouse event
@@ -315,7 +315,7 @@ TouchInput._onLeftButtonDown = function (event) {
 /**
  * 中鼠标按钮按下事件处理。
  * Handles middle mouse button down event.
- * 
+ *
  * @static
  * @method _onMiddleButtonDown
  * @param {MouseEvent} event 鼠标事件 The mouse event
@@ -326,7 +326,7 @@ TouchInput._onMiddleButtonDown = function (event) {};
 /**
  * 右鼠标按钮按下事件处理。
  * Handles right mouse button down event.
- * 
+ *
  * @static
  * @method _onRightButtonDown
  * @param {MouseEvent} event 鼠标事件 The mouse event
@@ -343,7 +343,7 @@ TouchInput._onRightButtonDown = function (event) {
 /**
  * 鼠标移动事件处理。
  * Handles mouse move event.
- * 
+ *
  * @static
  * @method _onMouseMove
  * @param {MouseEvent} event 鼠标事件 The mouse event
@@ -360,7 +360,7 @@ TouchInput._onMouseMove = function (event) {
 /**
  * 鼠标释放事件处理。
  * Handles mouse up event.
- * 
+ *
  * @static
  * @method _onMouseUp
  * @param {MouseEvent} event 鼠标事件 The mouse event
@@ -378,7 +378,7 @@ TouchInput._onMouseUp = function (event) {
 /**
  * 鼠标滚轮事件处理。
  * Handles mouse wheel event.
- * 
+ *
  * @static
  * @method _onWheel
  * @param {WheelEvent} event 滚轮事件 The wheel event
@@ -393,7 +393,7 @@ TouchInput._onWheel = function (event) {
 /**
  * 触摸开始事件处理。
  * Handles touch start event.
- * 
+ *
  * @static
  * @method _onTouchStart
  * @param {TouchEvent} event 触摸事件 The touch event
@@ -423,7 +423,7 @@ TouchInput._onTouchStart = function (event) {
 /**
  * 触摸移动事件处理。
  * Handles touch move event.
- * 
+ *
  * @static
  * @method _onTouchMove
  * @param {TouchEvent} event 触摸事件 The touch event
@@ -441,7 +441,7 @@ TouchInput._onTouchMove = function (event) {
 /**
  * 触摸结束事件处理。
  * Handles touch end event.
- * 
+ *
  * @static
  * @method _onTouchEnd
  * @param {TouchEvent} event 触摸事件 The touch event
@@ -460,7 +460,7 @@ TouchInput._onTouchEnd = function (event) {
 /**
  * 触摸取消事件处理。
  * Handles touch cancel event.
- * 
+ *
  * @static
  * @method _onTouchCancel
  * @param {TouchEvent} event 触摸事件 The touch event
@@ -473,7 +473,7 @@ TouchInput._onTouchCancel = function (event) {
 /**
  * 指针按下事件处理。
  * Handles pointer down event.
- * 
+ *
  * @static
  * @method _onPointerDown
  * @param {PointerEvent} event 指针事件 The pointer event
@@ -494,7 +494,7 @@ TouchInput._onPointerDown = function (event) {
 /**
  * 触发事件处理。
  * Handles trigger event.
- * 
+ *
  * @static
  * @method _onTrigger
  * @param {Number} x x坐标 The x coordinate
@@ -511,7 +511,7 @@ TouchInput._onTrigger = function (x, y) {
 /**
  * 取消事件处理。
  * Handles cancel event.
- * 
+ *
  * @static
  * @method _onCancel
  * @param {Number} x x坐标 The x coordinate
@@ -527,7 +527,7 @@ TouchInput._onCancel = function (x, y) {
 /**
  * 移动事件处理。
  * Handles move event.
- * 
+ *
  * @static
  * @method _onMove
  * @param {Number} x x坐标 The x coordinate

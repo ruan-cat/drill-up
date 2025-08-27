@@ -234,7 +234,7 @@ Tilemap.prototype.refreshTileset = function () {};
 /**
  * 更新变换。
  * Updates transform.
- * 
+ *
  * @method updateTransform
  * @private
  */
@@ -264,7 +264,7 @@ Tilemap.prototype.updateTransform = function () {
 /**
  * 创建图层。
  * Creates layers.
- * 
+ *
  * @method _createLayers
  * @private
  */
@@ -315,7 +315,7 @@ Tilemap.prototype._createLayers = function () {
 /**
  * 更新图层位置。
  * Updates layer positions.
- * 
+ *
  * @method _updateLayerPositions
  * @param {Number} startX 开始x坐标 Start X coordinate
  * @param {Number} startY 开始y坐标 Start Y coordinate
@@ -353,7 +353,7 @@ Tilemap.prototype._updateLayerPositions = function (startX, startY) {
 /**
  * 绘制所有瓦片。
  * Paints all tiles.
- * 
+ *
  * @method _paintAllTiles
  * @param {Number} startX 开始x坐标 Start X coordinate
  * @param {Number} startY 开始y坐标 Start Y coordinate
@@ -372,7 +372,7 @@ Tilemap.prototype._paintAllTiles = function (startX, startY) {
 /**
  * 绘制瓦片。
  * Paints tiles.
- * 
+ *
  * @method _paintTiles
  * @param {Number} startX 开始x坐标 Start X coordinate
  * @param {Number} startY 开始y坐标 Start Y coordinate
@@ -461,7 +461,7 @@ Tilemap.prototype._paintTiles = function (startX, startY, x, y) {
 /**
  * 读取上次瓦片。
  * Reads last tiles.
- * 
+ *
  * @method _readLastTiles
  * @param {Number} i 索引 Index
  * @param {Number} x x坐标 X coordinate
@@ -485,7 +485,7 @@ Tilemap.prototype._readLastTiles = function (i, x, y) {
 /**
  * 写入上次瓦片。
  * Writes last tiles.
- * 
+ *
  * @method _writeLastTiles
  * @param {Number} i 索引 Index
  * @param {Number} x x坐标 X coordinate
@@ -508,7 +508,7 @@ Tilemap.prototype._writeLastTiles = function (i, x, y, tiles) {
 /**
  * 绘制瓦片。
  * Draws a tile.
- * 
+ *
  * @method _drawTile
  * @param {Bitmap} bitmap 位图 Bitmap
  * @param {Number} tileId 瓦片ID Tile ID
@@ -712,7 +712,7 @@ Tilemap.prototype._drawShadow = function (bitmap, shadowBits, dx, dy) {
 /**
  * 读取地图数据。
  * Reads map data.
- * 
+ *
  * @method _readMapData
  * @param {Number} x x坐标 X coordinate
  * @param {Number} y y坐标 Y coordinate

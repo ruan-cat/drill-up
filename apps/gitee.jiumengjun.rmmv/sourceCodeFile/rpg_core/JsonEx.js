@@ -206,14 +206,14 @@ JsonEx._decode = function (value, circular, registry) {
 			if (value.hasOwnProperty(key)) {
 				if (value[key] && value[key]["@a"]) {
 					// 对象是数组包装器
-				// object is array wrapper
+					// object is array wrapper
 					var body = value[key]["@a"];
 					body["@c"] = value[key]["@c"];
 					value[key] = body;
 				}
 				if (value[key] && value[key]["@r"]) {
 					// 对象是引用
-				// object is reference
+					// object is reference
 					circular.push([key, value, value[key]["@r"]]);
 				}
 				value[key] = this._decode(value[key], circular, registry);

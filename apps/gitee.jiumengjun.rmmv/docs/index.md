@@ -35,8 +35,8 @@ features:
 ### 核心模块
 
 - **rpg_core** - 核心功能模块，包含基础类如 Bitmap、Graphics、Input 等
-- **rpg_managers** - 管理器模块，包含各种管理器如 DataManager、SceneManager 等  
-- **rpg_objects** - 游戏对象模块，包含 Game_* 系列类
+- **rpg_managers** - 管理器模块，包含各种管理器如 DataManager、SceneManager 等
+- **rpg_objects** - 游戏对象模块，包含 Game\_\* 系列类
 - **rpg_scenes** - 场景模块，包含各种游戏场景类
 - **rpg_sprites** - 精灵模块，包含各种精灵显示类
 - **rpg_windows** - 窗口模块，包含游戏 UI 窗口类

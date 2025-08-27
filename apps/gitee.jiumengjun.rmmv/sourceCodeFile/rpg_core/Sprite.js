@@ -255,7 +255,7 @@ Sprite.prototype.setColorTone = function (tone) {
 /**
  * 位图加载完成时的回调。
  * Callback when bitmap loading is completed.
- * 
+ *
  * @method _onBitmapLoad
  * @param {Bitmap} bitmapLoaded 已加载的位图 The loaded bitmap
  * @private
@@ -275,7 +275,7 @@ Sprite.prototype._onBitmapLoad = function (bitmapLoaded) {
 /**
  * 刷新精灵显示。
  * Refreshes the sprite display.
- * 
+ *
  * @method _refresh
  * @private
  */
@@ -324,10 +324,10 @@ Sprite.prototype._refresh = function () {
 /**
  * 检查指定矩形是否在位图范围内。
  * Checks whether the specified rectangle is within the bitmap bounds.
- * 
+ *
  * @method _isInBitmapRect
  * @param {Number} x x坐标 The x coordinate
- * @param {Number} y y坐标 The y coordinate  
+ * @param {Number} y y坐标 The y coordinate
  * @param {Number} w 宽度 The width
  * @param {Number} h 高度 The height
  * @return {Boolean} 是否在位图范围内 Whether within bitmap bounds
@@ -340,7 +340,7 @@ Sprite.prototype._isInBitmapRect = function (x, y, w, h) {
 /**
  * 检查是否需要色调处理。
  * Checks whether tinting is needed.
- * 
+ *
  * @method _needsTint
  * @return {Boolean} 是否需要色调处理 Whether tinting is needed
  * @private
@@ -353,7 +353,7 @@ Sprite.prototype._needsTint = function () {
 /**
  * 创建色调处理器。
  * Creates a tinter.
- * 
+ *
  * @method _createTinter
  * @param {Number} w 宽度 The width
  * @param {Number} h 高度 The height
@@ -380,7 +380,7 @@ Sprite.prototype._createTinter = function (w, h) {
 /**
  * 执行色调处理。
  * Executes tinting.
- * 
+ *
  * @method _executeTint
  * @param {Number} x x坐标 The x coordinate
  * @param {Number} y y坐标 The y coordinate
@@ -447,7 +447,7 @@ Sprite.prototype._renderWebGL_PIXI = PIXI.Sprite.prototype._renderWebGL;
 /**
  * Canvas渲染精灵。
  * Renders the sprite with Canvas.
- * 
+ *
  * @method _renderCanvas
  * @param {Object} renderer 渲染器 The renderer
  * @private
@@ -468,7 +468,7 @@ Sprite.prototype._renderCanvas = function (renderer) {
 /**
  * 检查是否需要加速自定义混合模式。
  * Checks if we need to speed up custom blendmodes.
- * 
+ *
  * @method _speedUpCustomBlendModes
  * @param {Object} renderer 渲染器 The renderer
  * @private
@@ -496,7 +496,7 @@ Sprite.prototype._speedUpCustomBlendModes = function (renderer) {
 /**
  * WebGL渲染精灵。
  * Renders the sprite with WebGL.
- * 
+ *
  * @method _renderWebGL
  * @param {Object} renderer 渲染器 The renderer
  * @private
