@@ -1,12 +1,25 @@
-import * as jsdoc2md from "jsdoc-to-markdown";
+import jsdoc2md from "jsdoc-to-markdown";
 import * as fs from "fs/promises";
 import * as path from "path";
 import { ensureDirectoryExists, FileInfo, logProgress } from "./utils.js";
 
-export class MarkdownGenerator {
-	private readonly options: jsdoc2md.RenderOptions;
+type JsdocOptions = {
+	"example-lang"?: string;
+	"param-list-format"?: string;
+	"property-list-format"?: string;
+	"member-index-format"?: string;
+	"module-index-format"?: string;
+	"global-index-format"?: string;
+	"heading-depth"?: number;
+	"no-gfm"?: boolean;
+	separators?: boolean;
+	files?: string[];
+};
 
-	constructor(options: Partial<jsdoc2md.RenderOptions> = {}) {
+export class MarkdownGenerator {
+	private readonly options: JsdocOptions;
+
+	constructor(options: Partial<JsdocOptions> = {}) {
 		this.options = {
 			"example-lang": "js",
 			"param-list-format": "table",
