@@ -21,15 +21,15 @@
 	"license": "ISC",
 	"dependencies": {
 		"typedoc": "^0.28.10",
-		"typedoc-plugin-markdown": "^4.8.1"
+		"typedoc-plugin-markdown": "^4.8.1",
+		"vitepress-demo-plugin": "^1.4.7"
 	},
 	"devDependencies": {
+		"@ruan-cat/vitepress-preset-config": "^1.2.1",
+		"@types/node": "^20.0.0",
 		"jsdoc-to-markdown": "^9.1.2",
-		"@ruan-cat/vitepress-preset-config": "latest",
-		"vitepress": "^1.0.0",
-		"vitepress-demo-plugin": "^2.0.0",
-		"vue": "^3.0.0",
 		"tsx": "^4.0.0",
-		"@types/node": "^20.0.0"
+		"vitepress": "^1.0.0",
+		"vue": "^3.0.0"
 	}
 }
