@@ -17,8 +17,7 @@ function ShaderTilemap() {
 ShaderTilemap.prototype = Object.create(Tilemap.prototype);
 ShaderTilemap.prototype.constructor = ShaderTilemap;
 
-// 一些平台需要这个常量（Samsung S4, S5, Tab4, HTC One H8）
-// we need this constant for some platforms (Samsung S4, S5, Tab4, HTC One H8)
+// 一些平台需要这个常量 / we need this constant for some platforms (Samsung S4, S5, Tab4, HTC One H8)
 PIXI.glCore.VertexArrayObject.FORCE_NATIVE = true;
 PIXI.settings.GC_MODE = PIXI.GC_MODES.AUTO;
 PIXI.tilemap.TileRenderer.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
