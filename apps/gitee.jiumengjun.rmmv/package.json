@@ -10,7 +10,7 @@
 		"docs:build": "pnpm jsdoc:generate && vitepress build docs",
 		"docs:preview": "vitepress preview docs",
 		"build": "pnpm docs:build",
-		"jsdoc:generate": "tsx scripts/index.ts",
+		"jsdoc:generate": "tsx scripts/markdown-generator/index.ts",
 		"legacy:make-doc": "jsdoc2md --files ./rpg_*.js > ./dist/jsdoc2md-res.md",
 		"legacy:make": "typedoc"
 	},
