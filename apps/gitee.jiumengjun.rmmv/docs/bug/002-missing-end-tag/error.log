@@ -1,0 +1,8 @@
+x Build failed in 2.15s
+✖ building client + server bundles...
+build error:
+[vite:vue] [plugin vite:vue] docs/jsdoc/rpg_managers/DataManager.md (441:110): Element is missing end tag.
+file: D:/code/github-desktop-store/gh.ruancat.drill-up.v3.62/apps/gitee.jiumengjun.rmmv/docs/jsdoc/rpg_managers/DataManager.md:441:110
+[vite:vue] [plugin vite:vue] docs/jsdoc/rpg_managers/DataManager.md (441:110): Element is missing end tag.
+file: D:/code/github-desktop-store/gh.ruancat.drill-up.v3.62/apps/gitee.jiumengjun.rmmv/docs/jsdoc/rpg_managers/DataManager.md:441:110
+SyntaxError: [plugin vite:vue] docs/jsdoc/rpg_managers/DataManager.md (441:110): Element is missing end tag.
