@@ -47,6 +47,14 @@ export function createFileInfo(sourcePath: string, sourceDir: string, outputDir:
 	};
 }
 
+/**
+ * 获取项目根目录（使用process.cwd()）
+ * @returns 项目根目录的绝对路径
+ */
+export function getProjectRoot(): string {
+	return process.cwd();
+}
+
 export function logProgress(current: number, total: number, fileName: string): void {
 	const percentage = ((current / total) * 100).toFixed(1);
 	console.log(`[${current}/${total}] (${percentage}%) Processing: ${fileName}`);
