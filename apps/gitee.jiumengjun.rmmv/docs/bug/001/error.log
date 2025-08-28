@@ -1,0 +1,5 @@
+MiniSearch: duplicate ID /css/css-challenges/#CacheEntry
+Error: MiniSearch: duplicate ID /css/css-challenges/#CacheEntry
+    at MiniSearch.add (file:///D:/code/github-desktop-store/gh.notes/node_modules/.pnpm/minisearch@7.1.2/node_modules/minisearch/dist/es/index.js:710:19)   
+    at indexFile (file:///D:/code/github-desktop-store/gh.notes/node_modules/.pnpm/vitepress@1.6.4_@algolia+cl_aa5ca826ff66a7ec605722b4bf43dfbc/node_modules/vitepress/dist/node/chunk-D3CUZ4fa.js:40519:13)
+    at async file:///D:/code/github-desktop-store/gh.notes/node_modules/.pnpm/vitepress@1.6.4_@algolia+cl_aa5ca826ff66a7ec605722b4bf43dfbc/node_modules/vitepress/dist/node/chunk-D3CUZ4fa.js:4505:20
