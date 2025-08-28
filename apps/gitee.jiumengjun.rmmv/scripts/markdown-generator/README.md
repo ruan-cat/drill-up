@@ -442,6 +442,40 @@ CacheEntry
 {{/each}}
 ```
 
+#### 问题4：表格格式错乱 (MD056)
+
+**问题现象：**
+```markdown
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| cache | <code>Object</code> |
+| 缓存管理器 - The cache manager |
+```
+
+**原因：** 缺少URL检查逻辑导致在不同上下文中渲染不一致
+
+**解决方案：** 恢复完整的URL检查逻辑
+```handlebars
+{{! 修复前：缺少 url 检查 }}
+<code>{{#link to~}}{{name}}{{/link~}}</code>
+
+{{! 修复后：保持完整的条件逻辑 }}
+{{~#if html~}}
+<code>{{#link to~}}{{#if url~}}{{name}}{{~else~}}{{name}}{{/if~}}{{/link~}}</code>
+{{~else~}}
+{{#link to~}}
+{{#if url~}}<code>{{name}}</code>{{~else~}}<code>{{name}}</code>{{~/if~}}
+{{/link~}}
+{{/if~}}
+```
+
+**修复效果：**
+```markdown
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| cache | <code>Object</code> | 缓存管理器 - The cache manager |
+```
+
 ## 自定义模板开发
 
 ### 1. 理解覆盖机制
@@ -635,8 +669,10 @@ constructor(config?: Partial<TemplateManagerConfig>)
 
 **修复：**
 - 🐛 修复换行符导致多行输出的问题
-- 🐛 修复缺少 `{{#link to}}` helper 导致类型名称为空的问题
+- 🐛 修复缺少 `{{#link to}}` helper 导致类型名称为空的问题  
 - 🐛 修复 `html` 参数未正确传递的问题
+- 🐛 修复表格格式错乱问题 (MD056/table-column-count)
+- 🐛 修复缺少URL检查逻辑导致的渲染不一致问题
 
 **技术改进：**
 - 🔧 ES 模块兼容性（`__dirname` 替代方案）
@@ -672,15 +708,29 @@ constructor(config?: Partial<TemplateManagerConfig>)
    ```bash
    # 查看具体的输出文件
    cat docs/jsdoc/rpg_core/CacheEntry.md | grep "allocate"
+   
+   # 检查表格格式是否正确
+   cat docs/jsdoc/rpg_core/CacheEntry.md | grep -A 10 "| Param | Type | Description |"
+   
+   # 验证Markdown语法
+   markdownlint docs/jsdoc/rpg_core/CacheEntry.md
    ```
 
 ### 获取帮助
 
 如遇到问题，请检查：
 1. 模板文件路径是否正确
-2. jsdoc2md 版本是否兼容
+2. jsdoc2md 版本是否兼容  
 3. JSDoc 注释格式是否符合规范
-4. 参考本文档的"常见问题与解决方案"章节
+4. 表格格式是否符合Markdown标准
+5. URL检查逻辑是否完整
+6. 参考本文档的"常见问题与解决方案"章节
+
+**常见错误类型：**
+- **函数签名多行输出**: 检查 `link.hbs` 单行格式
+- **类型名称为空**: 检查 `{{#link to}}` helper结构
+- **表格列数不匹配 (MD056)**: 检查URL检查逻辑
+- **参数表格错乱**: 检查HTML/非HTML模式的条件逻辑
 
 ---
 
