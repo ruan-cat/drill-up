@@ -1,0 +1,6 @@
+{{! 修改后的链接模板 - 只输出代码标签，不生成链接 }}
+{{~#if html~}}
+<code>{{#if ../../caption}}{{../../../caption}}{{else}}{{name}}{{/if}}</code>
+{{~else~}}
+<code>{{#if ../../caption}}{{escape ../../../caption}}{{else}}{{escape name}}{{/if}}</code>
+{{/if~}}

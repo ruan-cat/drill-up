@@ -2,6 +2,7 @@ import jsdoc2md from "jsdoc-to-markdown";
 import * as fs from "fs/promises";
 import * as path from "path";
 import { ensureDirectoryExists, FileInfo, logProgress } from "./utils.js";
+import { TemplateManager, TemplateManagerConfig, PresetTemplate } from "./template-manager.js";
 
 type JsdocOptions = {
 	"example-lang"?: string;
@@ -14,12 +15,18 @@ type JsdocOptions = {
 	"no-gfm"?: boolean;
 	separators?: boolean;
 	files?: string[];
+	partial?: string[];
+	template?: string;
 };
 
 export class MarkdownGenerator {
 	private readonly options: JsdocOptions;
+	private readonly templateManager: TemplateManager;
 
-	constructor(options: Partial<JsdocOptions> = {}) {
+	constructor(
+		options: Partial<JsdocOptions> = {},
+		templateConfig?: Partial<TemplateManagerConfig>
+	) {
 		this.options = {
 			"example-lang": "js",
 			"param-list-format": "table",
@@ -32,12 +39,16 @@ export class MarkdownGenerator {
 			separators: true,
 			...options,
 		};
+
+		this.templateManager = new TemplateManager(templateConfig);
 	}
 
 	async generateMarkdown(filePath: string): Promise<string> {
 		try {
+			const templateOptions = this.templateManager.buildJsdocOptions();
 			const markdown = await jsdoc2md.render({
 				...this.options,
+				...templateOptions,
 				files: [filePath],
 			});
 
@@ -50,6 +61,88 @@ export class MarkdownGenerator {
 			console.warn(`Warning: Failed to generate JSDoc for ${filePath}:`, error);
 			return this.createErrorDocumentation(filePath, error);
 		}
+	}
+
+	/**
+	 * 启用预设模板
+	 * @param preset 预设类型：'clean'（无锚点）或 'default'（默认）
+	 * @param templatesDir 可选的模板目录路径
+	 */
+	enablePresetTemplates(preset: PresetTemplate, templatesDir?: string): void {
+		this.templateManager.enablePreset(preset, templatesDir);
+	}
+
+	/**
+	 * 启用自定义模板
+	 * @param partialPaths 模板文件路径数组
+	 * @param templatesDir 可选的模板目录路径
+	 */
+	enableCustomTemplates(partialPaths: string[], templatesDir?: string): void {
+		this.templateManager.enableCustom(partialPaths, templatesDir);
+	}
+
+	/**
+	 * 禁用所有模板
+	 */
+	disableTemplates(): void {
+		this.templateManager.disable();
+	}
+
+	/**
+	 * 检查是否启用了模板
+	 */
+	isUsingTemplates(): boolean {
+		return this.templateManager.isEnabled();
+	}
+
+	/**
+	 * 获取模板管理器配置
+	 */
+	getTemplateConfig(): Readonly<TemplateManagerConfig> {
+		return this.templateManager.getConfig();
+	}
+
+	/**
+	 * 获取模板管理器实例
+	 */
+	getTemplateManager(): TemplateManager {
+		return this.templateManager;
+	}
+
+	/**
+	 * 验证模板文件是否存在
+	 */
+	async validateTemplates(): Promise<{ valid: boolean; missingFiles: string[] }> {
+		return this.templateManager.validateTemplates();
+	}
+
+	/**
+	 * 静态工厂方法：创建使用 clean 模板的生成器
+	 */
+	static createWithCleanTemplates(
+		options: Partial<JsdocOptions> = {},
+		templatesDir?: string
+	): MarkdownGenerator {
+		const templateConfig: Partial<TemplateManagerConfig> = {
+			enabled: true,
+			preset: "clean",
+			templatesBaseDir: templatesDir || path.join(__dirname, "templates"),
+		};
+		
+		return new MarkdownGenerator(options, templateConfig);
+	}
+
+	/**
+	 * 静态工厂方法：创建使用默认模板的生成器
+	 */
+	static createWithDefaultTemplates(
+		options: Partial<JsdocOptions> = {}
+	): MarkdownGenerator {
+		const templateConfig: Partial<TemplateManagerConfig> = {
+			enabled: false, // 默认模板不需要启用
+		};
+		
+		return new MarkdownGenerator(options, templateConfig);
 	}
 
 	async saveMarkdown(fileInfo: FileInfo, content: string): Promise<void> {
