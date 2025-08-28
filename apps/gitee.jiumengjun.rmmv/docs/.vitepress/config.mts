@@ -21,7 +21,6 @@ const userConfig = setUserConfig({
 		nav: [
 			{ text: "首页", link: "/" },
 			{ text: "JSDoc API", link: "/jsdoc/" },
-			{ text: "代码示例", link: "/examples/" },
 		],
 
 		socialLinks: [
