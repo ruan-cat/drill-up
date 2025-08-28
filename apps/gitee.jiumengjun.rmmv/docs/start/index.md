@@ -1,6 +1,12 @@
-# RPG Maker MV 核心库文档
+---
+order: 100
+---
 
-基于 jsdoc-to-markdown 和 VitePress 的 RPG Maker MV 核心 JavaScript 库文档生成项目。
+# 快速开始
+
+## 这是什么？
+
+本项目是基于 jsdoc-to-markdown 和 VitePress 的 RPG Maker MV 核心 JavaScript 库文档。是一个文档。
 
 ## 原仓库
 

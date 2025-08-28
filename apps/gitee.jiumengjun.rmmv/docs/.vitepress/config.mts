@@ -1,6 +1,6 @@
 import { setUserConfig, setGenerateSidebar, addChangelog2doc } from "@ruan-cat/vitepress-preset-config/config";
 
-import { description, version } from "../../package.json";
+import { description } from "../../package.json";
 
 // 为文档添加自动生成的changelog
 addChangelog2doc({
@@ -14,14 +14,11 @@ addChangelog2doc({
 });
 
 const userConfig = setUserConfig({
-	title: `RPG Maker MV 核心库文档 v${version}`,
+	title: `RPG Maker MV 核心库文档`,
 	description,
 
 	themeConfig: {
-		nav: [
-			{ text: "首页", link: "/" },
-			{ text: "JSDoc API", link: "/jsdoc/" },
-		],
+		nav: [{ text: "首页", link: "/" }],
 
 		socialLinks: [
 			{

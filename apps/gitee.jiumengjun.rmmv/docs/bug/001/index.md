@@ -9,3 +9,9 @@
 <<< ./error.log
 
 :::
+
+## 已处理
+
+诱发该故障的原因是因为文档生成器使用的默认模板不合适，所以才导致生成效果不好。
+
+阅读 jsdoc2md [内部默认使用的模板](https://github.com/jsdoc2md/dmd)，发现来自 jsdoc-to-markdown 库的 `jsdoc2md.render` 函数是提供自定义模板的功能的，所以选择自定义模板。
