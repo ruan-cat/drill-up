@@ -13,12 +13,13 @@
 		// "**/.git": true,
 		// 取消隐藏build目录
 		// "**/build": true,
+		// 不要隐藏日志文件 日志文件作为文档的一部分对外展示
+		// "**/*.log": true
 		"**/bower_components": true,
 		"**/out": true,
 		"**/.svn": true,
 		"**/.hg": true,
 		"**/.DS_Store": true,
-		"**/*.log": true
 	},
 	// Enable the ESlint flat config support
 	// (remove this if your ESLint extension above v3.0.5)
