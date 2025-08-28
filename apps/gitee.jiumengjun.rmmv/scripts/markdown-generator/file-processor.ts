@@ -20,7 +20,8 @@ export class FileProcessor {
 			...config,
 		};
 
-		this.generator = new MarkdownGenerator(this.config.jsdocOptions);
+		// 使用 clean 模板（无锚点链接）
+		this.generator = MarkdownGenerator.createWithCleanTemplates(this.config.jsdocOptions);
 	}
 
 	async processAllFiles(): Promise<void> {

@@ -1,8 +1,11 @@
 import jsdoc2md from "jsdoc-to-markdown";
 import * as fs from "fs/promises";
 import * as path from "path";
-import { ensureDirectoryExists, FileInfo, logProgress } from "./utils.js";
+import { ensureDirectoryExists, FileInfo, logProgress, getDirname } from "./utils.js";
 import { TemplateManager, TemplateManagerConfig, PresetTemplate } from "./template-manager.js";
+
+// ES 模块中获取 __dirname 的替代方案
+const __dirname = getDirname(import.meta.url);
 
 type JsdocOptions = {
 	"example-lang"?: string;

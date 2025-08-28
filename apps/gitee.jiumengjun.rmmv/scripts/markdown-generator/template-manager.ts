@@ -1,4 +1,8 @@
 import * as path from "path";
+import { getDirname, TemplatePaths } from "./utils.js";
+
+// ES 模块中获取 __dirname 的替代方案
+const __dirname = getDirname(import.meta.url);
 
 /**
  * 预设模板类型
@@ -130,14 +134,10 @@ export class TemplateManager {
 	 * 构建 clean 模板选项（无锚点链接）
 	 */
 	private buildCleanTemplateOptions(): JsdocTemplateOptions {
-		const templatesDir = this.config.templatesBaseDir;
+		const templatePaths = new TemplatePaths(this.config.templatesBaseDir);
 		
 		return {
-			partial: [
-				path.join(templatesDir, "partials/shared/signature/sig-link.hbs"),
-				path.join(templatesDir, "partials/shared/value/linked-type-list.hbs"),
-				path.join(templatesDir, "partials/shared/value/link.hbs"),
-			],
+			partial: templatePaths.getCleanTemplatePaths(),
 		};
 	}
 

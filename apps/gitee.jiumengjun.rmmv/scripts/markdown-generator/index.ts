@@ -1,21 +1,18 @@
 #!/usr/bin/env node
 
 import * as path from "path";
-import { fileURLToPath } from "url";
 import { FileProcessor } from "./file-processor.js";
-import { getProjectRoot } from "./utils.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { createProjectPaths } from "./utils.js";
 
 async function main(): Promise<void> {
 	try {
 		console.log("🚀 Starting JSDoc to Markdown generation...");
 		console.log("=====================================\n");
 
-		const projectRoot = getProjectRoot();
-		const sourceDir = path.join(projectRoot, "sourceCodeFile");
-		const outputDir = path.join(projectRoot, "docs", "jsdoc");
+		const paths = createProjectPaths();
+		const projectRoot = paths.getProjectRoot();
+		const sourceDir = paths.getSourceDir();
+		const outputDir = paths.getOutputDir();
 
 		console.log(`📂 Project root: ${projectRoot}`);
 		console.log(`📂 Source directory: ${sourceDir}`);
