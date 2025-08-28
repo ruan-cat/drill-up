@@ -161,8 +161,7 @@ ScreenSprite.prototype.setColor = function (r, g, b) {
 		graphics.clear();
 		var intColor = (r << 16) | (g << 8) | b;
 		graphics.beginFill(intColor, 1);
-		// 带缩放的全屏幕
-		// whole screen with zoom. BWAHAHAHAHA
+		// 带缩放的全屏幕 / whole screen with zoom
 		graphics.drawRect(-Graphics.width * 5, -Graphics.height * 5, Graphics.width * 10, Graphics.height * 10);
 	}
 };

@@ -13,8 +13,34 @@ function Graphics() {
 	throw new Error("This is a static class");
 }
 
+/**
+ * CSS字体加载支持检测
+ * CSS font loading support detection.
+ * @static
+ * @private
+ * @property _cssFontLoading
+ * @type Boolean
+ */
 Graphics._cssFontLoading = document.fonts && document.fonts.ready;
+
+/**
+ * 已加载的字体
+ * The loaded fonts.
+ * @static
+ * @private
+ * @property _fontLoaded
+ * @type Object
+ */
 Graphics._fontLoaded = null;
+
+/**
+ * 视频音量
+ * The video volume.
+ * @static
+ * @private
+ * @property _videoVolume
+ * @type Number
+ */
 Graphics._videoVolume = 1;
 
 /**
@@ -70,6 +96,14 @@ Graphics.initialize = function (width, height, type) {
 	this._setupCssFontLoading();
 };
 
+/**
+ * 设置CSS字体加载
+ * Sets up CSS font loading.
+ *
+ * @static
+ * @private
+ * @method _setupCssFontLoading
+ */
 Graphics._setupCssFontLoading = function () {
 	if (Graphics._cssFontLoading) {
 		document.fonts.ready
@@ -82,6 +116,14 @@ Graphics._setupCssFontLoading = function () {
 	}
 };
 
+/**
+ * 检查是否可以使用CSS字体加载
+ * Checks whether CSS font loading can be used.
+ *
+ * @static
+ * @method canUseCssFontLoading
+ * @return {Boolean} 如果可以使用CSS字体加载则返回true / True if CSS font loading can be used
+ */
 Graphics.canUseCssFontLoading = function () {
 	return !!this._cssFontLoading;
 };
@@ -97,6 +139,7 @@ Graphics.canUseCssFontLoading = function () {
 Graphics.frameCount = 0;
 
 /**
+ * PIXI.blendModes.NORMAL的别名
  * The alias of PIXI.blendModes.NORMAL.
  *
  * @static
@@ -107,6 +150,7 @@ Graphics.frameCount = 0;
 Graphics.BLEND_NORMAL = 0;
 
 /**
+ * PIXI.blendModes.ADD的别名
  * The alias of PIXI.blendModes.ADD.
  *
  * @static
@@ -117,6 +161,7 @@ Graphics.BLEND_NORMAL = 0;
 Graphics.BLEND_ADD = 1;
 
 /**
+ * PIXI.blendModes.MULTIPLY的别名
  * The alias of PIXI.blendModes.MULTIPLY.
  *
  * @static
@@ -127,6 +172,7 @@ Graphics.BLEND_ADD = 1;
 Graphics.BLEND_MULTIPLY = 2;
 
 /**
+ * PIXI.blendModes.SCREEN的别名
  * The alias of PIXI.blendModes.SCREEN.
  *
  * @static
@@ -137,6 +183,7 @@ Graphics.BLEND_MULTIPLY = 2;
 Graphics.BLEND_SCREEN = 3;
 
 /**
+ * 标记FPS计量器每帧的开始
  * Marks the beginning of each frame for FPSMeter.
  *
  * @static
@@ -149,6 +196,7 @@ Graphics.tickStart = function () {
 };
 
 /**
+ * 标记FPS计量器每帧的结束
  * Marks the end of each frame for FPSMeter.
  *
  * @static
@@ -189,22 +237,24 @@ Graphics.render = function (stage) {
 };
 
 /**
+ * 检查渲染器类型是否为WebGL
  * Checks whether the renderer type is WebGL.
  *
  * @static
  * @method isWebGL
- * @return {Boolean} True if the renderer type is WebGL
+ * @return {Boolean} 如果渲染器类型是WebGL则返回true / True if the renderer type is WebGL
  */
 Graphics.isWebGL = function () {
 	return this._renderer && this._renderer.type === PIXI.RENDERER_TYPE.WEBGL;
 };
 
 /**
+ * 检查当前浏览器是否支持WebGL
  * Checks whether the current browser supports WebGL.
  *
  * @static
  * @method hasWebGL
- * @return {Boolean} True if the current browser supports WebGL.
+ * @return {Boolean} 如果当前浏览器支持WebGL则返回true / True if the current browser supports WebGL.
  */
 Graphics.hasWebGL = function () {
 	try {
@@ -216,32 +266,36 @@ Graphics.hasWebGL = function () {
 };
 
 /**
+ * 检查是否支持画布混合模式'difference'
  * Checks whether the canvas blend mode 'difference' is supported.
  *
  * @static
  * @method canUseDifferenceBlend
- * @return {Boolean} True if the canvas blend mode 'difference' is supported
+ * @return {Boolean} 如果支持画布混合模式'difference'则返回true / True if the canvas blend mode 'difference' is supported
  */
 Graphics.canUseDifferenceBlend = function () {
 	return this._canUseDifferenceBlend;
 };
 
 /**
+ * 检查是否支持画布混合模式'saturation'
  * Checks whether the canvas blend mode 'saturation' is supported.
  *
  * @static
  * @method canUseSaturationBlend
- * @return {Boolean} True if the canvas blend mode 'saturation' is supported
+ * @return {Boolean} 如果支持画布混合模式'saturation'则返回true / True if the canvas blend mode 'saturation' is supported
  */
 Graphics.canUseSaturationBlend = function () {
 	return this._canUseSaturationBlend;
 };
 
 /**
+ * 设置"正在加载"图像的来源
  * Sets the source of the "Now Loading" image.
  *
  * @static
  * @method setLoadingImage
+ * @param {String} src - 图像来源路径 / The source path of the image
  */
 Graphics.setLoadingImage = function (src) {
 	this._loadingImage = new Image();
@@ -249,6 +303,7 @@ Graphics.setLoadingImage = function (src) {
 };
 
 /**
+ * 初始化用于显示"正在加载"图像的计数器
  * Initializes the counter for displaying the "Now Loading" image.
  *
  * @static
@@ -259,6 +314,7 @@ Graphics.startLoading = function () {
 };
 
 /**
+ * 增加加载计数器并在必要时显示"正在加载"图像
  * Increments the loading counter and displays the "Now Loading" image if necessary.
  *
  * @static
@@ -271,6 +327,7 @@ Graphics.updateLoading = function () {
 };
 
 /**
+ * 清除"正在加载"图像
  * Erases the "Now Loading" image.
  *
  * @static
@@ -282,11 +339,12 @@ Graphics.endLoading = function () {
 };
 
 /**
+ * 在屏幕上显示加载错误文本
  * Displays the loading error text to the screen.
  *
  * @static
  * @method printLoadingError
- * @param {String} url The url of the resource failed to load
+ * @param {String} url - 加载失败的资源URL / The url of the resource failed to load
  */
 Graphics.printLoadingError = function (url) {
 	if (this._errorPrinter && !this._errorShowed) {
@@ -306,6 +364,7 @@ Graphics.printLoadingError = function (url) {
 };
 
 /**
+ * 清除加载错误文本
  * Erases the loading error text.
  *
  * @static
@@ -319,12 +378,13 @@ Graphics.eraseLoadingError = function () {
 };
 
 /**
+ * 在屏幕上显示错误文本
  * Displays the error text to the screen.
  *
  * @static
  * @method printError
- * @param {String} name The name of the error
- * @param {String} message The message of the error
+ * @param {String} name - 错误名称 / The name of the error
+ * @param {String} message - 错误消息 / The message of the error
  */
 Graphics.printError = function (name, message) {
 	this._errorShowed = true;
@@ -336,6 +396,7 @@ Graphics.printError = function (name, message) {
 };
 
 /**
+ * 显示FPS计量器元素
  * Shows the FPSMeter element.
  *
  * @static
@@ -349,6 +410,7 @@ Graphics.showFps = function () {
 };
 
 /**
+ * 隐藏FPS计量器元素
  * Hides the FPSMeter element.
  *
  * @static
@@ -362,12 +424,13 @@ Graphics.hideFps = function () {
 };
 
 /**
+ * 加载字体文件
  * Loads a font file.
  *
  * @static
  * @method loadFont
- * @param {String} name The face name of the font
- * @param {String} url The url of the font file
+ * @param {String} name - 字体的名称 / The face name of the font
+ * @param {String} url - 字体文件的URL / The url of the font file
  */
 Graphics.loadFont = function (name, url) {
 	var style = document.createElement("style");
@@ -380,12 +443,13 @@ Graphics.loadFont = function (name, url) {
 };
 
 /**
+ * 检查字体文件是否已加载
  * Checks whether the font file is loaded.
  *
  * @static
  * @method isFontLoaded
- * @param {String} name The face name of the font
- * @return {Boolean} True if the font file is loaded
+ * @param {String} name - 字体的名称 / The face name of the font
+ * @return {Boolean} 如果字体文件已加载则返回true / True if the font file is loaded
  */
 Graphics.isFontLoaded = function (name) {
 	if (Graphics._cssFontLoading) {
@@ -410,11 +474,12 @@ Graphics.isFontLoaded = function (name) {
 };
 
 /**
+ * 开始播放视频
  * Starts playback of a video.
  *
  * @static
  * @method playVideo
- * @param {String} src
+ * @param {String} src - 视频源路径 / The video source path
  */
 Graphics.playVideo = function (src) {
 	this._videoLoader = ResourceHandler.createLoader(
@@ -426,10 +491,13 @@ Graphics.playVideo = function (src) {
 };
 
 /**
+ * 播放视频（私有方法）
+ * Plays the video (private method).
+ *
  * @static
- * @method _playVideo
- * @param {String} src
  * @private
+ * @method _playVideo
+ * @param {String} src - 视频源路径 / The video source path
  */
 Graphics._playVideo = function (src) {
 	this._video.src = src;
@@ -441,34 +509,37 @@ Graphics._playVideo = function (src) {
 };
 
 /**
+ * 检查视频是否正在播放
  * Checks whether the video is playing.
  *
  * @static
  * @method isVideoPlaying
- * @return {Boolean} True if the video is playing
+ * @return {Boolean} 如果视频正在播放则返回true / True if the video is playing
  */
 Graphics.isVideoPlaying = function () {
 	return this._videoLoading || this._isVideoVisible();
 };
 
 /**
+ * 检查浏览器是否可以播放指定的视频类型
  * Checks whether the browser can play the specified video type.
  *
  * @static
  * @method canPlayVideoType
- * @param {String} type The video type to test support for
- * @return {Boolean} True if the browser can play the specified video type
+ * @param {String} type - 要测试支持的视频类型 / The video type to test support for
+ * @return {Boolean} 如果浏览器可以播放指定的视频类型则返回true / True if the browser can play the specified video type
  */
 Graphics.canPlayVideoType = function (type) {
 	return this._video && this._video.canPlayType(type);
 };
 
 /**
+ * 设置视频的音量
  * Sets volume of a video.
  *
  * @static
  * @method setVideoVolume
- * @param {Number} value
+ * @param {Number} value - 音量值 / The volume value
  */
 Graphics.setVideoVolume = function (value) {
 	this._videoVolume = value;
@@ -478,13 +549,13 @@ Graphics.setVideoVolume = function (value) {
 };
 
 /**
- * Converts an x coordinate on the page to the corresponding
- * x coordinate on the canvas area.
+ * 将页面上的x坐标转换为画布区域上对应的x坐标
+ * Converts an x coordinate on the page to the corresponding x coordinate on the canvas area.
  *
  * @static
  * @method pageToCanvasX
- * @param {Number} x The x coordinate on the page to be converted
- * @return {Number} The x coordinate on the canvas area
+ * @param {Number} x - 要转换的页面x坐标 / The x coordinate on the page to be converted
+ * @return {Number} 画布区域上的x坐标 / The x coordinate on the canvas area
  */
 Graphics.pageToCanvasX = function (x) {
 	if (this._canvas) {
@@ -496,13 +567,13 @@ Graphics.pageToCanvasX = function (x) {
 };
 
 /**
- * Converts a y coordinate on the page to the corresponding
- * y coordinate on the canvas area.
+ * 将页面上的y坐标转换为画布区域上对应的y坐标
+ * Converts a y coordinate on the page to the corresponding y coordinate on the canvas area.
  *
  * @static
  * @method pageToCanvasY
- * @param {Number} y The y coordinate on the page to be converted
- * @return {Number} The y coordinate on the canvas area
+ * @param {Number} y - 要转换的页面y坐标 / The y coordinate on the page to be converted
+ * @return {Number} 画布区域上的y坐标 / The y coordinate on the canvas area
  */
 Graphics.pageToCanvasY = function (y) {
 	if (this._canvas) {
@@ -514,20 +585,25 @@ Graphics.pageToCanvasY = function (y) {
 };
 
 /**
+ * 检查指定的点是否在游戏画布区域内
  * Checks whether the specified point is inside the game canvas area.
  *
  * @static
  * @method isInsideCanvas
- * @param {Number} x The x coordinate on the canvas area
- * @param {Number} y The y coordinate on the canvas area
- * @return {Boolean} True if the specified point is inside the game canvas area
+ * @param {Number} x - 画布区域上的x坐标 / The x coordinate on the canvas area
+ * @param {Number} y - 画布区域上的y坐标 / The y coordinate on the canvas area
+ * @return {Boolean} 如果指定的点在游戏画布区域内则返回true / True if the specified point is inside the game canvas area
  */
 Graphics.isInsideCanvas = function (x, y) {
 	return x >= 0 && x < this._width && y >= 0 && y < this._height;
 };
 
 /**
- * Calls pixi.js garbage collector
+ * 调用PIXI.js垃圾回收器
+ * Calls pixi.js garbage collector.
+ *
+ * @static
+ * @method callGC
  */
 Graphics.callGC = function () {
 	if (Graphics.isWebGL()) {
@@ -578,6 +654,7 @@ Object.defineProperty(Graphics, "height", {
 });
 
 /**
+ * 窗口显示区域的宽度
  * The width of the window display area.
  *
  * @static
@@ -595,6 +672,7 @@ Object.defineProperty(Graphics, "boxWidth", {
 });
 
 /**
+ * 窗口显示区域的高度
  * The height of the window display area.
  *
  * @static
@@ -612,6 +690,7 @@ Object.defineProperty(Graphics, "boxHeight", {
 });
 
 /**
+ * 游戏屏幕的缩放比例
  * The zoom scale of the game screen.
  *
  * @static
@@ -632,9 +711,12 @@ Object.defineProperty(Graphics, "scale", {
 });
 
 /**
+ * 创建所有元素
+ * Creates all elements.
+ *
  * @static
- * @method _createAllElements
  * @private
+ * @method _createAllElements
  */
 Graphics._createAllElements = function () {
 	this._createErrorPrinter();
@@ -648,9 +730,12 @@ Graphics._createAllElements = function () {
 };
 
 /**
+ * 更新所有元素
+ * Updates all elements.
+ *
  * @static
- * @method _updateAllElements
  * @private
+ * @method _updateAllElements
  */
 Graphics._updateAllElements = function () {
 	this._updateRealScale();
@@ -663,9 +748,12 @@ Graphics._updateAllElements = function () {
 };
 
 /**
+ * 更新真实缩放比例
+ * Updates the real scale.
+ *
  * @static
- * @method _updateRealScale
  * @private
+ * @method _updateRealScale
  */
 Graphics._updateRealScale = function () {
 	if (this._stretchEnabled) {

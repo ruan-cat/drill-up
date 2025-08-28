@@ -103,6 +103,7 @@ Input.gamepadMapper = {
 };
 
 /**
+ * 清除所有输入数据
  * Clears all the input data.
  *
  * @static
@@ -121,6 +122,7 @@ Input.clear = function () {
 };
 
 /**
+ * 更新输入数据
  * Updates the input data.
  *
  * @static
@@ -145,12 +147,13 @@ Input.update = function () {
 };
 
 /**
+ * 检查按键是否当前被按下
  * Checks whether a key is currently pressed down.
  *
  * @static
  * @method isPressed
- * @param {String} keyName The mapped name of the key
- * @return {Boolean} True if the key is pressed
+ * @param {String} keyName - 按键的映射名称 / The mapped name of the key
+ * @return {Boolean} 如果按键被按下则返回true / True if the key is pressed
  */
 Input.isPressed = function (keyName) {
 	if (this._isEscapeCompatible(keyName) && this.isPressed("escape")) {
@@ -161,12 +164,13 @@ Input.isPressed = function (keyName) {
 };
 
 /**
+ * 检查按键是否刚刚被按下
  * Checks whether a key is just pressed.
  *
  * @static
  * @method isTriggered
- * @param {String} keyName The mapped name of the key
- * @return {Boolean} True if the key is triggered
+ * @param {String} keyName - 按键的映射名称 / The mapped name of the key
+ * @return {Boolean} 如果按键被触发则返回true / True if the key is triggered
  */
 Input.isTriggered = function (keyName) {
 	if (this._isEscapeCompatible(keyName) && this.isTriggered("escape")) {
@@ -177,12 +181,13 @@ Input.isTriggered = function (keyName) {
 };
 
 /**
+ * 检查按键是否刚刚被按下或发生了按键重复
  * Checks whether a key is just pressed or a key repeat occurred.
  *
  * @static
  * @method isRepeated
- * @param {String} keyName The mapped name of the key
- * @return {Boolean} True if the key is repeated
+ * @param {String} keyName - 按键的映射名称 / The mapped name of the key
+ * @return {Boolean} 如果按键重复则返回true / True if the key is repeated
  */
 Input.isRepeated = function (keyName) {
 	if (this._isEscapeCompatible(keyName) && this.isRepeated("escape")) {
@@ -197,12 +202,13 @@ Input.isRepeated = function (keyName) {
 };
 
 /**
+ * 检查按键是否被长按
  * Checks whether a key is kept depressed.
  *
  * @static
  * @method isLongPressed
- * @param {String} keyName The mapped name of the key
- * @return {Boolean} True if the key is long-pressed
+ * @param {String} keyName - 按键的映射名称 / The mapped name of the key
+ * @return {Boolean} 如果按键被长按则返回true / True if the key is long-pressed
  */
 Input.isLongPressed = function (keyName) {
 	if (this._isEscapeCompatible(keyName) && this.isLongPressed("escape")) {
@@ -213,6 +219,7 @@ Input.isLongPressed = function (keyName) {
 };
 
 /**
+ * [只读] 四方向值，作为数字键盘的数字，中性时为0
  * [read-only] The four direction value as a number of the numpad, or 0 for neutral.
  *
  * @static
@@ -227,6 +234,7 @@ Object.defineProperty(Input, "dir4", {
 });
 
 /**
+ * [只读] 八方向值，作为数字键盘的数字，中性时为0
  * [read-only] The eight direction value as a number of the numpad, or 0 for neutral.
  *
  * @static
@@ -241,6 +249,7 @@ Object.defineProperty(Input, "dir8", {
 });
 
 /**
+ * [只读] 最后一次输入的时间（毫秒）
  * [read-only] The time of the last input in milliseconds.
  *
  * @static
@@ -255,9 +264,12 @@ Object.defineProperty(Input, "date", {
 });
 
 /**
+ * 包装NW.js的警告框以确保窗口焦点
+ * Wraps NW.js alert to ensure window focus.
+ *
  * @static
- * @method _wrapNwjsAlert
  * @private
+ * @method _wrapNwjsAlert
  */
 Input._wrapNwjsAlert = function () {
 	if (Utils.isNwjs()) {
@@ -273,9 +285,12 @@ Input._wrapNwjsAlert = function () {
 };
 
 /**
+ * 设置事件处理程序
+ * Sets up event handlers.
+ *
  * @static
- * @method _setupEventHandlers
  * @private
+ * @method _setupEventHandlers
  */
 Input._setupEventHandlers = function () {
 	document.addEventListener("keydown", this._onKeyDown.bind(this));
@@ -284,10 +299,13 @@ Input._setupEventHandlers = function () {
 };
 
 /**
+ * 处理按键按下事件
+ * Handles key down event.
+ *
  * @static
- * @method _onKeyDown
- * @param {KeyboardEvent} event
  * @private
+ * @method _onKeyDown
+ * @param {KeyboardEvent} event - 键盘事件 / The keyboard event
  */
 Input._onKeyDown = function (event) {
 	if (this._shouldPreventDefault(event.keyCode)) {
@@ -306,10 +324,14 @@ Input._onKeyDown = function (event) {
 };
 
 /**
+ * 检查是否应该阻止按键的默认行为
+ * Checks whether the default behavior of the key should be prevented.
+ *
  * @static
- * @method _shouldPreventDefault
- * @param {Number} keyCode
  * @private
+ * @method _shouldPreventDefault
+ * @param {Number} keyCode - 按键码 / The key code
+ * @return {Boolean} 如果应该阻止默认行为则返回true / True if default behavior should be prevented
  */
 Input._shouldPreventDefault = function (keyCode) {
 	switch (keyCode) {
@@ -326,10 +348,13 @@ Input._shouldPreventDefault = function (keyCode) {
 };
 
 /**
+ * 处理按键释放事件
+ * Handles key up event.
+ *
  * @static
- * @method _onKeyUp
- * @param {KeyboardEvent} event
  * @private
+ * @method _onKeyUp
+ * @param {KeyboardEvent} event - 键盘事件 / The keyboard event
  */
 Input._onKeyUp = function (event) {
 	var buttonName = this.keyMapper[event.keyCode];
@@ -343,18 +368,24 @@ Input._onKeyUp = function (event) {
 };
 
 /**
+ * 处理窗口失去焦点事件
+ * Handles lost focus event.
+ *
  * @static
- * @method _onLostFocus
  * @private
+ * @method _onLostFocus
  */
 Input._onLostFocus = function () {
 	this.clear();
 };
 
 /**
+ * 轮询手柄状态
+ * Polls gamepad states.
+ *
  * @static
- * @method _pollGamepads
  * @private
+ * @method _pollGamepads
  */
 Input._pollGamepads = function () {
 	if (navigator.getGamepads) {
@@ -371,11 +402,13 @@ Input._pollGamepads = function () {
 };
 
 /**
+ * 更新手柄状态
+ * Updates gamepad state.
+ *
  * @static
- * @method _updateGamepadState
- * @param {Gamepad} gamepad
- * @param {Number} index
  * @private
+ * @method _updateGamepadState
+ * @param {Gamepad} gamepad - 手柄对象 / The gamepad object
  */
 Input._updateGamepadState = function (gamepad) {
 	var lastState = this._gamepadStates[gamepad.index] || [];
@@ -412,9 +445,12 @@ Input._updateGamepadState = function (gamepad) {
 };
 
 /**
+ * 更新方向状态
+ * Updates direction state.
+ *
  * @static
- * @method _updateDirection
  * @private
+ * @method _updateDirection
  */
 Input._updateDirection = function () {
 	var x = this._signX();
@@ -438,9 +474,13 @@ Input._updateDirection = function () {
 };
 
 /**
+ * 获取X轴方向符号
+ * Gets the X-axis direction sign.
+ *
  * @static
- * @method _signX
  * @private
+ * @method _signX
+ * @return {Number} X轴方向符号 / The X-axis direction sign
  */
 Input._signX = function () {
 	var x = 0;
@@ -455,9 +495,13 @@ Input._signX = function () {
 };
 
 /**
+ * 获取Y轴方向符号
+ * Gets the Y-axis direction sign.
+ *
  * @static
- * @method _signY
  * @private
+ * @method _signY
+ * @return {Number} Y轴方向符号 / The Y-axis direction sign
  */
 Input._signY = function () {
 	var y = 0;
@@ -472,12 +516,15 @@ Input._signY = function () {
 };
 
 /**
+ * 根据X和Y坐标创建数字键盘方向值
+ * Creates numpad direction value from X and Y coordinates.
+ *
  * @static
- * @method _makeNumpadDirection
- * @param {Number} x
- * @param {Number} y
- * @return {Number}
  * @private
+ * @method _makeNumpadDirection
+ * @param {Number} x - X坐标值 / The X coordinate value
+ * @param {Number} y - Y坐标值 / The Y coordinate value
+ * @return {Number} 数字键盘方向值 / The numpad direction value
  */
 Input._makeNumpadDirection = function (x, y) {
 	if (x !== 0 || y !== 0) {
@@ -487,11 +534,14 @@ Input._makeNumpadDirection = function (x, y) {
 };
 
 /**
+ * 检查按键是否与Escape键兼容
+ * Checks whether the key is escape-compatible.
+ *
  * @static
- * @method _isEscapeCompatible
- * @param {String} keyName
- * @return {Boolean}
  * @private
+ * @method _isEscapeCompatible
+ * @param {String} keyName - 按键名称 / The key name
+ * @return {Boolean} 如果与Escape键兼容则返回true / True if escape-compatible
  */
 Input._isEscapeCompatible = function (keyName) {
 	return keyName === "cancel" || keyName === "menu";

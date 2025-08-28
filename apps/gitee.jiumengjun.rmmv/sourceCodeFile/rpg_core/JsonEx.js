@@ -56,6 +56,15 @@ JsonEx.stringify = function (object) {
 	return json;
 };
 
+/**
+ * 恢复循环引用
+ * Restores circular references.
+ *
+ * @static
+ * @private
+ * @method _restoreCircularReference
+ * @param {Array} circulars - 循环引用数组 / Array of circular references
+ */
 JsonEx._restoreCircularReference = function (circulars) {
 	circulars.forEach(function (circular) {
 		var key = circular[0];
@@ -85,6 +94,17 @@ JsonEx.parse = function (json) {
 	return contents;
 };
 
+/**
+ * 链接循环引用
+ * Links circular references.
+ *
+ * @static
+ * @private
+ * @method _linkCircularReference
+ * @param {Object} contents - 内容对象 / The contents object
+ * @param {Array} circulars - 循环引用数组 / Array of circular references
+ * @param {Object} registry - 对象注册表 / Object registry
+ */
 JsonEx._linkCircularReference = function (contents, circulars, registry) {
 	circulars.forEach(function (circular) {
 		var key = circular[0];
@@ -95,6 +115,15 @@ JsonEx._linkCircularReference = function (contents, circulars, registry) {
 	});
 };
 
+/**
+ * 清除对象中的元数据
+ * Cleans metadata from an object.
+ *
+ * @static
+ * @private
+ * @method _cleanMetadata
+ * @param {Object} object - 要清除的对象 / The object to clean
+ */
 JsonEx._cleanMetadata = function (object) {
 	if (!object) return;
 

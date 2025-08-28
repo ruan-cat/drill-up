@@ -35,8 +35,8 @@ ImageCache.prototype.initialize = function () {
  * Adds a bitmap to the image cache.
  *
  * @method add
- * @param {String} key 缓存键 The cache key
- * @param {Bitmap} value 要缓存的位图 The bitmap to cache
+ * @param {String} key - 缓存键 / The cache key
+ * @param {Bitmap} value - 要缓存的位图 / The bitmap to cache
  */
 ImageCache.prototype.add = function (key, value) {
 	this._items[key] = {
@@ -53,8 +53,8 @@ ImageCache.prototype.add = function (key, value) {
  * Gets a bitmap from the image cache.
  *
  * @method get
- * @param {String} key 缓存键 The cache key
- * @return {Bitmap|null} 缓存的位图或找不到时返回null The cached bitmap or null if not found
+ * @param {String} key - 缓存键 / The cache key
+ * @return {Bitmap|null} 缓存的位图或找不到时返回null / The cached bitmap or null if not found
  */
 ImageCache.prototype.get = function (key) {
 	if (this._items[key]) {
@@ -71,9 +71,9 @@ ImageCache.prototype.get = function (key) {
  * Reserves a bitmap in the image cache.
  *
  * @method reserve
- * @param {String} key 缓存键 The cache key
- * @param {Bitmap} value 要保留的位图 The bitmap to reserve
- * @param {String} reservationId 保留ID The reservation ID
+ * @param {String} key - 缓存键 / The cache key
+ * @param {Bitmap} value - 要保留的位图 / The bitmap to reserve
+ * @param {String} reservationId - 保留ID / The reservation ID
  */
 ImageCache.prototype.reserve = function (key, value, reservationId) {
 	if (!this._items[key]) {
@@ -92,7 +92,7 @@ ImageCache.prototype.reserve = function (key, value, reservationId) {
  * Releases items with the specified reservation ID.
  *
  * @method releaseReservation
- * @param {String} reservationId 要释放的保留ID The reservation ID to release
+ * @param {String} reservationId - 要释放的保留ID / The reservation ID to release
  */
 ImageCache.prototype.releaseReservation = function (reservationId) {
 	var items = this._items;
@@ -144,21 +144,17 @@ ImageCache.prototype._truncateCache = function () {
  *
  * @private
  * @method _mustBeHeld
- * @param {Object} item 要检查的缓存项 The cache item to check
- * @return {Boolean} 如果必须保留项目则返回true True if the item must be held
+ * @param {Object} item - 要检查的缓存项 / The cache item to check
+ * @return {Boolean} 如果必须保留项目则返回true / True if the item must be held
  */
 ImageCache.prototype._mustBeHeld = function (item) {
-	// 仅请求的项目是弱引用，可以被清除
-	// request only is weak so It's purgeable
+	// 仅请求的项目是弱引用，可以被清除 / Request only is weak so it's purgeable
 	if (item.bitmap.isRequestOnly()) return false;
-	// 保留的项目必须保持
-	// reserved item must be held
+	// 保留的项目必须保持 / Reserved item must be held
 	if (item.reservationId) return true;
-	// 未准备好的位图必须保持（因为需要检查isReady()）
-	// not ready bitmap must be held (because of checking isReady())
+	// 未准备好的位图必须保持（因为需要检查isReady()）/ Not ready bitmap must be held (because of checking isReady())
 	if (!item.bitmap.isReady()) return true;
-	// 然后该项目可能是可清除的
-	// then the item may purgeable
+	// 然后该项目可能是可清除的 / Then the item may be purgeable
 	return false;
 };
 
@@ -167,7 +163,7 @@ ImageCache.prototype._mustBeHeld = function (item) {
  * Checks whether all cached bitmaps are ready.
  *
  * @method isReady
- * @return {Boolean} 如果所有缓存的位图都准备好则返回true True if all cached bitmaps are ready
+ * @return {Boolean} 如果所有缓存的位图都准备好则返回true / True if all cached bitmaps are ready
  */
 ImageCache.prototype.isReady = function () {
 	var items = this._items;
@@ -181,7 +177,7 @@ ImageCache.prototype.isReady = function () {
  * Gets the first error bitmap from the cache.
  *
  * @method getErrorBitmap
- * @return {Bitmap|null} 错误位图或找不到错误时返回null The error bitmap or null if no error found
+ * @return {Bitmap|null} 错误位图或找不到错误时返回null / The error bitmap or null if no error found
  */
 ImageCache.prototype.getErrorBitmap = function () {
 	var items = this._items;

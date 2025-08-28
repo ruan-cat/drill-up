@@ -3,6 +3,7 @@
 //=============================================================================
 
 /**
+ * 处理HTML5音频的静态类
  * The static class that handles HTML5 Audio.
  *
  * @class Html5Audio
@@ -12,21 +13,93 @@ function Html5Audio() {
 	throw new Error("This is a static class");
 }
 
+/**
+ * 是否已初始化
+ * Whether initialized.
+ * @static
+ * @private
+ * @property _initialized
+ * @type Boolean
+ */
 Html5Audio._initialized = false;
+
+/**
+ * 是否已解锁
+ * Whether unlocked.
+ * @static
+ * @private
+ * @property _unlocked
+ * @type Boolean
+ */
 Html5Audio._unlocked = false;
+
+/**
+ * 音频元素
+ * The audio element.
+ * @static
+ * @private
+ * @property _audioElement
+ * @type HTMLAudioElement
+ */
 Html5Audio._audioElement = null;
+
+/**
+ * 增益补间动画间隔
+ * Gain tween interval.
+ * @static
+ * @private
+ * @property _gainTweenInterval
+ * @type Number
+ */
 Html5Audio._gainTweenInterval = null;
+
+/**
+ * 补间增益
+ * Tween gain.
+ * @static
+ * @private
+ * @property _tweenGain
+ * @type Number
+ */
 Html5Audio._tweenGain = 0;
+
+/**
+ * 补间目标增益
+ * Tween target gain.
+ * @static
+ * @private
+ * @property _tweenTargetGain
+ * @type Number
+ */
 Html5Audio._tweenTargetGain = 0;
+
+/**
+ * 补间增益步骤
+ * Tween gain step.
+ * @static
+ * @private
+ * @property _tweenGainStep
+ * @type Number
+ */
 Html5Audio._tweenGainStep = 0;
+
+/**
+ * 静态SE路径
+ * Static SE path.
+ * @static
+ * @private
+ * @property _staticSePath
+ * @type String
+ */
 Html5Audio._staticSePath = null;
 
 /**
+ * 设置HTML5音频
  * Sets up the Html5 Audio.
  *
  * @static
  * @method setup
- * @param {String} url The url of the audio file
+ * @param {String} url - 音频文件的URL / The url of the audio file
  */
 Html5Audio.setup = function (url) {
 	if (!this._initialized) {
@@ -41,11 +114,12 @@ Html5Audio.setup = function (url) {
 };
 
 /**
+ * 初始化音频系统
  * Initializes the audio system.
  *
  * @static
  * @method initialize
- * @return {Boolean} True if the audio system is available
+ * @return {Boolean} 如果音频系统可用则返回true / True if the audio system is available
  */
 Html5Audio.initialize = function () {
 	if (!this._initialized) {
@@ -63,9 +137,12 @@ Html5Audio.initialize = function () {
 };
 
 /**
+ * 设置事件处理程序
+ * Sets up event handlers.
+ *
  * @static
- * @method _setupEventHandlers
  * @private
+ * @method _setupEventHandlers
  */
 Html5Audio._setupEventHandlers = function () {
 	document.addEventListener("touchstart", this._onTouchStart.bind(this));
@@ -76,9 +153,12 @@ Html5Audio._setupEventHandlers = function () {
 };
 
 /**
+ * 处理触摸开始事件
+ * Handles touch start event.
+ *
  * @static
- * @method _onTouchStart
  * @private
+ * @method _onTouchStart
  */
 Html5Audio._onTouchStart = function () {
 	if (this._audioElement && !this._unlocked) {
@@ -98,9 +178,12 @@ Html5Audio._onTouchStart = function () {
 };
 
 /**
+ * 处理可见性变化事件
+ * Handles visibility change event.
+ *
  * @static
- * @method _onVisibilityChange
  * @private
+ * @method _onVisibilityChange
  */
 Html5Audio._onVisibilityChange = function () {
 	if (document.visibilityState === "hidden") {
@@ -111,9 +194,12 @@ Html5Audio._onVisibilityChange = function () {
 };
 
 /**
+ * 处理数据加载完成事件
+ * Handles loaded data event.
+ *
  * @static
- * @method _onLoadedData
  * @private
+ * @method _onLoadedData
  */
 Html5Audio._onLoadedData = function () {
 	this._buffered = true;
@@ -121,18 +207,24 @@ Html5Audio._onLoadedData = function () {
 };
 
 /**
+ * 处理错误事件
+ * Handles error event.
+ *
  * @static
- * @method _onError
  * @private
+ * @method _onError
  */
 Html5Audio._onError = function () {
 	this._hasError = true;
 };
 
 /**
+ * 处理播放结束事件
+ * Handles ended event.
+ *
  * @static
- * @method _onEnded
  * @private
+ * @method _onEnded
  */
 Html5Audio._onEnded = function () {
 	if (!this._audioElement.loop) {
@@ -141,9 +233,12 @@ Html5Audio._onEnded = function () {
 };
 
 /**
+ * 处理隐藏事件
+ * Handles hide event.
+ *
  * @static
- * @method _onHide
  * @private
+ * @method _onHide
  */
 Html5Audio._onHide = function () {
 	this._audioElement.volume = 0;
@@ -151,15 +246,19 @@ Html5Audio._onHide = function () {
 };
 
 /**
+ * 处理显示事件
+ * Handles show event.
+ *
  * @static
- * @method _onShow
  * @private
+ * @method _onShow
  */
 Html5Audio._onShow = function () {
 	this.fadeIn(0.5);
 };
 
 /**
+ * 清除音频数据
  * Clears the audio data.
  *
  * @static
@@ -176,10 +275,12 @@ Html5Audio.clear = function () {
 };
 
 /**
+ * 设置静态SE的URL
  * Set the URL of static se.
  *
  * @static
- * @param {String} url
+ * @method setStaticSe
+ * @param {String} url - 静态SE的URL / The URL of static se
  */
 Html5Audio.setStaticSe = function (url) {
 	if (!this._initialized) {
@@ -190,6 +291,7 @@ Html5Audio.setStaticSe = function (url) {
 };
 
 /**
+ * [只读] 音频文件的URL
  * [read-only] The url of the audio file.
  *
  * @property url
@@ -203,6 +305,7 @@ Object.defineProperty(Html5Audio, "url", {
 });
 
 /**
+ * 音频的音量
  * The volume of the audio.
  *
  * @property volume
@@ -222,45 +325,49 @@ Object.defineProperty(Html5Audio, "volume", {
 });
 
 /**
+ * 检查音频数据是否准备好播放
  * Checks whether the audio data is ready to play.
  *
  * @static
  * @method isReady
- * @return {Boolean} True if the audio data is ready to play
+ * @return {Boolean} 如果音频数据准备好播放则返回true / True if the audio data is ready to play
  */
 Html5Audio.isReady = function () {
 	return this._buffered;
 };
 
 /**
+ * 检查是否发生了加载错误
  * Checks whether a loading error has occurred.
  *
  * @static
  * @method isError
- * @return {Boolean} True if a loading error has occurred
+ * @return {Boolean} 如果发生了加载错误则返回true / True if a loading error has occurred
  */
 Html5Audio.isError = function () {
 	return this._hasError;
 };
 
 /**
+ * 检查音频是否正在播放
  * Checks whether the audio is playing.
  *
  * @static
  * @method isPlaying
- * @return {Boolean} True if the audio is playing
+ * @return {Boolean} 如果音频正在播放则返回true / True if the audio is playing
  */
 Html5Audio.isPlaying = function () {
 	return !this._audioElement.paused;
 };
 
 /**
+ * 播放音频
  * Plays the audio.
  *
  * @static
  * @method play
- * @param {Boolean} loop Whether the audio data play in a loop
- * @param {Number} offset The start position to play in seconds
+ * @param {Boolean} loop - 音频数据是否循环播放 / Whether the audio data play in a loop
+ * @param {Number} offset - 播放开始位置（秒） / The start position to play in seconds
  */
 Html5Audio.play = function (loop, offset) {
 	if (this.isReady()) {
@@ -284,6 +391,7 @@ Html5Audio.play = function (loop, offset) {
 };
 
 /**
+ * 停止音频
  * Stops the audio.
  *
  * @static
@@ -300,11 +408,12 @@ Html5Audio.stop = function () {
 };
 
 /**
+ * 执行音频淡入
  * Performs the audio fade-in.
  *
  * @static
  * @method fadeIn
- * @param {Number} duration Fade-in time in seconds
+ * @param {Number} duration - 淡入时间（秒） / Fade-in time in seconds
  */
 Html5Audio.fadeIn = function (duration) {
 	if (this.isReady()) {
@@ -323,11 +432,12 @@ Html5Audio.fadeIn = function (duration) {
 };
 
 /**
+ * 执行音频淡出
  * Performs the audio fade-out.
  *
  * @static
  * @method fadeOut
- * @param {Number} duration Fade-out time in seconds
+ * @param {Number} duration - 淡出时间（秒） / Fade-out time in seconds
  */
 Html5Audio.fadeOut = function (duration) {
 	if (this._audioElement) {
@@ -338,10 +448,12 @@ Html5Audio.fadeOut = function (duration) {
 };
 
 /**
+ * 获取音频的寻找位置
  * Gets the seek position of the audio.
  *
  * @static
  * @method seek
+ * @return {Number} 当前播放位置（秒） / Current playback position in seconds
  */
 Html5Audio.seek = function () {
 	if (this._audioElement) {
@@ -352,21 +464,25 @@ Html5Audio.seek = function () {
 };
 
 /**
+ * 添加在音频数据加载完成时调用的回调函数
  * Add a callback function that will be called when the audio data is loaded.
  *
  * @static
  * @method addLoadListener
- * @param {Function} listner The callback function
+ * @param {Function} listener - 回调函数 / The callback function
  */
 Html5Audio.addLoadListener = function (listner) {
 	this._loadListeners.push(listner);
 };
 
 /**
+ * 加载音频数据
+ * Loads audio data.
+ *
  * @static
- * @method _load
- * @param {String} url
  * @private
+ * @method _load
+ * @param {String} url - 音频URL / The audio URL
  */
 Html5Audio._load = function (url) {
 	if (this._audioElement) {
@@ -377,11 +493,14 @@ Html5Audio._load = function (url) {
 };
 
 /**
+ * 开始播放音频
+ * Starts playing audio.
+ *
  * @static
- * @method _startPlaying
- * @param {Boolean} loop
- * @param {Number} offset
  * @private
+ * @method _startPlaying
+ * @param {Boolean} loop - 是否循环 / Whether to loop
+ * @param {Number} offset - 起始位置 / Start offset
  */
 Html5Audio._startPlaying = function (loop, offset) {
 	this._audioElement.loop = loop;
@@ -397,9 +516,12 @@ Html5Audio._startPlaying = function (loop, offset) {
 };
 
 /**
+ * 处理加载完成事件
+ * Handles load complete event.
+ *
  * @static
- * @method _onLoad
  * @private
+ * @method _onLoad
  */
 Html5Audio._onLoad = function () {
 	this._isLoading = false;
@@ -410,10 +532,13 @@ Html5Audio._onLoad = function () {
 };
 
 /**
+ * 开始增益补间动画
+ * Starts gain tween animation.
+ *
  * @static
- * @method _startGainTween
- * @params {Number} duration
  * @private
+ * @method _startGainTween
+ * @param {Number} duration - 持续时间 / Duration
  */
 Html5Audio._startGainTween = function (duration) {
 	this._audioElement.volume = this._tweenGain;
@@ -428,10 +553,13 @@ Html5Audio._startGainTween = function (duration) {
 };
 
 /**
+ * 应用补间值
+ * Applies tween value.
+ *
  * @static
- * @method _applyTweenValue
- * @param {Number} volume
  * @private
+ * @method _applyTweenValue
+ * @param {Number} volume - 音量值 / The volume value
  */
 Html5Audio._applyTweenValue = function (volume) {
 	Html5Audio._tweenGain += Html5Audio._tweenGainStep;

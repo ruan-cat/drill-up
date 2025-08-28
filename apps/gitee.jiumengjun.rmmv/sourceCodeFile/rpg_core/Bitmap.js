@@ -138,6 +138,10 @@ Object.defineProperties(Bitmap.prototype, {
 	/**
 	 * 画布属性
 	 * Canvas property
+	 *
+	 * @property _canvas
+	 * @type HTMLCanvasElement
+	 * @private
 	 */
 	_canvas: {
 		get: function () {
@@ -148,6 +152,10 @@ Object.defineProperties(Bitmap.prototype, {
 	/**
 	 * 2D上下文属性
 	 * 2D context property
+	 *
+	 * @property _context
+	 * @type CanvasRenderingContext2D
+	 * @private
 	 */
 	_context: {
 		get: function () {
@@ -156,6 +164,14 @@ Object.defineProperties(Bitmap.prototype, {
 		},
 	},
 
+	/**
+	 * 基础纹理属性
+	 * Base texture property
+	 *
+	 * @property _baseTexture
+	 * @type PIXI.BaseTexture
+	 * @private
+	 */
 	_baseTexture: {
 		get: function () {
 			if (!this.__baseTexture) this._createBaseTexture(this._image || this.__canvas);
@@ -207,6 +223,7 @@ Bitmap.prototype.initialize = function (width, height) {
 	this.cacheEntry = null;
 
 	/**
+	 * 字体名称
 	 * The face name of the font.
 	 *
 	 * @property fontFace
@@ -215,6 +232,7 @@ Bitmap.prototype.initialize = function (width, height) {
 	this.fontFace = "GameFont";
 
 	/**
+	 * 字体大小(像素)
 	 * The size of the font in pixels.
 	 *
 	 * @property fontSize
@@ -223,6 +241,7 @@ Bitmap.prototype.initialize = function (width, height) {
 	this.fontSize = 28;
 
 	/**
+	 * 字体是否为斜体
 	 * Whether the font is italic.
 	 *
 	 * @property fontItalic
@@ -231,6 +250,7 @@ Bitmap.prototype.initialize = function (width, height) {
 	this.fontItalic = false;
 
 	/**
+	 * CSS格式的文字颜色
 	 * The color of the text in CSS format.
 	 *
 	 * @property textColor
@@ -239,6 +259,7 @@ Bitmap.prototype.initialize = function (width, height) {
 	this.textColor = "#ffffff";
 
 	/**
+	 * CSS格式的文字轮廓颜色
 	 * The color of the outline of the text in CSS format.
 	 *
 	 * @property outlineColor
@@ -247,6 +268,7 @@ Bitmap.prototype.initialize = function (width, height) {
 	this.outlineColor = "rgba(0, 0, 0, 0.5)";
 
 	/**
+	 * 文字轮廓的宽度
 	 * The width of the outline of the text.
 	 *
 	 * @property outlineWidth
@@ -256,12 +278,13 @@ Bitmap.prototype.initialize = function (width, height) {
 };
 
 /**
+ * 加载图像文件并返回新的位图对象
  * Loads a image file and returns a new bitmap object.
  *
  * @static
  * @method load
- * @param {String} url The image url of the texture
- * @return Bitmap
+ * @param {String} url - 纹理的图像URL / The image url of the texture
+ * @return {Bitmap} 新的位图对象 / New bitmap object
  */
 Bitmap.load = function (url) {
 	var bitmap = Object.create(Bitmap.prototype);
@@ -275,12 +298,13 @@ Bitmap.load = function (url) {
 };
 
 /**
+ * 截取游戏画面快照并返回新的位图对象
  * Takes a snapshot of the game screen and returns a new bitmap object.
  *
  * @static
  * @method snap
- * @param {Stage} stage The stage object
- * @return Bitmap
+ * @param {Stage} stage - 舞台对象 / The stage object
+ * @return {Bitmap} 新的位图对象 / New bitmap object
  */
 Bitmap.snap = function (stage) {
 	var width = Graphics.width;
@@ -306,20 +330,22 @@ Bitmap.snap = function (stage) {
 };
 
 /**
+ * 检查位图是否准备好渲染
  * Checks whether the bitmap is ready to render.
  *
  * @method isReady
- * @return {Boolean} True if the bitmap is ready to render
+ * @return {Boolean} 如果位图准备好渲染则返回true / True if the bitmap is ready to render
  */
 Bitmap.prototype.isReady = function () {
 	return this._loadingState === "loaded" || this._loadingState === "none";
 };
 
 /**
+ * 检查是否发生加载错误
  * Checks whether a loading error has occurred.
  *
  * @method isError
- * @return {Boolean} True if a loading error has occurred
+ * @return {Boolean} 如果发生加载错误则返回true / True if a loading error has occurred
  */
 Bitmap.prototype.isError = function () {
 	return this._loadingState === "error";
@@ -338,6 +364,7 @@ Bitmap.prototype.touch = function () {
 };
 
 /**
+ * [只读] 图像文件的URL
  * [read-only] The url of the image file.
  *
  * @property url
@@ -351,6 +378,7 @@ Object.defineProperty(Bitmap.prototype, "url", {
 });
 
 /**
+ * [只读] 保存图像的基础纹理
  * [read-only] The base texture that holds the image.
  *
  * @property baseTexture
@@ -364,6 +392,7 @@ Object.defineProperty(Bitmap.prototype, "baseTexture", {
 });
 
 /**
+ * [只读] 位图画布
  * [read-only] The bitmap canvas.
  *
  * @property canvas
@@ -377,6 +406,7 @@ Object.defineProperty(Bitmap.prototype, "canvas", {
 });
 
 /**
+ * [只读] 位图画布的2D上下文
  * [read-only] The 2d context of the bitmap canvas.
  *
  * @property context
@@ -390,6 +420,7 @@ Object.defineProperty(Bitmap.prototype, "context", {
 });
 
 /**
+ * [只读] 位图的宽度
  * [read-only] The width of the bitmap.
  *
  * @property width
@@ -407,6 +438,7 @@ Object.defineProperty(Bitmap.prototype, "width", {
 });
 
 /**
+ * [只读] 位图的高度
  * [read-only] The height of the bitmap.
  *
  * @property height
@@ -424,6 +456,7 @@ Object.defineProperty(Bitmap.prototype, "height", {
 });
 
 /**
+ * [只读] 位图的矩形区域
  * [read-only] The rectangle of the bitmap.
  *
  * @property rect
@@ -437,6 +470,7 @@ Object.defineProperty(Bitmap.prototype, "rect", {
 });
 
 /**
+ * 是否应用平滑缩放
  * Whether the smooth scaling is applied.
  *
  * @property smooth
@@ -462,6 +496,7 @@ Object.defineProperty(Bitmap.prototype, "smooth", {
 });
 
 /**
+ * 绘制对象的不透明度，范围为(0, 255)
  * The opacity of the drawing object in the range (0, 255).
  *
  * @property paintOpacity
@@ -481,11 +516,12 @@ Object.defineProperty(Bitmap.prototype, "paintOpacity", {
 });
 
 /**
+ * 调整位图大小
  * Resizes the bitmap.
  *
  * @method resize
- * @param {Number} width The new width of the bitmap
- * @param {Number} height The new height of the bitmap
+ * @param {Number} width - 位图的新宽度 / The new width of the bitmap
+ * @param {Number} height - 位图的新高度 / The new height of the bitmap
  */
 Bitmap.prototype.resize = function (width, height) {
 	width = Math.max(width || 0, 1);
@@ -497,18 +533,19 @@ Bitmap.prototype.resize = function (width, height) {
 };
 
 /**
+ * 执行块传输
  * Performs a block transfer.
  *
  * @method blt
- * @param {Bitmap} source The bitmap to draw
- * @param {Number} sx The x coordinate in the source
- * @param {Number} sy The y coordinate in the source
- * @param {Number} sw The width of the source image
- * @param {Number} sh The height of the source image
- * @param {Number} dx The x coordinate in the destination
- * @param {Number} dy The y coordinate in the destination
- * @param {Number} [dw=sw] The width to draw the image in the destination
- * @param {Number} [dh=sh] The height to draw the image in the destination
+ * @param {Bitmap} source - 要绘制的位图 / The bitmap to draw
+ * @param {Number} sx - 源中的x坐标 / The x coordinate in the source
+ * @param {Number} sy - 源中的y坐标 / The y coordinate in the source
+ * @param {Number} sw - 源图像的宽度 / The width of the source image
+ * @param {Number} sh - 源图像的高度 / The height of the source image
+ * @param {Number} dx - 目标中的x坐标 / The x coordinate in the destination
+ * @param {Number} dy - 目标中的y坐标 / The y coordinate in the destination
+ * @param {Number} [dw=sw] - 在目标中绘制图像的宽度 / The width to draw the image in the destination
+ * @param {Number} [dh=sh] - 在目标中绘制图像的高度 / The height to draw the image in the destination
  */
 Bitmap.prototype.blt = function (source, sx, sy, sw, sh, dx, dy, dw, dh) {
 	dw = dw || sw;
@@ -530,18 +567,19 @@ Bitmap.prototype.blt = function (source, sx, sy, sw, sh, dx, dy, dw, dh) {
 };
 
 /**
+ * 执行块传输，假设原始图像未被修改(无色相变化)
  * Performs a block transfer, using assumption that original image was not modified (no hue)
  *
- * @method blt
- * @param {Bitmap} source The bitmap to draw
- * @param {Number} sx The x coordinate in the source
- * @param {Number} sy The y coordinate in the source
- * @param {Number} sw The width of the source image
- * @param {Number} sh The height of the source image
- * @param {Number} dx The x coordinate in the destination
- * @param {Number} dy The y coordinate in the destination
- * @param {Number} [dw=sw] The width to draw the image in the destination
- * @param {Number} [dh=sh] The height to draw the image in the destination
+ * @method bltImage
+ * @param {Bitmap} source - 要绘制的位图 / The bitmap to draw
+ * @param {Number} sx - 源中的x坐标 / The x coordinate in the source
+ * @param {Number} sy - 源中的y坐标 / The y coordinate in the source
+ * @param {Number} sw - 源图像的宽度 / The width of the source image
+ * @param {Number} sh - 源图像的高度 / The height of the source image
+ * @param {Number} dx - 目标中的x坐标 / The x coordinate in the destination
+ * @param {Number} dy - 目标中的y坐标 / The y coordinate in the destination
+ * @param {Number} [dw=sw] - 在目标中绘制图像的宽度 / The width to draw the image in the destination
+ * @param {Number} [dh=sh] - 在目标中绘制图像的高度 / The height to draw the image in the destination
  */
 Bitmap.prototype.bltImage = function (source, sx, sy, sw, sh, dx, dy, dw, dh) {
 	dw = dw || sw;
@@ -563,12 +601,13 @@ Bitmap.prototype.bltImage = function (source, sx, sy, sw, sh, dx, dy, dw, dh) {
 };
 
 /**
+ * 返回指定点的像素颜色
  * Returns pixel color at the specified point.
  *
  * @method getPixel
- * @param {Number} x The x coordinate of the pixel in the bitmap
- * @param {Number} y The y coordinate of the pixel in the bitmap
- * @return {String} The pixel color (hex format)
+ * @param {Number} x - 位图中像素的x坐标 / The x coordinate of the pixel in the bitmap
+ * @param {Number} y - 位图中像素的y坐标 / The y coordinate of the pixel in the bitmap
+ * @return {String} 像素颜色(十六进制格式) / The pixel color (hex format)
  */
 Bitmap.prototype.getPixel = function (x, y) {
 	var data = this._context.getImageData(x, y, 1, 1).data;
@@ -580,12 +619,13 @@ Bitmap.prototype.getPixel = function (x, y) {
 };
 
 /**
+ * 返回指定点的像素透明度值
  * Returns alpha pixel value at the specified point.
  *
  * @method getAlphaPixel
- * @param {Number} x The x coordinate of the pixel in the bitmap
- * @param {Number} y The y coordinate of the pixel in the bitmap
- * @return {String} The alpha value
+ * @param {Number} x - 位图中像素的x坐标 / The x coordinate of the pixel in the bitmap
+ * @param {Number} y - 位图中像素的y坐标 / The y coordinate of the pixel in the bitmap
+ * @return {Number} 透明度值 / The alpha value
  */
 Bitmap.prototype.getAlphaPixel = function (x, y) {
 	var data = this._context.getImageData(x, y, 1, 1).data;
@@ -593,13 +633,14 @@ Bitmap.prototype.getAlphaPixel = function (x, y) {
 };
 
 /**
+ * 清除指定的矩形区域
  * Clears the specified rectangle.
  *
  * @method clearRect
- * @param {Number} x The x coordinate for the upper-left corner
- * @param {Number} y The y coordinate for the upper-left corner
- * @param {Number} width The width of the rectangle to clear
- * @param {Number} height The height of the rectangle to clear
+ * @param {Number} x - 左上角的x坐标 / The x coordinate for the upper-left corner
+ * @param {Number} y - 左上角的y坐标 / The y coordinate for the upper-left corner
+ * @param {Number} width - 要清除的矩形宽度 / The width of the rectangle to clear
+ * @param {Number} height - 要清除的矩形高度 / The height of the rectangle to clear
  */
 Bitmap.prototype.clearRect = function (x, y, width, height) {
 	this._context.clearRect(x, y, width, height);
@@ -607,6 +648,7 @@ Bitmap.prototype.clearRect = function (x, y, width, height) {
 };
 
 /**
+ * 清除整个位图
  * Clears the entire bitmap.
  *
  * @method clear
@@ -616,14 +658,15 @@ Bitmap.prototype.clear = function () {
 };
 
 /**
+ * 填充指定的矩形区域
  * Fills the specified rectangle.
  *
  * @method fillRect
- * @param {Number} x The x coordinate for the upper-left corner
- * @param {Number} y The y coordinate for the upper-left corner
- * @param {Number} width The width of the rectangle to fill
- * @param {Number} height The height of the rectangle to fill
- * @param {String} color The color of the rectangle in CSS format
+ * @param {Number} x - 左上角的x坐标 / The x coordinate for the upper-left corner
+ * @param {Number} y - 左上角的y坐标 / The y coordinate for the upper-left corner
+ * @param {Number} width - 要填充的矩形宽度 / The width of the rectangle to fill
+ * @param {Number} height - 要填充的矩形高度 / The height of the rectangle to fill
+ * @param {String} color - CSS格式的矩形颜色 / The color of the rectangle in CSS format
  */
 Bitmap.prototype.fillRect = function (x, y, width, height, color) {
 	var context = this._context;
@@ -635,26 +678,28 @@ Bitmap.prototype.fillRect = function (x, y, width, height, color) {
 };
 
 /**
+ * 填充整个位图
  * Fills the entire bitmap.
  *
  * @method fillAll
- * @param {String} color The color of the rectangle in CSS format
+ * @param {String} color - CSS格式的矩形颜色 / The color of the rectangle in CSS format
  */
 Bitmap.prototype.fillAll = function (color) {
 	this.fillRect(0, 0, this.width, this.height, color);
 };
 
 /**
+ * 绘制具有渐变效果的矩形
  * Draws the rectangle with a gradation.
  *
  * @method gradientFillRect
- * @param {Number} x The x coordinate for the upper-left corner
- * @param {Number} y The y coordinate for the upper-left corner
- * @param {Number} width The width of the rectangle to fill
- * @param {Number} height The height of the rectangle to fill
- * @param {String} color1 The gradient starting color
- * @param {String} color2 The gradient ending color
- * @param {Boolean} vertical Wether the gradient should be draw as vertical or not
+ * @param {Number} x - 左上角的x坐标 / The x coordinate for the upper-left corner
+ * @param {Number} y - 左上角的y坐标 / The y coordinate for the upper-left corner
+ * @param {Number} width - 要填充的矩形宽度 / The width of the rectangle to fill
+ * @param {Number} height - 要填充的矩形高度 / The height of the rectangle to fill
+ * @param {String} color1 - 渐变起始颜色 / The gradient starting color
+ * @param {String} color2 - 渐变结束颜色 / The gradient ending color
+ * @param {Boolean} vertical - 渐变是否为垂直方向 / Whether the gradient should be draw as vertical or not
  */
 Bitmap.prototype.gradientFillRect = function (x, y, width, height, color1, color2, vertical) {
 	var context = this._context;
@@ -674,13 +719,14 @@ Bitmap.prototype.gradientFillRect = function (x, y, width, height, color1, color
 };
 
 /**
+ * 绘制圆形位图
  * Draw a bitmap in the shape of a circle
  *
  * @method drawCircle
- * @param {Number} x The x coordinate based on the circle center
- * @param {Number} y The y coordinate based on the circle center
- * @param {Number} radius The radius of the circle
- * @param {String} color The color of the circle in CSS format
+ * @param {Number} x - 基于圆心的x坐标 / The x coordinate based on the circle center
+ * @param {Number} y - 基于圆心的y坐标 / The y coordinate based on the circle center
+ * @param {Number} radius - 圆的半径 / The radius of the circle
+ * @param {String} color - CSS格式的圆的颜色 / The color of the circle in CSS format
  */
 Bitmap.prototype.drawCircle = function (x, y, radius, color) {
 	var context = this._context;
@@ -694,15 +740,16 @@ Bitmap.prototype.drawCircle = function (x, y, radius, color) {
 };
 
 /**
+ * 向位图绘制轮廓文字
  * Draws the outline text to the bitmap.
  *
  * @method drawText
- * @param {String} text The text that will be drawn
- * @param {Number} x The x coordinate for the left of the text
- * @param {Number} y The y coordinate for the top of the text
- * @param {Number} maxWidth The maximum allowed width of the text
- * @param {Number} lineHeight The height of the text line
- * @param {String} align The alignment of the text
+ * @param {String} text - 将要绘制的文字 / The text that will be drawn
+ * @param {Number} x - 文字左侧的x坐标 / The x coordinate for the left of the text
+ * @param {Number} y - 文字顶部的y坐标 / The y coordinate for the top of the text
+ * @param {Number} maxWidth - 文字的最大允许宽度 / The maximum allowed width of the text
+ * @param {Number} lineHeight - 文字行的高度 / The height of the text line
+ * @param {String} align - 文字的对齐方式 / The alignment of the text
  */
 Bitmap.prototype.drawText = function (text, x, y, maxWidth, lineHeight, align) {
 	// Note: Firefox has a bug with textBaseline: Bug 737852
@@ -733,11 +780,12 @@ Bitmap.prototype.drawText = function (text, x, y, maxWidth, lineHeight, align) {
 };
 
 /**
+ * 返回指定文字的宽度
  * Returns the width of the specified text.
  *
  * @method measureTextWidth
- * @param {String} text The text to be measured
- * @return {Number} The width of the text in pixels
+ * @param {String} text - 要测量的文字 / The text to be measured
+ * @return {Number} 文字的宽度(像素) / The width of the text in pixels
  */
 Bitmap.prototype.measureTextWidth = function (text) {
 	var context = this._context;
@@ -749,12 +797,13 @@ Bitmap.prototype.measureTextWidth = function (text) {
 };
 
 /**
+ * 改变整个位图的色调
  * Changes the color tone of the entire bitmap.
  *
  * @method adjustTone
- * @param {Number} r The red strength in the range (-255, 255)
- * @param {Number} g The green strength in the range (-255, 255)
- * @param {Number} b The blue strength in the range (-255, 255)
+ * @param {Number} r - 红色强度，范围(-255, 255) / The red strength in the range (-255, 255)
+ * @param {Number} g - 绿色强度，范围(-255, 255) / The green strength in the range (-255, 255)
+ * @param {Number} b - 蓝色强度，范围(-255, 255) / The blue strength in the range (-255, 255)
  */
 Bitmap.prototype.adjustTone = function (r, g, b) {
 	if ((r || g || b) && this.width > 0 && this.height > 0) {
@@ -772,10 +821,11 @@ Bitmap.prototype.adjustTone = function (r, g, b) {
 };
 
 /**
+ * 旋转整个位图的色相
  * Rotates the hue of the entire bitmap.
  *
  * @method rotateHue
- * @param {Number} offset The hue offset in 360 degrees
+ * @param {Number} offset - 色相偏移量，以360度为单位 / The hue offset in 360 degrees
  */
 Bitmap.prototype.rotateHue = function (offset) {
 	function rgbToHsl(r, g, b) {
@@ -842,6 +892,7 @@ Bitmap.prototype.rotateHue = function (offset) {
 };
 
 /**
+ * 对位图应用模糊效果
  * Applies a blur effect to the bitmap.
  *
  * @method blur
@@ -877,10 +928,11 @@ Bitmap.prototype.blur = function () {
 };
 
 /**
+ * 添加在位图加载完成时调用的回调函数
  * Add a callback function that will be called when the bitmap is loaded.
  *
  * @method addLoadListener
- * @param {Function} listner The callback function
+ * @param {Function} listener - 回调函数 / The callback function
  */
 Bitmap.prototype.addLoadListener = function (listner) {
 	if (!this.isReady()) {
@@ -891,20 +943,27 @@ Bitmap.prototype.addLoadListener = function (listner) {
 };
 
 /**
- * @method _makeFontNameText
+ * 生成字体名称文本
+ * Creates the font name text.
+ *
  * @private
+ * @method _makeFontNameText
+ * @return {String} 字体名称文本 / The font name text
  */
 Bitmap.prototype._makeFontNameText = function () {
 	return (this.fontItalic ? "Italic " : "") + this.fontSize + "px " + this.fontFace;
 };
 
 /**
- * @method _drawTextOutline
- * @param {String} text
- * @param {Number} tx
- * @param {Number} ty
- * @param {Number} maxWidth
+ * 绘制文字轮廓
+ * Draws the text outline.
+ *
  * @private
+ * @method _drawTextOutline
+ * @param {String} text - 文字内容 / The text content
+ * @param {Number} tx - x坐标 / The x coordinate
+ * @param {Number} ty - y坐标 / The y coordinate
+ * @param {Number} maxWidth - 最大宽度 / The maximum width
  */
 Bitmap.prototype._drawTextOutline = function (text, tx, ty, maxWidth) {
 	var context = this._context;
@@ -915,12 +974,15 @@ Bitmap.prototype._drawTextOutline = function (text, tx, ty, maxWidth) {
 };
 
 /**
- * @method _drawTextBody
- * @param {String} text
- * @param {Number} tx
- * @param {Number} ty
- * @param {Number} maxWidth
+ * 绘制文字主体
+ * Draws the text body.
+ *
  * @private
+ * @method _drawTextBody
+ * @param {String} text - 文字内容 / The text content
+ * @param {Number} tx - x坐标 / The x coordinate
+ * @param {Number} ty - y坐标 / The y coordinate
+ * @param {Number} maxWidth - 最大宽度 / The maximum width
  */
 Bitmap.prototype._drawTextBody = function (text, tx, ty, maxWidth) {
 	var context = this._context;
@@ -929,8 +991,11 @@ Bitmap.prototype._drawTextBody = function (text, tx, ty, maxWidth) {
 };
 
 /**
- * @method _onLoad
+ * 处理加载完成事件
+ * Handles the load completion event.
+ *
  * @private
+ * @method _onLoad
  */
 Bitmap.prototype._onLoad = function () {
 	this._image.removeEventListener("load", this._loadListener);
@@ -962,6 +1027,12 @@ Bitmap.prototype._onLoad = function () {
 	}
 };
 
+/**
+ * 解码位图数据
+ * Decodes the bitmap data.
+ *
+ * @method decode
+ */
 Bitmap.prototype.decode = function () {
 	switch (this._loadingState) {
 		case "requestCompleted":
@@ -997,8 +1068,11 @@ Bitmap.prototype.decode = function () {
 };
 
 /**
- * @method _callLoadListeners
+ * 调用加载监听器
+ * Calls all load listeners.
+ *
  * @private
+ * @method _callLoadListeners
  */
 Bitmap.prototype._callLoadListeners = function () {
 	while (this._loadListeners.length > 0) {
@@ -1008,8 +1082,11 @@ Bitmap.prototype._callLoadListeners = function () {
 };
 
 /**
- * @method _onError
+ * 处理加载错误事件
+ * Handles the load error event.
+ *
  * @private
+ * @method _onError
  */
 Bitmap.prototype._onError = function () {
 	this._image.removeEventListener("load", this._loadListener);
@@ -1018,15 +1095,20 @@ Bitmap.prototype._onError = function () {
 };
 
 /**
- * @method _setDirty
+ * 设置为脏状态
+ * Sets the bitmap as dirty.
+ *
  * @private
+ * @method _setDirty
  */
 Bitmap.prototype._setDirty = function () {
 	this._dirty = true;
 };
 
 /**
- * updates texture is bitmap was dirty
+ * 如果位图为脏状态则更新纹理
+ * Updates texture if bitmap was dirty.
+ *
  * @method checkDirty
  */
 Bitmap.prototype.checkDirty = function () {
@@ -1036,6 +1118,15 @@ Bitmap.prototype.checkDirty = function () {
 	}
 };
 
+/**
+ * 请求位图资源
+ * Requests a bitmap resource.
+ *
+ * @static
+ * @method request
+ * @param {String} url - 要请求的URL / The URL to request
+ * @return {Bitmap} 新的位图对象 / New bitmap object
+ */
 Bitmap.request = function (url) {
 	var bitmap = Object.create(Bitmap.prototype);
 	bitmap._defer = true;
@@ -1047,6 +1138,14 @@ Bitmap.request = function (url) {
 	return bitmap;
 };
 
+/**
+ * 请求图像数据
+ * Requests image data.
+ *
+ * @private
+ * @method _requestImage
+ * @param {String} url - 图像URL / The image URL
+ */
 Bitmap.prototype._requestImage = function (url) {
 	if (Bitmap._reuseImages.length !== 0) {
 		this._image = Bitmap._reuseImages.pop();
@@ -1073,14 +1172,34 @@ Bitmap.prototype._requestImage = function (url) {
 	}
 };
 
+/**
+ * 检查是否仅为请求状态
+ * Checks if the bitmap is request-only.
+ *
+ * @method isRequestOnly
+ * @return {Boolean} 是否仅为请求状态 / Whether the bitmap is request-only
+ */
 Bitmap.prototype.isRequestOnly = function () {
 	return !(this._decodeAfterRequest || this.isReady());
 };
 
+/**
+ * 检查请求是否准备就绪
+ * Checks if the request is ready.
+ *
+ * @method isRequestReady
+ * @return {Boolean} 请求是否准备就绪 / Whether the request is ready
+ */
 Bitmap.prototype.isRequestReady = function () {
 	return this._loadingState !== "pending" && this._loadingState !== "requesting" && this._loadingState !== "decrypting";
 };
 
+/**
+ * 开始请求操作
+ * Starts the request operation.
+ *
+ * @method startRequest
+ */
 Bitmap.prototype.startRequest = function () {
 	if (this._loadingState === "pending") {
 		this._decodeAfterRequest = false;
