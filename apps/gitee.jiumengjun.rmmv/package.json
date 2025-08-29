@@ -15,8 +15,9 @@
 		"legacy:make": "typedoc"
 	},
 	"keywords": [],
-	"author": "阮喵喵",
+	"author": "ruan-cat",
 	"license": "ISC",
+	"homepage": "https://rmmv-api-doc.ruan-cat.com",
 	"dependencies": {
 		"typedoc": "^0.28.11",
 		"typedoc-plugin-markdown": "^4.8.1",
