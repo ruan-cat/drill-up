@@ -418,8 +418,8 @@ DataManager.onLoad = function (object) {
  * @static
  * @method extractMetadata
  * @description
- * 从备注字符串中提取<key:value>或<key>格式的元数据。
- * Extracts metadata from note strings in <key:value> or <key> format.
+ * 从备注字符串中提取 `<key:value>` 或 `<key>` 格式的元数据。
+ * Extracts metadata from note strings in `<key:value>` or `<key>` format.
  * @param {Object} data - The data object containing a note property - 包含note属性的数据对象
  */
 DataManager.extractMetadata = function (data) {
