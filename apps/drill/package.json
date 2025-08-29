@@ -53,7 +53,7 @@
 		"tsup": "^8.5.0",
 		"typescript": "^5.9.2",
 		"uglify-js": "^3.19.3",
-		"unplugin-auto-import": "^20.0.0",
+		"unplugin-auto-import": "^20.1.0",
 		"unplugin-vue-components": "^29.0.0",
 		"upath": "^2.0.1",
 		"vite": "^5.4.1",
