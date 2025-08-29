@@ -15,9 +15,10 @@
 		"monorepo"
 	],
 	"scripts": {
-		"preinstall": "npm run corepack:pnpm && npx only-allow pnpm",
 		"up-taze": "pnpm -w up @ruan-cat/taze-config -L && npx taze -r",
 		"format": "prettier --experimental-cli --write .",
+		"git:dev-2-main": "git rebase dev main && pnpm run git:push",
+		"git:main-2-dev": "git rebase main dev",
 		"code-workspace:create": "tsx ./scripts/generate.code-workspace.ts --name=rm具体项目工作区",
 		"corepack:pnpm": "corepack enable && corepack install",
 		"git:fetch": "git fetch -p",
@@ -25,10 +26,13 @@
 		"clear:cache": "rimraf -g '**/{dist,.turbo,.vercel,cache,temp}'",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
+		"git:push": "git push --follow-tags",
+		"preinstall": "npm run corepack:pnpm && npx only-allow pnpm",
 		"deploy-vercel": "tsx ./scripts/vercel-deploy-tool.ts --env-path=.env.deploy-vercel",
 		"dev:drill": "pnpm --filter @ruan-cat/drill-up run dev:drill",
 		"build:drill": "pnpm --filter @ruan-cat/drill-up run build:drill",
-		"build:rpgmv-plugins": "pnpm --filter @ruan-cat/drill-up run build:rpgmv-plugins"
+		"build:rpgmv-plugins": "pnpm --filter @ruan-cat/drill-up run build:rpgmv-plugins",
+		"build:mv-doc": "pnpm -F=@ruan-cat/mv-docs run build"
 	},
 	"dependencies": {
 		"@ruan-cat/utils": "^4.10.0",
