@@ -7,9 +7,10 @@
 	"private": true,
 	"scripts": {
 		"docs:dev": "vitepress dev docs",
-		"docs:build": "pnpm jsdoc:generate && vitepress build docs",
+		"docs:build": "vitepress build docs",
 		"docs:preview": "vitepress preview docs",
-		"build": "pnpm docs:build",
+		"format": "prettier --experimental-cli --write . --ignore-path=.prettierignore --config-path=../../prettier.config.js",
+		"build": "turbo do-build",
 		"jsdoc:generate": "tsx scripts/markdown-generator/index.ts",
 		"legacy:make-doc": "jsdoc2md --files ./rpg_*.js > ./dist/jsdoc2md-res.md",
 		"legacy:make": "typedoc"

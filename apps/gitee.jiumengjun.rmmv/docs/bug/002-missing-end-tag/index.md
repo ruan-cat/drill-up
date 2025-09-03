@@ -4,13 +4,13 @@
 
 在运行 `pnpm docs:build` 命令时，构建失败并报告以下错误：
 
-```
+```plain
 [vite:vue] [plugin vite:vue] docs/jsdoc/rpg_managers/DataManager.md (441:110): Element is missing end tag.
 ```
 
 ## 问题定位
 
-经过深入分析，问题出现在 `docs/jsdoc/rpg_managers/DataManager.md` 文件的第563-564行：
+经过深入分析，问题出现在 `docs/jsdoc/rpg_managers/DataManager.md` 文件的第 563-564 行：
 
 ```markdown
 从备注字符串中提取<key:value>或<key>格式的元数据。
@@ -32,22 +32,22 @@ Extracts metadata from note strings in <key:value> or <key> format.
 
 ## 解决方案
 
-### 方案一：手动转义HTML字符（临时解决方案）
+### 方案一：手动转义 HTML 字符（临时解决方案）
 
-将第563-564行的内容修改为：
+将第 563-564 行的内容修改为：
 
 ```markdown
 从备注字符串中提取&lt;key:value&gt;或&lt;key&gt;格式的元数据。
 Extracts metadata from note strings in &lt;key:value&gt; or &lt;key&gt; format.
 ```
 
-### 方案二：修改JSDoc生成逻辑（推荐的永久解决方案）
+### 方案二：修改 JSDoc 生成逻辑（推荐的永久解决方案）
 
 修改 `scripts/markdown-generator/index.ts` 文件，在生成 Markdown 内容时自动转义 HTML 特殊字符。
 
-### 方案三：配置VitePress忽略特定标签
+### 方案三：配置 VitePress 忽略特定标签
 
-在 `.vitepress/config.mts` 中配置 Vue 编译选项，让Vue忽略包含冒号的标签。
+在 `.vitepress/config.mts` 中配置 Vue 编译选项，让 Vue 忽略包含冒号的标签。
 
 ## 预防措施
 

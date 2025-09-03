@@ -1,5 +1,5 @@
 {
-	"name": "",
+	"name": "@ruan-cat/try-ts",
 	"main": "index.html",
 	"js-flags": "--expose-gc",
 	"window": {

@@ -8,12 +8,6 @@
 		"allowJs": true,
 		"checkJs": true
 	},
-	"include": [
-		"./*.js",
-		"./scripts/**/*"
-	],
-	"exclude": [
-		"./libs/**/*",
-		"./plugins/**/*"
-	]
+	"include": ["./*.js", "./scripts/**/*"],
+	"exclude": ["./libs/**/*", "./plugins/**/*"]
 }

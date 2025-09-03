@@ -26,10 +26,7 @@ export class MarkdownGenerator {
 	private readonly options: JsdocOptions;
 	private readonly templateManager: TemplateManager;
 
-	constructor(
-		options: Partial<JsdocOptions> = {},
-		templateConfig?: Partial<TemplateManagerConfig>
-	) {
+	constructor(options: Partial<JsdocOptions> = {}, templateConfig?: Partial<TemplateManagerConfig>) {
 		this.options = {
 			"example-lang": "js",
 			"param-list-format": "table",
@@ -122,29 +119,24 @@ export class MarkdownGenerator {
 	/**
 	 * 静态工厂方法：创建使用 clean 模板的生成器
 	 */
-	static createWithCleanTemplates(
-		options: Partial<JsdocOptions> = {},
-		templatesDir?: string
-	): MarkdownGenerator {
+	static createWithCleanTemplates(options: Partial<JsdocOptions> = {}, templatesDir?: string): MarkdownGenerator {
 		const templateConfig: Partial<TemplateManagerConfig> = {
 			enabled: true,
 			preset: "clean",
 			templatesBaseDir: templatesDir || path.join(__dirname, "templates"),
 		};
-		
+
 		return new MarkdownGenerator(options, templateConfig);
 	}
 
 	/**
 	 * 静态工厂方法：创建使用默认模板的生成器
 	 */
-	static createWithDefaultTemplates(
-		options: Partial<JsdocOptions> = {}
-	): MarkdownGenerator {
+	static createWithDefaultTemplates(options: Partial<JsdocOptions> = {}): MarkdownGenerator {
 		const templateConfig: Partial<TemplateManagerConfig> = {
 			enabled: false, // 默认模板不需要启用
 		};
-		
+
 		return new MarkdownGenerator(options, templateConfig);
 	}
 

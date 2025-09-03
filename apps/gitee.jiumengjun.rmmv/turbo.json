@@ -1,0 +1,22 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"extends": ["//"],
+	"tasks": {
+		"jsdoc:generate": {
+			"cache": false,
+			"outputs": []
+		},
+		"format": {
+			"dependsOn": ["jsdoc:generate"],
+			"cache": false,
+			"outputs": []
+		},
+		"docs:build": {
+			"dependsOn": ["format"],
+			"outputs": ["docs/.vitepress/dist/**"]
+		},
+		"do-build": {
+			"dependsOn": ["docs:build"]
+		}
+	}
+}

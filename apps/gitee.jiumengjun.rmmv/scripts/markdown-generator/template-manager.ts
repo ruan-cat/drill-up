@@ -29,7 +29,7 @@ export interface JsdocTemplateOptions {
 
 /**
  * 模板管理器 - 负责管理 jsdoc2md 的自定义模板
- * 
+ *
  * 工作原理：
  * - 通过提供同名模板文件覆盖 dmd 默认模板
  * - 支持预设模板和完全自定义模板
@@ -55,7 +55,7 @@ export class TemplateManager {
 		if (templatesDir) {
 			this.config.templatesBaseDir = templatesDir;
 		}
-		
+
 		this.config.enabled = true;
 		this.config.preset = preset;
 		this.config.customPartials = undefined;
@@ -70,7 +70,7 @@ export class TemplateManager {
 		if (templatesDir) {
 			this.config.templatesBaseDir = templatesDir;
 		}
-		
+
 		this.config.enabled = true;
 		this.config.preset = undefined;
 		this.config.customPartials = [...partials];
@@ -135,7 +135,7 @@ export class TemplateManager {
 	 */
 	private buildCleanTemplateOptions(): JsdocTemplateOptions {
 		const templatePaths = new TemplatePaths(this.config.templatesBaseDir);
-		
+
 		return {
 			partial: templatePaths.getCleanTemplatePaths(),
 		};
@@ -198,7 +198,7 @@ export class TemplateManager {
 		const manager = new TemplateManager({
 			templatesBaseDir: templatesDir || path.join(__dirname, "templates"),
 		});
-		
+
 		manager.enablePreset("clean");
 		return manager;
 	}
@@ -210,7 +210,7 @@ export class TemplateManager {
 		const manager = new TemplateManager({
 			templatesBaseDir: templatesDir || path.join(__dirname, "templates"),
 		});
-		
+
 		manager.enableCustom(partials);
 		return manager;
 	}

@@ -1,0 +1,15 @@
+# Ignore handlebars templates (they have special syntax prettier can't handle)
+*.hbs
+
+# Ignore build outputs
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+
+# Ignore node_modules
+node_modules/
+
+# 忽略掉rm提供的第三方库
+libs/
+
+# 插件文件不能被格式化
+plugins.js
