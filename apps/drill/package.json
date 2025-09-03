@@ -31,14 +31,14 @@
 		"@element-plus/icons-vue": "^2.3.2",
 		"element-plus": "^2.11.1",
 		"lodash-es": "^4.17.21",
-		"vue": "^3.5.20"
+		"vue": "^3.5.21"
 	},
 	"devDependencies": {
 		"@antfu/eslint-config": "^5.2.1",
 		"@dotenvx/dotenvx": "^1.49.0",
 		"@ruan-cat/vite-plugin-ts-alias": "^0.1.0",
 		"@swc/core": "^1.13.5",
-		"@tauri-apps/cli": "^2.8.3",
+		"@tauri-apps/cli": "^2.8.4",
 		"@types/eslint-config-prettier": "^6.11.3",
 		"@types/fpsmeter": "^0.3.34",
 		"@types/lodash-es": "^4.17.12",
@@ -49,7 +49,7 @@
 		"load-tsconfig": "^0.2.5",
 		"lz-string": "^1.5.0",
 		"pixi.js": "4.5.4",
-		"sass-embedded": "^1.91.0",
+		"sass-embedded": "^1.92.0",
 		"tsup": "^8.5.0",
 		"typescript": "^5.9.2",
 		"uglify-js": "^3.19.3",

@@ -28,7 +28,7 @@
 		"minami": "^1.2.3",
 		"swiper": "~11.2.10",
 		"tui-jsdoc-template": "^1.2.2",
-		"typedoc": "^0.28.11",
+		"typedoc": "^0.28.12",
 		"typedoc-plugin-markdown": "^4.8.1",
 		"typescript": "^5.9.2"
 	}
