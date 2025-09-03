@@ -6,5 +6,8 @@ packages:
   - utils
 
 onlyBuiltDependencies:
-  - "@swc/core"
+  - '@parcel/watcher'
+  - '@swc/core'
+  - core-js
+  - esbuild
   - vue-demi
