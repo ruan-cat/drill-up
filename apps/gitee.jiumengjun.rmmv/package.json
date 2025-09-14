@@ -25,9 +25,9 @@
 		"vitepress-demo-plugin": "^1.4.7"
 	},
 	"devDependencies": {
-		"@ruan-cat/vitepress-preset-config": "^1.4.0",
+		"@ruan-cat/vitepress-preset-config": "^2.3.0",
 		"@types/jsdoc-to-markdown": "^7.0.6",
-		"@types/node": "^20.19.12",
+		"@types/node": "^20.19.14",
 		"jsdoc-to-markdown": "^9.1.2",
 		"tsx": "^4.20.5",
 		"vitepress": "^1.6.4",
